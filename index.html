@@ -944,6 +944,140 @@ const BANK = [
   {t:"Incompatibilités", q:"Quelles activités sont compatibles, à titre accessoire, avec la profession d'expert-comptable ? (plusieurs réponses)",
    o:["Les consultations fiscales","Une activité commerciale habituelle","Les consultations juridiques liées aux missions","Les consultations sociales"], a:[0,2,3],
    e:"Le conseil <b>fiscal</b>, <b>juridique</b> et <b>social</b> est autorisé à titre accessoire des missions comptables. L'activité commerciale habituelle reste incompatible."}
+,
+
+  /* ——————————— Questions ajoutées : enrichissement ——————————— */
+  {t:"Durabilité (CSRD)", q:"Depuis la transposition de la directive CSRD, la certification des informations de durabilité peut être assurée par :",
+   o:["L'AMF uniquement","Le commissaire aux comptes ou un organisme tiers indépendant (OTI) accrédité","Le seul expert-comptable","La H2A elle-même"], a:1,
+   e:"La <b>certification des informations de durabilité</b> peut être confiée au <b>commissaire aux comptes</b> ou à un <b>organisme tiers indépendant (OTI)</b> accrédité ; la <b>H2A</b> supervise ces acteurs."},
+
+  {t:"Durabilité (CSRD)", q:"Dans un premier temps, le niveau d'assurance exigé sur les informations de durabilité est :",
+   o:["Une assurance raisonnable","Une assurance modérée (limitée)","Aucune assurance","Une assurance absolue"], a:1,
+   e:"La CSRD prévoit d'abord une <b>assurance modérée (limitée)</b> sur les informations de durabilité, avec une évolution prévue vers une assurance raisonnable."},
+
+  {t:"Durabilité (CSRD)", q:"Les informations de durabilité prévues par la CSRD sont publiées :",
+   o:["Dans une publication séparée et confidentielle","Dans une section dédiée du rapport de gestion, selon les normes ESRS","Uniquement sur le site de la H2A","Dans la seule annexe des comptes"], a:1,
+   e:"Les informations de durabilité figurent dans une <b>section distincte du rapport de gestion</b>, établies selon les normes européennes <b>ESRS</b>."},
+
+  {t:"Entités d'intérêt public", q:"Parmi les entités suivantes, laquelle est une entité d'intérêt public (EIP) ?",
+   o:["Toute SARL de plus de 50 salariés","Une société dont les titres sont admis sur un marché réglementé, un établissement de crédit ou une entreprise d'assurance","Toute association reconnue d'utilité publique","Tout commerçant inscrit au RCS"], a:1,
+   e:"Les <b>EIP</b> sont notamment les sociétés <b>cotées</b> sur un marché réglementé, les <b>établissements de crédit</b> et les <b>entreprises d'assurance</b>."},
+
+  {t:"Comité d'audit", q:"Le comité d'audit d'une EIP est notamment chargé de :",
+   o:["Certifier les comptes à la place du CAC","Suivre l'élaboration de l'information financière et l'indépendance du commissaire aux comptes","Fixer la rémunération des dirigeants","Tenir la comptabilité"], a:1,
+   e:"Le <b>comité d'audit</b> suit l'élaboration de l'information financière, l'efficacité du contrôle interne et de la gestion des risques, le contrôle légal des comptes et l'<b>indépendance</b> du CAC."},
+
+  {t:"Cessation des fonctions du CAC", q:"La récusation du commissaire aux comptes désigne :",
+   o:["Sa démission volontaire","La demande en justice, pour juste motif, de remplacer le CAC peu après sa désignation","Sa radiation par la H2A","Le non-renouvellement de son mandat"], a:1,
+   e:"La <b>récusation</b> permet de demander en justice, <b>pour juste motif</b>, le remplacement du CAC désigné. Elle peut émaner notamment d'actionnaires (sous condition de seuil), du ministère public ou de l'AMF."},
+
+  {t:"Cessation des fonctions du CAC", q:"Le relèvement de fonctions du commissaire aux comptes est :",
+   o:["Une sanction disciplinaire prononcée par l'Ordre","La révocation judiciaire du CAC en cas de faute ou d'empêchement","Une démission pour motif légitime","Le terme normal du mandat de 6 ans"], a:1,
+   e:"Le <b>relèvement</b> est la <b>révocation prononcée par le tribunal</b>, en cas de <b>faute</b> ou d'<b>empêchement</b>. Le CAC n'est pas librement révocable par la seule assemblée générale."},
+
+  {t:"Vérifications du CAC", q:"Sur les conventions réglementées conclues par la société, le commissaire aux comptes :",
+   o:["Les autorise","Établit un rapport spécial présenté à l'assemblée générale","Les annule s'il les juge déséquilibrées","N'a aucun rôle"], a:1,
+   e:"Le CAC établit un <b>rapport spécial</b> sur les <b>conventions réglementées</b> ; il ne se prononce pas sur leur opportunité, qui relève de l'assemblée (non-immixtion)."},
+
+  {t:"Vérifications du CAC", q:"Au titre de ses vérifications spécifiques, le commissaire aux comptes contrôle notamment :",
+   o:["La stratégie commerciale de l'entité","La concordance du rapport de gestion avec les comptes et la sincérité des informations qu'il contient","Le montant des salaires des dirigeants, qu'il fixe","La politique d'investissement"], a:1,
+   e:"Le CAC vérifie la <b>concordance</b> du <b>rapport de gestion</b> avec les comptes et la <b>sincérité</b> des informations données aux actionnaires, sans juger l'opportunité de la gestion."},
+
+  {t:"Co-commissariat", q:"En cas de co-commissariat aux comptes, les deux commissaires :",
+   o:["Appartiennent obligatoirement au même cabinet","Sont issus de structures distinctes, se répartissent les travaux, procèdent à une revue croisée et signent conjointement","Se contrôlent l'un l'autre sans travailler","Alternent un exercice sur deux"], a:1,
+   e:"Les co-commissaires, de structures <b>distinctes</b>, se répartissent les diligences, procèdent à une <b>revue croisée</b> et signent <b>conjointement</b> le rapport."},
+
+  {t:"Le stage", q:"Pendant le stage d'expertise comptable, le stagiaire :",
+   o:["N'a aucune obligation de compte rendu","Rédige des rapports semestriels et suit des formations, sous le contrôle du conseil régional de l'Ordre","Exerce déjà en son nom propre","Est dispensé de toute supervision"], a:1,
+   e:"Le stage (3 ans) suppose des <b>rapports semestriels</b>, des actions de <b>formation</b> et le suivi d'un <b>maître de stage</b>, contrôlés par le <b>conseil régional</b> de l'Ordre."},
+
+  {t:"Le DEC", q:"Le sujet du mémoire de l'épreuve n°3 du DEC doit :",
+   o:["Être libre, sans formalité","Faire l'objet d'un agrément préalable","Porter obligatoirement sur le commissariat aux comptes","Être imposé par le jury"], a:1,
+   e:"Le <b>sujet de mémoire</b> doit recevoir un <b>agrément</b> préalable avant la rédaction et la soutenance devant le jury."},
+
+  {t:"Accès à la profession", q:"Le diplôme requis pour s'inscrire au tableau de l'Ordre des experts-comptables est :",
+   o:["Le DCG","Le DSCG","Le DEC (diplôme d'expertise comptable) ou un diplôme reconnu équivalent","Un master quelconque"], a:2,
+   e:"Seul le <b>DEC</b> (ou un diplôme reconnu équivalent) permet l'inscription au tableau et le port du titre. Le DCG et le DSCG sont des étapes antérieures du cursus."},
+
+  {t:"Obligations de l'EC", q:"Le paiement de la cotisation à l'Ordre des experts-comptables est :",
+   o:["Facultatif","Obligatoire pour tout membre inscrit","Réservé aux sociétés","Remplacé par une taxe d'État"], a:1,
+   e:"La <b>cotisation</b> ordinale est <b>obligatoire</b> ; son non-paiement peut entraîner des poursuites disciplinaires."},
+
+  {t:"Exercice de la profession", q:"Un expert-comptable peut exercer :",
+   o:["Uniquement à titre libéral indépendant","À titre libéral, comme associé, ou comme salarié d'un autre expert-comptable ou d'une société inscrite","Seulement comme salarié d'une entreprise quelconque","Sans inscription au tableau s'il est salarié"], a:1,
+   e:"L'EC peut exercer en <b>libéral</b>, comme <b>associé</b> ou comme <b>salarié</b> d'un confrère ou d'une société inscrite. L'inscription au tableau reste requise dans tous les cas."},
+
+  {t:"LCB-FT", q:"Les informations sur les bénéficiaires effectifs des sociétés sont notamment centralisées :",
+   o:["Chez le seul expert-comptable","Dans un registre des bénéficiaires effectifs (tenu au greffe / registre national des entreprises)","À la CNIL","Nulle part"], a:1,
+   e:"Les sociétés déclarent leurs <b>bénéficiaires effectifs</b> dans un <b>registre</b> dédié, consultable dans les conditions fixées par la loi."},
+
+  {t:"LCB-FT", q:"Une vigilance renforcée s'impose notamment :",
+   o:["Pour tout nouveau client, sans exception","Face à une personne politiquement exposée (PPE) ou à une opération présentant un risque élevé","Uniquement pour les clients étrangers","Jamais"], a:1,
+   e:"La <b>vigilance renforcée</b> vise les situations de <b>risque élevé</b> : <b>PPE</b>, opérations complexes ou inhabituelles, pays à haut risque, entrée en relation à distance, etc."},
+
+  {t:"LCB-FT", q:"Les documents recueillis au titre des obligations de vigilance anti-blanchiment doivent être conservés :",
+   o:["1 an","5 ans à compter de la fin de la relation d'affaires","Sans limite de durée","30 jours"], a:1,
+   e:"Les pièces d'identification et les documents relatifs aux opérations sont conservés <b>5 ans</b> à compter de la fin de la relation d'affaires ou de l'exécution de l'opération."},
+
+  {t:"LCB-FT", q:"Au regard de la lutte anti-blanchiment, l'expert-comptable et le commissaire aux comptes sont :",
+   o:["Exonérés de toute obligation","Des professionnels assujettis aux obligations de vigilance et de déclaration","Soumis aux seules règles fiscales","Concernés uniquement pour les clients étrangers"], a:1,
+   e:"EC et CAC sont des <b>professionnels assujettis</b> au dispositif LCB-FT : <b>vigilance</b>, <b>déclaration de soupçon</b> à TRACFIN et obligations internes (formation, procédures)."},
+
+  {t:"Sources de la déontologie", q:"Le Code de déontologie des professionnels de l'expertise comptable est :",
+   o:["Une simple charte sans valeur juridique","Annexé à un décret (valeur réglementaire)","Voté par l'assemblée générale des cabinets","Une norme internationale non contraignante"], a:1,
+   e:"Le <b>Code de déontologie</b> des EC a une <b>valeur réglementaire</b> : il est annexé au décret du 30 mars 2012 relatif à l'exercice de la profession."},
+
+  {t:"Sources de la déontologie", q:"Le Code de déontologie de la profession de commissaire aux comptes est :",
+   o:["Dépourvu de valeur juridique","Homologué par décret en Conseil d'État","Fixé librement par chaque cabinet","Identique au code des experts-comptables"], a:1,
+   e:"Le <b>Code de déontologie des CAC</b> est <b>homologué par décret en Conseil d'État</b>, après avis de la H2A et de la CNCC."},
+
+  {t:"Indépendance du CAC", q:"Pour apprécier son indépendance, le commissaire aux comptes doit tenir compte :",
+   o:["De sa seule situation personnelle","Aussi des liens et services rendus par les membres de son réseau","Uniquement du montant de ses honoraires","De l'avis du dirigeant"], a:1,
+   e:"L'analyse de l'indépendance s'étend au <b>réseau</b> du CAC : les services rendus par d'autres entités du réseau à l'entité contrôlée peuvent créer des menaces, voire des incompatibilités."},
+
+  {t:"Indépendance du CAC", q:"À l'issue de son mandat dans une EIP, le commissaire aux comptes (ou l'associé signataire) est soumis :",
+   o:["À aucune contrainte","À un délai pendant lequel il ne peut occuper de fonction de direction clé dans l'entité auditée","À une interdiction définitive d'exercer","À une simple obligation de conseil"], a:1,
+   e:"Un <b>délai de viduité</b> (cooling-off) lui interdit, pendant une certaine durée, d'occuper un poste de <b>direction clé</b> ou de membre du comité d'audit de l'entité qu'il a auditée."},
+
+  {t:"Honoraires", q:"En cas de différend sur ses honoraires avec un client, l'expert-comptable peut recourir :",
+   o:["À la rétention des documents comptables du client","À une conciliation / un arbitrage au sein de l'Ordre (président du conseil régional)","À la justice pénale","À la H2A"], a:1,
+   e:"Les <b>litiges d'honoraires</b> relèvent d'abord d'une <b>conciliation</b> au sein de l'Ordre. La <b>rétention</b> des documents appartenant au client est prohibée."},
+
+  {t:"Fin de mission", q:"À la fin de sa mission, l'expert-comptable doit :",
+   o:["Conserver tous les documents du client par sécurité","Restituer au client les documents lui appartenant, même en cas d'honoraires impayés","Détruire les dossiers","Transmettre le dossier à l'Ordre"], a:1,
+   e:"Les <b>documents appartenant au client</b> doivent lui être <b>restitués</b>, y compris en cas de litige sur les honoraires. Les <b>dossiers de travail</b> du professionnel, eux, lui restent acquis et sont conservés."},
+
+  {t:"Organisation de la mission", q:"Le recours à la sous-traitance par l'expert-comptable est :",
+   o:["Interdit","Possible, sous sa responsabilité, en informant le client et en préservant le secret professionnel","Libre et sans information du client","Réservé aux commissaires aux comptes"], a:1,
+   e:"La <b>sous-traitance</b> est admise : l'EC en informe le client, demeure <b>responsable</b> des travaux et veille au respect du <b>secret professionnel</b>."},
+
+  {t:"Mission du CAC", q:"Si le commissaire aux comptes relève une incertitude significative sur la continuité d'exploitation, il doit :",
+   o:["Certifier sans rien indiquer","En faire état dans son rapport (observation ou, le cas échéant, réserve)","Démissionner aussitôt","Saisir directement le tribunal"], a:1,
+   e:"L'incertitude sur la <b>continuité d'exploitation</b> (NEP 570) conduit le CAC à en <b>faire état dans son rapport</b> ; en parallèle, la <b>procédure d'alerte</b> peut être déclenchée."},
+
+  {t:"Mission du CAC", q:"Dans le cadre de ses obligations d'information, le commissaire aux comptes communique aux organes de gouvernance :",
+   o:["Rien avant le rapport final","Notamment les faiblesses significatives du contrôle interne et les irrégularités relevées","Uniquement le montant de ses honoraires","La stratégie qu'il recommande d'adopter"], a:1,
+   e:"Le CAC <b>communique</b> aux organes de direction ou de surveillance les <b>faiblesses significatives du contrôle interne</b>, les irrégularités et inexactitudes relevées."},
+
+  {t:"Secret professionnel", q:"Face à une demande de l'administration fiscale, l'expert-comptable :",
+   o:["Doit toujours tout communiquer spontanément","Reste en principe tenu au secret, sauf disposition légale l'obligeant à communiquer","N'est jamais tenu au secret","Doit demander l'accord de l'Ordre"], a:1,
+   e:"Le secret demeure le <b>principe</b> ; il ne cède que devant un <b>texte légal</b> prévoyant un droit de communication ou une obligation déclarative."},
+
+  {t:"Entités d'intérêt public", q:"Quelles entités constituent des EIP ? (plusieurs réponses)",
+   o:["Les sociétés cotées sur un marché réglementé","Les établissements de crédit","Les entreprises d'assurance","Toutes les SAS"], a:[0,1,2],
+   e:"Sont des <b>EIP</b> les sociétés <b>cotées</b>, les <b>établissements de crédit</b> et les <b>entreprises d'assurance</b>. La seule forme SAS ne fait pas d'une société une EIP."},
+
+  {t:"Comité d'audit", q:"Quelles missions incombent au comité d'audit d'une EIP ? (plusieurs réponses)",
+   o:["Suivre le processus d'élaboration de l'information financière","Suivre l'efficacité du contrôle interne et de la gestion des risques","Émettre une recommandation sur le ou les CAC proposés à la désignation","Certifier lui-même les comptes"], a:[0,1,2],
+   e:"Le comité d'audit suit l'<b>information financière</b>, le <b>contrôle interne</b> et les <b>risques</b>, l'<b>indépendance du CAC</b> et <b>recommande</b> les CAC. Il ne certifie pas les comptes."},
+
+  {t:"Vérifications du CAC", q:"Parmi les diligences suivantes, lesquelles relèvent des obligations du commissaire aux comptes ? (plusieurs réponses)",
+   o:["Le rapport spécial sur les conventions réglementées","La vérification de la concordance du rapport de gestion avec les comptes","La tenue de la comptabilité de l'entité","La révélation des faits délictueux au procureur"], a:[0,1,3],
+   e:"Relèvent de ses obligations : le <b>rapport spécial</b> sur les conventions réglementées, la vérification du <b>rapport de gestion</b> et la <b>révélation des faits délictueux</b>. Tenir la comptabilité de l'entité contrôlée lui est interdit."},
+
+  {t:"Opinion du CAC", q:"Quelles sont des issues possibles du rapport de certification du commissaire aux comptes ? (plusieurs réponses)",
+   o:["La certification avec réserve","Le refus de certifier","L'impossibilité de certifier","La certification conditionnelle"], a:[0,1,2],
+   e:"Les issues sont : certification (avec ou sans réserve), <b>refus de certifier</b> (désaccord) et <b>impossibilité de certifier</b> (limitation). La « certification conditionnelle » n'existe pas."}
 ];
 
 /* ===================== BANQUE QRC ===================== */
@@ -1079,6 +1213,96 @@ const QRC = [
  {t:"Cadre international", q:"Que sont l'IFAC et l'IESBA ?",
   a:"L'IFAC (International Federation of Accountants) est la fédération internationale qui regroupe les organisations professionnelles comptables du monde entier. L'IESBA, qui agit sous son égide, élabore le code international d'éthique des professionnels comptables, lequel inspire le Code de déontologie français.",
   k:["IFAC : fédération internationale de la profession","IESBA : élabore le code international d'éthique","IESBA agit sous l'égide de l'IFAC"]}
+,
+
+ /* ——————————— QRC ajoutées : enrichissement ——————————— */
+ {t:"Durabilité (CSRD)", q:"Qu'est-ce que la CSRD et quelle nouvelle mission crée-t-elle pour les auditeurs ?",
+  a:"La CSRD (Corporate Sustainability Reporting Directive) est la directive européenne sur le reporting de durabilité. Elle impose aux entreprises concernées de publier des informations de durabilité (environnementales, sociales et de gouvernance) selon les normes ESRS, dans une section dédiée du rapport de gestion. Ces informations doivent être certifiées par un commissaire aux comptes ou un organisme tiers indépendant (OTI), d'abord avec une assurance modérée. La H2A supervise cette mission.",
+  k:["CSRD = directive européenne sur le reporting de durabilité","Informations ESG selon les normes ESRS","Intégrées au rapport de gestion","Certification par le CAC ou un OTI accrédité","Assurance modérée (limitée) au départ","Supervision par la H2A"]},
+
+ {t:"Entités d'intérêt public", q:"Qu'est-ce qu'une entité d'intérêt public (EIP) et quel régime renforcé en découle ?",
+  a:"Une EIP est notamment une société cotée sur un marché réglementé, un établissement de crédit ou une entreprise d'assurance. Les EIP sont soumises à un régime renforcé : comité d'audit obligatoire, désignation du CAC sur recommandation de ce comité après appel d'offres, rotation de l'associé signataire (6 ans) et du cabinet (10 ans), liste de services interdits et plafonnement des services autres que la certification (SACC) à 70 % de la moyenne des honoraires d'audit sur 3 ans.",
+  k:["EIP : sociétés cotées, établissements de crédit, entreprises d'assurance","Comité d'audit obligatoire","Désignation après appel d'offres, sur recommandation du comité d'audit","Rotation : associé 6 ans, cabinet 10 ans","Services interdits + SACC plafonnés à 70 %"]},
+
+ {t:"Comité d'audit", q:"Quel est le rôle du comité d'audit dans une EIP ?",
+  a:"Le comité d'audit, composé de membres non exécutifs de l'organe de surveillance, suit le processus d'élaboration de l'information financière, l'efficacité du contrôle interne et de la gestion des risques, le contrôle légal des comptes et l'indépendance du commissaire aux comptes. Il émet une recommandation sur le ou les CAC proposés à la désignation. Il ne certifie pas lui-même les comptes.",
+  k:["Membres non exécutifs de l'organe de surveillance","Suivi de l'élaboration de l'information financière","Suivi du contrôle interne et des risques","Suivi de l'indépendance du CAC","Recommandation sur la désignation du CAC"]},
+
+ {t:"Cessation des fonctions du CAC", q:"Distinguez la récusation et le relèvement du commissaire aux comptes.",
+  a:"La récusation permet de demander en justice, pour juste motif, le remplacement du CAC peu après sa désignation ; elle peut émaner notamment d'actionnaires (sous condition de seuil), du ministère public ou de l'AMF. Le relèvement est la révocation du CAC prononcée par le tribunal en cas de faute ou d'empêchement. Dans les deux cas, c'est le juge qui intervient : le CAC n'est pas librement révocable par l'assemblée générale.",
+  k:["Récusation : remplacement demandé en justice pour juste motif, après désignation","Demandeurs : actionnaires (seuil), ministère public, AMF","Relèvement : révocation judiciaire pour faute ou empêchement","Le juge intervient dans les deux cas","Pas de révocation libre par l'AG"]},
+
+ {t:"Vérifications du CAC", q:"Quelles sont les principales vérifications spécifiques du commissaire aux comptes, au-delà de la certification ?",
+  a:"Outre la certification, le CAC procède à des vérifications spécifiques : concordance du rapport de gestion avec les comptes et sincérité des informations qu'il contient, rapport spécial sur les conventions réglementées, respect de l'égalité entre actionnaires, informations sur les prises de participation et de contrôle. Il révèle par ailleurs les faits délictueux au procureur de la République.",
+  k:["Concordance et sincérité du rapport de gestion","Rapport spécial sur les conventions réglementées","Égalité entre actionnaires","Prises de participation et de contrôle","Révélation des faits délictueux"]},
+
+ {t:"Sources de la déontologie", q:"Quelle est la valeur juridique du Code de déontologie de l'expert-comptable et de celui du commissaire aux comptes ?",
+  a:"Les deux codes ont une valeur réglementaire. Le Code de déontologie des professionnels de l'expertise comptable est annexé au décret du 30 mars 2012. Le Code de déontologie de la profession de commissaire aux comptes est homologué par décret en Conseil d'État, après avis de la H2A et de la CNCC. Leur non-respect est sanctionné disciplinairement.",
+  k:["Valeur réglementaire (pas une simple charte)","Code EC : annexé au décret du 30 mars 2012","Code CAC : décret en Conseil d'État","Manquement sanctionné disciplinairement"]},
+
+ {t:"LCB-FT", q:"Comment se gradue l'obligation de vigilance en matière de lutte anti-blanchiment ?",
+  a:"La vigilance est modulée selon le risque. La vigilance allégée s'applique aux situations de faible risque. La vigilance normale est le régime de droit commun : identification du client et du bénéficiaire effectif, connaissance de l'objet de la relation d'affaires. La vigilance renforcée vise les situations de risque élevé : personne politiquement exposée (PPE), opérations complexes ou inhabituelles, pays à haut risque, entrée en relation à distance.",
+  k:["Vigilance proportionnée au risque","Allégée : faible risque","Normale : identification du client et du bénéficiaire effectif","Renforcée : risque élevé (PPE, opérations atypiques, pays à risque)"]},
+
+ {t:"LCB-FT", q:"Quelles sont les trois phases du blanchiment de capitaux ?",
+  a:"Le blanchiment se déroule classiquement en trois phases : le placement (introduction des fonds d'origine illicite dans le circuit financier), l'empilement ou dispersion (multiplication d'opérations pour brouiller la traçabilité de l'argent), et l'intégration (réinjection des fonds dans l'économie légale sous l'apparence de revenus licites).",
+  k:["Placement : introduction des fonds illicites","Empilement / dispersion : brouiller la traçabilité","Intégration : réinjection sous apparence légale"]},
+
+ {t:"Niveaux d'assurance", q:"Classez les missions de l'expert-comptable selon leur niveau d'assurance.",
+  a:"On distingue trois niveaux. Assurance raisonnable (la plus élevée) : l'audit, avec une opinion exprimée positivement. Assurance modérée : l'examen limité (NP 2400, conclusion négative) et la présentation des comptes (NP 2300, sur la cohérence et la vraisemblance, niveau inférieur à l'examen limité). Aucune assurance : la compilation (NP 4410) et les procédures convenues (NP 4400), qui ne livrent que des constats.",
+  k:["Raisonnable : audit, opinion positive","Modérée : examen limité (conclusion négative)","Modérée inférieure : présentation (cohérence/vraisemblance)","Aucune : compilation et procédures convenues"]},
+
+ {t:"Normes", q:"Citez quelques normes d'exercice professionnel (NEP) du commissaire aux comptes et leur objet.",
+  a:"Parmi les NEP : la NEP 200 fixe les principes de l'audit (assurance raisonnable, esprit critique) ; la NEP 240 traite du risque de fraude ; la NEP 315 de la connaissance de l'entité et de l'évaluation des risques ; la NEP 320 du caractère significatif (seuils) ; la NEP 500 du caractère probant des éléments ; la NEP 570 de la continuité d'exploitation ; la NEP 700 du rapport sur les comptes. Elles sont homologuées par arrêté du Garde des Sceaux.",
+  k:["NEP 200 : principes de l'audit","NEP 240 : fraude","NEP 315 : connaissance de l'entité et risques","NEP 320 : caractère significatif","NEP 500 : éléments probants","NEP 570 : continuité ; NEP 700 : rapport","Homologuées par le Garde des Sceaux"]},
+
+ {t:"Le cadre de référence des missions", q:"Comment le référentiel normatif de l'Ordre des experts-comptables classe-t-il les missions ?",
+  a:"Le référentiel repose sur un cadre de référence et un glossaire, complétés par la norme de maîtrise de la qualité (NPMQ) et la norme anti-blanchiment. Les missions sont classées selon le niveau d'assurance : missions d'assurance sur les comptes (présentation NP 2300, examen limité NP 2400, audit/ISA, NP 2910 petites entités), missions d'assurance sur d'autres informations (NP 3100 attestations, NP 3400 prévisionnel) et missions sans assurance (NP 4410 compilation, NP 4400 procédures convenues).",
+  k:["Cadre de référence + glossaire + NPMQ + norme anti-blanchiment","Classement par niveau d'assurance","Comptes : NP 2300, NP 2400, audit/ISA, NP 2910","Autres informations : NP 3100, NP 3400","Sans assurance : NP 4410, NP 4400"]},
+
+ {t:"Exercice de la profession", q:"Sous quelles formes l'expert-comptable peut-il exercer son activité ?",
+  a:"L'expert-comptable peut exercer à titre individuel (libéral), comme associé d'une société d'expertise comptable, ou comme salarié d'un confrère ou d'une société inscrite. Il peut également exercer au sein d'une association de gestion et de comptabilité (AGC). Dans tous les cas, l'inscription au tableau de l'Ordre est obligatoire.",
+  k:["Exercice individuel (libéral)","Associé d'une société d'EC","Salarié d'un confrère / société inscrite","AGC possible","Inscription au tableau obligatoire dans tous les cas"]},
+
+ {t:"Structures d'exercice", q:"Quelles sont les principales structures d'exercice de l'expertise comptable ?",
+  a:"On distingue notamment : la société d'expertise comptable (au moins deux tiers du capital et des droits de vote détenus par des experts-comptables), l'association de gestion et de comptabilité (AGC), la société pluri-professionnelle d'exercice (SPE) réunissant professions du droit et du chiffre, et la société de participations financières de professions libérales (SPFPL), simple holding détenant des participations sans exercer elle-même la mission.",
+  k:["Société d'EC : 2/3 du capital aux experts-comptables","AGC : structure associative inscrite","SPE : professions du droit et du chiffre réunies","SPFPL : holding de participations, n'exerce pas la mission"]},
+
+ {t:"Fin de mission", q:"Quelles sont les obligations de l'expert-comptable en fin de mission, notamment quant aux documents ?",
+  a:"L'expert-comptable doit restituer au client les documents qui lui appartiennent, y compris en cas de litige sur les honoraires : il ne peut pas les retenir comme moyen de pression. En revanche, ses propres dossiers de travail lui restent acquis et doivent être conservés. En cas de succession, il assure la continuité confraternelle avec le confrère qui lui succède.",
+  k:["Restituer les documents appartenant au client","Pas de rétention, même en cas d'impayés","Dossiers de travail conservés par l'EC","Continuité confraternelle en cas de succession"]},
+
+ {t:"Responsabilité", q:"Quelles sont les conditions de mise en jeu de la responsabilité civile de l'expert-comptable ?",
+  a:"La responsabilité civile suppose la réunion de trois éléments : une faute (souvent un manquement au devoir de conseil), un préjudice subi par le client ou un tiers, et un lien de causalité entre la faute et le préjudice. Elle est couverte par une assurance de responsabilité civile professionnelle (RCP) obligatoire.",
+  k:["Faute","Préjudice","Lien de causalité","Assurance RCP obligatoire"]},
+
+ {t:"Mission du CAC", q:"Quelles sont les quatre issues possibles de la mission de certification du commissaire aux comptes ?",
+  a:"Le CAC peut : certifier sans réserve (comptes réguliers, sincères et fidèles) ; certifier avec réserve(s) (anomalie significative mais circonscrite) ; refuser de certifier (désaccord profond, opinion défavorable) ; ou formuler une impossibilité de certifier (limitation l'empêchant de réunir les éléments nécessaires).",
+  k:["Certification sans réserve","Certification avec réserve(s)","Refus de certifier (désaccord)","Impossibilité de certifier (limitation)"]},
+
+ {t:"Non-immixtion", q:"Qu'est-ce que le principe de non-immixtion dans la gestion ?",
+  a:"Le principe de non-immixtion interdit au commissaire aux comptes de s'immiscer dans la gestion : il contrôle et certifie les comptes mais ne prend pas de décision de gestion à la place des dirigeants et ne porte pas de jugement d'opportunité sur leur gestion. Ce principe garantit son indépendance et complète l'interdiction de l'auto-révision.",
+  k:["Le CAC contrôle mais ne gère pas","Pas de décision de gestion à la place des dirigeants","Pas de jugement d'opportunité","Garantit l'indépendance"]},
+
+ {t:"Délit d'entrave", q:"Qu'est-ce que le délit d'entrave aux fonctions du commissaire aux comptes ?",
+  a:"Le délit d'entrave sanctionne pénalement le fait, pour les dirigeants, de faire obstacle aux vérifications ou contrôles du commissaire aux comptes, ou de refuser de lui communiquer les documents nécessaires à sa mission. Il garantit l'effectivité du contrôle légal.",
+  k:["Faire obstacle aux contrôles du CAC","Ou refuser de communiquer les documents","Infraction pénale","Garantit l'effectivité du contrôle légal"]},
+
+ {t:"Acceptation de mission", q:"Quelles vérifications le commissaire aux comptes doit-il opérer avant d'accepter un mandat ?",
+  a:"Avant d'accepter un mandat, le CAC vérifie son indépendance vis-à-vis de l'entité (absence d'incompatibilités, situation de son réseau), sa compétence et ses moyens, l'intégrité des dirigeants et les diligences anti-blanchiment. En cas de succession, il prend contact avec le confrère prédécesseur. La décision d'acceptation est formalisée et documentée.",
+  k:["Indépendance (incompatibilités, réseau)","Compétence et moyens","Intégrité des dirigeants + LCB-FT","Contact avec le CAC prédécesseur","Décision formalisée"]},
+
+ {t:"Indépendance du CAC", q:"En quoi l'appartenance à un réseau peut-elle affecter l'indépendance du commissaire aux comptes ?",
+  a:"L'indépendance s'apprécie en tenant compte non seulement de la situation propre du CAC, mais aussi des prestations fournies par les autres membres de son réseau à l'entité contrôlée ou à ses entités liées. Des services incompatibles rendus par le réseau peuvent créer une menace (notamment d'auto-révision) imposant des sauvegardes, voire empêchant l'acceptation ou le maintien du mandat.",
+  k:["Indépendance appréciée au niveau du réseau","Services rendus par le réseau à l'entité contrôlée","Risque d'auto-révision","Sauvegardes, voire refus/retrait du mandat"]},
+
+ {t:"Honoraires", q:"Comment sont déterminés les honoraires de l'expert-comptable et quelles pratiques sont prohibées ?",
+  a:"Les honoraires correspondent au travail réellement effectué et tiennent compte de la difficulté et de l'importance de la mission ; ils doivent rester équitables. Sont prohibés les honoraires de résultat (fixés selon le succès obtenu) et tout mode de rémunération portant atteinte à l'indépendance. En cas de litige, une conciliation peut être menée au sein de l'Ordre.",
+  k:["Honoraires = travail réalisé, équitables","Tiennent compte de la difficulté et de l'importance","Honoraires de résultat interdits","Conciliation ordinale en cas de litige"]},
+
+ {t:"Formation continue", q:"En quoi consiste l'obligation de formation continue de l'expert-comptable ?",
+  a:"L'expert-comptable doit suivre une formation continue de 40 heures par an, appréciée sur une base de 120 heures sur trois années glissantes. Elle garantit le maintien et l'actualisation de ses compétences, en lien direct avec le principe de compétence. Son respect peut être contrôlé par l'Ordre.",
+  k:["40 heures par an","120 heures sur 3 ans glissants","Maintien et actualisation des compétences","Lien avec le principe de compétence","Contrôle par l'Ordre"]}
 ];
 
 /* ===================== CARTES MENTALES ===================== */
