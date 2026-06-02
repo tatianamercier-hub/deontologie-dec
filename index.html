@@ -61,7 +61,7 @@
 
   /* ---------- Tabs ---------- */
   .tabs{
-    display:flex;gap:6px;justify-content:center;margin:30px 0 8px;
+    display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:30px 0 8px;
     background:var(--paper-2);border:1px solid var(--line);
     border-radius:999px;padding:5px;width:max-content;margin-inline:auto;
   }
@@ -321,6 +321,18 @@
   .mini{font-size:.78rem;font-weight:600;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
   .mini:hover{border-color:var(--ink);color:var(--ink)}
 
+  /* ---------- Historique ---------- */
+  .hist-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:6px 0 16px;flex-wrap:wrap}
+  .hist-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem}
+  .hist-sub{color:var(--ink-soft);font-size:.9rem;margin-top:3px;max-width:520px}
+  .hist-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+  .hf{font-family:'Hanken Grotesk';font-weight:600;font-size:.85rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink-soft);border-radius:999px;padding:7px 15px;transition:.16s}
+  .hf:hover{border-color:var(--ink);color:var(--ink)}
+  .hf.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .hist-day{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:22px 0 11px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+  .hist-day:first-child{margin-top:2px}
+  .rev-theme .when{color:var(--ink-soft);font-weight:600;text-transform:none;letter-spacing:0}
+  .hist-empty{text-align:center;color:var(--ink-soft);padding:42px 22px;background:var(--card);border:1px solid var(--line);border-radius:18px;line-height:1.6}
   footer{text-align:center;padding:24px 0 50px;color:var(--ink-soft);font-size:.8rem}
   footer b{color:var(--ink)}
   .disclaimer{max-width:600px;margin:0 auto 16px;font-size:.78rem;line-height:1.5}
@@ -346,6 +358,7 @@
       <button class="tab" data-panel="qrc">QRC (entraînement)</button>
       <button class="tab" data-panel="exam">Mode examen</button>
       <button class="tab" data-panel="mm">Cartes mentales</button>
+      <button class="tab" data-panel="hist">Historique</button>
     </div>
   </header>
 
@@ -567,6 +580,24 @@
       <button class="subtab" data-cat="cac">Commissaire aux comptes</button>
     </div>
     <div id="maps"></div>
+  </section>
+
+  <!-- ============ HISTORIQUE ============ -->
+  <section class="panel" id="panel-hist">
+    <div class="hist-head">
+      <div>
+        <div class="hist-title">Historique de révision</div>
+        <p class="hist-sub" id="histCount">Chaque question validée en mode révision (QCM et QRC) s'enregistre ici automatiquement, et reste sauvegardée sur cet appareil.</p>
+      </div>
+      <button class="btn ghost" id="histClear">Tout effacer</button>
+    </div>
+    <div class="hist-filters" id="histFilters">
+      <button class="hf sel" data-f="all">Tout</button>
+      <button class="hf" data-f="qcm">QCM</button>
+      <button class="hf" data-f="qrc">QRC</button>
+      <button class="hf" data-f="todo">À revoir</button>
+    </div>
+    <div id="histBody"></div>
   </section>
 
   <footer>
@@ -1733,6 +1764,7 @@ function validateQuestion(){
   });
 
   if(allGood){ score++; el('sc').textContent=score; }
+  recordQCM(item);
 
   const nbCorrect=item._order.filter(o=>o.correct).length;
   const ex=el('explain');
@@ -1898,6 +1930,7 @@ function recomputeQRC(){
 
 function nextQRC(){
   if(qrcList[qrcIdx]._g===undefined){ qrcList[qrcIdx]._g = 0; } // non noté = raté
+  recordQRC(qrcList[qrcIdx], el('qrcInput').value);
   recomputeQRC();
   if(qrcIdx < qrcList.length-1){ qrcIdx++; renderQRC(); el('qrcCard').scrollIntoView({behavior:'smooth',block:'start'}); }
   else showQRCResults();
@@ -2123,6 +2156,114 @@ function finalizeExamScore(score,isQrc){
   el('exam-res-line').textContent=line;
 }
 
+/* ===================== HISTORIQUE (mode révision, persistant) ===================== */
+const HKEY='dec-hist-v1';
+let history=[], histFilter='all';
+
+function loadHistory(){ try{ const r=localStorage.getItem(HKEY); history = r ? JSON.parse(r) : []; }catch(e){ history=[]; } }
+function saveHistory(){ try{ localStorage.setItem(HKEY, JSON.stringify(history)); }catch(e){} }
+function pushHistory(entry){ history.push(entry); if(history.length>500){ history = history.slice(-500); } saveHistory(); }
+
+function nowTs(){ return new Date().getTime(); }
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function frDate(ts){ try{ return new Date(ts).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long',year:'numeric'}); }catch(e){ return ''; } }
+function frTime(ts){ try{ return new Date(ts).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+
+// Enregistrement d'une question QCM validée (mode révision)
+function recordQCM(item){
+  pushHistory({
+    mode:'qcm', ts:nowTs(), t:item.t, q:item.q,
+    opts:item._order.map(o=>o.txt),
+    correctIdx:item._order.map((o,i)=>o.correct?i:-1).filter(i=>i>=0),
+    pickedIdx:item._picks.slice(),
+    e:item.e
+  });
+}
+// Enregistrement d'une question QRC traitée (mode révision)
+function recordQRC(item, resp){
+  pushHistory({
+    mode:'qrc', ts:nowTs(), t:item.t, q:item.q, a:item.a, k:item.k||[],
+    resp:resp||'', grade:(typeof item._g==='number'?item._g:0)
+  });
+}
+
+function isQcmFull(h){
+  const picks=h.pickedIdx||[], cor=h.correctIdx||[];
+  const wrong=picks.filter(k=>!cor.includes(k)).length;
+  const good=picks.filter(k=>cor.includes(k)).length;
+  return picks.length>0 && wrong===0 && good===cor.length;
+}
+
+function histQcmHTML(h){
+  const picks=h.pickedIdx||[], cor=h.correctIdx||[];
+  const good=picks.filter(k=>cor.includes(k)).length;
+  const wrong=picks.filter(k=>!cor.includes(k)).length;
+  const full=isQcmFull(h);
+  const partial=!full && good>0 && wrong===0;
+  const badge = full?'<span class="rev-badge ok">Juste</span>'
+              : partial?'<span class="rev-badge mid">Incomplète</span>'
+              : '<span class="rev-badge no">Faux</span>';
+  const opts=(h.opts||[]).map((txt,k)=>{
+    const picked=picks.includes(k), correct=cor.includes(k);
+    let tag='';
+    if(correct&&picked) tag='<span class="ro ok">✓ vous l\'avez cochée</span>';
+    else if(correct&&!picked) tag='<span class="ro miss">✓ bonne réponse, oubliée</span>';
+    else if(!correct&&picked) tag='<span class="ro no">✗ cochée à tort</span>';
+    const cls=correct?'rev-opt good':(picked?'rev-opt bad':'rev-opt');
+    return `<div class="${cls}"><span class="ro-lett">${LETTERS[k]}</span><span>${txt}</span>${tag}</div>`;
+  }).join('');
+  return `<div class="rev-item">
+    <div class="rev-theme">${h.t} · <span class="when">${frTime(h.ts)}</span></div>
+    <div class="rev-head">${badge}<div class="rev-q">${h.q}</div></div>
+    <div class="rev-body"><div class="rev-opts">${opts}</div><div class="rev-model">${h.e||''}</div></div>
+  </div>`;
+}
+
+function histQrcHTML(h){
+  const g=h.grade;
+  const badge = g>=1?'<span class="rev-badge ok">Maîtrisée</span>'
+              : g>0?'<span class="rev-badge mid">À revoir</span>'
+              : '<span class="rev-badge no">Ratée</span>';
+  const resp = (h.resp && h.resp.trim()) ? escapeHtml(h.resp) : '<em style="color:var(--ink-soft)">(pas de réponse rédigée)</em>';
+  return `<div class="rev-item">
+    <div class="rev-theme">${h.t} · <span class="when">${frTime(h.ts)}</span></div>
+    <div class="rev-head">${badge}<div class="rev-q">${h.q}</div></div>
+    <div class="rev-body">
+      <div><span class="lbl">Votre réponse :</span></div>
+      <div class="your" style="white-space:pre-wrap;margin:3px 0 6px">${resp}</div>
+      <div class="rev-model"><span class="lbl">Corrigé : </span>${h.a}</div>
+      ${keysHTML(h.k)}
+    </div>
+  </div>`;
+}
+
+function renderHistory(){
+  const host=el('histBody');
+  let items = history.slice().reverse();   // plus récentes en premier
+  if(histFilter==='qcm') items=items.filter(h=>h.mode==='qcm');
+  else if(histFilter==='qrc') items=items.filter(h=>h.mode==='qrc');
+  else if(histFilter==='todo') items=items.filter(h=> h.mode==='qcm' ? !isQcmFull(h) : (h.grade<1));
+
+  const total=history.length;
+  el('histCount').textContent = total
+    ? `${total} question(s) enregistrée(s) — les plus récentes en premier. Sauvegardé sur cet appareil.`
+    : `Chaque question validée en mode révision (QCM et QRC) s'enregistre ici automatiquement, et reste sauvegardée sur cet appareil.`;
+
+  if(!items.length){
+    host.innerHTML = `<div class="hist-empty">${ total
+      ? 'Aucune question ne correspond à ce filtre.'
+      : 'Votre historique est vide pour l\'instant.<br>Faites un <b>QCM</b> ou un <b>QRC</b> en mode révision : chaque question validée s\'ajoutera ici automatiquement.' }</div>`;
+    return;
+  }
+  let html='', lastDay='';
+  items.forEach(h=>{
+    const day=frDate(h.ts);
+    if(day!==lastDay){ html+=`<div class="hist-day">${day}</div>`; lastDay=day; }
+    html += (h.mode==='qcm') ? histQcmHTML(h) : histQrcHTML(h);
+  });
+  host.innerHTML=html;
+}
+
 /* ===================== ONGLETS & ÉVÉNEMENTS ===================== */
 function setPanel(name){
   document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.panel===name));
@@ -2130,6 +2271,8 @@ function setPanel(name){
   el('panel-qrc').classList.toggle('active', name==='qrc');
   el('panel-exam').classList.toggle('active', name==='exam');
   el('panel-mm').classList.toggle('active', name==='mm');
+  el('panel-hist').classList.toggle('active', name==='hist');
+  if(name==='hist') renderHistory();
 }
 document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>setPanel(t.dataset.panel));
 el('begin').onclick=startQuiz;
@@ -2153,6 +2296,19 @@ el('examToCards').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:
 
 document.querySelectorAll('.subtab').forEach(t=> t.onclick=()=>setMapCat(t.dataset.cat));
 buildMaps('commun');
+
+/* Historique : chargement et contrôles */
+loadHistory();
+el('histClear').onclick=()=>{
+  if(history.length && confirm('Effacer tout l\'historique de révision ? Cette action est définitive.')){
+    history=[]; saveHistory(); renderHistory();
+  }
+};
+document.querySelectorAll('.hf').forEach(b=> b.onclick=()=>{
+  histFilter=b.dataset.f;
+  document.querySelectorAll('.hf').forEach(x=>x.classList.toggle('sel', x===b));
+  renderHistory();
+});
 </script>
 </body>
 </html>
