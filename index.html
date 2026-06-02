@@ -358,6 +358,10 @@
   .fbox-warn p{font-size:.93rem;color:var(--ink);line-height:1.5}
   .fiche-memo{margin-top:13px;font-size:.9rem;color:var(--ink);background:var(--green-bg);border:1px dashed var(--green);border-radius:11px;padding:11px 14px;line-height:1.5}
   @media(max-width:560px){ .fiche{padding:20px} .fiche-table{font-size:.82rem} .chiffre{min-width:100px} }
+  .serment{background:var(--ink);color:var(--paper);border-radius:18px;padding:24px 28px;margin-bottom:24px;box-shadow:var(--shadow)}
+  .serment-lbl{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-soft);margin-bottom:12px;display:flex;align-items:center;gap:9px}
+  .serment-txt{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:1.25rem;line-height:1.45;color:var(--paper)}
+  .serment-note{font-size:.84rem;color:var(--paper-2);margin-top:12px;opacity:.85}
 
   /* ---------- Historique ---------- */
   .hist-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:6px 0 16px;flex-wrap:wrap}
@@ -2148,6 +2152,11 @@ const FICHES = [
 function buildFiches(cat){
   cat = cat || 'commun';
   const host = el('fiches'); host.innerHTML='';
+  if(cat==='ec'){
+    const sd=document.createElement('div'); sd.className='serment';
+    sd.innerHTML=`<div class="serment-lbl">✋ Le serment de l'expert-comptable</div><p class="serment-txt">« Je jure d'exercer ma profession avec conscience et probité, de respecter et faire respecter les lois dans mes travaux. »</p><p class="serment-note">À prononcer lors de l'inscription au tableau de l'Ordre, juste avant de pouvoir exercer.</p>`;
+    host.appendChild(sd);
+  }
   FICHES.filter(f=>f.cat===cat).forEach((f,i)=>{
     let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
     if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
