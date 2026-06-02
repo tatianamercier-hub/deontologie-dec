@@ -2032,6 +2032,24 @@ const FICHES = [
    {v:"3 épreuves",l:"Composition du DEC"}],
   piege:"Seul le <b>DEC</b> (ou un diplôme équivalent) permet le <b>titre</b> et l'<b>exercice</b> : le DSCG ne suffit pas."},
 
+ {cat:"ec", title:"Les normes professionnelles de l'EC (NP)", sub:"Le référentiel normatif de l'Ordre : à chaque mission sa norme",
+  essentiel:[
+   "Élaborées par le <b>CSOEC</b> et réunies dans le <b>référentiel normatif</b> de l'Ordre.",
+   "<b>Agréées par arrêté du ministre chargé de l'Économie</b>.",
+   "Textes-socles : <b>cadre de référence, glossaire, NPMQ</b> (maîtrise de la qualité) et <b>norme anti-blanchiment</b>.",
+   "Chaque mission correspond à une <b>NP</b> précise, identifiée par son numéro."],
+  chiffres:[{v:"Min. de l'Économie",l:"agrément des NP (par arrêté)"}],
+  table:{title:"Les NP classées par niveau d'assurance", head:["Norme","Mission","Assurance"], rows:[
+   ["NP 2300","Présentation des comptes","Modérée (cohérence / vraisemblance)"],
+   ["NP 2400","Examen limité","Modérée (conclusion négative)"],
+   ["ISA / NP 2910","Audit (NP 2910 = petites entités)","Raisonnable (opinion positive)"],
+   ["NP 3100","Attestations particulières","Selon l'information visée"],
+   ["NP 3400","Examen d'informations prévisionnelles","Modérée"],
+   ["NP 4400","Procédures convenues","Aucune (constats factuels)"],
+   ["NP 4410","Compilation","Aucune"]]},
+  piege:"Les NP sont <b>agréées par le ministre de l'Économie</b> — ne pas confondre avec les <b>NEP</b> du CAC, homologuées par le Garde des Sceaux.",
+  memo:"Réflexe : la <b>famille 44xx</b> (4400 procédures convenues, 4410 compilation) = <b>aucune assurance</b>."},
+
  /* ---------- COMMISSAIRE AUX COMPTES ---------- */
  {cat:"cac", title:"La mission du CAC & la certification", sub:"Certifier les comptes dans l'intérêt général",
   essentiel:[
@@ -2092,6 +2110,30 @@ const FICHES = [
   chiffres:[{v:"Modérée",l:"Niveau d'assurance exigé au départ (limitée)"}],
   piege:"C'est la raison du passage <b>H3C → H2A</b> en 2024. L'assurance est d'abord <b>modérée</b>, avec une évolution prévue vers raisonnable.",
   memo:"CSRD : <b>ESRS</b> (les normes) · <b>OTI ou CAC</b> (qui certifie) · <b>H2A</b> (qui supervise)."}
+,
+
+ {cat:"cac", title:"Les normes d'exercice professionnel (NEP)", sub:"Comment le CAC conduit sa mission, étape par étape",
+  essentiel:[
+   "Les <b>NEP</b> encadrent la mission de <b>contrôle légal</b> du commissaire aux comptes.",
+   "Largement inspirées des normes internationales d'audit (<b>ISA</b>).",
+   "<b>Homologuées par arrêté du Garde des Sceaux</b> : elles ont une valeur réglementaire.",
+   "Elles suivent le déroulé de l'audit : <b>planifier → évaluer les risques → collecter → conclure</b>."],
+  chiffres:[{v:"Garde des Sceaux",l:"homologation des NEP (par arrêté)"}],
+  table:{title:"Les NEP à connaître, par étape de l'audit", head:["Étape","NEP","Objet"], rows:[
+   ["Principes","200","Objectif de l'audit : assurance raisonnable, esprit critique"],
+   ["Planification","300","Plan de mission et programme de travail"],
+   ["Planification","315","Connaissance de l'entité et évaluation des risques"],
+   ["Risques","240","Prise en compte du risque de fraude"],
+   ["Risques","250","Non-respect de textes légaux et réglementaires"],
+   ["Risques","320","Caractère significatif (seuils de signification)"],
+   ["Éléments probants","330","Procédures d'audit après évaluation des risques"],
+   ["Éléments probants","500","Caractère probant des éléments collectés"],
+   ["Éléments probants","570","Continuité d'exploitation"],
+   ["Conclusion","700","Rapport sur les comptes : formulation de l'opinion"],
+   ["Conclusion","705","Justification des appréciations"],
+   ["Petites entreprises","910","Certification des comptes des petites entreprises"]]},
+  piege:"Les NEP sont homologuées par le <b>Garde des Sceaux</b> (Justice), alors que les normes de l'EC (NP) sont agréées par le <b>ministre de l'Économie</b>.",
+  memo:"Repère par centaine : <b>2xx</b> principes / risques · <b>3xx</b> planif / procédures · <b>5xx</b> éléments probants · <b>7xx</b> rapport."}
 ];
 
 function buildFiches(cat){
