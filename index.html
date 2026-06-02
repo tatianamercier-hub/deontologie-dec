@@ -327,6 +327,7 @@
   .fiche-idx{flex:0 0 38px;height:38px;border-radius:11px;background:var(--ink);color:var(--gold-soft);font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;display:grid;place-items:center}
   .fiche-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1.2}
   .fiche-sub{font-size:.86rem;color:var(--ink-soft);margin-top:3px}
+  .fiche-def{font-size:.95rem;color:var(--ink);line-height:1.55;margin:4px 0 2px;padding:3px 0 3px 14px;border-left:3px solid var(--gold)}
   .fbox{border-radius:13px;padding:14px 16px;margin-top:13px;border:1px solid var(--line)}
   .fbox-lbl{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin-bottom:9px}
   .fbox-ess{background:var(--paper-2)}
@@ -2033,6 +2034,7 @@ const FICHES = [
   piege:"Seul le <b>DEC</b> (ou un diplôme équivalent) permet le <b>titre</b> et l'<b>exercice</b> : le DSCG ne suffit pas."},
 
  {cat:"ec", title:"Les normes professionnelles de l'EC (NP)", sub:"Le référentiel normatif de l'Ordre : à chaque mission sa norme",
+  def:"Les <b>normes professionnelles (NP)</b> définissent comment l'expert-comptable réalise chacune de ses missions. À chaque type de mission correspond une NP numérotée, du plus haut niveau d'assurance (l'audit) au plus bas (la compilation).",
   essentiel:[
    "Élaborées par le <b>CSOEC</b> et réunies dans le <b>référentiel normatif</b> de l'Ordre.",
    "<b>Agréées par arrêté du ministre chargé de l'Économie</b>.",
@@ -2113,6 +2115,7 @@ const FICHES = [
 ,
 
  {cat:"cac", title:"Les normes d'exercice professionnel (NEP)", sub:"Comment le CAC conduit sa mission, étape par étape",
+  def:"Les <b>normes d'exercice professionnel (NEP)</b> sont les normes d'audit qui encadrent la mission de certification du commissaire aux comptes. Elles déclinent, étape par étape, la démarche d'audit, de la planification jusqu'au rapport.",
   essentiel:[
    "Les <b>NEP</b> encadrent la mission de <b>contrôle légal</b> du commissaire aux comptes.",
    "Largement inspirées des normes internationales d'audit (<b>ISA</b>).",
@@ -2141,6 +2144,7 @@ function buildFiches(cat){
   const host = el('fiches'); host.innerHTML='';
   FICHES.filter(f=>f.cat===cat).forEach((f,i)=>{
     let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
+    if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
     if(f.essentiel && f.essentiel.length){
       html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
