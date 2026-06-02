@@ -321,6 +321,40 @@
   .mini{font-size:.78rem;font-weight:600;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
   .mini:hover{border-color:var(--ink);color:var(--ink)}
 
+  /* ---------- Fiches de révision ---------- */
+  .fiche{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:24px 26px;margin-bottom:22px}
+  .fiche-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:6px}
+  .fiche-idx{flex:0 0 38px;height:38px;border-radius:11px;background:var(--ink);color:var(--gold-soft);font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;display:grid;place-items:center}
+  .fiche-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1.2}
+  .fiche-sub{font-size:.86rem;color:var(--ink-soft);margin-top:3px}
+  .fbox{border-radius:13px;padding:14px 16px;margin-top:13px;border:1px solid var(--line)}
+  .fbox-lbl{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;margin-bottom:9px}
+  .fbox-ess{background:var(--paper-2)}
+  .fbox-ess .fbox-lbl{color:var(--ox)}
+  .fiche-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .fiche-list li{position:relative;padding-left:22px;font-size:.95rem;color:var(--ink);line-height:1.5}
+  .fiche-list li::before{content:"";position:absolute;left:5px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .fiche-list li b{color:var(--ink);font-weight:700}
+  .fbox-num{background:rgba(176,125,47,.10)}
+  .fbox-num .fbox-lbl{color:var(--gold)}
+  .chiffres{display:flex;flex-wrap:wrap;gap:10px}
+  .chiffre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 13px;min-width:120px;flex:1 1 auto}
+  .chiffre .cv{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;color:var(--ox);line-height:1.2}
+  .chiffre .cl{display:block;font-size:.78rem;color:var(--ink-soft);margin-top:3px}
+  .fbox-tab{background:transparent;border:none;padding:0}
+  .fbox-tab .fbox-lbl{color:var(--ink-soft);margin-top:13px}
+  .fiche-table{width:100%;border-collapse:collapse;font-size:.9rem;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .fiche-table th,.fiche-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
+  .fiche-table thead th{background:var(--ink);color:var(--paper);font-weight:600;font-size:.8rem}
+  .fiche-table tbody th{background:var(--paper-2);font-weight:600;color:var(--ink);width:32%}
+  .fiche-table tr:last-child td,.fiche-table tr:last-child th{border-bottom:none}
+  .fiche-table th:last-child,.fiche-table td:last-child{border-right:none}
+  .fbox-warn{background:var(--red-bg);border-color:var(--ox-soft)}
+  .fbox-warn .fbox-lbl{color:var(--ox)}
+  .fbox-warn p{font-size:.93rem;color:var(--ink);line-height:1.5}
+  .fiche-memo{margin-top:13px;font-size:.9rem;color:var(--ink);background:var(--green-bg);border:1px dashed var(--green);border-radius:11px;padding:11px 14px;line-height:1.5}
+  @media(max-width:560px){ .fiche{padding:20px} .fiche-table{font-size:.82rem} .chiffre{min-width:100px} }
+
   /* ---------- Historique ---------- */
   .hist-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin:6px 0 16px;flex-wrap:wrap}
   .hist-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.5rem}
@@ -357,6 +391,7 @@
       <button class="tab active" data-panel="qcm">QCM aléatoire</button>
       <button class="tab" data-panel="qrc">QRC (entraînement)</button>
       <button class="tab" data-panel="exam">Mode examen</button>
+      <button class="tab" data-panel="fiches">Fiches</button>
       <button class="tab" data-panel="mm">Cartes mentales</button>
       <button class="tab" data-panel="hist">Historique</button>
     </div>
@@ -565,6 +600,20 @@
       </div>
       <div class="exam-review" id="examReview"></div>
     </div>
+  </section>
+
+  <!-- ============ FICHES DE RÉVISION ============ -->
+  <section class="panel" id="panel-fiches">
+    <p class="mm-intro">
+      Des fiches synthétiques pour apprendre l'essentiel&nbsp;: les points-clés, les chiffres à connaître par cœur, les pièges classiques et des tableaux de comparaison.
+      <span class="tip">💡 Lis la fiche, puis essaie de la restituer de mémoire</span>
+    </p>
+    <div class="subtabs">
+      <button class="subtab active" data-cat="commun">Tronc commun</button>
+      <button class="subtab" data-cat="ec">Expert-comptable</button>
+      <button class="subtab" data-cat="cac">Commissaire aux comptes</button>
+    </div>
+    <div id="fiches"></div>
   </section>
 
   <!-- ============ MIND MAPS ============ -->
@@ -1852,8 +1901,229 @@ function buildMaps(cat){
 }
 
 function setMapCat(cat){
-  document.querySelectorAll('.subtab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
+  document.querySelectorAll('#panel-mm .subtab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
   buildMaps(cat);
+}
+
+/* ===================== FICHES DE RÉVISION ===================== */
+const FICHES = [
+ /* ---------- TRONC COMMUN ---------- */
+ {cat:"commun", title:"Organisation de la profession", sub:"Deux professions, deux tutelles, deux régulateurs",
+  essentiel:[
+   "L'<b>expert-comptable</b> exerce une mission <b>contractuelle</b> : c'est le client qui le choisit.",
+   "Le <b>commissaire aux comptes</b> exerce une mission <b>légale</b> d'intérêt général : il certifie les comptes.",
+   "Chaque profession a sa propre instance nationale, sa tutelle et ses règles.",
+   "On peut être inscrit comme EC <b>et</b> comme CAC, mais jamais sur la <b>même</b> entité."],
+  table:{title:"Expert-comptable vs Commissaire aux comptes", head:["","Expert-comptable","Commissaire aux comptes"], rows:[
+   ["Tutelle","Ministère de l'Économie","Ministère de la Justice (Garde des Sceaux)"],
+   ["Instance nationale","CSOEC (+ conseils régionaux)","CNCC (+ compagnies régionales)"],
+   ["Régulateur","l'Ordre","H2A (ex-H3C depuis 2024)"],
+   ["Mission","Contractuelle","Légale, d'intérêt général"],
+   ["Normes","Référentiel OEC (NP…)","NEP"]]},
+  piege:"Ne pas inverser les tutelles : <b>EC → Économie</b>, <b>CAC → Justice</b>. Question classique.",
+  memo:"« Le <b>C</b>AC va chez le juge » (Justice) ; l'<b>É</b>C va à l'<b>É</b>conomie."},
+
+ {cat:"commun", title:"Les principes déontologiques", sub:"Le socle de comportement commun à toute la profession",
+  essentiel:[
+   "<b>Intégrité</b> : honnêteté, probité, loyauté — dans et hors exercice.",
+   "<b>Compétence</b> : n'accepter que les missions réalisables et se former en continu.",
+   "<b>Indépendance / objectivité</b> : un jugement libre de toute influence.",
+   "<b>Confraternité</b> : courtoisie et loyauté entre professionnels.",
+   "<b>Secret professionnel</b> : confidentialité des informations recueillies."],
+  piege:"L'indépendance doit être <b>réelle (d'esprit)</b> ET <b>apparente</b> (vis-à-vis des tiers) — les deux à la fois.",
+  memo:"Pense aux 5 piliers : <b>Intégrité · Compétence · Indépendance · Confraternité · Secret</b>."},
+
+ {cat:"commun", title:"Le secret professionnel", sub:"Une obligation forte, mais avec des limites précises",
+  essentiel:[
+   "Portée <b>générale</b> : couvre toutes les informations recueillies en mission.",
+   "Sa violation est un <b>délit</b> (art. 226-13 du Code pénal).",
+   "<b>Secret partagé</b> : non opposable entre professionnels d'une même mission.",
+   "Ne cède que devant une <b>dérogation prévue par la loi</b> (ex. déclaration à TRACFIN)."],
+  chiffres:[{v:"Art. 226-13",l:"Code pénal (délit)"}],
+  piege:"Le <b>client seul ne peut pas</b> délier le professionnel du secret : seule la <b>loi</b> peut le lever."},
+
+ {cat:"commun", title:"Indépendance & menaces", sub:"Préserver l'objectivité du jugement professionnel",
+  essentiel:[
+   "5 menaces à connaître : <b>intérêt personnel, auto-révision, familiarité, intimidation, plaidoyer</b>.",
+   "Démarche pour chacune : <b>identifier → évaluer → sauvegardes</b>.",
+   "Si la menace ne peut être ramenée à un niveau acceptable : <b>refuser ou se retirer</b>.",
+   "Pour le CAC, l'analyse s'étend aussi à son <b>réseau</b>."],
+  piege:"L'<b>auto-révision</b> = contrôler son propre travail (ex. certifier des comptes qu'on a établis). Le piège le plus fréquent.",
+  memo:"La <b>formation continue</b> n'est PAS une menace (c'est une obligation) : on l'ajoute parfois pour piéger."},
+
+ {cat:"commun", title:"La lutte anti-blanchiment (LCB-FT)", sub:"Un chapitre qui tombe presque à chaque session",
+  essentiel:[
+   "3 phases du blanchiment : <b>placement → empilement → intégration</b>.",
+   "<b>Vigilance</b> modulée selon le risque : allégée / normale / renforcée.",
+   "Identifier le client <b>et le bénéficiaire effectif</b>.",
+   "Soupçon → <b>déclaration à TRACFIN</b>, sans en informer le client."],
+  chiffres:[
+   {v:"> 25 %",l:"Bénéficiaire effectif (capital / droits de vote)"},
+   {v:"5 ans",l:"Conservation des documents"}],
+  piege:"Un <b>maire n'est pas une PPE</b> (les élus locaux ne figurent pas dans la liste). Et il est <b>interdit d'informer le client</b> de la déclaration de soupçon.",
+  memo:"Phases du blanchiment = <b>P-E-I</b> : Placement, Empilement, Intégration."},
+
+ {cat:"commun", title:"Régulation, contrôle qualité & discipline", sub:"Qui surveille la profession, et comment elle est sanctionnée",
+  essentiel:[
+   "La <b>H2A</b> (Haute Autorité de l'audit) régule les CAC depuis le <b>1ᵉʳ janvier 2024</b> (ex-H3C).",
+   "Chaque CAC fait l'objet d'un <b>contrôle qualité</b> périodique.",
+   "Discipline EC : <b>chambre régionale</b> (1ʳᵉ instance) puis <b>chambre nationale</b> (appel).",
+   "Sanctions EC, par gravité croissante : réprimande, blâme, suspension, radiation."],
+  chiffres:[{v:"6 ans / 3 ans",l:"Contrôle qualité CAC (3 ans pour les EIP)"}],
+  piege:"Origine du changement H3C → H2A : ordonnance du 6 déc. 2023 (directive CSRD). La H2A ne tient <b>pas</b> le tableau de l'Ordre des EC.",
+  memo:"Sanctions EC = <b>R-B-S-R</b> : Réprimande, Blâme, Suspension, Radiation."},
+
+ {cat:"commun", title:"Cadre international & européen", sub:"Les organisations et normes au-dessus du cadre français",
+  essentiel:[
+   "<b>IFAC</b> : fédération internationale de la profession comptable.",
+   "<b>IESBA</b> (sous l'égide de l'IFAC) : élabore le code international d'éthique.",
+   "<b>ISA</b> : normes internationales d'audit, dont s'inspirent les NEP.",
+   "<b>Règlement UE 537/2014</b> : indépendance renforcée des CAC d'EIP.",
+   "<b>Directive CSRD</b> : audit des informations de durabilité."],
+  piege:"Ne pas confondre <b>IESBA</b> (éthique) et <b>IASB</b> (normes comptables IFRS).",
+  memo:"<b>IFAC</b> = l'organisation ; <b>IESBA</b> = l'éthique ; <b>IASB</b> = les chiffres (IFRS)."},
+
+ {cat:"commun", title:"Les structures d'exercice", sub:"Sous quelle forme exercer la profession",
+  essentiel:[
+   "L'EC peut exercer en <b>libéral</b>, comme <b>associé</b> ou comme <b>salarié</b> d'un confrère / d'une société inscrite.",
+   "Dans tous les cas, l'<b>inscription au tableau</b> est obligatoire."],
+  chiffres:[{v:"≥ 2/3",l:"du capital et des droits de vote d'une société d'EC détenus par des EC"}],
+  table:{title:"Les principales structures", head:["Structure","Caractéristique clé"], rows:[
+   ["Société d'expertise comptable","≥ 2/3 du capital et des droits de vote détenus par des EC"],
+   ["AGC","Association de gestion et de comptabilité, inscrite au tableau"],
+   ["SPE","Société pluri-professionnelle d'exercice (professions du droit + du chiffre)"],
+   ["SPFPL","Holding de participations : <b>n'exerce pas</b> elle-même la mission"]]},
+  piege:"La <b>SPFPL</b> est une simple <b>holding</b> : elle détient des parts mais ne réalise aucune mission comptable."},
+
+ /* ---------- EXPERT-COMPTABLE ---------- */
+ {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
+  essentiel:[
+   "<b>Acceptation</b> : vérifier indépendance, compétence, moyens, intégrité du client, diligences LCB-FT.",
+   "<b>Lettre de mission</b> : écrite, <b>obligatoire</b>, établie <b>avant</b> le début des travaux.",
+   "<b>Honoraires</b> : selon le travail réalisé ; <b>honoraires de résultat interdits</b>.",
+   "<b>Devoir de conseil</b> : informer et alerter le client (1ʳᵉ cause de mise en cause).",
+   "<b>3 responsabilités</b> : civile (assurance RCP obligatoire), pénale, disciplinaire."],
+  piege:"La lettre de mission se <b>met à jour</b> en cas d'évolution significative. Même une mission <b>gratuite</b> y est soumise.",
+  memo:"Acceptation → Lettre → Honoraires → Conseil → Responsabilité : l'ordre chronologique de la mission."},
+
+ {cat:"ec", title:"Normes & niveaux d'assurance (EC)", sub:"Le réflexe à automatiser : à chaque mission, son niveau",
+  essentiel:[
+   "Référentiel OEC : <b>cadre de référence + glossaire + NPMQ + norme anti-blanchiment</b>.",
+   "Plus l'assurance visée est élevée, plus les <b>diligences</b> sont étendues.",
+   "Autres normes : <b>NP 3100</b> attestations, <b>NP 3400</b> prévisionnel."],
+  table:{title:"Les missions et leur niveau d'assurance", head:["Mission","Assurance","Conclusion"], rows:[
+   ["Audit (ISA ; NP 2910 petites entités)","Raisonnable","Positive"],
+   ["Examen limité (NP 2400)","Modérée","Négative"],
+   ["Présentation (NP 2300)","Modérée (cohérence / vraisemblance)","Attestation"],
+   ["Procédures convenues (NP 4400)","Aucune","Constats"],
+   ["Compilation (NP 4410)","Aucune","—"]]},
+  piege:"La <b>présentation (NP 2300)</b> porte sur la <b>cohérence et la vraisemblance</b>, PAS sur l'image fidèle.",
+  memo:"Conclusion <b>POSITIVE → audit</b> (raisonnable) · <b>NÉGATIVE → examen limité</b> (modérée) · <b>CONSTATS → procédures convenues</b> (aucune)."},
+
+ {cat:"ec", title:"Accès à la profession & formation", sub:"Devenir, puis rester, expert-comptable",
+  essentiel:[
+   "Cursus : DCG → DSCG → <b>stage de 3 ans</b> → <b>DEC</b>.",
+   "Le <b>DEC</b> (3 épreuves) ouvre l'inscription au tableau.",
+   "Après inscription : <b>prestation de serment</b> avant d'exercer.",
+   "<b>Formation continue</b> obligatoire tout au long de la carrière."],
+  chiffres:[
+   {v:"3 ans",l:"Durée du stage"},
+   {v:"40 h/an",l:"Formation continue (120 h sur 3 ans)"},
+   {v:"3 épreuves",l:"Composition du DEC"}],
+  piege:"Seul le <b>DEC</b> (ou un diplôme équivalent) permet le <b>titre</b> et l'<b>exercice</b> : le DSCG ne suffit pas."},
+
+ /* ---------- COMMISSAIRE AUX COMPTES ---------- */
+ {cat:"cac", title:"La mission du CAC & la certification", sub:"Certifier les comptes dans l'intérêt général",
+  essentiel:[
+   "Le CAC <b>certifie</b> que les comptes sont <b>réguliers, sincères</b> et donnent une <b>image fidèle</b>.",
+   "Il exerce selon les <b>NEP</b> (homologuées par le Garde des Sceaux).",
+   "<b>Non-immixtion</b> : il contrôle mais ne prend aucune décision de gestion.",
+   "Il <b>ne tient pas</b> la comptabilité (ce serait de l'auto-révision)."],
+  table:{title:"Les 4 issues possibles", head:["Issue","Dans quel cas ?"], rows:[
+   ["Certification sans réserve","Comptes réguliers, sincères et fidèles"],
+   ["Certification avec réserve(s)","Anomalie significative mais circonscrite"],
+   ["Refus de certifier","Désaccord profond"],
+   ["Impossibilité de certifier","Limitation : éléments non obtenus"]]},
+  piege:"<b>Refus</b> = désaccord ; <b>Impossibilité</b> = limitation (éléments non obtenus). La « certification conditionnelle » <b>n'existe pas</b>.",
+  memo:"La formule à ressortir : <b>Réguliers · Sincères · Image fidèle</b>."},
+
+ {cat:"cac", title:"Nomination, mandat & seuils", sub:"Quand et comment un CAC est nommé",
+  essentiel:[
+   "Nommé par l'<b>assemblée générale ordinaire</b>, pour <b>6 exercices</b>.",
+   "Désignation <b>judiciaire</b> possible en cas de carence.",
+   "<b>Co-commissariat</b> (2 CAC de structures distinctes) pour les comptes <b>consolidés</b>."],
+  chiffres:[
+   {v:"6 exercices",l:"Durée du mandat"},
+   {v:"5 / 10 / 50",l:"Seuils : 5 M€ bilan · 10 M€ CA HT · 50 salariés"}],
+  table:{title:"Seuils de nomination (décret du 28 fév. 2024)", head:["Critère","Seuil"], rows:[
+   ["Total de bilan","5 M€"],
+   ["Chiffre d'affaires HT","10 M€"],
+   ["Nombre de salariés","50"]]},
+  piege:"Nomination obligatoire dès que <b>2 des 3 seuils</b> sont dépassés. Seuils relevés en 2024 (avant : 4 / 8 / 50)."},
+
+ {cat:"cac", title:"Le régime des EIP", sub:"Indépendance renforcée pour les entités d'intérêt public",
+  essentiel:[
+   "<b>EIP</b> = sociétés cotées, établissements de crédit, entreprises d'assurance.",
+   "Obligation d'un <b>comité d'audit</b> (membres non exécutifs).",
+   "Désignation du CAC sur <b>recommandation du comité d'audit</b>, après <b>appel d'offres</b>.",
+   "<b>Liste de services interdits</b> (règlement UE 537/2014) pour préserver l'indépendance."],
+  chiffres:[
+   {v:"6 ans",l:"Rotation de l'associé signataire"},
+   {v:"10 ans",l:"Durée max du mandat du cabinet"},
+   {v:"70 %",l:"Plafond SACC (moyenne des honoraires d'audit sur 3 ans)"}],
+  piege:"Bien distinguer : <b>associé signataire = 6 ans</b> ; <b>cabinet = 10 ans</b>. SACC plafonnés à <b>70 %</b>.",
+  memo:"EIP = <b>6-10-70</b> : 6 ans (associé), 10 ans (cabinet), 70 % (services hors-audit)."},
+
+ {cat:"cac", title:"Obligations & interventions du CAC", sub:"Ce que le CAC fait au-delà de la certification",
+  essentiel:[
+   "<b>Révélation des faits délictueux</b> au <b>procureur de la République</b>.",
+   "<b>Procédure d'alerte</b> si la <b>continuité d'exploitation</b> est menacée.",
+   "<b>Vérifications spécifiques</b> : concordance du rapport de gestion, rapport spécial sur les conventions réglementées, égalité entre actionnaires.",
+   "Faire obstacle à ses contrôles = <b>délit d'entrave</b> (sanction pénale).",
+   "Démission uniquement pour un <b>motif légitime</b>."],
+  piege:"La révélation des faits délictueux <b>prime le secret</b> ; son omission engage la <b>responsabilité pénale</b> du CAC."},
+
+ {cat:"cac", title:"Durabilité / CSRD", sub:"La grande nouveauté : l'audit de durabilité",
+  essentiel:[
+   "<b>CSRD</b> : directive européenne sur le <b>reporting de durabilité</b> (ESG).",
+   "Informations publiées selon les normes <b>ESRS</b>, dans une section du <b>rapport de gestion</b>.",
+   "Certifiées par un <b>commissaire aux comptes</b> ou un <b>organisme tiers indépendant (OTI)</b>.",
+   "La <b>H2A</b> supervise cette nouvelle mission."],
+  chiffres:[{v:"Modérée",l:"Niveau d'assurance exigé au départ (limitée)"}],
+  piege:"C'est la raison du passage <b>H3C → H2A</b> en 2024. L'assurance est d'abord <b>modérée</b>, avec une évolution prévue vers raisonnable.",
+  memo:"CSRD : <b>ESRS</b> (les normes) · <b>OTI ou CAC</b> (qui certifie) · <b>H2A</b> (qui supervise)."}
+];
+
+function buildFiches(cat){
+  cat = cat || 'commun';
+  const host = el('fiches'); host.innerHTML='';
+  FICHES.filter(f=>f.cat===cat).forEach((f,i)=>{
+    let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
+    if(f.essentiel && f.essentiel.length){
+      html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+    }
+    if(f.chiffres && f.chiffres.length){
+      html += `<div class="fbox fbox-num"><div class="fbox-lbl">Chiffres-clés</div><div class="chiffres">${f.chiffres.map(c=>`<div class="chiffre"><span class="cv">${c.v}</span><span class="cl">${c.l}</span></div>`).join('')}</div></div>`;
+    }
+    if(f.table){
+      const head = f.table.head.map(h=>`<th>${h}</th>`).join('');
+      const rows = f.table.rows.map(r=>`<tr>${r.map((c,ci)=>ci===0?`<th>${c}</th>`:`<td>${c}</td>`).join('')}</tr>`).join('');
+      html += `<div class="fbox fbox-tab">${f.table.title?`<div class="fbox-lbl">${f.table.title}</div>`:''}<table class="fiche-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+    if(f.piege){
+      const body = Array.isArray(f.piege) ? `<ul class="fiche-list">${f.piege.map(p=>`<li>${p}</li>`).join('')}</ul>` : `<p>${f.piege}</p>`;
+      html += `<div class="fbox fbox-warn"><div class="fbox-lbl">⚠️ À retenir / piège</div>${body}</div>`;
+    }
+    if(f.memo){
+      html += `<div class="fiche-memo">💡 <b>Mémo</b> — ${f.memo}</div>`;
+    }
+    const art = document.createElement('article'); art.className='fiche'; art.innerHTML=html;
+    host.appendChild(art);
+  });
+}
+function setFicheCat(cat){
+  document.querySelectorAll('#panel-fiches .subtab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
+  buildFiches(cat);
 }
 
 /* ===================== LOGIQUE QRC ===================== */
@@ -2270,6 +2540,7 @@ function setPanel(name){
   el('panel-qcm').classList.toggle('active', name==='qcm');
   el('panel-qrc').classList.toggle('active', name==='qrc');
   el('panel-exam').classList.toggle('active', name==='exam');
+  el('panel-fiches').classList.toggle('active', name==='fiches');
   el('panel-mm').classList.toggle('active', name==='mm');
   el('panel-hist').classList.toggle('active', name==='hist');
   if(name==='hist') renderHistory();
@@ -2294,7 +2565,9 @@ el('examNextBtn').onclick=examNext;
 el('examFinish').onclick=()=>finishExam(false);
 el('examToCards').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
 
-document.querySelectorAll('.subtab').forEach(t=> t.onclick=()=>setMapCat(t.dataset.cat));
+document.querySelectorAll('#panel-mm .subtab').forEach(t=> t.onclick=()=>setMapCat(t.dataset.cat));
+document.querySelectorAll('#panel-fiches .subtab').forEach(t=> t.onclick=()=>setFicheCat(t.dataset.cat));
+buildFiches('commun');
 buildMaps('commun');
 
 /* Historique : chargement et contrôles */
