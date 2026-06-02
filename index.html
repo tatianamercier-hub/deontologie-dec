@@ -338,6 +338,9 @@
   .fiche-list li b{color:var(--ink);font-weight:700}
   .fbox-num{background:rgba(176,125,47,.10)}
   .fbox-num .fbox-lbl{color:var(--gold)}
+  .fbox-defs{background:var(--paper-2)}
+  .fbox-defs .fbox-lbl{color:var(--ox)}
+  .fdef-list li b{color:var(--ox)}
   .chiffres{display:flex;flex-wrap:wrap;gap:10px}
   .chiffre{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:9px 13px;min-width:120px;flex:1 1 auto}
   .chiffre .cv{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;color:var(--ox);line-height:1.2}
@@ -2049,6 +2052,17 @@ const FICHES = [
    ["NP 3400","Examen d'informations prévisionnelles","Modérée"],
    ["NP 4400","Procédures convenues","Aucune (constats factuels)"],
    ["NP 4410","Compilation","Aucune"]]},
+  defs:[
+   {n:"Cadre de référence",d:"pose les principes généraux et le vocabulaire communs à toutes les missions."},
+   {n:"NPMQ — Maîtrise de la qualité",d:"organise la qualité du cabinet : acceptation des missions, ressources, supervision, revue."},
+   {n:"Norme anti-blanchiment",d:"décline les obligations de vigilance et de déclaration en matière de LCB-FT."},
+   {n:"NP 2300 — Présentation des comptes",d:"l'EC présente les comptes à partir des éléments de l'entreprise et atteste, avec une assurance modérée, de leur cohérence et de leur vraisemblance."},
+   {n:"NP 2400 — Examen limité",d:"revue allégée (entretiens, procédures analytiques) débouchant sur une conclusion négative ; assurance modérée."},
+   {n:"NP 2910 — Audit des petites entités",d:"diligences d'audit (assurance raisonnable, opinion positive) adaptées aux petites structures."},
+   {n:"NP 3100 — Attestations particulières",d:"assurance portant sur une information précise, autre que des comptes complets."},
+   {n:"NP 3400 — Informations prévisionnelles",d:"examen de données prévisionnelles (budgets, comptes prévisionnels) ; assurance modérée."},
+   {n:"NP 4400 — Procédures convenues",d:"travaux définis à l'avance avec le client, restitués en constats factuels, sans aucune assurance."},
+   {n:"NP 4410 — Compilation",d:"l'EC établit ou met en forme les comptes, sans exprimer d'assurance."}],
   piege:"Les NP sont <b>agréées par le ministre de l'Économie</b> — ne pas confondre avec les <b>NEP</b> du CAC, homologuées par le Garde des Sceaux.",
   memo:"Réflexe : la <b>famille 44xx</b> (4400 procédures convenues, 4410 compilation) = <b>aucune assurance</b>."},
 
@@ -2135,6 +2149,19 @@ const FICHES = [
    ["Conclusion","700","Rapport sur les comptes : formulation de l'opinion"],
    ["Conclusion","705","Justification des appréciations"],
    ["Petites entreprises","910","Certification des comptes des petites entreprises"]]},
+  defs:[
+   {n:"NEP 200 — Principes de l'audit",d:"fixe l'objectif de l'audit (assurance raisonnable) et impose l'esprit critique."},
+   {n:"NEP 300 — Planification",d:"élaboration du plan de mission et du programme de travail."},
+   {n:"NEP 315 — Connaissance de l'entité",d:"connaître l'entité et son environnement pour évaluer le risque d'anomalies significatives."},
+   {n:"NEP 240 — Fraude",d:"prise en compte du risque que les comptes comportent des anomalies résultant de fraudes."},
+   {n:"NEP 250 — Textes légaux et réglementaires",d:"prise en compte du risque d'anomalies lié au non-respect des lois et règlements."},
+   {n:"NEP 320 — Caractère significatif",d:"fixation et application des seuils de signification."},
+   {n:"NEP 330 — Procédures d'audit",d:"définition des procédures à mettre en œuvre en réponse aux risques évalués."},
+   {n:"NEP 500 — Éléments probants",d:"collecte d'éléments suffisants et appropriés pour fonder l'opinion."},
+   {n:"NEP 570 — Continuité d'exploitation",d:"apprécier la capacité de l'entité à poursuivre son activité."},
+   {n:"NEP 700 — Rapport sur les comptes",d:"formulation de l'opinion et rédaction du rapport de certification."},
+   {n:"NEP 705 — Justification des appréciations",d:"motiver les appréciations portées sur les comptes."},
+   {n:"NEP 910 — Petites entreprises",d:"certification des comptes des petites entreprises, avec des diligences allégées."}],
   piege:"Les NEP sont homologuées par le <b>Garde des Sceaux</b> (Justice), alors que les normes de l'EC (NP) sont agréées par le <b>ministre de l'Économie</b>.",
   memo:"Repère par centaine : <b>2xx</b> principes / risques · <b>3xx</b> planif / procédures · <b>5xx</b> éléments probants · <b>7xx</b> rapport."}
 ];
@@ -2155,6 +2182,9 @@ function buildFiches(cat){
       const head = f.table.head.map(h=>`<th>${h}</th>`).join('');
       const rows = f.table.rows.map(r=>`<tr>${r.map((c,ci)=>ci===0?`<th>${c}</th>`:`<td>${c}</td>`).join('')}</tr>`).join('');
       html += `<div class="fbox fbox-tab">${f.table.title?`<div class="fbox-lbl">${f.table.title}</div>`:''}<table class="fiche-table"><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+    }
+    if(f.defs && f.defs.length){
+      html += `<div class="fbox fbox-defs"><div class="fbox-lbl">Chaque norme en bref</div><ul class="fiche-list fdef-list">${f.defs.map(x=>`<li><b>${x.n}</b> — ${x.d}</li>`).join('')}</ul></div>`;
     }
     if(f.piege){
       const body = Array.isArray(f.piege) ? `<ul class="fiche-list">${f.piege.map(p=>`<li>${p}</li>`).join('')}</ul>` : `<p>${f.piege}</p>`;
