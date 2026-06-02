@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision Déontologie — DEC · Épreuve n°1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ede1;
+    --paper-2:#ece3d3;
+    --ink:#23252c;
+    --ink-soft:#52565f;
+    --line:#d8cdb8;
+    --ox:#7c2b2b;        /* oxblood / burgundy */
+    --ox-soft:#9a4040;
+    --gold:#b07d2f;
+    --gold-soft:#c79a4d;
+    --green:#3c6e4f;
+    --green-bg:#e4ecdf;
+    --red-bg:#f1e0dc;
+    --card:#fbf7ee;
+    --shadow:0 1px 0 rgba(255,255,255,.6) inset, 0 18px 40px -24px rgba(40,30,15,.55);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Hanken Grotesk',system-ui,sans-serif;
+    color:var(--ink);
+    background-color:var(--paper);
+    background-image:
+      radial-gradient(120% 80% at 80% -10%, rgba(176,125,47,.10), transparent 55%),
+      radial-gradient(100% 70% at 0% 110%, rgba(124,43,43,.08), transparent 55%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+
+  /* ---------- Header ---------- */
+  header.hero{padding:54px 0 26px;text-align:center;position:relative}
+  .kicker{
+    font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--ox);font-weight:600;margin-bottom:14px;
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .kicker::before,.kicker::after{content:"";width:34px;height:1px;background:var(--ox);opacity:.5}
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(2.3rem,6vw,3.5rem);line-height:1.02;
+    letter-spacing:-.015em;
+  }
+  h1 em{font-style:italic;color:var(--ox)}
+  .sub{
+    margin:16px auto 0;max-width:560px;color:var(--ink-soft);
+    font-size:1.02rem;
+  }
+  .sub b{color:var(--ink);font-weight:600}
+
+  /* ---------- Tabs ---------- */
+  .tabs{
+    display:flex;gap:6px;justify-content:center;margin:30px 0 8px;
+    background:var(--paper-2);border:1px solid var(--line);
+    border-radius:999px;padding:5px;width:max-content;margin-inline:auto;
+  }
+  .tab{
+    font-family:'Hanken Grotesk',sans-serif;font-weight:600;font-size:.92rem;
+    border:none;background:transparent;color:var(--ink-soft);
+    padding:10px 22px;border-radius:999px;cursor:pointer;transition:.25s;
+  }
+  .tab.active{background:var(--ink);color:var(--paper);box-shadow:0 6px 16px -8px rgba(0,0,0,.5)}
+  .tab:not(.active):hover{color:var(--ink)}
+
+  section.panel{display:none;padding:14px 0 70px;animation:fade .4s ease}
+  section.panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ---------- Cards ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);padding:30px;
+  }
+
+  /* ---------- QCM start ---------- */
+  .start{text-align:center}
+  .start .seal{
+    width:74px;height:74px;border-radius:50%;margin:0 auto 18px;
+    display:grid;place-items:center;background:var(--ink);color:var(--gold-soft);
+    font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;
+    box-shadow:0 0 0 6px var(--paper),0 0 0 7px var(--line);
+  }
+  .start h2{font-family:'Fraunces',serif;font-weight:600;font-size:1.7rem;margin-bottom:8px}
+  .start p{color:var(--ink-soft);max-width:480px;margin:0 auto 6px}
+  .meta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:22px 0 26px}
+  .chip{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;
+    padding:7px 15px;font-size:.82rem;font-weight:600;color:var(--ink-soft);
+  }
+  .chip b{color:var(--ox)}
+
+  .btn{
+    font-family:'Hanken Grotesk',sans-serif;font-weight:700;font-size:1rem;
+    cursor:pointer;border:none;border-radius:12px;padding:15px 34px;
+    background:var(--ox);color:#fff;transition:.2s;letter-spacing:.01em;
+    box-shadow:0 12px 24px -12px var(--ox);
+  }
+  .btn:hover{background:var(--ox-soft);transform:translateY(-1px)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--ink);background:var(--paper-2)}
+
+  /* ---------- Quiz ---------- */
+  #quiz{display:none}
+  .qbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:.85rem;color:var(--ink-soft);font-weight:600}
+  .qbar .score b{color:var(--green)}
+  .progress{height:7px;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-bottom:24px}
+  .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--ox));transition:width .45s ease}
+
+  .theme-tag{
+    display:inline-block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    font-weight:700;color:var(--gold);margin-bottom:12px;
+  }
+  .question{font-family:'Fraunces',serif;font-size:1.4rem;line-height:1.3;font-weight:500;margin-bottom:24px}
+
+  .options{display:flex;flex-direction:column;gap:11px}
+  .opt{
+    text-align:left;font-family:inherit;font-size:1rem;color:var(--ink);
+    background:var(--card);border:1.5px solid var(--line);border-radius:13px;
+    padding:15px 17px;cursor:pointer;transition:.18s;display:flex;gap:13px;align-items:flex-start;
+  }
+  .opt:hover:not(.locked){border-color:var(--ink);background:var(--paper-2)}
+  .opt .lett{
+    flex:0 0 26px;height:26px;border-radius:7px;background:var(--paper-2);border:1px solid var(--line);
+    display:grid;place-items:center;font-weight:700;font-size:.85rem;color:var(--ink-soft);transition:.18s;
+  }
+  .opt.locked{cursor:default}
+  .opt.correct{border-color:var(--green);background:var(--green-bg)}
+  .opt.correct .lett{background:var(--green);color:#fff;border-color:var(--green)}
+  .opt.wrong{border-color:var(--ox);background:var(--red-bg)}
+  .opt.wrong .lett{background:var(--ox);color:#fff;border-color:var(--ox)}
+  .opt.dim{opacity:.55}
+
+  /* QCM multi-réponses : cases à cocher */
+  .opt .box{
+    flex:0 0 26px;height:26px;border-radius:7px;background:var(--paper-2);border:1.5px solid var(--line);
+    display:grid;place-items:center;font-weight:700;font-size:.85rem;color:var(--ink-soft);transition:.18s;
+  }
+  .opt.picked .box{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .opt.picked{border-color:var(--ink);background:var(--paper-2)}
+  .opt.correct .box{background:var(--green);color:#fff;border-color:var(--green)}
+  .opt.wrong .box{background:var(--ox);color:#fff;border-color:var(--ox)}
+  .opt.missed .box{background:#fff;color:var(--green);border-color:var(--green);border-style:dashed}
+  .opt.missed{border-color:var(--green);border-style:dashed;background:var(--green-bg)}
+  .qcm-hint{font-size:.84rem;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:8px 13px;margin-bottom:14px;display:inline-block}
+
+  .explain{
+    margin-top:20px;border-left:3px solid var(--gold);background:var(--paper-2);
+    border-radius:0 12px 12px 0;padding:15px 18px;display:none;animation:fade .3s ease;
+  }
+  .explain.show{display:block}
+  .explain .verdict{font-weight:700;font-family:'Fraunces',serif;font-size:1.05rem;margin-bottom:5px}
+  .explain.ok .verdict{color:var(--green)}
+  .explain.no .verdict{color:var(--ox)}
+  .explain p{color:var(--ink-soft);font-size:.95rem}
+  .explain p b{color:var(--ink)}
+  .nav-next{display:none;margin-top:24px;text-align:right}
+  .nav-next.show{display:block}
+
+  /* ---------- Results ---------- */
+  #results{display:none;text-align:center}
+  .donut{position:relative;width:170px;height:170px;margin:6px auto 18px}
+  .donut svg{transform:rotate(-90deg)}
+  .donut .num{
+    position:absolute;inset:0;display:grid;place-items:center;flex-direction:column;
+    font-family:'Fraunces',serif;
+  }
+  .donut .num .big{font-size:2.5rem;font-weight:600;line-height:1}
+  .donut .num .pct{font-size:.85rem;color:var(--ink-soft);font-family:'Hanken Grotesk';font-weight:600;letter-spacing:.05em}
+  #res-msg{font-family:'Fraunces',serif;font-size:1.5rem;margin-bottom:6px}
+  #res-line{color:var(--ink-soft);margin-bottom:26px}
+  .res-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+  /* ---------- QRC ---------- */
+  .btn.alt{background:#3a5a8c;box-shadow:0 12px 24px -12px #3a5a8c}
+  .btn.alt:hover{background:#4a6da3}
+  #panel-qrc .seal{background:#3a5a8c;color:#cfe0f5}
+  .docnote-1{max-width:520px;margin:0 auto 22px;text-align:center;font-size:.84rem;color:var(--ink-soft);background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:11px 16px}
+  .docnote-1 b{color:#3a5a8c}
+  #qrcCard,#qrcResults{display:none}
+  #qrcResults{text-align:center}
+  .timer-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .timer{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .timer.run{color:#3a5a8c}
+  .qrc-input{width:100%;min-height:120px;resize:vertical;font-family:'Hanken Grotesk',sans-serif;font-size:1rem;line-height:1.5;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:14px 16px;transition:.18s}
+  .qrc-input:focus{outline:none;border-color:#3a5a8c;background:#fff}
+  .model{display:none;margin-top:22px;border-left:3px solid #3a5a8c;background:#eef3fa;border-radius:0 12px 12px 0;padding:16px 18px;animation:fade .3s ease}
+  .model.show{display:block}
+  .model-h{font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;color:#3a5a8c;margin-bottom:6px}
+  .model p{color:var(--ink);font-size:.97rem;line-height:1.55}
+  .selfeval{margin-top:16px;padding-top:14px;border-top:1px dashed var(--line)}
+  .se-q{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:9px}
+  .se-btns{display:flex;gap:8px;flex-wrap:wrap}
+  .se{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;cursor:pointer;border-radius:10px;padding:9px 16px;border:1.5px solid var(--line);background:var(--card);transition:.16s}
+  .se.ok:hover,.se.ok.sel{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+  .se.mid:hover,.se.mid.sel{background:#f6edd9;border-color:var(--gold);color:var(--gold)}
+  .se.no:hover,.se.no.sel{background:var(--red-bg);border-color:var(--ox);color:var(--ox)}
+
+  /* ---------- Points-clés attendus ---------- */
+  .keypoints{margin-top:14px;padding:12px 14px;background:rgba(176,125,47,.10);border:1px solid var(--line);border-radius:11px}
+  .kp-title{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:8px}
+  .kp-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+  .kp-list li{position:relative;padding-left:24px;font-size:.9rem;color:var(--ink)}
+  .kp-list li::before{content:"✓";position:absolute;left:4px;top:0;color:var(--green);font-weight:700}
+  .rev-model + .keypoints{margin-top:10px}
+
+  /* ---------- Mode examen ---------- */
+  #examCard,#examResults{display:none}
+  #examResults{text-align:center}
+  #panel-exam .seal{background:var(--ink);color:var(--gold-soft)}
+  .exam-choice{margin:8px 0 6px}
+  .ec-label{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
+  .ec-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .ec-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.92rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:10px 20px;transition:.16s}
+  .ec-btn:hover{border-color:var(--ink)}
+  .ec-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .ec-hint{display:block;margin-top:11px;font-size:.8rem;color:var(--ink-soft);min-height:1.1em}
+  .exam-timer{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--ink);font-variant-numeric:tabular-nums;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:3px 11px}
+  .exam-timer.warn{color:var(--gold);border-color:var(--gold)}
+  .exam-timer.danger{color:var(--ox);border-color:var(--ox);animation:pulse 1s infinite}
+  @keyframes pulse{50%{opacity:.55}}
+  .exam-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:24px}
+  .exam-flag{font-size:.82rem;font-weight:600;color:var(--ink-soft)}
+  .exam-finish{margin-top:14px;text-align:center}
+  /* in exam mode, options are selectable but not colored as right/wrong */
+  #examOpts .opt.picked{border-color:var(--ink);background:var(--paper-2)}
+  #examOpts .opt .lett{transition:.16s}
+  #examOpts .opt.picked .lett{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  .exam-review{margin-top:26px;text-align:left}
+  .rev-item{border:1.5px solid var(--line);border-radius:13px;background:var(--card);padding:16px 18px;margin-bottom:12px}
+  .rev-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+  .rev-badge{flex:0 0 auto;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:7px;margin-top:2px}
+  .rev-badge.ok{background:var(--green-bg);color:var(--green)}
+  .rev-badge.no{background:var(--red-bg);color:var(--ox)}
+  .rev-badge.mid{background:#f6edd9;color:var(--gold)}
+  .rev-badge.na{background:var(--paper-2);color:var(--ink-soft)}
+  .rev-opts{display:flex;flex-direction:column;gap:6px;margin:4px 0 6px}
+  .rev-opt{display:flex;align-items:flex-start;gap:9px;font-size:.92rem;color:var(--ink-soft);padding:6px 9px;border-radius:8px;border:1px solid transparent}
+  .rev-opt.good{color:var(--ink);background:var(--green-bg)}
+  .rev-opt.bad{color:var(--ink);background:var(--red-bg)}
+  .rev-opt .ro-lett{flex:0 0 20px;height:20px;border-radius:5px;background:var(--paper-2);border:1px solid var(--line);display:grid;place-items:center;font-size:.72rem;font-weight:700;color:var(--ink-soft)}
+  .rev-opt .ro{margin-left:auto;font-size:.74rem;font-weight:600;white-space:nowrap;padding-left:8px}
+  .rev-opt .ro.ok{color:var(--green)}
+  .rev-opt .ro.miss{color:var(--green)}
+  .rev-opt .ro.no{color:var(--ox)}
+  .rev-q{font-family:'Fraunces',serif;font-weight:600;font-size:1.02rem;line-height:1.3}
+  .rev-theme{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .rev-body{font-size:.93rem;color:var(--ink)}
+  .rev-body .lbl{font-weight:600;color:var(--ink-soft)}
+  .rev-body .your{color:var(--ink)}
+  .rev-body .good{color:var(--green);font-weight:600}
+  .rev-model{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);color:var(--ink-soft);font-size:.92rem}
+  .rev-se{margin-top:10px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .rev-se .se-q{font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+  .rev-se .se{padding:6px 12px;font-size:.82rem}
+  .mm-intro{color:var(--ink-soft);max-width:620px;margin:6px auto 30px;text-align:center}
+  .subtabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin:0 auto 26px;width:max-content;max-width:100%;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:5px}
+  .subtab{font-family:'Hanken Grotesk';font-weight:600;font-size:.88rem;border:none;background:transparent;color:var(--ink-soft);padding:9px 18px;border-radius:999px;cursor:pointer;transition:.22s}
+  .subtab.active{background:var(--ox);color:#fff;box-shadow:0 6px 14px -8px var(--ox)}
+  .subtab:not(.active):hover{color:var(--ink)}
+  @media(max-width:560px){ .subtab{padding:8px 13px;font-size:.82rem} }
+  .mm-intro .tip{display:inline-block;margin-top:10px;font-size:.85rem;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;color:var(--ink)}
+  .map{margin-bottom:26px}
+  .map > details{
+    background:var(--card);border:1px solid var(--line);border-radius:18px;
+    box-shadow:var(--shadow);overflow:hidden;
+  }
+  .map > details > summary{
+    list-style:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;gap:16px;
+  }
+  .map > details > summary::-webkit-details-marker{display:none}
+  .map .idx{
+    flex:0 0 42px;height:42px;border-radius:11px;background:var(--ink);color:var(--gold-soft);
+    font-family:'Fraunces',serif;font-weight:600;font-size:1.2rem;display:grid;place-items:center;
+  }
+  .map .m-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.25rem;flex:1}
+  .map .m-sub{font-size:.84rem;color:var(--ink-soft);font-weight:500}
+  .map .caret{transition:.3s;color:var(--ox);font-size:1.3rem}
+  .map > details[open] .caret{transform:rotate(45deg)}
+
+  .map-body{padding:4px 22px 26px}
+  .center-node{
+    text-align:center;font-family:'Fraunces',serif;font-weight:600;font-size:1.05rem;
+    background:var(--ink);color:var(--paper);border-radius:12px;padding:12px 18px;
+    max-width:420px;margin:6px auto 4px;
+  }
+  .stem{width:2px;height:22px;background:var(--line);margin:0 auto}
+  .branches{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:6px}
+  .branch{
+    border:1.5px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden;
+  }
+  .branch .b-head{
+    cursor:pointer;padding:13px 15px;display:flex;align-items:center;gap:10px;
+    font-weight:700;font-size:.98rem;transition:.18s;user-select:none;
+  }
+  .branch .b-head:hover{background:var(--paper-2)}
+  .branch .dot{flex:0 0 9px;height:9px;border-radius:50%;background:var(--gold)}
+  .branch .b-head .reveal{margin-left:auto;font-size:.72rem;font-weight:600;color:var(--ox);letter-spacing:.05em;text-transform:uppercase}
+  .branch ul{
+    list-style:none;max-height:0;overflow:hidden;transition:max-height .35s ease;
+    border-top:1px solid transparent;
+  }
+  .branch.open ul{max-height:1200px;border-top-color:var(--line)}
+  .branch.open .reveal{visibility:hidden}
+  .branch li{padding:9px 15px 9px 30px;font-size:.9rem;color:var(--ink-soft);position:relative;border-bottom:1px dashed var(--line)}
+  .branch li:last-child{border-bottom:none}
+  .branch li::before{content:"";position:absolute;left:15px;top:15px;width:5px;height:5px;border-radius:50%;background:var(--ox-soft)}
+  .branch li b{color:var(--ink);font-weight:600}
+  .map-tools{display:flex;justify-content:flex-end;margin:0 0 8px}
+  .mini{font-size:.78rem;font-weight:600;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
+  .mini:hover{border-color:var(--ink);color:var(--ink)}
+
+  footer{text-align:center;padding:24px 0 50px;color:var(--ink-soft);font-size:.8rem}
+  footer b{color:var(--ink)}
+  .disclaimer{max-width:600px;margin:0 auto 16px;font-size:.78rem;line-height:1.5}
+
+  @media(max-width:560px){
+    .card{padding:22px}
+    .question{font-size:1.2rem}
+    .map > details > summary{padding:18px}
+    .map-body{padding:0 14px 20px}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">Diplôme d'Expertise Comptable · Épreuve n°1</div>
+    <h1>Déontologie &amp;<br><em>réglementation professionnelle</em></h1>
+    <p class="sub">Un outil d'auto-évaluation : <b>20 questions tirées au sort</b> avec correction immédiate, et des <b>cartes mentales</b> pour fixer l'essentiel.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-panel="qcm">QCM aléatoire</button>
+      <button class="tab" data-panel="qrc">QRC (entraînement)</button>
+      <button class="tab" data-panel="exam">Mode examen</button>
+      <button class="tab" data-panel="mm">Cartes mentales</button>
+    </div>
+  </header>
+
+  <!-- ============ QCM ============ -->
+  <section class="panel active" id="panel-qcm">
+
+    <!-- start screen -->
+    <div class="card start" id="start">
+      <div class="seal">§</div>
+      <h2>Prêt à réviser ?</h2>
+      <p>Chaque session sélectionne 20 questions au hasard parmi une banque couvrant tous les thèmes du programme. Comme à l'examen, une question peut comporter <b>une ou plusieurs bonnes réponses</b> : cochez les cases puis validez.</p>
+      <button class="btn" id="begin">Commencer le QCM</button>
+    </div>
+
+    <!-- quiz screen -->
+    <div class="card" id="quiz">
+      <div class="qbar">
+        <span class="qnum">Question 1 / 20</span>
+        <span class="score">Bonnes réponses : <b id="sc">0</b> / <span id="scTotal">0</span></span>
+      </div>
+      <div class="progress"><i id="bar"></i></div>
+
+      <span class="theme-tag" id="theme"></span>
+      <div class="question" id="qtext"></div>
+      <div class="qcm-hint" id="qcmHint">Une ou plusieurs réponses possibles — cochez puis validez.</div>
+      <div class="options" id="opts"></div>
+
+      <div class="nav-next show" id="validateRow">
+        <button class="btn" id="validate">Valider ma réponse</button>
+      </div>
+
+      <div class="explain" id="explain">
+        <div class="verdict" id="verdict"></div>
+        <p id="exp"></p>
+      </div>
+
+      <div class="nav-next" id="navNext">
+        <button class="btn" id="next">Question suivante →</button>
+      </div>
+    </div>
+
+    <!-- results screen -->
+    <div class="card" id="results">
+      <div class="donut">
+        <svg width="170" height="170" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--paper-2)" stroke-width="14"/>
+          <circle id="ring" cx="85" cy="85" r="72" fill="none" stroke="var(--ox)" stroke-width="14"
+                  stroke-linecap="round" stroke-dasharray="452" stroke-dashoffset="452"
+                  style="transition:stroke-dashoffset 1s ease .2s"/>
+        </svg>
+        <div class="num"><span class="big" id="finalScore">0</span><span class="pct" id="finalPct">0 %</span></div>
+      </div>
+      <div id="res-msg"></div>
+      <p id="res-line"></p>
+      <div class="res-actions">
+        <button class="btn" id="again">Nouveau tirage de 20 questions</button>
+        <button class="btn ghost" id="toMaps">Voir les cartes mentales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QRC ============ -->
+  <section class="panel" id="panel-qrc">
+
+    <!-- start screen -->
+    <div class="card start" id="qrcStart">
+      <div class="seal">?</div>
+      <h2>Entraînement aux QRC</h2>
+      <p>Les questions à réponses courtes sont le format le <b>plus fréquent</b> de l'épreuve (tombé 13 fois sur 18 depuis 2010). Vous rédigez votre réponse, puis vous affichez le corrigé et vous vous auto-évaluez. Mode entraînement libre, sans chrono.</p>
+      <div class="meta-row">
+        <span class="chip"><b>10</b> questions</span>
+        <span class="chip">Sans <b>chrono</b></span>
+        <span class="chip">Corrigé <b>après chaque</b> réponse</span>
+      </div>
+      <div class="docnote-1">📝 Astuce : répondez d'abord de mémoire, de façon précise et synthétique, avant d'afficher le corrigé. Pour vous chronométrer en conditions réelles, utilisez le <b>Mode examen</b>.</div>
+      <button class="btn alt" id="qrcBegin">Commencer l'entraînement</button>
+    </div>
+
+    <!-- practice screen -->
+    <div class="card" id="qrcCard">
+      <div class="qbar">
+        <span class="qnum2">Question 1 / 20</span>
+        <span class="score">Maîtrisées : <b id="qrcSc">0</b> / <span id="qrcTotal">0</span></span>
+      </div>
+      <div class="progress"><i id="qrcBar"></i></div>
+
+      <span class="theme-tag" id="qrcTheme"></span>
+      <div class="question" id="qrcText"></div>
+
+      <textarea id="qrcInput" class="qrc-input" placeholder="Rédigez ici votre réponse, de mémoire et de façon synthétique…"></textarea>
+
+      <div class="nav-next show" id="qrcRevealRow">
+        <button class="btn alt" id="qrcReveal">Afficher le corrigé →</button>
+      </div>
+
+      <div class="model" id="qrcModel">
+        <div class="model-h">Proposition de corrigé</div>
+        <p id="qrcAnswer"></p>
+        <div class="keypoints" id="qrcKeys"></div>
+        <div class="selfeval">
+          <span class="se-q">Votre auto-évaluation :</span>
+          <div class="se-btns">
+            <button class="se ok" data-v="1">✓ Maîtrisée</button>
+            <button class="se mid" data-v="0.5">~ À revoir</button>
+            <button class="se no" data-v="0">✗ Ratée</button>
+          </div>
+        </div>
+        <div class="nav-next show" id="qrcNextRow">
+          <button class="btn alt" id="qrcNext">Question suivante →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- results screen -->
+    <div class="card" id="qrcResults">
+      <div class="donut">
+        <svg width="170" height="170" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--paper-2)" stroke-width="14"/>
+          <circle id="qrcRing" cx="85" cy="85" r="72" fill="none" stroke="var(--ox)" stroke-width="14"
+                  stroke-linecap="round" stroke-dasharray="452" stroke-dashoffset="452"
+                  style="transition:stroke-dashoffset 1s ease .2s"/>
+        </svg>
+        <div class="num"><span class="big" id="qrcFinal">0</span><span class="pct" id="qrcPct">0 %</span></div>
+      </div>
+      <div id="qrc-res-msg"></div>
+      <p id="qrc-res-line"></p>
+      <div class="res-actions">
+        <button class="btn alt" id="qrcAgain">Nouvelle série de 20 QRC</button>
+        <button class="btn ghost" id="qrcToMaps">Voir les cartes mentales</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MODE EXAMEN ============ -->
+  <section class="panel" id="panel-exam">
+
+    <!-- start screen -->
+    <div class="card start" id="examStart">
+      <div class="seal">⏱</div>
+      <h2>Mode examen</h2>
+      <p>Conditions réelles : <b>20 questions en 1 heure</b>, sans correction pendant l'épreuve. Le corrigé complet s'affiche à la fin. L'épreuve réelle est <b>soit un QCM, soit un QRC</b>.</p>
+
+      <div class="exam-choice">
+        <span class="ec-label">Choisissez le format :</span>
+        <div class="ec-btns">
+          <button class="ec-btn sel" data-fmt="random">🎲 Aléatoire</button>
+          <button class="ec-btn" data-fmt="qcm">QCM</button>
+          <button class="ec-btn" data-fmt="qrc">QRC</button>
+        </div>
+        <span class="ec-hint" id="examHint">Le format (QCM ou QRC) sera tiré au sort au lancement, comme à l'examen.</span>
+      </div>
+
+      <div class="meta-row">
+        <span class="chip"><b>20</b> questions</span>
+        <span class="chip">⏱ <b>60 min</b></span>
+        <span class="chip">Corrigé <b>à la fin</b></span>
+      </div>
+      <div class="docnote-1">⚠️ Repères réels : pas de points négatifs (une mauvaise réponse vaut 0, répondez à tout), et la note de <b>moins de 5/20 est éliminatoire</b>.</div>
+      <button class="btn" id="examBegin" style="background:var(--ink);box-shadow:0 12px 24px -12px var(--ink)">Lancer l'examen</button>
+    </div>
+
+    <!-- exam running -->
+    <div class="card" id="examCard">
+      <div class="qbar">
+        <span class="qnum3">Question 1 / 20</span>
+        <span class="exam-timer" id="examTimer">60:00</span>
+      </div>
+      <div class="progress"><i id="examBar"></i></div>
+
+      <span class="theme-tag" id="examTheme"></span>
+      <div class="question" id="examText"></div>
+
+      <!-- QCM answer zone -->
+      <div class="options" id="examOpts"></div>
+      <!-- QRC answer zone -->
+      <textarea id="examInput" class="qrc-input" placeholder="Rédigez votre réponse…" style="display:none"></textarea>
+
+      <div class="exam-nav">
+        <button class="btn ghost" id="examPrev">← Précédente</button>
+        <span class="exam-flag" id="examAnswered">0 / 20 traitée(s)</span>
+        <button class="btn" id="examNextBtn" style="background:var(--ink)">Suivante →</button>
+      </div>
+      <div class="exam-finish">
+        <button class="btn" id="examFinish" style="background:var(--ox)">Terminer et voir le corrigé</button>
+      </div>
+    </div>
+
+    <!-- exam results -->
+    <div class="card" id="examResults">
+      <div class="donut">
+        <svg width="170" height="170" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--paper-2)" stroke-width="14"/>
+          <circle id="examRing" cx="85" cy="85" r="72" fill="none" stroke="var(--ox)" stroke-width="14"
+                  stroke-linecap="round" stroke-dasharray="452" stroke-dashoffset="452"
+                  style="transition:stroke-dashoffset 1s ease .2s"/>
+        </svg>
+        <div class="num"><span class="big" id="examFinal">0</span><span class="pct" id="examPct">0 %</span></div>
+      </div>
+      <div id="exam-res-msg"></div>
+      <p id="exam-res-line"></p>
+      <div class="res-actions" style="margin-bottom:8px">
+        <button class="btn" id="examAgain" style="background:var(--ink)">Refaire un examen</button>
+        <button class="btn ghost" id="examToCards">Réviser les cartes mentales</button>
+      </div>
+      <div class="exam-review" id="examReview"></div>
+    </div>
+  </section>
+
+  <!-- ============ MIND MAPS ============ -->
+  <section class="panel" id="panel-mm">
+    <p class="mm-intro">
+      Quatorze fiches, classées par profession. Chaque branche est masquée par défaut&nbsp;:
+      essayez de la restituer de mémoire, puis cliquez pour vérifier.
+      <span class="tip">💡 Méthode de l'<b>auto-restitution</b> : se tester avant de lire</span>
+    </p>
+    <div class="subtabs">
+      <button class="subtab active" data-cat="commun">Tronc commun</button>
+      <button class="subtab" data-cat="ec">Expert-comptable</button>
+      <button class="subtab" data-cat="cac">Commissaire aux comptes</button>
+    </div>
+    <div id="maps"></div>
+  </section>
+
+  <footer>
+    <p>Bon courage pour le <b>DEC</b> ✦</p>
+  </footer>
+</div>
+
+<script>
+/* ===================== BANQUE DE QUESTIONS ===================== */
+const BANK = [
+  {t:"Organisation de la profession", q:"Sous la tutelle de quel ministère l'Ordre des experts-comptables est-il placé ?",
+   o:["Ministère de la Justice","Ministère de l'Économie et des Finances","Ministère du Travail","Le Premier ministre directement"], a:1,
+   e:"L'Ordre des experts-comptables relève du <b>ministre chargé de l'Économie</b>. À ne pas confondre avec le commissariat aux comptes, qui dépend du ministère de la Justice."},
+
+  {t:"Organisation de la profession", q:"Quelle est l'instance nationale représentative des experts-comptables ?",
+   o:["La CNCC","Le Conseil supérieur de l'ordre des experts-comptables (CSOEC)","La H2A","Le H3C"], a:1,
+   e:"Le <b>CSOEC</b> représente la profession au niveau national. La CNCC est l'équivalent pour les commissaires aux comptes."},
+
+  {t:"Organisation de la profession", q:"Le commissariat aux comptes est placé sous la tutelle :",
+   o:["Du ministère de l'Économie","Du Garde des Sceaux, ministre de la Justice","De l'AMF","De la Banque de France"], a:1,
+   e:"Le CAC relève du <b>ministère de la Justice</b> (Garde des Sceaux), contrairement à l'expert-comptable qui relève de l'Économie."},
+
+  {t:"Tableau de l'Ordre", q:"L'inscription au tableau de l'Ordre est :",
+   o:["Facultative pour exercer","Obligatoire pour exercer la profession et porter le titre","Réservée aux seuls salariés","Valable 3 ans, renouvelable"], a:1,
+   e:"Nul ne peut <b>exercer</b> ni porter le <b>titre</b> d'expert-comptable s'il n'est inscrit au tableau de l'Ordre."},
+
+  {t:"Accès à la profession", q:"Quelle est la durée du stage professionnel d'expertise comptable ?",
+   o:["1 an","2 ans","3 ans","5 ans"], a:2,
+   e:"Le stage réglementé dure <b>3 ans</b> et conditionne l'accès au DEC."},
+
+  {t:"Le DEC", q:"Combien d'épreuves comporte le Diplôme d'expertise comptable (DEC) ?",
+   o:["1","2","3","5"], a:2,
+   e:"Trois épreuves : <b>n°1</b> réglementation professionnelle et déontologie, <b>n°2</b> révision légale et contractuelle des comptes, <b>n°3</b> soutenance du mémoire."},
+
+  {t:"Le DEC", q:"L'épreuve n°3 du DEC consiste en :",
+   o:["Un QCM","La soutenance d'un mémoire","Un grand oral de droit","Une mise en situation comptable"], a:1,
+   e:"L'épreuve n°3 est la <b>soutenance du mémoire</b> devant le jury."},
+
+  {t:"Principes déontologiques", q:"Le principe qui interdit d'accepter une mission pour laquelle on ne dispose pas des compétences requises est :",
+   o:["L'indépendance","La compétence","La confraternité","Le secret professionnel"], a:1,
+   e:"Le devoir de <b>compétence</b> impose de n'accepter que les missions réalisables, et impose une obligation de formation continue."},
+
+  {t:"Principes déontologiques", q:"Le principe d'intégrité (probité) impose à l'expert-comptable :",
+   o:["De maximiser ses honoraires","D'être loyal, honnête et de s'abstenir de tout acte jetant le discrédit sur la profession","De ne jamais refuser un client","De partager les informations confidentielles entre clients"], a:1,
+   e:"L'<b>intégrité</b> recouvre l'honnêteté, la loyauté et la moralité dans l'exercice et hors exercice de la profession."},
+
+  {t:"Secret professionnel", q:"Le secret professionnel de l'expert-comptable est :",
+   o:["Levable à la seule demande du client","Général, sauf dérogations prévues par la loi","Inexistant pour l'expert-comptable","Limité aux missions de commissariat aux comptes"], a:1,
+   e:"Le secret est <b>général</b> (art. 226-13 du Code pénal). Il ne cède que devant des <b>dérogations légales</b> (TRACFIN, certaines réquisitions, etc.)."},
+
+  {t:"Secret professionnel", q:"Entre co-commissaires aux comptes (ou professionnels concourant à une même mission), le secret professionnel :",
+   o:["Est pleinement opposable entre eux","N'est pas opposable : c'est le secret partagé","Interdit toute communication","Constitue un délit"], a:1,
+   e:"Le <b>secret partagé</b> permet l'échange d'informations nécessaires entre professionnels intervenant sur la même mission."},
+
+  {t:"Anti-blanchiment", q:"Quel organisme reçoit les déclarations de soupçon en matière de blanchiment ?",
+   o:["L'URSSAF","TRACFIN","La CNIL","La DGCCRF"], a:1,
+   e:"<b>TRACFIN</b> est la cellule de renseignement financier destinataire des déclarations de soupçon."},
+
+  {t:"Anti-blanchiment", q:"Lorsqu'il effectue une déclaration de soupçon, le professionnel :",
+   o:["Viole le secret professionnel","Bénéficie d'une dérogation légale au secret et ne doit pas en informer le client","Doit obligatoirement avertir son client","Engage sa responsabilité pénale du seul fait de déclarer"], a:1,
+   e:"La déclaration relève d'une <b>obligation légale</b>. Il est interdit d'informer le client de l'existence de la déclaration (interdiction de divulgation, dite <i>no tipping-off</i>)."},
+
+  {t:"Indépendance", q:"L'indépendance du professionnel doit être :",
+   o:["Uniquement apparente","À la fois réelle (d'esprit) et apparente","Facultative pour le conseil","Assurée par le seul niveau des honoraires"], a:1,
+   e:"Il faut une <b>indépendance d'esprit</b> et une <b>apparence d'indépendance</b> vis-à-vis des tiers."},
+
+  {t:"Indépendance du CAC", q:"Certifier des comptes que l'on a soi-même établis caractérise un risque :",
+   o:["De familiarité","D'auto-révision","D'intimidation","De plaidoyer (advocacy)"], a:1,
+   e:"L'<b>auto-révision</b> est l'une des menaces à l'indépendance, avec l'intérêt personnel, la familiarité, l'intimidation et le plaidoyer."},
+
+  {t:"Incompatibilités", q:"Quelle activité est, en principe, incompatible avec la profession d'expert-comptable ?",
+   o:["Donner des consultations fiscales","Exercer une activité commerciale à titre habituel","Établir des déclarations fiscales","Réaliser des missions de présentation des comptes"], a:1,
+   e:"La profession est incompatible avec toute <b>activité commerciale</b> habituelle. Le conseil fiscal, social ou juridique <i>accessoire</i> reste possible."},
+
+  {t:"Activités accessoires", q:"L'expert-comptable peut donner des consultations juridiques :",
+   o:["Jamais","Uniquement s'il est aussi avocat","À titre accessoire, lorsqu'elles se rattachent à ses missions","Sans aucune limite"], a:2,
+   e:"L'activité juridique est autorisée à titre <b>accessoire</b>, dès lors qu'elle découle directement des missions comptables et de conseil."},
+
+  {t:"Incompatibilité EC / CAC", q:"Au sein d'une même entité, un même professionnel peut-il être à la fois expert-comptable (présentation des comptes) et commissaire aux comptes ?",
+   o:["Oui","Non : incompatibilité (auto-révision / indépendance)","Oui s'il le déclare au client","Oui pour les petites structures"], a:1,
+   e:"<b>Incompatibilité</b> : on ne peut pas auditer des comptes que l'on a contribué à établir."},
+
+  {t:"Lettre de mission", q:"La lettre de mission de l'expert-comptable :",
+   o:["Est facultative","Est obligatoire et établie avant le début de la mission","Peut être seulement verbale","N'est requise que pour le CAC"], a:1,
+   e:"Obligation déontologique : la <b>lettre de mission</b> définit la mission et les obligations réciproques, avant tout commencement d'exécution."},
+
+  {t:"Honoraires", q:"Les honoraires de l'expert-comptable :",
+   o:["Peuvent être fixés selon les résultats financiers obtenus","Ne peuvent être fixés en fonction des résultats (honoraires de résultat interdits)","Sont fixés par l'Ordre","Sont libres sans aucune règle"], a:1,
+   e:"Les <b>honoraires de résultat</b> (« success fees ») sont prohibés. Les honoraires doivent correspondre au travail réalisé et être équitables."},
+
+  {t:"Communication / publicité", q:"La communication et la publicité de l'expert-comptable sont :",
+   o:["Totalement interdites","Autorisées si l'information est sincère, loyale et conforme à la dignité de la profession","Libres et sans aucune restriction","Soumises à autorisation préalable de l'Ordre pour chaque action"], a:1,
+   e:"Depuis la libéralisation (directive Services), la publicité est <b>autorisée et encadrée</b> : sincérité, loyauté, respect de la dignité et du secret."},
+
+  {t:"Démarchage", q:"Le démarchage / la sollicitation personnalisée par l'expert-comptable est :",
+   o:["Strictement interdit","Autorisé dans le respect des règles déontologiques","Réservé aux grands cabinets","Soumis à autorisation préfectorale"], a:1,
+   e:"Le démarchage est désormais <b>autorisé</b>, mais reste encadré par les principes déontologiques."},
+
+  {t:"Confraternité", q:"Lorsqu'il succède à un confrère, l'expert-comptable doit :",
+   o:["Dénigrer le travail du prédécesseur","S'abstenir de tout contact","Aviser le confrère prédécesseur (courtoisie confraternelle)","Reprendre la mission sans aucune formalité"], a:2,
+   e:"Le devoir de <b>confraternité</b> impose d'informer le confrère et de s'assurer notamment du règlement de ses honoraires."},
+
+  {t:"Confraternité", q:"Le détournement de clientèle d'un confrère par des moyens déloyaux est :",
+   o:["Autorisé","Contraire au principe de confraternité","Encouragé par l'Ordre","Sans aucune conséquence"], a:1,
+   e:"C'est un manquement à la <b>confraternité</b>, susceptible de sanction disciplinaire."},
+
+  {t:"Responsabilité", q:"La responsabilité disciplinaire de l'expert-comptable est mise en jeu devant :",
+   o:["Le tribunal de commerce","Les chambres de discipline de l'Ordre","La H2A","Le conseil de prud'hommes"], a:1,
+   e:"Chambre <b>régionale</b> de discipline (1ʳᵉ instance), puis chambre <b>nationale</b> en appel."},
+
+  {t:"Responsabilité", q:"La responsabilité civile professionnelle de l'expert-comptable est :",
+   o:["Couverte par une assurance facultative","Couverte par une assurance RCP obligatoire","Garantie par l'Ordre lui-même","Sans obligation d'assurance"], a:1,
+   e:"L'<b>assurance de responsabilité civile professionnelle</b> est obligatoire."},
+
+  {t:"Sanctions disciplinaires", q:"Parmi les sanctions disciplinaires de l'expert-comptable, la plus grave est :",
+   o:["La réprimande","Le blâme","La suspension","La radiation du tableau"], a:3,
+   e:"Échelle croissante : réprimande, blâme, suspension (durée déterminée), puis <b>radiation</b> du tableau (la plus grave)."},
+
+  {t:"Discipline", q:"L'appel d'une décision de la chambre régionale de discipline est porté devant :",
+   o:["La cour d'appel","La chambre nationale de discipline","Le Conseil d'État directement","La H2A"], a:1,
+   e:"La <b>chambre nationale de discipline</b> statue en appel ; un pourvoi devant le Conseil d'État reste ensuite possible."},
+
+  {t:"Mission du CAC", q:"La mission générale du commissaire aux comptes consiste à :",
+   o:["Tenir la comptabilité de l'entité","Certifier que les comptes sont réguliers, sincères et donnent une image fidèle","Établir les déclarations fiscales","Gérer la trésorerie"], a:1,
+   e:"Le CAC <b>certifie</b> les comptes ; il ne les tient pas (ce serait une incompatibilité)."},
+
+  {t:"Mandat du CAC", q:"Quelle est la durée du mandat du commissaire aux comptes ?",
+   o:["3 exercices","6 exercices","9 exercices","Durée indéterminée"], a:1,
+   e:"Le mandat est de <b>6 exercices</b>."},
+
+  {t:"Seuils de nomination", q:"Depuis le décret du 28 février 2024, une société doit nommer un CAC si elle dépasse 2 des 3 seuils suivants :",
+   o:["4 M€ bilan · 8 M€ CA HT · 50 salariés","5 M€ bilan · 10 M€ CA HT · 50 salariés","1,55 M€ bilan · 3,1 M€ CA · 50 salariés","8 M€ bilan · 4 M€ CA · 50 salariés"], a:1,
+   e:"Le décret n°2024-152 a relevé les seuils à <b>5 M€ de bilan, 10 M€ de CA HT et 50 salariés</b>. (Auparavant 4/8/50, issus de la loi PACTE 2019.)"},
+
+  {t:"Nomination du CAC", q:"La nomination du commissaire aux comptes est décidée par :",
+   o:["Le dirigeant seul","L'assemblée générale des associés / actionnaires","Systématiquement le tribunal de commerce","La H2A"], a:1,
+   e:"Nomination en <b>assemblée générale ordinaire</b>. Le tribunal n'intervient qu'en cas de carence (désignation judiciaire)."},
+
+  {t:"Rotation (EIP)", q:"Pour les entités d'intérêt public (EIP), la rotation de l'associé signataire intervient au maximum tous les :",
+   o:["3 ans","6 ans","10 ans","jamais"], a:1,
+   e:"Rotation de l'<b>associé signataire</b> : 6 ans pour les EIP. La durée maximale du mandat du <i>cabinet</i> pour une EIP est de 10 ans (prolongations encadrées)."},
+
+  {t:"Incompatibilité du CAC", q:"Le commissaire aux comptes peut-il tenir la comptabilité de l'entité qu'il contrôle ?",
+   o:["Oui","Oui avec l'accord du client","Non : incompatibilité (auto-révision)","Oui pour les petites entreprises"], a:2,
+   e:"Interdit : la séparation <b>audit / tenue de la comptabilité</b> garantit l'indépendance."},
+
+  {t:"Normes du CAC", q:"Les normes encadrant l'exercice professionnel du commissaire aux comptes sont :",
+   o:["Les normes IFRS","Les normes d'exercice professionnel (NEP)","Le Plan comptable général","Les normes ISO 9001"], a:1,
+   e:"Les <b>NEP</b> sont homologuées par arrêté du Garde des Sceaux."},
+
+  {t:"Régulation (H2A)", q:"Depuis le 1ᵉʳ janvier 2024, l'autorité de régulation de la profession de commissaire aux comptes est :",
+   o:["Le H3C","La Haute Autorité de l'audit (H2A)","L'AMF","La CNCC"], a:1,
+   e:"La <b>H2A</b> a succédé au H3C (ordonnance n°2023-1142 du 6 décembre 2023, transposant la directive CSRD)."},
+
+  {t:"Régulation (H2A)", q:"Quelle nouvelle mission a été confiée à la H2A par rapport au H3C ?",
+   o:["Le contrôle fiscal des entreprises","La supervision de la certification des informations de durabilité (CSRD)","La tenue du tableau de l'Ordre des experts-comptables","La fixation des honoraires"], a:1,
+   e:"La H2A supervise désormais la <b>certification des informations de durabilité</b> (CSRD) et les organismes tiers indépendants (OTI)."},
+
+  {t:"Contrôle qualité", q:"Le contrôle périodique de l'activité du commissaire aux comptes est réalisé :",
+   o:["Chaque année pour tous","Au moins tous les 6 ans (et tous les 3 ans pour les CAC d'EIP)","Jamais","Uniquement sur plainte"], a:1,
+   e:"Cycle de contrôle qualité : <b>6 ans</b> en règle générale, <b>3 ans</b> pour les CAC intervenant auprès d'EIP."},
+
+  {t:"Obligations du CAC", q:"Le commissaire aux comptes qui constate des faits délictueux doit :",
+   o:["Les garder secrets","Les révéler au procureur de la République","En informer uniquement le dirigeant","Démissionner immédiatement"], a:1,
+   e:"Obligation de <b>révélation des faits délictueux</b> au procureur ; à défaut, le CAC engage sa responsabilité pénale."},
+
+  {t:"Obligations du CAC", q:"La procédure d'alerte permet au commissaire aux comptes :",
+   o:["De licencier les dirigeants","D'attirer l'attention sur des faits compromettant la continuité d'exploitation","De saisir directement la police","De certifier les comptes par anticipation"], a:1,
+   e:"La <b>procédure d'alerte</b> vise les faits de nature à compromettre la continuité d'exploitation."},
+
+  {t:"Co-commissariat", q:"Le co-commissariat aux comptes (deux CAC) est notamment obligatoire pour :",
+   o:["Toutes les SARL","Les entités tenues de publier des comptes consolidés","Les auto-entrepreneurs","Les associations sportives"], a:1,
+   e:"Le <b>co-commissariat</b> s'impose pour les comptes consolidés (deux signatures, deux cabinets distincts)."},
+
+  {t:"Démission du CAC", q:"Le commissaire aux comptes peut démissionner :",
+   o:["À tout moment et sans aucun motif","Pour des motifs légitimes, sans intention de se soustraire à ses obligations","Jamais","Uniquement avec l'accord de la H2A"], a:1,
+   e:"La démission est encadrée : elle ne doit pas viser à se <b>soustraire</b> aux obligations légales (alerte, révélation…)."},
+
+  {t:"Structures d'exercice", q:"Dans une société d'expertise comptable, le capital doit être détenu majoritairement par :",
+   o:["Des investisseurs financiers","Des experts-comptables (au moins les deux tiers du capital et des droits de vote)","L'État","N'importe quels associés"], a:1,
+   e:"Au moins les <b>deux tiers</b> du capital et des droits de vote doivent être détenus par des experts-comptables inscrits."},
+
+  {t:"Structures d'exercice", q:"Une association de gestion et de comptabilité (AGC) :",
+   o:["Est une structure interdite","Est habilitée à exercer l'expertise comptable et inscrite à l'Ordre","Ne peut pas tenir de comptabilité","Est réservée aux commissaires aux comptes"], a:1,
+   e:"Les <b>AGC</b> sont inscrites au tableau et soumises aux mêmes règles déontologiques que les autres structures."},
+
+  {t:"Formation continue", q:"L'obligation de formation continue de l'expert-comptable est de :",
+   o:["Aucune obligation","40 heures par an (soit 120 heures sur 3 ans)","10 heures par an","200 heures par an"], a:1,
+   e:"<b>40 h/an</b>, appréciées sur une base de <b>120 h sur 3 ans</b> glissants."},
+
+  {t:"Acceptation de mission", q:"Avant d'accepter une mission, l'expert-comptable doit principalement :",
+   o:["Vérifier la seule solvabilité du client","Apprécier sa capacité à exécuter la mission dans le respect de l'indépendance et de la compétence","Demander l'accord de l'Ordre","Fixer ses honoraires au résultat"], a:1,
+   e:"La <b>procédure d'acceptation</b> vérifie l'indépendance, la compétence, les moyens, l'intégrité du client et les obligations anti-blanchiment."},
+
+  {t:"Conflits d'intérêts", q:"Face à un conflit d'intérêts non réductible, l'expert-comptable doit :",
+   o:["L'ignorer","Refuser la mission ou s'en retirer après évaluation des sauvegardes","Le signaler à la concurrence","Augmenter ses honoraires"], a:1,
+   e:"On identifie et évalue le conflit ; si les <b>sauvegardes</b> sont insuffisantes, on refuse ou on se retire."},
+
+  {t:"Maniement de fonds", q:"Le maniement de fonds appartenant aux clients par l'expert-comptable est :",
+   o:["Libre","Interdit en principe, sauf mandat exprès et écrit dans le cadre de la mission","Obligatoire","Réservé aux commissaires aux comptes"], a:1,
+   e:"Le <b>maniement de fonds</b> est prohibé par principe ; dérogation possible sur mandat écrit, avec fonds isolés."},
+
+  {t:"Devoir de conseil", q:"Le devoir de conseil de l'expert-comptable :",
+   o:["Se limite à la saisie comptable","Implique d'informer et d'alerter le client sur les conséquences de ses choix","N'existe pas","Est purement facultatif"], a:1,
+   e:"Le <b>devoir de conseil et d'information</b> est une source fréquente de mise en cause de la responsabilité civile."},
+
+  {t:"Indépendance du CAC", q:"Recevoir des honoraires anormalement élevés d'un seul client crée surtout un risque :",
+   o:["D'auto-révision","D'intérêt personnel (dépendance financière)","De plaidoyer","De révélation"], a:1,
+   e:"La dépendance économique vis-à-vis d'un client génère une menace liée à l'<b>intérêt personnel</b> pesant sur l'indépendance."},
+
+  {t:"LCB-FT — PPE", q:"Le maire d'une commune est-il une « personne politiquement exposée » (PPE) au sens de la lutte anti-blanchiment ?",
+   o:["Oui, comme tout élu","Non : les élus locaux ne figurent pas dans la liste des PPE","Oui, mais seulement pendant son mandat","Uniquement s'il gère plus de 50 000 habitants"], a:1,
+   e:"La liste des PPE (art. R561-18 du Code monétaire et financier) vise notamment les membres d'une <b>assemblée parlementaire nationale</b>, mais <b>pas les élus locaux</b> comme un maire."},
+
+  {t:"LCB-FT — bénéficiaire effectif", q:"Le bénéficiaire effectif d'une société est en principe la personne physique qui :",
+   o:["Dirige la société quel que soit son capital","Détient, directement ou indirectement, plus de 25 % du capital ou des droits de vote","Détient au moins 10 % du capital","Est le commissaire aux comptes"], a:1,
+   e:"Le <b>bénéficiaire effectif</b> détient directement ou indirectement plus de <b>25 %</b> du capital ou des droits de vote, ou exerce un contrôle par d'autres moyens."},
+
+  {t:"LCB-FT — phases", q:"Les trois phases classiques du blanchiment de capitaux sont :",
+   o:["Déclaration, vérification, sanction","Placement, empilement (dispersion), intégration","Collecte, conservation, transmission","Vigilance, soupçon, gel"], a:1,
+   e:"Le blanchiment se déroule en trois temps : <b>placement</b> (injection des fonds), <b>empilement/dispersion</b> (multiplication d'opérations) puis <b>intégration</b> (réinjection dans l'économie légale)."},
+
+  {t:"LCB-FT — vigilance", q:"Avant d'entrer en relation d'affaires, le professionnel doit notamment :",
+   o:["Saisir systématiquement le procureur","Identifier et vérifier l'identité du client et du bénéficiaire effectif","Déclarer toute relation à TRACFIN","Obtenir l'accord de l'Ordre"], a:1,
+   e:"L'obligation de <b>vigilance</b> impose d'identifier le client et le <b>bénéficiaire effectif</b>, et de moduler les diligences selon le risque (vigilance allégée, normale ou renforcée)."},
+
+  {t:"Inscription au tableau", q:"Avant de commencer à exercer après son inscription au tableau, l'expert-comptable :",
+   o:["Verse une caution à l'Ordre","Prête serment","Publie une annonce légale","Obtient un agrément fiscal"], a:1,
+   e:"L'expert-comptable nouvellement inscrit <b>prête serment</b> (exercer sa profession avec conscience et probité)."},
+
+  {t:"Conditions d'exercice", q:"Parmi les conditions d'inscription au tableau de l'Ordre figure :",
+   o:["Avoir plus de 30 ans","La possession du diplôme requis (DEC), la moralité et la jouissance des droits civils","Être propriétaire d'un cabinet","Résider à Paris"], a:1,
+   e:"Il faut notamment être titulaire du <b>DEC</b> (ou diplôme équivalent), n'avoir pas subi de condamnation incompatible (<b>moralité</b>) et jouir de ses droits civils, sous condition de nationalité (UE/EEE ou réciprocité)."},
+
+  {t:"Le stage", q:"Le stage d'expertise comptable est notamment encadré par :",
+   o:["Aucun encadrement","Un maître de stage, avec rapports semestriels et contrôle de l'Ordre","Le seul employeur","Le tribunal de commerce"], a:1,
+   e:"Le stage (3 ans) est suivi par un <b>maître de stage</b> ; le stagiaire produit des rapports semestriels soumis au contrôle de l'Ordre."},
+
+  {t:"Structures d'exercice", q:"Une société pluri-professionnelle d'exercice (SPE) permet :",
+   o:["D'exercer uniquement l'expertise comptable","De réunir, dans une même structure, des professionnels du droit et du chiffre (EC, CAC, avocats, notaires…)","De cumuler une activité commerciale","D'échapper aux règles déontologiques"], a:1,
+   e:"La <b>SPE</b> (issue de la loi du 6 août 2015) autorise l'exercice en commun de plusieurs professions réglementées du droit et du chiffre, chacune restant soumise à sa propre déontologie."},
+
+  {t:"Structures d'exercice", q:"Une SPFPL (société de participations financières de professions libérales) a pour objet :",
+   o:["D'exercer directement les missions comptables","De détenir des participations dans des sociétés d'expertise comptable","De réaliser des placements boursiers libres","De salarier des experts-comptables"], a:1,
+   e:"La <b>SPFPL</b> est une holding qui détient des <b>participations</b> dans des sociétés d'exercice ; elle n'exerce pas elle-même la mission."},
+
+  {t:"Missions gratuites", q:"Une mission réalisée par l'expert-comptable à titre gratuit (bénévole) :",
+   o:["Échappe aux règles déontologiques","Reste soumise à la déontologie et nécessite une lettre de mission","Est interdite","N'engage aucune responsabilité"], a:1,
+   e:"Même <b>gratuite</b>, la mission obéit aux règles professionnelles : lettre de mission obligatoire, responsabilité engagée, et vigilance sur la couverture d'assurance."},
+
+  {t:"Lettre de mission", q:"Quelle situation impose de mettre à jour la lettre de mission ?",
+   o:["Un simple changement d'interlocuteur chez le client","Une modification significative de la mission, du contexte légal ou de l'entité","La fin de chaque exercice, systématiquement","Un changement de logiciel comptable"], a:1,
+   e:"La lettre de mission doit être actualisée en cas d'<b>évolution significative</b> (nouvelle prestation, changement de réglementation, modification de l'activité ou de la structure du client)."},
+
+  {t:"RGPD & secret", q:"Dans le traitement des données personnelles de ses clients, l'expert-comptable :",
+   o:["N'est concerné par aucune règle","Doit respecter le RGPD, en plus du secret professionnel","Peut revendre les données anonymisées","Est dispensé d'information des personnes"], a:1,
+   e:"L'EC est <b>responsable de traitement</b> et doit respecter le <b>RGPD</b> (finalité, minimisation, sécurité…), ce qui s'ajoute au secret professionnel."},
+
+  {t:"Niveaux d'assurance", q:"Quel niveau d'assurance résulte d'une mission d'audit ?",
+   o:["Aucune assurance","Une assurance modérée","Une assurance raisonnable (élevée), exprimée sous forme positive","Une assurance absolue"], a:2,
+   e:"L'audit procure une <b>assurance raisonnable</b> (élevée, mais jamais absolue), avec une opinion exprimée sous forme <b>positive</b>."},
+
+  {t:"Niveaux d'assurance", q:"La conclusion d'une mission d'examen limité est formulée :",
+   o:["Sous forme positive","Sous forme négative (« je n'ai pas relevé… »)","Sans aucune conclusion","Par un simple constat chiffré"], a:1,
+   e:"L'examen limité (assurance <b>modérée</b>) aboutit à une conclusion sous forme <b>négative</b>."},
+
+  {t:"Niveaux d'assurance", q:"La mission de présentation des comptes (NP 2300) porte principalement sur :",
+   o:["La régularité, la sincérité et l'image fidèle","La cohérence et la vraisemblance des comptes","La détection systématique des fraudes","La conformité fiscale"], a:1,
+   e:"La présentation délivre une assurance modérée (de niveau inférieur à l'examen limité) sur la <b>cohérence et la vraisemblance</b> des comptes ; elle ne se prononce pas sur l'image fidèle."},
+
+  {t:"Missions sans assurance", q:"Une mission de procédures convenues (NP 4400) aboutit à :",
+   o:["Une opinion d'audit","Un compte rendu de constatations factuelles, sans assurance","Une certification","Une attestation d'image fidèle"], a:1,
+   e:"Les <b>procédures convenues</b> ne donnent <b>aucune assurance</b> : le professionnel rapporte de simples <b>constatations</b>, à charge pour le destinataire d'en tirer ses conclusions."},
+
+  {t:"Mission du CAC", q:"Au sens du Code de commerce (art. L.821-2 III), la « mission » du commissaire aux comptes recouvre :",
+   o:["La seule certification des comptes annuels","Le contrôle légal et les autres missions confiées par la loi ou le règlement au CAC qui certifie","La tenue de la comptabilité","Le conseil en gestion"], a:1,
+   e:"La mission englobe le <b>contrôle légal</b> et les <b>autres missions légales/réglementaires</b> exercées par le CAC chargé de la certification."},
+
+  {t:"Non-immixtion", q:"Le principe de non-immixtion dans la gestion interdit au commissaire aux comptes :",
+   o:["De contrôler les comptes","De prendre, à la place des dirigeants, des décisions de gestion","De communiquer avec la direction","De vérifier le contrôle interne"], a:1,
+   e:"Le CAC <b>contrôle</b> mais ne <b>gère pas</b> : il ne peut se substituer aux organes de direction ni porter de jugement d'opportunité sur leur gestion."},
+
+  {t:"Délit d'entrave", q:"Le fait, pour un dirigeant, de faire obstacle aux vérifications du commissaire aux comptes constitue :",
+   o:["Une faute de gestion","Un délit d'entrave, pénalement sanctionné","Une simple irrégularité administrative","Un motif de démission du CAC"], a:1,
+   e:"Entraver les contrôles ou refuser de communiquer les pièces au CAC est un <b>délit d'entrave</b> puni pénalement."},
+
+  {t:"Gouvernance EIP", q:"Toute entité d'intérêt public (EIP) doit être dotée :",
+   o:["D'un second expert-comptable","D'un comité d'audit","D'un commissaire aux apports","D'un médiateur"], a:1,
+   e:"Chaque <b>EIP</b> dispose d'un <b>comité d'audit</b> (membres non exécutifs / de l'organe de surveillance), qui suit le processus d'élaboration de l'information financière et l'indépendance du CAC."},
+
+  {t:"Désignation du CAC (EIP)", q:"Dans une EIP, la désignation du commissaire aux comptes intervient :",
+   o:["Par cooptation du dirigeant","Sur recommandation du comité d'audit, à l'issue d'une procédure d'appel d'offres","Par tirage au sort","Par décision de la H2A"], a:1,
+   e:"Pour les EIP, la désignation se fait sur <b>recommandation du comité d'audit</b>, après <b>appel d'offres</b> (règlement UE 537/2014)."},
+
+  {t:"Honoraires CAC (EIP)", q:"Pour une EIP, les services autres que la certification (SACC) autorisés fournis par le CAC sont plafonnés à :",
+   o:["50 % des honoraires d'audit","70 % de la moyenne des honoraires d'audit des 3 derniers exercices","100 % des honoraires d'audit","Aucun plafond"], a:1,
+   e:"Plafond de <b>70 %</b> de la moyenne des honoraires de contrôle légal des <b>3 derniers exercices</b> (art. L.823-18 C. com. / règlement UE 537/2014)."},
+
+  {t:"Services interdits (EIP)", q:"Pour une entité d'intérêt public, le commissaire aux comptes a notamment l'interdiction de fournir :",
+   o:["Une lettre de mission","Des services interdits par le règlement européen (ex. tenue de comptabilité, certaines prestations fiscales ou d'évaluation)","Le rapport de certification","La justification de ses appréciations"], a:1,
+   e:"Le règlement UE 537/2014 dresse une <b>liste de services interdits</b> (tenue de comptabilité, conception de systèmes d'information financière, évaluation, certains services fiscaux/juridiques…) afin de préserver l'indépendance."},
+
+  {t:"Opinion du CAC", q:"Lorsque le CAC ne peut pas obtenir les éléments suffisants pour fonder son opinion (limitation), il formule :",
+   o:["Une certification sans réserve","Une impossibilité de certifier","Un refus de certifier pour désaccord","Une simple observation"], a:1,
+   e:"Une <b>limitation</b> empêchant de réunir des éléments probants suffisants conduit à une <b>impossibilité de certifier</b> (à distinguer du <b>refus de certifier</b>, qui sanctionne un désaccord)."},
+
+  {t:"Opinion du CAC", q:"Parmi les formulations possibles de l'opinion du commissaire aux comptes, on ne trouve PAS :",
+   o:["La certification sans réserve","La certification avec réserve(s)","Le refus de certifier","La certification conditionnelle"], a:3,
+   e:"Les trois issues sont : certification (avec ou sans réserve), <b>refus de certifier</b> ou <b>impossibilité de certifier</b>. La « certification conditionnelle » n'existe pas."},
+
+  {t:"Interventions du CAC", q:"La mission de commissaire aux apports consiste à :",
+   o:["Tenir la comptabilité des apports","Apprécier la valeur des apports en nature","Certifier les comptes annuels","Gérer la trésorerie de l'apport"], a:1,
+   e:"Le <b>commissaire aux apports</b> apprécie la <b>valeur des apports en nature</b> (constitution ou augmentation de capital) ; mission distincte du contrôle légal."},
+
+  {t:"Incompatibilités du CAC", q:"Dans l'entité qu'il contrôle, le commissaire aux comptes peut-il accepter une mission le conduisant à participer à la gestion ?",
+   o:["Oui","Non : ce serait incompatible avec son indépendance et la non-immixtion","Oui avec l'accord de l'AG","Oui s'il s'agit d'une petite entité"], a:1,
+   e:"Accepter une mission de nature à le placer en situation de gérer (ou d'auto-réviser) l'entité contrôlée est <b>incompatible</b> avec son indépendance."},
+
+  {t:"Honoraires du CAC", q:"Les honoraires du commissaire aux comptes sont en principe déterminés :",
+   o:["En fonction du résultat de l'entité","En fonction du temps passé et de la complexité des travaux","Librement par l'entité contrôlée","Par la H2A"], a:1,
+   e:"Ils dépendent des <b>diligences nécessaires</b> (temps, complexité) ; les honoraires de <b>résultat</b> sont prohibés et l'indépendance doit être préservée."},
+
+  {t:"Cadre international", q:"L'IFAC est :",
+   o:["Le régulateur français du CAC","La Fédération internationale des experts-comptables (organisation mondiale de la profession)","Une norme comptable","Un tribunal européen"], a:1,
+   e:"L'<b>IFAC</b> (International Federation of Accountants) regroupe les organisations professionnelles comptables à l'échelle <b>mondiale</b>."},
+
+  {t:"Cadre international", q:"Le code international d'éthique applicable aux professionnels comptables est élaboré par :",
+   o:["L'IASB","L'IESBA (sous l'égide de l'IFAC)","La Commission européenne","L'AMF"], a:1,
+   e:"L'<b>IESBA</b> élabore le code international d'éthique ; l'IASB, lui, produit les normes comptables (IFRS)."},
+
+  {t:"Contrôle qualité", q:"À l'issue d'un contrôle qualité, l'une des conclusions possibles est :",
+   o:["Une amende automatique","Une lettre conclusive sans observation, ou avec observations (le cas échéant assortie d'une décision de recontrôle)","La radiation immédiate","Une certification des comptes"], a:1,
+   e:"Le contrôle débouche sur une <b>lettre conclusive</b> : sans observation, avec simples observations, ou avec observations <b>assortie d'une décision de recontrôle</b> (suivi des manquements)."},
+
+  {t:"Confraternité (CAC)", q:"Un commissaire aux comptes peut-il déléguer ses mandats à un confrère exerçant dans une autre structure ?",
+   o:["Oui, librement","Non : le mandat est personnel et incessible (il ne se « délègue » pas par simple accord)","Oui, avec l'accord du client","Oui, contre rémunération"], a:1,
+   e:"Le mandat de CAC est <b>personnel</b> : on ne « transfère » pas ses mandats à un confrère. Un changement de titulaire suppose une nouvelle désignation régulière par l'entité."},
+
+  {t:"Principes déontologiques", q:"Parmi les propositions suivantes, lesquelles constituent des principes fondamentaux de comportement du professionnel ? (plusieurs réponses)",
+   o:["L'intégrité","La recherche du profit maximal","La compétence","La confidentialité"], a:[0,2,3],
+   e:"L'<b>intégrité</b>, la <b>compétence</b> et la <b>confidentialité</b> figurent parmi les principes fondamentaux, aux côtés de l'objectivité/indépendance et du comportement professionnel. La recherche du profit maximal n'en fait pas partie."},
+
+  {t:"Indépendance", q:"Quelles situations constituent des menaces à l'indépendance ? (plusieurs réponses)",
+   o:["L'auto-révision","La familiarité","La formation continue","L'intimidation"], a:[0,1,3],
+   e:"Les menaces sont l'intérêt personnel, l'<b>auto-révision</b>, la <b>familiarité</b>, l'<b>intimidation</b> et le plaidoyer. La formation continue est au contraire une obligation déontologique, pas une menace."},
+
+  {t:"Seuils CAC", q:"Quels sont les trois seuils dont le dépassement de deux d'entre eux rend obligatoire la nomination d'un CAC (décret de 2024) ? (plusieurs réponses)",
+   o:["5 M€ de total de bilan","10 M€ de chiffre d'affaires HT","50 salariés","2 M€ de résultat net"], a:[0,1,2],
+   e:"Les trois seuils sont <b>5 M€ de bilan</b>, <b>10 M€ de CA HT</b> et <b>50 salariés</b> ; la nomination est obligatoire dès que deux d'entre eux sont dépassés. Le résultat net n'est pas un critère."},
+
+  {t:"Missions de l'EC", q:"Quelles missions procurent une assurance (raisonnable ou modérée) ? (plusieurs réponses)",
+   o:["La présentation des comptes (NP 2300)","La compilation (NP 4410)","L'examen limité (NP 2400)","L'audit d'états financiers"], a:[0,2,3],
+   e:"La <b>présentation</b> (modérée), l'<b>examen limité</b> (modérée) et l'<b>audit</b> (raisonnable) procurent une assurance. La <b>compilation</b> n'en procure aucune."},
+
+  {t:"Obligations du CAC", q:"Quelles obligations spécifiques pèsent sur le commissaire aux comptes ? (plusieurs réponses)",
+   o:["La révélation des faits délictueux au procureur","La tenue de la comptabilité de l'entité","La procédure d'alerte sur la continuité d'exploitation","Les obligations anti-blanchiment (LCB-FT)"], a:[0,2,3],
+   e:"Le CAC doit <b>révéler les faits délictueux</b>, déclencher la <b>procédure d'alerte</b> et respecter la <b>LCB-FT</b>. Tenir la comptabilité de l'entité contrôlée lui est au contraire interdit (auto-révision)."},
+
+  {t:"Discipline", q:"Quelles sanctions disciplinaires peuvent être prononcées contre un expert-comptable ? (plusieurs réponses)",
+   o:["La réprimande","L'amende pénale","Le blâme","La radiation du tableau"], a:[0,2,3],
+   e:"Les sanctions disciplinaires sont la <b>réprimande</b>, le <b>blâme</b>, la suspension et la <b>radiation</b>. L'amende pénale relève du juge pénal, pas de la discipline ordinale."},
+
+  {t:"Régulation (H2A)", q:"Quelles missions relèvent de la Haute Autorité de l'audit (H2A) ? (plusieurs réponses)",
+   o:["L'adoption des normes applicables aux CAC","La supervision de l'audit financier","La supervision de la certification de durabilité","La tenue du tableau de l'Ordre des experts-comptables"], a:[0,1,2],
+   e:"La H2A <b>adopte les normes</b>, supervise l'<b>audit financier</b> et la <b>certification de durabilité</b>. Le tableau de l'Ordre des experts-comptables relève du CSOEC et des conseils régionaux, pas de la H2A."},
+
+  {t:"Lettre de mission", q:"Quelles affirmations sur la lettre de mission de l'expert-comptable sont exactes ? (plusieurs réponses)",
+   o:["Elle est obligatoire","Elle peut être seulement verbale","Elle est établie avant le début des travaux","Elle définit les obligations réciproques des parties"], a:[0,2,3],
+   e:"La lettre de mission est <b>obligatoire</b>, <b>écrite</b>, établie <b>avant</b> la mission et définit les <b>obligations réciproques</b>. Une simple forme verbale ne suffit pas."},
+
+  {t:"LCB-FT", q:"Quelles affirmations relatives à la déclaration de soupçon sont exactes ? (plusieurs réponses)",
+   o:["Elle est adressée à TRACFIN","Le client doit en être informé","Elle constitue une dérogation légale au secret professionnel","Faite de bonne foi, elle exonère le professionnel de responsabilité"], a:[0,2,3],
+   e:"La déclaration va à <b>TRACFIN</b>, constitue une <b>dérogation légale</b> au secret et <b>exonère</b> le professionnel de bonne foi. Il est en revanche <b>interdit</b> d'informer le client."},
+
+  {t:"Incompatibilités", q:"Quelles activités sont compatibles, à titre accessoire, avec la profession d'expert-comptable ? (plusieurs réponses)",
+   o:["Les consultations fiscales","Une activité commerciale habituelle","Les consultations juridiques liées aux missions","Les consultations sociales"], a:[0,2,3],
+   e:"Le conseil <b>fiscal</b>, <b>juridique</b> et <b>social</b> est autorisé à titre accessoire des missions comptables. L'activité commerciale habituelle reste incompatible."}
+];
+
+/* ===================== BANQUE QRC ===================== */
+const QRC = [
+ {t:"Organisation de la profession", q:"Quelle est la différence de tutelle ministérielle entre l'expert-comptable et le commissaire aux comptes ?",
+  a:"L'Ordre des experts-comptables est placé sous la tutelle du ministre chargé de l'Économie. Le commissariat aux comptes relève, lui, du ministère de la Justice (Garde des Sceaux). Cette différence s'explique par la nature des missions : contractuelle et économique pour l'EC, légale et d'intérêt général pour le CAC.",
+  k:["EC → ministère de l'Économie","CAC → ministère de la Justice (Garde des Sceaux)","Lien avec la nature des missions (contractuelle vs légale)"]},
+
+ {t:"Organisation de la profession", q:"Qu'est-ce que la H2A et depuis quand a-t-elle remplacé le H3C ?",
+  a:"La Haute Autorité de l'audit (H2A) est l'autorité de régulation des commissaires aux comptes. Elle a remplacé le Haut Conseil du commissariat aux comptes (H3C) le 1er janvier 2024, à la suite de l'ordonnance du 6 décembre 2023 transposant la directive CSRD. Elle régule désormais aussi l'audit des informations de durabilité.",
+  k:["H2A = Haute Autorité de l'audit, régulateur du CAC","Remplace le H3C au 1er janvier 2024","Origine : ordonnance du 6 déc. 2023 / directive CSRD","Nouvelle compétence : audit de durabilité"]},
+
+ {t:"Accès à la profession", q:"Quelle est la durée du stage d'expertise comptable et quelle formalité l'inscription au tableau impose-t-elle ?",
+  a:"Le stage dure 3 ans. Une fois le DEC obtenu et l'inscription au tableau de l'Ordre prononcée, le nouvel expert-comptable prête serment d'exercer sa profession avec conscience et probité avant de pouvoir exercer.",
+  k:["Stage de 3 ans","Inscription au tableau de l'Ordre","Prestation de serment"]},
+
+ {t:"Principes déontologiques", q:"Définissez le principe de compétence et indiquez l'obligation de formation qui en découle.",
+  a:"La compétence impose à l'expert-comptable de n'accepter que les missions qu'il est en mesure de mener à bien, et de maintenir ses connaissances à jour. Elle se traduit par une obligation de formation continue de 40 heures par an, soit 120 heures sur 3 ans.",
+  k:["N'accepter que les missions réalisables","Maintien des connaissances à jour","Formation continue : 40 h/an (120 h sur 3 ans)"]},
+
+ {t:"Secret professionnel", q:"Le client peut-il, à lui seul, délier l'expert-comptable de son secret professionnel ? Justifiez.",
+  a:"Non. Le secret professionnel a une portée générale et d'ordre public ; sa violation est sanctionnée pénalement (art. 226-13 du Code pénal). Il ne peut être levé que par une dérogation prévue par la loi (par exemple la déclaration de soupçon à TRACFIN). Le simple accord du client ne suffit donc pas à délier le professionnel dans toutes les situations.",
+  k:["Réponse : non","Secret général et d'ordre public, sanctionné pénalement","Levée seulement par dérogation légale","Exemple de dérogation (ex. TRACFIN)"]},
+
+ {t:"Secret professionnel", q:"Qu'est-ce que le secret partagé ?",
+  a:"Le secret partagé permet aux professionnels qui concourent à une même mission (par exemple deux co-commissaires aux comptes, ou l'EC et le CAC d'une même entité) d'échanger les informations nécessaires à cette mission, sans que le secret professionnel leur soit opposable entre eux. Ce partage reste strictement limité aux besoins de la mission.",
+  k:["Entre professionnels d'une même mission","Secret non opposable entre eux","Exemple (co-CAC, ou EC et CAC d'une même entité)","Limité aux besoins de la mission"]},
+
+ {t:"Anti-blanchiment", q:"À qui s'adresse une déclaration de soupçon et le professionnel peut-il en informer son client ?",
+  a:"La déclaration de soupçon est adressée à TRACFIN, la cellule de renseignement financier. Il est interdit au professionnel d'informer le client de l'existence de cette déclaration (interdiction de divulgation). Faite de bonne foi, la déclaration exonère le professionnel de toute responsabilité.",
+  k:["Destinataire : TRACFIN","Interdiction d'informer le client (no tipping-off)","Exonération de responsabilité si bonne foi"]},
+
+ {t:"Anti-blanchiment", q:"Qui est le bénéficiaire effectif d'une société ?",
+  a:"Le bénéficiaire effectif est la personne physique qui, en dernier lieu, contrôle la société : en principe celle qui détient, directement ou indirectement, plus de 25 % du capital ou des droits de vote, ou qui exerce un contrôle par d'autres moyens. Son identification est une obligation de vigilance en matière de LCB-FT.",
+  k:["Personne physique qui contrôle en dernier lieu","Seuil : plus de 25 % du capital ou des droits de vote","Directement ou indirectement","Identification = obligation de vigilance LCB-FT"]},
+
+ {t:"Indépendance", q:"Citez les cinq menaces à l'indépendance et expliquez brièvement l'auto-révision.",
+  a:"Les cinq menaces sont : l'intérêt personnel, l'auto-révision, la familiarité, l'intimidation et le plaidoyer (advocacy). L'auto-révision consiste à contrôler ou certifier un travail que l'on a soi-même réalisé : le professionnel ne peut alors plus porter un regard objectif sur ce travail.",
+  k:["Intérêt personnel","Auto-révision","Familiarité","Intimidation","Plaidoyer (advocacy)","Définition de l'auto-révision : contrôler son propre travail"]},
+
+ {t:"Indépendance", q:"Que doit faire le professionnel face à une menace à son indépendance qu'il ne peut pas réduire à un niveau acceptable ?",
+  a:"Il doit identifier la menace, l'évaluer, puis mettre en place des mesures de sauvegarde. Si ces sauvegardes ne permettent pas de ramener la menace à un niveau acceptable, il doit refuser la mission ou s'en retirer. Toute la démarche doit être documentée.",
+  k:["Identifier puis évaluer la menace","Mettre en place des sauvegardes","Si insuffisant : refuser ou se retirer","Documenter la démarche"]},
+
+ {t:"Incompatibilités", q:"L'expert-comptable peut-il exercer une activité commerciale ? Et donner des consultations juridiques ?",
+  a:"L'expert-comptable ne peut pas exercer d'activité commerciale à titre habituel, jugée incompatible avec la profession. En revanche, il peut donner des consultations juridiques, fiscales ou sociales, mais uniquement à titre accessoire, lorsqu'elles se rattachent directement à ses missions comptables et de conseil.",
+  k:["Activité commerciale habituelle : interdite","Conseil juridique/fiscal/social : autorisé à titre accessoire","Rattachement aux missions comptables"]},
+
+ {t:"Incompatibilités", q:"Une même personne peut-elle être expert-comptable et commissaire aux comptes d'une même entité ? Pourquoi ?",
+  a:"Non. Cela placerait le professionnel en situation d'auto-révision : il certifierait des comptes qu'il a lui-même contribué à établir. Cette incompatibilité garantit l'indépendance et la séparation entre la tenue/présentation des comptes et leur contrôle.",
+  k:["Réponse : non","Motif : auto-révision","Garantir l'indépendance","Séparation établissement / contrôle des comptes"]},
+
+ {t:"Lettre de mission", q:"La lettre de mission est-elle obligatoire et à quel moment doit-elle être établie ?",
+  a:"Oui, la lettre de mission est obligatoire. Elle doit être établie par écrit avant le début des travaux. Elle définit l'étendue de la mission et les obligations réciproques des parties, et doit être mise à jour en cas d'évolution significative de la mission ou de son contexte.",
+  k:["Obligatoire et écrite","Établie avant le début de la mission","Définit étendue et obligations réciproques","Mise à jour si évolution significative"]},
+
+ {t:"Honoraires", q:"Les honoraires de résultat sont-ils autorisés pour l'expert-comptable ? Justifiez.",
+  a:"Non, les honoraires de résultat (« success fees »), fixés en fonction du résultat financier obtenu par le client, sont interdits. Ils porteraient atteinte à l'indépendance et à l'objectivité du professionnel. Les honoraires doivent correspondre au travail réellement effectué et rester équitables.",
+  k:["Réponse : non, interdits","Motif : atteinte à l'indépendance/objectivité","Honoraires = fonction du travail réalisé, équitables"]},
+
+ {t:"Communication", q:"La publicité est-elle autorisée pour l'expert-comptable ? À quelles conditions ?",
+  a:"Oui, la publicité et la communication sont autorisées depuis la libéralisation issue de la directive Services. Elles doivent toutefois rester sincères, loyales, respecter le secret professionnel et la dignité de la profession, et ne pas être trompeuses. Le démarchage est également admis, dans le respect de ces règles.",
+  k:["Réponse : oui, autorisée (directive Services)","Conditions : sincère, loyale, non trompeuse","Respect du secret et de la dignité de la profession","Démarchage admis dans le même cadre"]},
+
+ {t:"Confraternité", q:"Que doit faire l'expert-comptable qui succède à un confrère ?",
+  a:"Il doit, par courtoisie confraternelle, aviser le confrère auquel il succède et s'assurer que celui-ci a bien été réglé de ses honoraires. Il doit également obtenir les informations utiles à la continuité de la mission, sans dénigrer le travail de son prédécesseur.",
+  k:["Aviser le confrère prédécesseur","Vérifier le règlement de ses honoraires","Ne pas dénigrer son travail"]},
+
+ {t:"Responsabilité", q:"Distinguez les trois formes de responsabilité de l'expert-comptable.",
+  a:"La responsabilité civile vise à réparer les dommages causés au client ou aux tiers ; elle est couverte par une assurance RCP obligatoire. La responsabilité pénale sanctionne les infractions personnellement commises. La responsabilité disciplinaire, jugée par les chambres de discipline de l'Ordre, sanctionne les manquements aux règles professionnelles.",
+  k:["Civile : réparation des dommages, RCP obligatoire","Pénale : infractions personnellement commises","Disciplinaire : chambres de l'Ordre, manquements professionnels"]},
+
+ {t:"Discipline", q:"Citez, par ordre de gravité croissante, les principales sanctions disciplinaires applicables à l'expert-comptable.",
+  a:"Par gravité croissante : la réprimande, le blâme, la suspension (interdiction temporaire d'exercer) et la radiation du tableau (sanction la plus grave, qui exclut de la profession). La première instance est la chambre régionale de discipline, l'appel relevant de la chambre nationale.",
+  k:["Réprimande","Blâme","Suspension (temporaire)","Radiation du tableau (la plus grave)","Ordre croissant respecté"]},
+
+ {t:"Mission du CAC", q:"En quoi consiste la mission de certification du commissaire aux comptes ?",
+  a:"Le commissaire aux comptes certifie que les comptes annuels (et le cas échéant consolidés) sont réguliers, sincères et donnent une image fidèle du patrimoine, de la situation financière et du résultat de l'entité. Il exerce selon les normes d'exercice professionnel (NEP) et ne tient pas la comptabilité.",
+  k:["Certifier : régularité, sincérité, image fidèle","Comptes annuels (et consolidés)","Exercice selon les NEP","Ne tient pas la comptabilité"]},
+
+ {t:"Mandat du CAC", q:"Quelle est la durée du mandat du commissaire aux comptes et par qui est-il nommé ?",
+  a:"Le mandat du commissaire aux comptes est de 6 exercices. Il est nommé par l'assemblée générale ordinaire des associés ou actionnaires. En cas de carence, une désignation judiciaire est possible.",
+  k:["Durée : 6 exercices","Nommé par l'assemblée générale (ordinaire)","Désignation judiciaire possible en cas de carence"]},
+
+ {t:"Seuils CAC", q:"Depuis le décret du 28 février 2024, quels seuils déclenchent l'obligation de nommer un commissaire aux comptes ?",
+  a:"La nomination devient obligatoire lorsque la société dépasse deux des trois seuils suivants : 5 millions d'euros de total de bilan, 10 millions d'euros de chiffre d'affaires HT, et 50 salariés. Ces seuils, relevés par le décret de 2024, ont remplacé les précédents (4 M€ / 8 M€ / 50 salariés).",
+  k:["Dépassement de 2 des 3 seuils","5 M€ de bilan","10 M€ de CA HT","50 salariés"]},
+
+ {t:"Obligations du CAC", q:"Qu'est-ce que la révélation des faits délictueux et à qui s'adresse-t-elle ?",
+  a:"Le commissaire aux comptes a l'obligation de révéler au procureur de la République les faits délictueux dont il a connaissance dans l'exercice de sa mission. Cette obligation prime le secret professionnel ; son inexécution engage la responsabilité pénale du CAC.",
+  k:["Obligation de révéler les faits délictueux","Destinataire : procureur de la République","Prime le secret professionnel","Responsabilité pénale du CAC si manquement"]},
+
+ {t:"Obligations du CAC", q:"Quel est l'objet de la procédure d'alerte déclenchée par le commissaire aux comptes ?",
+  a:"La procédure d'alerte vise à attirer l'attention des dirigeants, puis le cas échéant des organes sociaux, sur des faits de nature à compromettre la continuité d'exploitation de l'entité. Elle est graduée et a une finalité préventive.",
+  k:["Faits compromettant la continuité d'exploitation","Alerte des dirigeants puis des organes sociaux","Procédure graduée, finalité préventive"]},
+
+ {t:"Indépendance du CAC (EIP)", q:"Pour une entité d'intérêt public, à quelle fréquence l'associé signataire doit-il être renouvelé et quelle est la durée maximale du mandat du cabinet ?",
+  a:"Pour une EIP, l'associé signataire doit être renouvelé (rotation) au moins tous les 6 ans. La durée maximale du mandat du cabinet est en principe de 10 ans, des prolongations restant possibles dans un cadre encadré (notamment après appel d'offres ou co-commissariat).",
+  k:["Rotation de l'associé signataire : 6 ans","Mandat du cabinet : 10 ans max","Prolongations possibles sous conditions"]},
+
+ {t:"Honoraires du CAC (EIP)", q:"Pour une EIP, comment sont encadrés les services autres que la certification fournis par le commissaire aux comptes ?",
+  a:"Certains services sont totalement interdits (liste du règlement européen 537/2014 : tenue de comptabilité, évaluation, etc.). Les services autorisés autres que la certification (SACC) sont plafonnés à 70 % de la moyenne des honoraires de contrôle légal facturés au cours des trois derniers exercices.",
+  k:["Liste de services interdits (règlement 537/2014)","SACC autorisés plafonnés","Plafond : 70 % de la moyenne des honoraires d'audit sur 3 ans"]},
+
+ {t:"Normes", q:"Quelle est la différence entre les NEP et les normes professionnelles de l'expert-comptable, notamment quant à leur homologation ?",
+  a:"Les NEP (normes d'exercice professionnel) encadrent la mission du commissaire aux comptes et sont homologuées par arrêté du Garde des Sceaux. Les normes de l'expert-comptable, élaborées par le CSOEC et réunies dans le référentiel normatif de l'Ordre, sont agréées par arrêté du ministre chargé de l'Économie.",
+  k:["NEP = normes du CAC, homologuées par le Garde des Sceaux","Normes EC élaborées par le CSOEC","Normes EC agréées par le ministre de l'Économie"]},
+
+ {t:"Niveaux d'assurance", q:"Distinguez le niveau d'assurance et la forme de la conclusion entre un audit et un examen limité.",
+  a:"L'audit procure une assurance raisonnable (élevée) et débouche sur une opinion exprimée sous forme positive. L'examen limité procure une assurance modérée, avec une conclusion exprimée sous forme négative (« nous n'avons pas relevé d'élément… »). L'examen limité repose sur des diligences plus légères que l'audit.",
+  k:["Audit : assurance raisonnable, conclusion positive","Examen limité : assurance modérée, conclusion négative","Diligences plus légères pour l'examen limité"]},
+
+ {t:"Niveaux d'assurance", q:"Sur quoi porte l'assurance délivrée dans une mission de présentation des comptes (NP 2300) ?",
+  a:"La mission de présentation délivre une assurance modérée, d'un niveau inférieur à celui de l'examen limité, portant uniquement sur la cohérence et la vraisemblance des comptes. Elle se conclut par une attestation et ne se prononce pas sur l'image fidèle.",
+  k:["Assurance modérée, inférieure à l'examen limité","Porte sur la cohérence et la vraisemblance","Conclusion par une attestation","Ne se prononce pas sur l'image fidèle"]},
+
+ {t:"Missions sans assurance", q:"Qu'est-ce qu'une mission de procédures convenues et quel niveau d'assurance procure-t-elle ?",
+  a:"Dans une mission de procédures convenues (NP 4400), le professionnel met en œuvre des travaux définis à l'avance avec le client et rapporte de simples constatations factuelles. Elle ne procure aucune assurance : il appartient au destinataire du rapport d'en tirer ses propres conclusions.",
+  k:["Travaux définis à l'avance","Rapport de simples constatations factuelles","Aucune assurance","Conclusions tirées par le destinataire"]},
+
+ {t:"Acceptation de mission", q:"Quels points l'expert-comptable doit-il vérifier avant d'accepter une nouvelle mission ?",
+  a:"Il doit s'assurer de son indépendance, de sa compétence et de ses moyens pour réaliser la mission, apprécier l'intégrité du client, et accomplir ses obligations de vigilance anti-blanchiment (LCB-FT). En cas de succession, il avise le confrère prédécesseur. La procédure d'acceptation doit être formalisée.",
+  k:["Indépendance, compétence et moyens","Intégrité du client","Vigilance anti-blanchiment (LCB-FT)","Avis au confrère prédécesseur le cas échéant"]},
+
+ {t:"Conflits d'intérêts", q:"Comment l'expert-comptable doit-il traiter un conflit d'intérêts ?",
+  a:"Il doit identifier le conflit, l'évaluer, puis mettre en place des sauvegardes pour le neutraliser. Si le conflit ne peut pas être ramené à un niveau acceptable malgré ces mesures, il doit refuser la mission ou s'en retirer.",
+  k:["Identifier et évaluer le conflit","Mettre en place des sauvegardes","Si non réductible : refuser ou se retirer"]},
+
+ {t:"Structures d'exercice", q:"Quelle est la règle de détention du capital dans une société d'expertise comptable ?",
+  a:"Au moins les deux tiers du capital social et des droits de vote doivent être détenus par des experts-comptables inscrits au tableau de l'Ordre (ou des structures elles-mêmes inscrites). Cette règle garantit le contrôle de la structure par des professionnels soumis à la déontologie.",
+  k:["Au moins 2/3 du capital et des droits de vote","Détenus par des experts-comptables inscrits","Objectif : contrôle par des professionnels soumis à la déontologie"]},
+
+ {t:"Cadre international", q:"Que sont l'IFAC et l'IESBA ?",
+  a:"L'IFAC (International Federation of Accountants) est la fédération internationale qui regroupe les organisations professionnelles comptables du monde entier. L'IESBA, qui agit sous son égide, élabore le code international d'éthique des professionnels comptables, lequel inspire le Code de déontologie français.",
+  k:["IFAC : fédération internationale de la profession","IESBA : élabore le code international d'éthique","IESBA agit sous l'égide de l'IFAC"]}
+];
+
+/* ===================== CARTES MENTALES ===================== */
+const MAPS = [
+ {cat:"commun", title:"Organisation de la profession", sub:"Qui fait quoi : l'Ordre (expert-comptable) face au commissariat aux comptes",
+  center:"Deux professions distinctes, deux tutelles, deux régulateurs",
+  branches:[
+   {l:"L'expert-comptable et son Ordre", p:[
+     "L'Ordre des experts-comptables est placé sous la tutelle du ministère de l'Économie.",
+     "Son instance nationale est le Conseil supérieur de l'ordre (CSOEC), relayé par des conseils régionaux.",
+     "Nul ne peut exercer ni porter le titre d'expert-comptable sans être inscrit au tableau de l'Ordre.",
+     "Sa mission (tenir, présenter, réviser les comptes) est contractuelle : c'est le client qui le choisit."]},
+   {l:"Le commissaire aux comptes et ses instances", p:[
+     "Le commissaire aux comptes (CAC) est placé sous la tutelle du ministère de la Justice (Garde des Sceaux).",
+     "Sa profession est représentée par la Compagnie nationale (CNCC) et les compagnies régionales (CRCC).",
+     "Sa mission est légale : il certifie les comptes dans l'intérêt général, pas seulement pour le client.",
+     "Il est nommé par l'assemblée générale, et non librement engagé comme un prestataire."]},
+   {l:"Le régulateur de l'audit : la H2A", p:[
+     "Depuis le 1er janvier 2024, la Haute Autorité de l'audit (H2A) a remplacé le H3C.",
+     "Ce changement résulte de l'ordonnance du 6 décembre 2023 transposant la directive européenne CSRD.",
+     "La H2A adopte les normes, organise les contrôles et dispose d'une commission des sanctions indépendante.",
+     "Elle régule désormais aussi l'audit de durabilité et les organismes tiers indépendants (OTI)."]}
+  ]},
+
+ {cat:"commun", title:"Les principes déontologiques", sub:"Le socle de comportement commun à toute la profession",
+  center:"Cinq grands principes guident chaque mission et chaque décision",
+  branches:[
+   {l:"Intégrité et conscience", p:[
+     "Agir avec honnêteté, loyauté et probité, dans l'exercice de la profession comme en dehors.",
+     "Ne rien faire qui puisse jeter le discrédit sur la profession.",
+     "Exécuter chaque mission avec conscience, diligence et esprit critique."]},
+   {l:"Compétence", p:[
+     "N'accepter que les missions que l'on est réellement capable de mener à bien.",
+     "Entretenir ses connaissances par la formation continue : 40 heures par an, soit 120 heures sur 3 ans.",
+     "Refuser la mission ou s'entourer d'un spécialiste lorsqu'elle dépasse son domaine."]},
+   {l:"Indépendance", p:[
+     "Être indépendant en esprit (un jugement libre de toute influence) et en apparence (vis-à-vis des tiers).",
+     "Identifier les menaces, mettre en place des sauvegardes, et à défaut refuser ou se retirer.",
+     "Ne jamais se retrouver à juger son propre travail ni à défendre les intérêts d'un client."]},
+   {l:"Confraternité", p:[
+     "Entretenir des rapports de courtoisie et de loyauté avec les autres professionnels.",
+     "Aviser un confrère lorsqu'on lui succède et s'assurer du règlement de ses honoraires.",
+     "S'interdire tout détournement déloyal de la clientèle d'un confrère."]},
+   {l:"Secret professionnel et discrétion", p:[
+     "Le secret professionnel a une portée générale et sa violation est sanctionnée pénalement.",
+     "Il peut être partagé entre professionnels qui concourent à une même mission (secret partagé).",
+     "Il ne cède que devant des dérogations expressément prévues par la loi (par ex. la déclaration à TRACFIN)."]}
+  ]},
+
+ {cat:"commun", title:"Le secret professionnel", sub:"Une obligation forte, mais avec des limites précises",
+  center:"Tout ce qui est confié au professionnel est, en principe, couvert par le secret",
+  branches:[
+   {l:"Le principe", p:[
+     "Le secret a une portée générale : il couvre l'ensemble des informations recueillies en mission.",
+     "Sa violation constitue un délit (article 226-13 du Code pénal).",
+     "Il s'impose même après la fin de la mission et, en principe, face à l'administration sauf texte contraire."]},
+   {l:"Le secret partagé", p:[
+     "Entre co-commissaires, ou entre l'expert-comptable et le commissaire aux comptes d'une même entité, le secret n'est pas opposable.",
+     "Les professionnels peuvent s'échanger les informations nécessaires à leur mission commune.",
+     "Ce partage reste strictement limité aux besoins de la mission, et pas au-delà."]},
+   {l:"Les dérogations légales", p:[
+     "Seule la loi peut lever le secret : le professionnel ne décide pas seul d'y déroger.",
+     "Exemples : déclaration de soupçon à TRACFIN, réquisitions judiciaires, droit de communication encadré.",
+     "Le client ne peut pas, à lui seul, délier le professionnel dans toutes les situations."]}
+  ]},
+
+ {cat:"commun", title:"Indépendance & incompatibilités", sub:"Préserver l'objectivité du jugement professionnel",
+  center:"Tout ce qui peut compromettre l'objectivité est identifié, encadré ou interdit",
+  branches:[
+   {l:"Les cinq menaces à l'indépendance", p:[
+     "Intérêt personnel : un avantage, financier ou autre, risque d'influencer le jugement.",
+     "Auto-révision : contrôler un travail que l'on a soi-même réalisé.",
+     "Familiarité : des relations trop proches avec le client. Intimidation : des pressions subies.",
+     "Plaidoyer (advocacy) : prendre fait et cause pour la position du client."]},
+   {l:"Les sauvegardes", p:[
+     "Pour chaque menace : on l'identifie, on l'évalue, puis on la réduit par des mesures de sauvegarde.",
+     "Si la menace ne peut pas être ramenée à un niveau acceptable, on refuse la mission ou on s'en retire.",
+     "Toute la démarche et ses conclusions doivent être documentées."]},
+   {l:"Incompatibilités de l'expert-comptable", p:[
+     "Pas d'activité commerciale exercée à titre habituel.",
+     "Conseil juridique, fiscal ou social autorisé seulement à titre accessoire des missions comptables.",
+     "Maniement des fonds du client interdit, sauf mandat écrit et fonds isolés."]},
+   {l:"Incompatibilités du commissaire aux comptes", p:[
+     "Il ne peut pas tenir la comptabilité de l'entité qu'il contrôle (risque d'auto-révision).",
+     "On ne peut pas être à la fois expert-comptable et commissaire aux comptes de la même entité.",
+     "Pour les entités d'intérêt public (EIP), certains services lui sont formellement interdits."]}
+  ]},
+
+ {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
+  center:"Une mission contractuelle, encadrée à chaque étape",
+  branches:[
+   {l:"L'acceptation de la mission", p:[
+     "Vérifier que l'on dispose de l'indépendance, de la compétence et des moyens nécessaires.",
+     "Apprécier l'intégrité du client et accomplir les diligences anti-blanchiment.",
+     "C'est une étape formalisée, préalable à tout engagement."]},
+   {l:"La lettre de mission", p:[
+     "Document écrit obligatoire, établi avant le début des travaux.",
+     "Elle définit l'étendue de la mission et les obligations réciproques des deux parties.",
+     "Elle doit être mise à jour en cas d'évolution significative de la mission ou du contexte."]},
+   {l:"Les honoraires", p:[
+     "Ils correspondent au travail réellement effectué et doivent rester équitables.",
+     "Les honoraires de résultat (fixés selon le succès obtenu) sont interdits.",
+     "Des provisions ou acomptes peuvent être demandés au client."]},
+   {l:"Le devoir de conseil", p:[
+     "L'expert-comptable doit informer et alerter son client sur les conséquences de ses choix.",
+     "Ce devoir va bien au-delà de la simple saisie comptable.",
+     "Son manquement est l'une des premières causes de mise en cause de la responsabilité."]},
+   {l:"Les responsabilités", p:[
+     "Civile : réparer les dommages causés ; elle est couverte par une assurance RCP obligatoire.",
+     "Pénale : pour les infractions personnellement commises.",
+     "Disciplinaire : jugée par les chambres de discipline de l'Ordre."]}
+  ]},
+
+ {cat:"cac", title:"Le commissariat aux comptes", sub:"La mission légale d'audit : les repères essentiels",
+  center:"Certifier les comptes dans l'intérêt général, selon un cadre strict",
+  branches:[
+   {l:"La mission de certification", p:[
+     "Le CAC certifie que les comptes sont réguliers, sincères et donnent une image fidèle.",
+     "Il exerce selon les normes d'exercice professionnel (NEP).",
+     "Il ne tient pas la comptabilité et ne s'immisce pas dans la gestion (principe de non-immixtion)."]},
+   {l:"Nomination et durée", p:[
+     "Le CAC est nommé par l'assemblée générale, pour un mandat de 6 exercices.",
+     "La nomination devient obligatoire au-delà de 2 des 3 seuils : 5 M€ de bilan, 10 M€ de CA HT, 50 salariés.",
+     "Le co-commissariat (deux CAC) s'impose pour les entités établissant des comptes consolidés."]},
+   {l:"Indépendance renforcée (EIP)", p:[
+     "L'associé signataire doit être renouvelé (rotation) au moins tous les 6 ans pour une EIP.",
+     "La durée du mandat du cabinet, pour une EIP, est plafonnée à 10 ans (prolongations encadrées).",
+     "L'audit et le conseil sont strictement séparés."]},
+   {l:"Les obligations spécifiques", p:[
+     "Révéler au procureur de la République les faits délictueux constatés.",
+     "Déclencher la procédure d'alerte si la continuité d'exploitation est menacée.",
+     "Ne démissionner que pour un motif légitime, sans chercher à se soustraire à ses obligations."]}
+  ]},
+
+ {cat:"commun", title:"Régulation, contrôle & discipline", sub:"Qui surveille les professionnels et comment ils sont sanctionnés",
+  center:"Un système de contrôle et de sanctions propre à chaque profession",
+  branches:[
+   {l:"La H2A, régulateur de l'audit", p:[
+     "Depuis 2024, elle a succédé au H3C et régule l'ensemble des auditeurs.",
+     "Elle adopte les normes, organise les contrôles et supervise l'audit financier et de durabilité.",
+     "Sa commission des sanctions, indépendante, prononce les sanctions disciplinaires des CAC."]},
+   {l:"Le contrôle qualité", p:[
+     "Chaque commissaire aux comptes fait l'objet d'un contrôle périodique de son activité.",
+     "Le rythme est d'au moins une fois tous les 6 ans (et tous les 3 ans pour les CAC d'EIP).",
+     "Il se conclut par une lettre conclusive : sans observation, avec observations, ou avec une décision de recontrôle."]},
+   {l:"La discipline de l'expert-comptable", p:[
+     "Les manquements sont jugés en première instance par la chambre régionale de discipline.",
+     "L'appel est porté devant la chambre nationale de discipline.",
+     "Les sanctions, par gravité croissante : réprimande, blâme, suspension, puis radiation du tableau."]},
+   {l:"Les sources de règles", p:[
+     "L'expert-comptable suit le Code de déontologie et le référentiel normatif de l'Ordre.",
+     "Le commissaire aux comptes applique les NEP, homologuées par le Garde des Sceaux.",
+     "Le tout s'articule avec le droit européen (réforme de l'audit, directive CSRD)."]}
+  ]},
+
+ {cat:"ec", title:"Les normes de l'expert-comptable (OEC)", sub:"Fiche de définitions : à quoi sert chaque norme",
+  center:"Un référentiel élaboré par le CSOEC et agréé par arrêté du ministre de l'Économie",
+  branches:[
+   {l:"Les normes structurantes (cadre du cabinet)", p:[
+     "Cadre de référence : il pose les principes généraux et le vocabulaire communs à toutes les missions.",
+     "NPMQ (maîtrise de la qualité) : organise la qualité dans le cabinet (acceptation des missions, ressources, supervision, revue).",
+     "Norme anti-blanchiment : décline les obligations de vigilance et de déclaration en matière de LCB-FT."]},
+   {l:"NP 2300 — Mission de présentation des comptes", p:[
+     "Définition : l'expert-comptable présente les comptes à partir des éléments fournis par l'entreprise.",
+     "Elle aboutit à une attestation donnant une assurance modérée sur la cohérence et la vraisemblance des comptes.",
+     "C'est la mission la plus courante de l'expert-comptable auprès des TPE et PME."]},
+   {l:"NP 2400 — Mission d'examen limité", p:[
+     "Définition : une revue fondée surtout sur des entretiens et des procédures analytiques (moins poussée qu'un audit).",
+     "Elle conduit à une conclusion sous forme négative (« nous n'avons pas relevé… ») : assurance modérée.",
+     "Elle répond à un besoin d'assurance supérieur à celui d'une simple présentation."]},
+   {l:"Audit d'états financiers (ISA ; NP 2910 pour les petites entités)", p:[
+     "Définition : un audit contractuel offrant le niveau le plus élevé, soit une assurance raisonnable.",
+     "Il s'appuie sur les normes internationales d'audit (ISA) et débouche sur une opinion exprimée positivement.",
+     "La NP 2910 adapte ces diligences aux petites entités."]},
+   {l:"Missions sans assurance et attestations", p:[
+     "NP 4410 — Compilation : l'expert-comptable établit ou met en forme les comptes, sans exprimer d'assurance.",
+     "NP 4400 — Procédures convenues : il réalise des travaux définis à l'avance et rend de simples constatations.",
+     "NP 3100 — Attestations particulières : une assurance portant sur une information précise, autre que des comptes complets."]}
+  ]},
+
+ {cat:"ec", title:"Le cadre de référence des missions", sub:"La cartographie des missions de l'EC, avec le numéro de chaque norme",
+  center:"Le référentiel normatif de l'OEC classe les missions selon le niveau d'assurance",
+  branches:[
+   {l:"Les textes-socles du référentiel", p:[
+     "<b>Cadre de référence</b> : il fixe les principes communs à toutes les missions (en vigueur depuis le 14 décembre 2020, aligné sur les normes de l'IAASB/IFAC).",
+     "<b>Glossaire</b> : il définit le vocabulaire normalisé employé dans toutes les normes.",
+     "<b>NPMQ</b> : la norme de maîtrise de la qualité, qui organise la qualité au sein du cabinet.",
+     "<b>Norme anti-blanchiment</b> : elle décline les obligations LCB-FT (vigilance, déclaration de soupçon)."]},
+   {l:"Missions d'assurance sur les comptes", p:[
+     "<b>NP 2300 — Présentation des comptes</b> : assurance modérée sur la cohérence et la vraisemblance.",
+     "<b>NP 2400 — Examen limité</b> : assurance modérée (supérieure à la présentation), conclusion négative.",
+     "<b>Audit d'états financiers (normes ISA)</b> : assurance raisonnable, opinion positive.",
+     "<b>NP 2910 — Audit des petites entités</b> : les diligences d'audit adaptées aux petites structures."]},
+   {l:"Missions d'assurance sur d'autres informations", p:[
+     "<b>NP 3100 — Attestations particulières</b> : assurance sur une information autre que des comptes complets.",
+     "<b>NP 3400 — Examen d'informations financières prévisionnelles</b> : porte sur des données prévisionnelles.",
+     "Le niveau d'assurance dépend de la nature de l'information et des diligences mises en œuvre."]},
+   {l:"Missions sans assurance", p:[
+     "<b>NP 4410 — Compilation</b> : établir ou mettre en forme les comptes, sans exprimer d'assurance.",
+     "<b>NP 4400 — Procédures convenues</b> : rendre de simples constats issus de travaux définis à l'avance.",
+     "S'y ajoutent les missions sans assurance prévues par un texte légal ou réglementaire (ex. comptes de campagne)."]},
+   {l:"La logique à retenir", p:[
+     "Plus le niveau d'assurance visé est élevé, plus les diligences à mettre en œuvre sont étendues.",
+     "Chaque mission correspond à une norme professionnelle (NP) précise, identifiée par son numéro.",
+     "Le cadre de référence chapeaute l'ensemble : il donne les principes, chaque NP détaille une mission."]}
+  ]},
+
+ {cat:"cac", title:"Les normes du commissaire aux comptes (NEP)", sub:"Fiche de définitions : ce que sont les NEP et ce qu'elles couvrent",
+  center:"Normes d'exercice professionnel, homologuées par arrêté du Garde des Sceaux",
+  branches:[
+   {l:"Ce que sont les NEP", p:[
+     "Définition : les NEP encadrent la façon dont le commissaire aux comptes conduit sa mission de contrôle légal.",
+     "Elles sont largement inspirées des normes internationales d'audit (ISA).",
+     "Elles ont une valeur réglementaire, car homologuées par arrêté du ministre de la Justice."]},
+   {l:"Connaître l'entité et planifier", p:[
+     "<b>NEP 200 — Principes applicables à l'audit des comptes mis en œuvre dans le cadre de la certification des comptes</b> : objectif de l'audit, assurance raisonnable, esprit critique.",
+     "<b>NEP 300 — Planification de l'audit</b> : élaboration du plan de mission et du programme de travail.",
+     "<b>NEP 315 — Connaissance de l'entité et de son environnement et évaluation du risque d'anomalies significatives dans les comptes</b>."]},
+   {l:"Identifier et mesurer les risques", p:[
+     "<b>NEP 240 — Prise en considération de la possibilité de fraudes lors de l'audit des comptes</b>.",
+     "<b>NEP 250 — Prise en compte du risque d'anomalies résultant du non-respect de textes légaux et réglementaires</b>.",
+     "<b>NEP 320 — Application de la notion de caractère significatif lors de la planification et de la réalisation d'un audit</b> : les seuils de signification."]},
+   {l:"Réunir les éléments probants", p:[
+     "<b>NEP 330 — Procédures d'audit mises en œuvre par le commissaire aux comptes à l'issue de son évaluation des risques</b>.",
+     "<b>NEP 500 — Caractère probant des éléments collectés</b> : réunir des éléments suffisants et appropriés.",
+     "<b>NEP 570 — Continuité d'exploitation</b> : apprécier la capacité de l'entité à poursuivre son activité."]},
+   {l:"Conclure et rapporter", p:[
+     "<b>NEP 700 — Rapport du commissaire aux comptes sur les comptes annuels et consolidés</b> : formulation de l'opinion.",
+     "<b>NEP 705 — Justification des appréciations</b> : motiver les appréciations portées sur les comptes.",
+     "Le rapport peut conclure à une certification (avec ou sans réserve), à un refus de certifier ou à une impossibilité de certifier."]},
+   {l:"Les petites entreprises", p:[
+     "<b>NEP 910 — Certification des comptes annuels des petites entreprises</b> : des diligences allégées et proportionnées.",
+     "L'objectif d'assurance raisonnable reste identique à celui d'un audit classique.",
+     "Cette norme accompagne le relèvement des seuils issu de la loi PACTE puis du décret de 2024."]}
+  ]},
+
+ {cat:"ec", title:"Les niveaux d'assurance", sub:"Le réflexe à automatiser : à chaque mission, son niveau et sa forme de conclusion",
+  center:"Plus la mission est approfondie, plus l'assurance donnée est élevée",
+  branches:[
+   {l:"① Assurance raisonnable (la plus élevée)", p:[
+     "C'est le niveau de l'audit (contractuel pour l'expert-comptable) et de la certification (pour le CAC).",
+     "L'opinion est exprimée sous forme positive : les comptes sont réguliers, sincères et donnent une image fidèle.",
+     "Élevée, mais jamais absolue : un audit ne garantit pas l'absence totale d'erreur."]},
+   {l:"② Assurance modérée — l'examen limité", p:[
+     "Des diligences plus légères que l'audit (surtout des entretiens et des procédures analytiques).",
+     "La conclusion est formulée de façon négative : « nous n'avons pas relevé d'élément… ».",
+     "Elle porte sur la conformité des comptes au référentiel comptable applicable."]},
+   {l:"③ Assurance modérée — la présentation (NP 2300)", p:[
+     "Son niveau d'assurance est inférieur à celui de l'examen limité.",
+     "Elle porte uniquement sur la cohérence et la vraisemblance des comptes.",
+     "Elle ne se prononce pas sur l'image fidèle, et elle est délivrée au moyen d'une attestation."]},
+   {l:"④ Missions sans aucune assurance", p:[
+     "Compilation : on établit les comptes, sans donner d'opinion ni d'assurance.",
+     "Procédures convenues : on rapporte de simples constats, à charge pour le lecteur d'en tirer ses conclusions.",
+     "Le rapport remis ne contient donc aucune assurance du professionnel."]},
+   {l:"Le mémo qui fait gagner des points", p:[
+     "Conclusion POSITIVE → audit → assurance raisonnable.",
+     "Conclusion NÉGATIVE → examen limité et présentation → assurance modérée.",
+     "Simples CONSTATS → procédures convenues → aucune assurance. Échelle : raisonnable › modérée › sans."]}
+  ]},
+
+ {cat:"commun", title:"Cadre international & éthique", sub:"Les organisations et les normes au-dessus du cadre français",
+  center:"La profession est aussi organisée aux niveaux européen et mondial",
+  branches:[
+   {l:"L'IFAC", p:[
+     "L'IFAC (Fédération internationale des experts-comptables) fédère les organisations professionnelles du monde entier.",
+     "Elle promeut des normes et une éthique communes à l'échelle internationale.",
+     "La France y est représentée à travers ses instances professionnelles."]},
+   {l:"L'IESBA et le code d'éthique", p:[
+     "L'IESBA élabore le code international d'éthique des professionnels comptables, sous l'égide de l'IFAC.",
+     "Ce code inspire largement le Code de déontologie français.",
+     "À ne pas confondre avec l'IASB, qui produit les normes comptables internationales (IFRS)."]},
+   {l:"Les normes internationales", p:[
+     "ISA : les normes internationales d'audit, dont s'inspirent les NEP françaises.",
+     "ISRE 2400 : la norme internationale d'examen limité, transposée en NP 2400.",
+     "IFRS : le référentiel comptable international, utilisé notamment par les groupes cotés."]},
+   {l:"Au niveau européen", p:[
+     "Accountancy Europe représente et coordonne la profession comptable et d'audit en Europe.",
+     "La réforme européenne de l'audit (règlement 537/2014) a renforcé l'indépendance des CAC d'EIP.",
+     "La directive CSRD a créé l'obligation d'auditer les informations de durabilité."]},
+   {l:"Les principes éthiques fondamentaux", p:[
+     "Intégrité, objectivité, compétence et diligence.",
+     "Confidentialité et comportement professionnel.",
+     "Ils forment un socle commun, ensuite décliné dans le code propre à chaque profession."]}
+  ]},
+
+ {cat:"commun", title:"La lutte anti-blanchiment (LCB-FT)", sub:"Un chapitre qui tombe presque à chaque session",
+  center:"Détecter, encadrer et déclarer les opérations suspectes",
+  branches:[
+   {l:"Comprendre le blanchiment (3 phases)", p:[
+     "Placement : les fonds d'origine illicite sont introduits dans le système financier.",
+     "Empilement (ou dispersion) : on multiplie les opérations pour brouiller la traçabilité de l'argent.",
+     "Intégration : les fonds réapparaissent sous l'apparence de revenus légitimes."]},
+   {l:"L'obligation de vigilance", p:[
+     "Identifier et vérifier l'identité du client et de son bénéficiaire effectif (qui détient plus de 25 %).",
+     "Adapter l'intensité des contrôles au risque : vigilance allégée, normale ou renforcée.",
+     "Conserver les documents justificatifs pendant la durée prévue par la loi."]},
+   {l:"Les personnes politiquement exposées (PPE)", p:[
+     "Ce sont des personnes exposées à des risques accrus (corruption…) en raison de leurs fonctions.",
+     "La liste comprend notamment les membres d'une assemblée parlementaire nationale.",
+     "Elle exclut les élus locaux : un maire n'est donc pas une PPE."]},
+   {l:"La déclaration de soupçon", p:[
+     "Dès qu'il a un soupçon, le professionnel adresse une déclaration à TRACFIN.",
+     "Il lui est interdit d'informer le client de cette déclaration (interdiction de divulgation).",
+     "Faite de bonne foi, la déclaration exonère le professionnel de sa responsabilité."]},
+   {l:"À retenir pour l'examen", p:[
+     "La déclaration de soupçon est une dérogation légale au secret professionnel.",
+     "Le manquement aux obligations LCB-FT expose à des sanctions disciplinaires et pénales.",
+     "Ces obligations s'imposent à l'expert-comptable comme au commissaire aux comptes."]}
+  ]},
+
+ {cat:"cac", title:"Le commissaire aux comptes en détail", sub:"Mandat, régime renforcé des EIP et issues possibles de la mission",
+  center:"Les spécificités à bien distinguer de l'expertise comptable",
+  branches:[
+   {l:"Statut et principes propres", p:[
+     "Le mandat de CAC est personnel et dure 6 exercices : il ne se « délègue » pas à un confrère.",
+     "Principe de non-immixtion : le CAC contrôle, mais ne prend aucune décision de gestion.",
+     "Faire obstacle à ses contrôles constitue un délit d'entrave, sanctionné pénalement."]},
+   {l:"Le régime des entités d'intérêt public (EIP)", p:[
+     "Toute EIP doit être dotée d'un comité d'audit, composé de membres non exécutifs.",
+     "Le CAC y est désigné sur recommandation du comité d'audit, à l'issue d'un appel d'offres.",
+     "Rotation : l'associé signataire change tous les 6 ans et le mandat du cabinet est limité à 10 ans."]},
+   {l:"Services et honoraires (EIP)", p:[
+     "Une liste de services est interdite au CAC pour préserver son indépendance (tenue de comptabilité, évaluation, etc.).",
+     "Les autres services autorisés (SACC) sont plafonnés à 70 % de la moyenne des honoraires d'audit des 3 derniers exercices.",
+     "Les honoraires de résultat sont, comme pour l'expert-comptable, prohibés."]},
+   {l:"Les quatre issues possibles", p:[
+     "Certification sans réserve : les comptes sont réguliers, sincères et fidèles.",
+     "Certification avec réserve(s) : une anomalie significative, mais circonscrite.",
+     "Refus de certifier (désaccord profond) ou impossibilité de certifier (on n'a pas pu obtenir les éléments nécessaires)."]},
+   {l:"Les interventions connexes", p:[
+     "La procédure d'alerte, lorsque la continuité d'exploitation est menacée.",
+     "La révélation des faits délictueux au procureur de la République.",
+     "Des missions ponctuelles : commissaire aux apports, à la fusion, à la transformation."]}
+  ]}
+];
+
+/* ===================== LOGIQUE QCM ===================== */
+const PICK = 20;
+const LETTERS = ["A","B","C","D"];
+let quiz=[], idx=0, score=0, answered=false;
+let unseen=[];   // file des indices de questions pas encore tombées dans le cycle en cours
+
+const el = id => document.getElementById(id);
+const shuffle = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[arr[i],arr[j]]=[arr[j],arr[i]];} return arr; };
+
+// Tire n questions sans répétition : on parcourt toute la banque avant qu'une question ne réapparaisse.
+function drawBatch(n){
+  const allIdx = BANK.map((_,i)=>i);
+  if(unseen.length===0) unseen = shuffle(allIdx.slice());
+  const batch=[];
+  while(batch.length<n && batch.length<BANK.length){
+    if(unseen.length===0){
+      // Cycle épuisé en cours de tirage : on recharge en évitant de répéter une question déjà dans ce lot.
+      const rest = shuffle(allIdx.filter(i=>!batch.includes(i)));
+      const recycled = shuffle(batch.slice());   // pourront ressortir, mais pas tout de suite
+      unseen = rest.concat(recycled);
+    }
+    batch.push(unseen.shift());
+  }
+  return batch;
+}
+
+function startQuiz(){
+  const batch = drawBatch(Math.min(PICK, BANK.length));
+  quiz = batch.map(i=>BANK[i]);
+  idx=0; score=0;
+  el('start').style.display='none';
+  el('results').style.display='none';
+  el('quiz').style.display='block';
+  el('scTotal').textContent = quiz.length;
+  el('sc').textContent = 0;
+  renderQuestion();
+  el('quiz').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function correctSet(item){ return Array.isArray(item.a) ? item.a.slice() : [item.a]; }
+
+function renderQuestion(){
+  answered=false;
+  const item = quiz[idx];
+  document.querySelector('.qnum').textContent = `Question ${idx+1} / ${quiz.length}`;
+  el('theme').textContent = item.t;
+  el('qtext').textContent = item.q;
+  el('bar').style.width = `${(idx/quiz.length)*100}%`;
+
+  // ordre d'affichage mélangé, en gardant la trace des bonnes réponses
+  const cset = correctSet(item);
+  item._order = shuffle(item.o.map((txt,i)=>({txt, correct:cset.includes(i)})));
+  item._picks = [];
+
+  const wrap = el('opts'); wrap.innerHTML='';
+  item._order.forEach((opt,i)=>{
+    const b=document.createElement('button');
+    b.className='opt';
+    b.innerHTML=`<span class="box">${LETTERS[i]}</span><span>${opt.txt}</span>`;
+    b.onclick=()=>{
+      if(answered) return;
+      const pos=item._picks.indexOf(i);
+      if(pos>=0){ item._picks.splice(pos,1); b.classList.remove('picked'); }
+      else { item._picks.push(i); b.classList.add('picked'); }
+    };
+    wrap.appendChild(b);
+  });
+
+  el('explain').className='explain';
+  el('validateRow').className='nav-next show';
+  el('navNext').className='nav-next';
+  el('next').textContent = idx===quiz.length-1 ? 'Voir mes résultats →' : 'Question suivante →';
+}
+
+function validateQuestion(){
+  if(answered) return;
+  const item = quiz[idx];
+  if(item._picks.length===0) return; // rien coché : on n'évalue pas
+  answered=true;
+
+  const all=[...document.querySelectorAll('#opts .opt')];
+  let allGood=true;
+  all.forEach((o,i)=>{
+    o.classList.add('locked');
+    const isCorrect=item._order[i].correct;
+    const isPicked=item._picks.includes(i);
+    if(isCorrect && isPicked) o.classList.add('correct');           // bien cochée
+    else if(isCorrect && !isPicked){ o.classList.add('missed'); allGood=false; } // bonne mais oubliée
+    else if(!isCorrect && isPicked){ o.classList.add('wrong'); allGood=false; }   // cochée à tort
+    else o.classList.add('dim');
+  });
+
+  if(allGood){ score++; el('sc').textContent=score; }
+
+  const nbCorrect=item._order.filter(o=>o.correct).length;
+  const ex=el('explain');
+  ex.className='explain show '+(allGood?'ok':'no');
+  el('verdict').textContent = allGood ? '✓ Bonne réponse' : '✗ Réponse incorrecte';
+  el('exp').innerHTML = `<span style="display:block;margin-bottom:6px;font-size:.85rem;color:var(--ink-soft)">Cette question comptait <b>${nbCorrect}</b> bonne(s) réponse(s).</span>` + item.e;
+  el('validateRow').className='nav-next';
+  el('navNext').className='nav-next show';
+}
+
+function nextQuestion(){
+  if(idx < quiz.length-1){ idx++; renderQuestion(); el('quiz').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else showResults();
+}
+
+function showResults(){
+  el('quiz').style.display='none';
+  el('results').style.display='block';
+  const pct = Math.round(score/quiz.length*100);
+  el('finalScore').textContent = `${score}/${quiz.length}`;
+  el('finalPct').textContent = `${pct} %`;
+  const ring=el('ring');
+  const circ=2*Math.PI*72;
+  ring.style.strokeDasharray=circ;
+  ring.style.strokeDashoffset=circ;
+  // color by score
+  ring.setAttribute('stroke', pct>=75 ? 'var(--green)' : pct>=50 ? 'var(--gold)' : 'var(--ox)');
+  requestAnimationFrame(()=>{ ring.style.strokeDashoffset = circ*(1-pct/100); });
+
+  let msg, line;
+  if(pct>=85){ msg="Excellent — niveau examen 🎓"; line="Votre maîtrise est solide. Continuez à varier les tirages pour couvrir tous les thèmes."; }
+  else if(pct>=70){ msg="Très bien"; line="Une bonne base. Reprenez les cartes mentales sur les points manqués pour viser le sans-faute."; }
+  else if(pct>=50){ msg="En bonne voie"; line="Le socle est là. Travaillez les cartes mentales puis refaites un tirage."; }
+  else { msg="À consolider"; line="Pas de découragement : enchaînez avec les cartes mentales, c'est le moment d'ancrer les fondamentaux."; }
+  el('res-msg').textContent=msg;
+  el('res-line').textContent=line;
+  el('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ===================== RENDU CARTES MENTALES ===================== */
+function buildMaps(cat){
+  cat = cat || 'commun';
+  const host=el('maps');
+  host.innerHTML='';
+  const list = MAPS.filter(m=>m.cat===cat);
+  list.forEach((m,i)=>{
+    const branches = m.branches.map(b=>`
+      <div class="branch">
+        <div class="b-head"><span class="dot"></span>${b.l}<span class="reveal">révéler</span></div>
+        <ul>${b.p.map(p=>`<li>${p}</li>`).join('')}</ul>
+      </div>`).join('');
+
+    const wrap=document.createElement('div');
+    wrap.className='map';
+    wrap.innerHTML=`
+      <details ${i===0?'open':''}>
+        <summary>
+          <span class="idx">${i+1}</span>
+          <span>
+            <div class="m-title">${m.title}</div>
+            <div class="m-sub">${m.sub}</div>
+          </span>
+          <span class="caret">+</span>
+        </summary>
+        <div class="map-body">
+          <div class="map-tools"><button class="mini">Tout révéler</button></div>
+          <div class="center-node">${m.center}</div>
+          <div class="stem"></div>
+          <div class="branches">${branches}</div>
+        </div>
+      </details>`;
+    host.appendChild(wrap);
+
+    wrap.querySelectorAll('.branch .b-head').forEach(h=>{
+      h.onclick=()=>h.parentElement.classList.toggle('open');
+    });
+    const tool=wrap.querySelector('.mini');
+    tool.onclick=()=>{
+      const branchesEls=[...wrap.querySelectorAll('.branch')];
+      const allOpen=branchesEls.every(b=>b.classList.contains('open'));
+      branchesEls.forEach(b=>b.classList.toggle('open', !allOpen));
+      tool.textContent = allOpen ? 'Tout révéler' : 'Tout masquer';
+    };
+  });
+}
+
+function setMapCat(cat){
+  document.querySelectorAll('.subtab').forEach(t=>t.classList.toggle('active', t.dataset.cat===cat));
+  buildMaps(cat);
+}
+
+/* ===================== LOGIQUE QRC ===================== */
+let qrcList=[], qrcIdx=0, qrcScore=0, qrcUnseen=[], qrcGraded=false;
+let qrcT0=0, qrcTick=null;
+
+function qrcDraw(n){
+  const allIdx = QRC.map((_,i)=>i);
+  if(qrcUnseen.length===0) qrcUnseen = shuffle(allIdx.slice());
+  const batch=[];
+  while(batch.length<n && batch.length<QRC.length){
+    if(qrcUnseen.length===0){
+      const rest = shuffle(allIdx.filter(i=>!batch.includes(i)));
+      qrcUnseen = rest.concat(shuffle(batch.slice()));
+    }
+    batch.push(qrcUnseen.shift());
+  }
+  return batch;
+}
+
+function fmt(s){ const m=String(Math.floor(s/60)).padStart(2,'0'); const x=String(s%60).padStart(2,'0'); return `${m}:${x}`; }
+function keysHTML(keys){
+  if(!keys||!keys.length) return '';
+  return '<div class="kp-title">Points-clés attendus</div><ul class="kp-list">'+
+    keys.map(k=>`<li>${k}</li>`).join('')+'</ul>';
+}
+
+function startQRC(){
+  qrcList = qrcDraw(Math.min(10, QRC.length)).map(i=>QRC[i]);
+  qrcIdx=0; qrcScore=0;
+  el('qrcStart').style.display='none';
+  el('qrcResults').style.display='none';
+  el('qrcCard').style.display='block';
+  el('qrcTotal').textContent = qrcList.length;
+  el('qrcSc').textContent = 0;
+  renderQRC();
+  el('qrcCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderQRC(){
+  qrcGraded=false;
+  const item=qrcList[qrcIdx];
+  document.querySelector('.qnum2').textContent = `Question ${qrcIdx+1} / ${qrcList.length}`;
+  el('qrcTheme').textContent = item.t;
+  el('qrcText').textContent = item.q;
+  el('qrcBar').style.width = `${(qrcIdx/qrcList.length)*100}%`;
+  el('qrcInput').value='';
+  el('qrcAnswer').textContent = item.a;
+  el('qrcKeys').innerHTML = keysHTML(item.k);
+  el('qrcModel').className='model';
+  el('qrcRevealRow').style.display='block';
+  el('qrcNext').textContent = qrcIdx===qrcList.length-1 ? 'Voir le bilan →' : 'Question suivante →';
+  document.querySelectorAll('.se').forEach(b=>b.classList.remove('sel'));
+  el('qrcInput').focus();
+}
+
+function revealQRC(){
+  el('qrcModel').className='model show';
+  el('qrcRevealRow').style.display='none';
+  el('qrcModel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function gradeQRC(v, btn){
+  document.querySelectorAll('.se').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  qrcList[qrcIdx]._g = v;   // une seule note par question, modifiable
+}
+
+function recomputeQRC(){
+  qrcScore = qrcList.reduce((s,q)=> s + (typeof q._g==='number'? q._g : 0), 0);
+  const disp = Math.round(qrcScore*10)/10;
+  el('qrcSc').textContent = Number.isInteger(disp) ? disp : disp.toFixed(1);
+}
+
+function nextQRC(){
+  if(qrcList[qrcIdx]._g===undefined){ qrcList[qrcIdx]._g = 0; } // non noté = raté
+  recomputeQRC();
+  if(qrcIdx < qrcList.length-1){ qrcIdx++; renderQRC(); el('qrcCard').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else showQRCResults();
+}
+
+function showQRCResults(){
+  el('qrcCard').style.display='none';
+  el('qrcResults').style.display='block';
+  const pct = Math.round(qrcScore/qrcList.length*100);
+  el('qrcFinal').textContent = `${Math.round(qrcScore*10)/10}/${qrcList.length}`;
+  el('qrcPct').textContent = `${pct} %`;
+  const ring=el('qrcRing'), circ=2*Math.PI*72;
+  ring.style.strokeDasharray=circ; ring.style.strokeDashoffset=circ;
+  ring.setAttribute('stroke', pct>=75?'var(--green)':pct>=50?'var(--gold)':'var(--ox)');
+  requestAnimationFrame(()=>{ ring.style.strokeDashoffset = circ*(1-pct/100); });
+  let msg,line;
+  if(pct>=85){ msg="Maîtrise solide 🎓"; line="Vous restituez vite et juste. Variez les séries pour couvrir toute la banque."; }
+  else if(pct>=70){ msg="Très bien"; line="Bonne base. Reprenez les fiches sur les questions notées « à revoir »."; }
+  else if(pct>=50){ msg="En progression"; line="Le socle est là. Retravaillez les cartes mentales puis refaites une série."; }
+  else { msg="À consolider"; line="Enchaînez avec les cartes mentales : la restitution écrite viendra avec la répétition."; }
+  el('qrc-res-msg').textContent=msg;
+  el('qrc-res-line').textContent=line;
+  // reset grades for next round
+  qrcList.forEach(q=>delete q._g);
+  el('qrcResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ===================== LOGIQUE MODE EXAMEN ===================== */
+const EXAM_N = 20;
+let examFmt='random', examActiveFmt='qcm';
+let examItems=[], examPos=0, examT=null, examLeft=0;
+
+// fixe le format choisi sur l'écran d'accueil
+document.querySelectorAll('.ec-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('.ec-btn').forEach(x=>x.classList.remove('sel'));
+  b.classList.add('sel');
+  examFmt=b.dataset.fmt;
+  const hints={random:"Le format (QCM ou QRC) sera tiré au sort au lancement, comme à l'examen.",qcm:"Vous traiterez 20 questions à choix multiples.",qrc:"Vous traiterez 20 questions à réponses courtes (auto-évaluation à la fin)."};
+  el('examHint').textContent=hints[examFmt];
+});
+
+function buildExamSet(fmt){
+  // tirage sans répétition en réutilisant les files existantes
+  if(fmt==='qcm'){
+    const batch=drawBatch(Math.min(EXAM_N,BANK.length));
+    return batch.map(i=>{
+      const it=BANK[i];
+      const cset=Array.isArray(it.a)?it.a:[it.a];
+      const order=shuffle(it.o.map((txt,k)=>({txt,correct:cset.includes(k)})));
+      return {type:'qcm', t:it.t, q:it.q, order, e:it.e, picks:[]};
+    });
+  } else {
+    const batch=qrcDraw(Math.min(EXAM_N,QRC.length));
+    return batch.map(i=>{ const it=QRC[i]; return {type:'qrc', t:it.t, q:it.q, a:it.a, k:it.k, resp:'', grade:undefined}; });
+  }
+}
+
+function startExam(){
+  examActiveFmt = (examFmt==='random') ? (Math.random()<0.5?'qcm':'qrc') : examFmt;
+  examItems = buildExamSet(examActiveFmt);
+  examPos=0;
+  el('examStart').style.display='none';
+  el('examResults').style.display='none';
+  el('examCard').style.display='block';
+  examLeft = 60*60;
+  updateExamTimer();
+  clearInterval(examT);
+  examT=setInterval(()=>{ examLeft--; updateExamTimer(); if(examLeft<=0){ clearInterval(examT); finishExam(true); } }, 1000);
+  renderExam();
+  el('examCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function updateExamTimer(){
+  const t=el('examTimer');
+  const m=String(Math.floor(examLeft/60)).padStart(2,'0'), s=String(examLeft%60).padStart(2,'0');
+  t.textContent=`${m}:${s}`;
+  t.className='exam-timer'+(examLeft<=60?' danger':examLeft<=300?' warn':'');
+}
+
+function countAnswered(){
+  return examItems.filter(it=> it.type==='qcm' ? it.picks.length>0 : (it.resp&&it.resp.trim().length>0)).length;
+}
+
+function renderExam(){
+  const it=examItems[examPos];
+  document.querySelector('.qnum3').textContent=`Question ${examPos+1} / ${examItems.length}`;
+  el('examTheme').textContent=it.t;
+  el('examText').textContent=it.q;
+  el('examBar').style.width=`${(examPos/examItems.length)*100}%`;
+  el('examAnswered').textContent=`${countAnswered()} / ${examItems.length} traitée(s)`;
+  el('examPrev').style.visibility = examPos===0 ? 'hidden':'visible';
+  el('examNextBtn').textContent = examPos===examItems.length-1 ? 'Dernière' : 'Suivante →';
+  el('examNextBtn').style.visibility = examPos===examItems.length-1 ? 'hidden':'visible';
+
+  if(it.type==='qcm'){
+    el('examInput').style.display='none';
+    const wrap=el('examOpts'); wrap.style.display='flex'; wrap.innerHTML='';
+    it.order.forEach((opt,k)=>{
+      const b=document.createElement('button');
+      b.className='opt'+(it.picks.includes(k)?' picked':'');
+      b.innerHTML=`<span class="box">${LETTERS[k]}</span><span>${opt.txt}</span>`;
+      b.onclick=()=>{
+        const pos=it.picks.indexOf(k);
+        if(pos>=0) it.picks.splice(pos,1); else it.picks.push(k);
+        b.classList.toggle('picked');
+        el('examAnswered').textContent=`${countAnswered()} / ${examItems.length} traitée(s)`;
+      };
+      wrap.appendChild(b);
+    });
+  } else {
+    el('examOpts').style.display='none'; el('examOpts').innerHTML='';
+    const ta=el('examInput'); ta.style.display='block';
+    ta.value=it.resp||'';
+    ta.oninput=()=>{ it.resp=ta.value; el('examAnswered').textContent=`${countAnswered()} / ${examItems.length} traitée(s)`; };
+    ta.focus();
+  }
+}
+
+el('examPrev') && (el('examPrev').onclick=()=>{ if(examPos>0){examPos--;renderExam();el('examCard').scrollIntoView({behavior:'smooth',block:'start'});} });
+function examNext(){ if(examPos<examItems.length-1){examPos++;renderExam();el('examCard').scrollIntoView({behavior:'smooth',block:'start'});} }
+
+function finishExam(timeUp){
+  clearInterval(examT);
+  el('examCard').style.display='none';
+  el('examResults').style.display='block';
+
+  let score=0;
+  const review=el('examReview'); review.innerHTML='';
+  const heading=document.createElement('div');
+  heading.style.cssText='font-family:Fraunces,serif;font-weight:600;font-size:1.15rem;margin:6px 0 14px';
+  heading.textContent='Corrigé détaillé';
+  review.appendChild(heading);
+
+  examItems.forEach((it,i)=>{
+    const item=document.createElement('div'); item.className='rev-item';
+    if(it.type==='qcm'){
+      const picks=it.picks||[];
+      const correctIdx=it.order.map((o,k)=>o.correct?k:-1).filter(k=>k>=0);
+      const goodPicked=picks.filter(k=>it.order[k].correct).length;
+      const wrongPicked=picks.filter(k=>!it.order[k].correct).length;
+      const fully = picks.length>0 && wrongPicked===0 && goodPicked===correctIdx.length;
+      const partial = !fully && goodPicked>0 && wrongPicked===0;
+      if(fully) score++;
+      const badge = picks.length===0 ? '<span class="rev-badge na">Non traitée</span>'
+                   : fully ? '<span class="rev-badge ok">Juste</span>'
+                   : partial ? '<span class="rev-badge mid">Incomplète</span>'
+                   : '<span class="rev-badge no">Faux</span>';
+      // liste des options annotées
+      const optsHTML = it.order.map((o,k)=>{
+        const picked=picks.includes(k);
+        let tag='';
+        if(o.correct && picked) tag='<span class="ro ok">✓ vous l\'avez cochée</span>';
+        else if(o.correct && !picked) tag='<span class="ro miss">✓ bonne réponse, oubliée</span>';
+        else if(!o.correct && picked) tag='<span class="ro no">✗ cochée à tort</span>';
+        const cls = o.correct ? 'rev-opt good' : (picked ? 'rev-opt bad' : 'rev-opt');
+        return `<div class="${cls}"><span class="ro-lett">${LETTERS[k]}</span><span>${o.txt}</span>${tag}</div>`;
+      }).join('');
+      item.innerHTML=`
+        <div class="rev-theme">${it.t}</div>
+        <div class="rev-head">${badge}<div class="rev-q">${i+1}. ${it.q}</div></div>
+        <div class="rev-body">
+          <div class="rev-opts">${optsHTML}</div>
+          <div class="rev-model">${it.e}</div>
+        </div>`;
+    } else {
+      // QRC : auto-évaluation dans le corrigé
+      item.innerHTML=`
+        <div class="rev-theme">${it.t}</div>
+        <div class="rev-head"><span class="rev-badge na" id="b${i}">À noter</span><div class="rev-q">${i+1}. ${it.q}</div></div>
+        <div class="rev-body">
+          <div><span class="lbl">Votre réponse :</span></div>
+          <div class="your" style="white-space:pre-wrap;margin:3px 0 6px">${it.resp&&it.resp.trim()?it.resp.replace(/</g,'&lt;'):'<em style="color:var(--ink-soft)">(vide)</em>'}</div>
+          <div class="rev-model"><span class="lbl">Corrigé : </span>${it.a}</div>
+          ${keysHTML(it.k)}
+          <div class="rev-se">
+            <span class="se-q">Auto-évaluation :</span>
+            <button class="se ok" data-i="${i}" data-v="1">✓ Maîtrisée</button>
+            <button class="se mid" data-i="${i}" data-v="0.5">~ À revoir</button>
+            <button class="se no" data-i="${i}" data-v="0">✗ Ratée</button>
+          </div>
+        </div>`;
+    }
+    review.appendChild(item);
+  });
+
+  if(examActiveFmt==='qcm'){
+    finalizeExamScore(score);
+  } else {
+    // QRC: brancher les boutons d'auto-éval, score mis à jour dynamiquement
+    review.querySelectorAll('.se').forEach(btn=>{
+      btn.onclick=()=>{
+        const i=+btn.dataset.i, v=parseFloat(btn.dataset.v);
+        examItems[i].grade=v;
+        const grp=btn.parentElement.querySelectorAll('.se'); grp.forEach(x=>x.classList.remove('sel')); btn.classList.add('sel');
+        const badge=el('b'+i); badge.className='rev-badge '+(v===1?'ok':v===0?'no':'na'); badge.textContent=v===1?'Maîtrisée':v===0?'Ratée':'À revoir';
+        const sc=examItems.reduce((s,q)=>s+(typeof q.grade==='number'?q.grade:0),0);
+        finalizeExamScore(sc,true);
+      };
+    });
+    finalizeExamScore(0,true);
+  }
+  el('examResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function finalizeExamScore(score,isQrc){
+  const total=examItems.length;
+  const pct=Math.round(score/total*100);
+  const disp=Math.round(score*10)/10;
+  el('examFinal').textContent=`${Number.isInteger(disp)?disp:disp.toFixed(1)}/${total}`;
+  el('examPct').textContent=`${pct} %`;
+  const ring=el('examRing'),circ=2*Math.PI*72;
+  // note sur 20 (l'examen est noté sur 20 ; ici total=20)
+  const note=score; // déjà sur 20
+  ring.style.strokeDasharray=circ;
+  ring.setAttribute('stroke', note<5?'var(--ox)':pct>=65?'var(--green)':'var(--gold)');
+  requestAnimationFrame(()=>{ ring.style.strokeDashoffset=circ*(1-pct/100); });
+  let msg,line;
+  if(note<5){ msg="Sous la barre éliminatoire"; line=`${disp}/20 : en dessous de 5/20, la note serait éliminatoire à l'examen. ${isQrc?'Notez-vous avec exigence, puis retravaillez les fiches.':'Reprenez les cartes mentales sur les thèmes manqués.'}`; }
+  else if(pct>=75){ msg="Très bon niveau 🎓"; line="Vous êtes largement au-dessus de la moyenne d'admission. Continuez à varier QCM et QRC."; }
+  else if(pct>=50){ msg="Au-dessus de la moyenne"; line="Bonne copie. Visez la régularité sur les deux formats pour sécuriser l'épreuve."; }
+  else { msg="À consolider"; line="Le socle est là mais fragile. Enchaînez cartes mentales puis entraînement QRC."; }
+  el('exam-res-msg').textContent=msg;
+  el('exam-res-line').textContent=line;
+}
+
+/* ===================== ONGLETS & ÉVÉNEMENTS ===================== */
+function setPanel(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.panel===name));
+  el('panel-qcm').classList.toggle('active', name==='qcm');
+  el('panel-qrc').classList.toggle('active', name==='qrc');
+  el('panel-exam').classList.toggle('active', name==='exam');
+  el('panel-mm').classList.toggle('active', name==='mm');
+}
+document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>setPanel(t.dataset.panel));
+el('begin').onclick=startQuiz;
+el('again').onclick=startQuiz;
+el('validate').onclick=validateQuestion;
+el('next').onclick=nextQuestion;
+el('toMaps').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
+
+el('qrcBegin').onclick=startQRC;
+el('qrcAgain').onclick=startQRC;
+el('qrcReveal').onclick=revealQRC;
+el('qrcNext').onclick=nextQRC;
+el('qrcToMaps').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
+document.querySelectorAll('#qrcModel .se').forEach(b=> b.onclick=()=>{ gradeQRC(parseFloat(b.dataset.v), b); recomputeQRC(); });
+
+el('examBegin').onclick=startExam;
+el('examAgain').onclick=()=>{ el('examResults').style.display='none'; el('examStart').style.display='block'; el('examStart').scrollIntoView({behavior:'smooth',block:'start'}); };
+el('examNextBtn').onclick=examNext;
+el('examFinish').onclick=()=>finishExam(false);
+el('examToCards').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
+
+document.querySelectorAll('.subtab').forEach(t=> t.onclick=()=>setMapCat(t.dataset.cat));
+buildMaps('commun');
+</script>
+</body>
+</html>
