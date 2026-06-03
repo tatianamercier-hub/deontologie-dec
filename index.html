@@ -226,6 +226,9 @@
   .ec-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.92rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:10px 20px;transition:.16s}
   .ec-btn:hover{border-color:var(--ink)}
   .ec-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .cat-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:9px 16px;transition:.16s}
+  .cat-btn:hover{border-color:var(--ink)}
+  .cat-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .ec-hint{display:block;margin-top:11px;font-size:.8rem;color:var(--ink-soft);min-height:1.1em}
   .exam-timer{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--ink);font-variant-numeric:tabular-nums;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:3px 11px}
   .exam-timer.warn{color:var(--gold);border-color:var(--gold)}
@@ -430,6 +433,15 @@
       <div class="seal">§</div>
       <h2>Prêt à réviser ?</h2>
       <p>Chaque session sélectionne 20 questions au hasard parmi une banque couvrant tous les thèmes du programme. Comme à l'examen, une question peut comporter <b>une ou plusieurs bonnes réponses</b> : cochez les cases puis validez.</p>
+      <div class="exam-choice">
+        <span class="ec-label">Sur quel champ veux-tu t'entraîner ?</span>
+        <div class="ec-btns">
+          <button class="cat-btn sel" data-cat="all">Tout</button>
+          <button class="cat-btn" data-cat="ec">Expert-comptable</button>
+          <button class="cat-btn" data-cat="cac">Commissaire aux comptes</button>
+        </div>
+        <span class="ec-hint" id="qcmCatHint">Toutes les questions (déontologie commune incluse).</span>
+      </div>
       <button class="btn" id="begin">Commencer le QCM</button>
     </div>
 
@@ -494,6 +506,15 @@
         <span class="chip">Corrigé <b>après chaque</b> réponse</span>
       </div>
       <div class="docnote-1">📝 Astuce : répondez d'abord de mémoire, de façon précise et synthétique, avant d'afficher le corrigé. Pour vous chronométrer en conditions réelles, utilisez le <b>Mode examen</b>.</div>
+      <div class="exam-choice">
+        <span class="ec-label">Sur quel champ veux-tu t'entraîner ?</span>
+        <div class="ec-btns">
+          <button class="cat-btn sel" data-cat="all">Tout</button>
+          <button class="cat-btn" data-cat="ec">Expert-comptable</button>
+          <button class="cat-btn" data-cat="cac">Commissaire aux comptes</button>
+        </div>
+        <span class="ec-hint" id="qrcCatHint">Toutes les questions (déontologie commune incluse).</span>
+      </div>
       <button class="btn alt" id="qrcBegin">Commencer l'entraînement</button>
     </div>
 
@@ -1783,6 +1804,23 @@ let unseen=[];   // file des indices de questions pas encore tombées dans le cy
 const el = id => document.getElementById(id);
 const shuffle = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[arr[i],arr[j]]=[arr[j],arr[i]];} return arr; };
 
+/* ---- Filtre par champ : Expert-comptable / Commissaire aux comptes / Tout ---- */
+let qcmCat='all', qrcCat='all', unseenCat={};
+const normTh = t => String(t).normalize('NFC').replace(/’/g,"'");
+const CAT_EC = new Set(["Accès à la profession","Activités accessoires","Communication / publicité","Communication","Conditions d'exercice","Confraternité","Devoir de conseil","Démarchage","Discipline","Exercice de la profession","Fin de mission","Formation continue","Honoraires","Inscription au tableau","Le DEC","Le stage","Le cadre de référence des missions","Lettre de mission","Maniement de fonds","Missions de l'EC","Missions gratuites","Missions sans assurance","Niveaux d'assurance","Obligations de l'EC","Organisation de la mission","Responsabilité","Sanctions disciplinaires","Structures d'exercice","Tableau de l'Ordre","Incompatibilités"].map(normTh));
+const CAT_CAC = new Set(["Cessation des fonctions du CAC","Co-commissariat","Comité d'audit","Contrôle qualité","Délit d'entrave","Démission du CAC","Désignation du CAC (EIP)","Durabilité (CSRD)","Entités d'intérêt public","Gouvernance EIP","Honoraires CAC (EIP)","Honoraires du CAC","Honoraires du CAC (EIP)","Incompatibilité du CAC","Incompatibilités du CAC","Indépendance du CAC","Indépendance du CAC (EIP)","Interventions du CAC","Mandat du CAC","Mission du CAC","Nomination du CAC","Non-immixtion","Normes du CAC","Obligations du CAC","Opinion du CAC","Régulation (H2A)","Rotation (EIP)","Services interdits (EIP)","Seuils CAC","Seuils de nomination","Vérifications du CAC","Confraternité (CAC)"].map(normTh));
+function catOf(t){ t=normTh(t); return CAT_EC.has(t) ? 'ec' : (CAT_CAC.has(t) ? 'cac' : 'commun'); }
+function poolIndices(arr,cat){ const all=arr.map((_,i)=>i); if(cat==='all') return all; return all.filter(i=>{ const c=catOf(arr[i].t); return c===cat || c==='commun'; }); }
+function drawFrom(arr,n,key,pool){
+  if(!unseenCat[key] || unseenCat[key].length===0) unseenCat[key]=shuffle(pool.slice());
+  const batch=[];
+  while(batch.length<n && batch.length<pool.length){
+    if(unseenCat[key].length===0){ const rest=shuffle(pool.filter(i=>!batch.includes(i))); unseenCat[key]=rest.concat(shuffle(batch.slice())); }
+    batch.push(unseenCat[key].shift());
+  }
+  return batch;
+}
+
 // Tire n questions sans répétition : on parcourt toute la banque avant qu'une question ne réapparaisse.
 function drawBatch(n){
   const allIdx = BANK.map((_,i)=>i);
@@ -1801,7 +1839,8 @@ function drawBatch(n){
 }
 
 function startQuiz(){
-  const batch = drawBatch(Math.min(PICK, BANK.length));
+  const pool = poolIndices(BANK, qcmCat);
+  const batch = drawFrom(BANK, Math.min(PICK, pool.length), 'qcm:'+qcmCat, pool);
   quiz = batch.map(i=>BANK[i]);
   idx=0; score=0;
   el('start').style.display='none';
@@ -2312,7 +2351,8 @@ function keysHTML(keys){
 }
 
 function startQRC(){
-  qrcList = qrcDraw(Math.min(10, QRC.length)).map(i=>QRC[i]);
+  const pool = poolIndices(QRC, qrcCat);
+  qrcList = drawFrom(QRC, Math.min(10, pool.length), 'qrc:'+qrcCat, pool).map(i=>QRC[i]);
   qrcIdx=0; qrcScore=0;
   el('qrcStart').style.display='none';
   el('qrcResults').style.display='none';
@@ -2708,6 +2748,15 @@ function setPanel(name){
 document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>setPanel(t.dataset.panel));
 el('begin').onclick=startQuiz;
 el('again').onclick=startQuiz;
+const _catHints={all:"Toutes les questions (déontologie commune incluse).",ec:"Uniquement Expert-comptable (+ déontologie commune).",cac:"Uniquement Commissaire aux comptes (+ déontologie commune)."};
+document.querySelectorAll('#start .cat-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#start .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  qcmCat=b.dataset.cat; el('qcmCatHint').textContent=_catHints[qcmCat];
+});
+document.querySelectorAll('#qrcStart .cat-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#qrcStart .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  qrcCat=b.dataset.cat; el('qrcCatHint').textContent=_catHints[qrcCat];
+});
 el('validate').onclick=validateQuestion;
 el('next').onclick=nextQuestion;
 el('toMaps').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
