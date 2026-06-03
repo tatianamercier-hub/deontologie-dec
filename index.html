@@ -336,6 +336,8 @@
   .fbox-miss .fbox-lbl{color:var(--green)}
   .fbox-reg{background:var(--paper-2)}
   .fbox-reg .fbox-lbl{color:var(--gold)}
+  .fbox-role{background:rgba(124,43,43,.07)}
+  .fbox-role .fbox-lbl{color:var(--ox)}
   .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fiche-list{list-style:none;display:flex;flex-direction:column;gap:8px}
   .fiche-list li{position:relative;padding-left:22px;font-size:.95rem;color:var(--ink);line-height:1.5}
@@ -2017,13 +2019,18 @@ const FICHES = [
    "Organisé à deux niveaux : le <b>Conseil national (CNOEC)</b> et les <b>conseils régionaux (CROEC)</b>.",
    "Le CNOEC est <b>composé de 40 membres élus au suffrage universel direct</b>, auxquels s'ajoutent les <b>présidents des conseils régionaux</b> de l'ordre.",
    "Mandat des membres : <b>4 ans, renouvelable une fois</b>.",
-   "Le <b>Conseil national (CNOEC)</b> assure la <b>représentation</b>, la <b>promotion</b>, la <b>défense</b> et le <b>développement</b> de la profession.",
    "<b>Nul ne peut exercer ni porter le titre</b> d'expert-comptable sans être inscrit au tableau de l'Ordre."],
   missions:[
    "Défendre l'<b>honneur</b> et l'<b>indépendance</b> de la profession.",
    "<b>Encadrer</b> les professionnels et <b>veiller au respect de la déontologie</b>.",
    "<b>Établir des normes</b> et <b>publier des recommandations</b>.",
    "<b>Élaborer et diffuser la doctrine comptable</b>."],
+  roleCn:{lbl:"Le rôle du Conseil national (CNOEC)",
+   items:[
+    "Assurer la <b>représentation</b> de la profession (au niveau national et auprès des pouvoirs publics).",
+    "Assurer la <b>promotion</b> de la profession.",
+    "Assurer la <b>défense</b> des intérêts de la profession.",
+    "Assurer le <b>développement</b> de la profession."]},
   regions:{lbl:"Les conseils régionaux de l'Ordre (CROEC)",
    intro:"Dans chaque circonscription : <b>16 conseils régionaux</b> et <b>2 comités départementaux</b> (la <b>Guyane</b> et <b>Mayotte</b>).",
    items:[
@@ -2204,6 +2211,10 @@ function buildFiches(cat){
     }
     if(f.missions && f.missions.length){
       html += `<div class="fbox fbox-miss"><div class="fbox-lbl">Les missions de l'Ordre</div><ul class="fiche-list">${f.missions.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+    }
+    if(f.roleCn){
+      const ci = f.roleCn.intro ? `<p class="fbox-intro">${f.roleCn.intro}</p>` : '';
+      html += `<div class="fbox fbox-role"><div class="fbox-lbl">${f.roleCn.lbl}</div>${ci}<ul class="fiche-list">${(f.roleCn.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.regions){
       const ri = f.regions.intro ? `<p class="fbox-intro">${f.regions.intro}</p>` : '';
