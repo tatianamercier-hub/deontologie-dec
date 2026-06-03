@@ -670,8 +670,8 @@ const BANK = [
    e:"L'Ordre des experts-comptables relève du <b>ministre chargé de l'Économie</b>. À ne pas confondre avec le commissariat aux comptes, qui dépend du ministère de la Justice."},
 
   {t:"Organisation de la profession", q:"Quelle est l'instance nationale représentative des experts-comptables ?",
-   o:["La CNCC","Le Conseil supérieur de l'ordre des experts-comptables (CSOEC)","La H2A","Le H3C"], a:1,
-   e:"Le <b>CSOEC</b> représente la profession au niveau national. La CNCC est l'équivalent pour les commissaires aux comptes."},
+   o:["La CNCC","Le Conseil national de l'ordre des experts-comptables (CNOEC)","La H2A","Le H3C"], a:1,
+   e:"Le <b>CNOEC</b> représente la profession au niveau national. La CNCC est l'équivalent pour les commissaires aux comptes."},
 
   {t:"Organisation de la profession", q:"Le commissariat aux comptes est placé sous la tutelle :",
    o:["Du ministère de l'Économie","Du Garde des Sceaux, ministre de la Justice","De l'AMF","De la Banque de France"], a:1,
@@ -1019,7 +1019,7 @@ const BANK = [
 
   {t:"Régulation (H2A)", q:"Quelles missions relèvent de la Haute Autorité de l'audit (H2A) ? (plusieurs réponses)",
    o:["L'adoption des normes applicables aux CAC","La supervision de l'audit financier","La supervision de la certification de durabilité","La tenue du tableau de l'Ordre des experts-comptables"], a:[0,1,2],
-   e:"La H2A <b>adopte les normes</b>, supervise l'<b>audit financier</b> et la <b>certification de durabilité</b>. Le tableau de l'Ordre des experts-comptables relève du CSOEC et des conseils régionaux, pas de la H2A."},
+   e:"La H2A <b>adopte les normes</b>, supervise l'<b>audit financier</b> et la <b>certification de durabilité</b>. Le tableau de l'Ordre des experts-comptables relève du CNOEC et des conseils régionaux, pas de la H2A."},
 
   {t:"Lettre de mission", q:"Quelles affirmations sur la lettre de mission de l'expert-comptable sont exactes ? (plusieurs réponses)",
    o:["Elle est obligatoire","Elle peut être seulement verbale","Elle est établie avant le début des travaux","Elle définit les obligations réciproques des parties"], a:[0,2,3],
@@ -1271,8 +1271,8 @@ const QRC = [
   k:["Liste de services interdits (règlement 537/2014)","SACC autorisés plafonnés","Plafond : 70 % de la moyenne des honoraires d'audit sur 3 ans"]},
 
  {t:"Normes", q:"Quelle est la différence entre les NEP et les normes professionnelles de l'expert-comptable, notamment quant à leur homologation ?",
-  a:"Les NEP (normes d'exercice professionnel) encadrent la mission du commissaire aux comptes et sont homologuées par arrêté du Garde des Sceaux. Les normes de l'expert-comptable, élaborées par le CSOEC et réunies dans le référentiel normatif de l'Ordre, sont agréées par arrêté du ministre chargé de l'Économie.",
-  k:["NEP = normes du CAC, homologuées par le Garde des Sceaux","Normes EC élaborées par le CSOEC","Normes EC agréées par le ministre de l'Économie"]},
+  a:"Les NEP (normes d'exercice professionnel) encadrent la mission du commissaire aux comptes et sont homologuées par arrêté du Garde des Sceaux. Les normes de l'expert-comptable, élaborées par le CNOEC et réunies dans le référentiel normatif de l'Ordre, sont agréées par arrêté du ministre chargé de l'Économie.",
+  k:["NEP = normes du CAC, homologuées par le Garde des Sceaux","Normes EC élaborées par le CNOEC","Normes EC agréées par le ministre de l'Économie"]},
 
  {t:"Niveaux d'assurance", q:"Distinguez le niveau d'assurance et la forme de la conclusion entre un audit et un examen limité.",
   a:"L'audit procure une assurance raisonnable (élevée) et débouche sur une opinion exprimée sous forme positive. L'examen limité procure une assurance modérée, avec une conclusion exprimée sous forme négative (« nous n'avons pas relevé d'élément… »). L'examen limité repose sur des diligences plus légères que l'audit.",
@@ -1400,7 +1400,7 @@ const MAPS = [
   branches:[
    {l:"L'expert-comptable et son Ordre", p:[
      "L'Ordre des experts-comptables est placé sous la tutelle du ministère de l'Économie.",
-     "Son instance nationale est le Conseil supérieur de l'ordre (CSOEC), relayé par des conseils régionaux.",
+     "Son instance nationale est le Conseil national de l'ordre (CNOEC), relayé par des conseils régionaux.",
      "Nul ne peut exercer ni porter le titre d'expert-comptable sans être inscrit au tableau de l'Ordre.",
      "Sa mission (tenir, présenter, réviser les comptes) est contractuelle : c'est le client qui le choisit."]},
    {l:"Le commissaire aux comptes et ses instances", p:[
@@ -1547,7 +1547,7 @@ const MAPS = [
   ]},
 
  {cat:"ec", title:"Les normes de l'expert-comptable (OEC)", sub:"Fiche de définitions : à quoi sert chaque norme",
-  center:"Un référentiel élaboré par le CSOEC et agréé par arrêté du ministre de l'Économie",
+  center:"Un référentiel élaboré par le CNOEC et agréé par arrêté du ministre de l'Économie",
   branches:[
    {l:"Les normes structurantes (cadre du cabinet)", p:[
      "Cadre de référence : il pose les principes généraux et le vocabulaire communs à toutes les missions.",
@@ -1924,7 +1924,7 @@ const FICHES = [
    "On peut être inscrit comme EC <b>et</b> comme CAC, mais jamais sur la <b>même</b> entité."],
   table:{title:"Expert-comptable vs Commissaire aux comptes", head:["","Expert-comptable","Commissaire aux comptes"], rows:[
    ["Tutelle","Ministère de l'Économie","Ministère de la Justice (Garde des Sceaux)"],
-   ["Instance nationale","CSOEC (+ conseils régionaux)","CNCC (+ compagnies régionales)"],
+   ["Instance nationale","CNOEC (+ conseils régionaux)","CNCC (+ compagnies régionales)"],
    ["Régulateur","l'Ordre","H2A (ex-H3C depuis 2024)"],
    ["Mission","Contractuelle","Légale, d'intérêt général"],
    ["Normes","Référentiel OEC (NP…)","NEP"]]},
@@ -2004,6 +2004,21 @@ const FICHES = [
   piege:"La <b>SPFPL</b> est une simple <b>holding</b> : elle détient des parts mais ne réalise aucune mission comptable."},
 
  /* ---------- EXPERT-COMPTABLE ---------- */
+ {cat:"ec", title:"L'Ordre des experts-comptables", sub:"L'institution qui organise et contrôle la profession",
+  def:"L'Ordre des experts-comptables est l'organisme professionnel, doté de la personnalité morale, qui regroupe tous les experts-comptables, veille au respect de la déontologie et défend les intérêts de la profession.",
+  essentiel:[
+   "Créé par l'<b>ordonnance du 19 septembre 1945</b> (n° 45-2138), qui institue l'Ordre et réglemente le titre et la profession d'expert-comptable.",
+   "Placé sous la <b>tutelle du ministre chargé de l'Économie</b>.",
+   "Organisé à deux niveaux : le <b>Conseil national (CNOEC)</b> et les <b>conseils régionaux (CROEC)</b>.",
+   "Missions : tenir le <b>tableau</b>, faire respecter la <b>déontologie</b>, exercer le pouvoir <b>disciplinaire</b> et défendre la profession.",
+   "<b>Nul ne peut exercer ni porter le titre</b> d'expert-comptable sans être inscrit au tableau de l'Ordre."],
+  chiffres:[{v:"19 septembre 1945",l:"ordonnance créant l'Ordre (n° 45-2138)"},{v:"Min. de l'Économie",l:"tutelle de l'Ordre"}],
+  table:{title:"L'organisation de l'Ordre", head:["Échelon","Rôle"], rows:[
+   ["Conseil national (CNOEC)","Représente la profession au niveau national, élabore les normes et le règlement intérieur, coordonne l'action de l'Ordre."],
+   ["Conseils régionaux (CROEC)","Tiennent le tableau, contrôlent l'exercice et constituent la première instance disciplinaire (chambre régionale)."]]},
+  piege:"Depuis la réforme, on parle du <b>Conseil national (CNOEC)</b> et non plus du « Conseil supérieur ». À ne pas confondre avec la <b>CNCC</b>, instance des commissaires aux comptes.",
+  memo:"Date fondatrice à retenir : <b>19 septembre 1945</b> — l'ordonnance qui crée l'Ordre des experts-comptables."},
+
  {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
   essentiel:[
    "<b>Acceptation</b> : vérifier indépendance, compétence, moyens, intégrité du client, diligences LCB-FT.",
@@ -2043,7 +2058,7 @@ const FICHES = [
  {cat:"ec", title:"Les normes professionnelles de l'EC (NP)", sub:"Le référentiel normatif de l'Ordre : à chaque mission sa norme",
   def:"Les <b>normes professionnelles (NP)</b> définissent comment l'expert-comptable réalise chacune de ses missions. À chaque type de mission correspond une NP numérotée, du plus haut niveau d'assurance (l'audit) au plus bas (la compilation).",
   essentiel:[
-   "Élaborées par le <b>CSOEC</b> et réunies dans le <b>référentiel normatif</b> de l'Ordre.",
+   "Élaborées par le <b>CNOEC</b> et réunies dans le <b>référentiel normatif</b> de l'Ordre.",
    "<b>Agréées par arrêté du ministre chargé de l'Économie</b>.",
    "Textes-socles : <b>cadre de référence, glossaire, NPMQ</b> (maîtrise de la qualité) et <b>norme anti-blanchiment</b>.",
    "Chaque mission correspond à une <b>NP</b> précise, identifiée par son numéro."],
