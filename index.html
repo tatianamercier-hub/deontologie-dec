@@ -334,6 +334,9 @@
   .fbox-ess .fbox-lbl{color:var(--ox)}
   .fbox-miss{background:var(--green-bg)}
   .fbox-miss .fbox-lbl{color:var(--green)}
+  .fbox-reg{background:var(--paper-2)}
+  .fbox-reg .fbox-lbl{color:var(--gold)}
+  .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fiche-list{list-style:none;display:flex;flex-direction:column;gap:8px}
   .fiche-list li{position:relative;padding-left:22px;font-size:.95rem;color:var(--ink);line-height:1.5}
   .fiche-list li::before{content:"";position:absolute;left:5px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
@@ -2021,7 +2024,19 @@ const FICHES = [
    "<b>Encadrer</b> les professionnels et <b>veiller au respect de la déontologie</b>.",
    "<b>Établir des normes</b> et <b>publier des recommandations</b>.",
    "<b>Élaborer et diffuser la doctrine comptable</b>."],
-  chiffres:[{v:"19 septembre 1945",l:"ordonnance créant l'Ordre (n° 45-2138)"},{v:"40 membres élus",l:"au suffrage universel direct (+ présidents des CROEC)"},{v:"Mandat : 4 ans",l:"renouvelable une fois"},{v:"Min. de l'Économie",l:"tutelle de l'Ordre"}],
+  regions:{lbl:"Les conseils régionaux de l'Ordre (CROEC)",
+   intro:"Dans chaque circonscription : <b>16 conseils régionaux</b> et <b>2 comités départementaux</b> (la <b>Guyane</b> et <b>Mayotte</b>).",
+   items:[
+    "Surveiller la profession dans leur circonscription.",
+    "Assurer la défense des intérêts matériels de l'Ordre.",
+    "Représenter l'Ordre dans leur circonscription.",
+    "Prévenir et concilier les conflits.",
+    "Statuer sur les demandes d'inscription au tableau.",
+    "Surveiller et contrôler les stages.",
+    "Fixer et recouvrer le montant des cotisations.",
+    "Saisir le Conseil national de toute requête ou suggestion concernant la profession.",
+    "Saisir la chambre régionale de discipline des fautes professionnelles."]},
+  chiffres:[{v:"19 septembre 1945",l:"ordonnance créant l'Ordre (n° 45-2138)"},{v:"40 membres élus",l:"au suffrage universel direct (+ présidents des CROEC)"},{v:"Mandat : 4 ans",l:"renouvelable une fois"},{v:"16 + 2",l:"16 conseils régionaux + 2 comités départementaux (Guyane, Mayotte)"},{v:"Min. de l'Économie",l:"tutelle de l'Ordre"}],
   table:{title:"L'organisation de l'Ordre", head:["Échelon","Rôle"], rows:[
    ["Conseil national (CNOEC)","Représente la profession au niveau national, élabore les normes et le règlement intérieur, coordonne l'action de l'Ordre."],
    ["Conseils régionaux (CROEC)","Tiennent le tableau, contrôlent l'exercice et constituent la première instance disciplinaire (chambre régionale)."]]},
@@ -2189,6 +2204,10 @@ function buildFiches(cat){
     }
     if(f.missions && f.missions.length){
       html += `<div class="fbox fbox-miss"><div class="fbox-lbl">Ses missions</div><ul class="fiche-list">${f.missions.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+    }
+    if(f.regions){
+      const ri = f.regions.intro ? `<p class="fbox-intro">${f.regions.intro}</p>` : '';
+      html += `<div class="fbox fbox-reg"><div class="fbox-lbl">${f.regions.lbl}</div>${ri}<ul class="fiche-list">${(f.regions.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.chiffres && f.chiffres.length){
       html += `<div class="fbox fbox-num"><div class="fbox-lbl">Chiffres-clés</div><div class="chiffres">${f.chiffres.map(c=>`<div class="chiffre"><span class="cv">${c.v}</span><span class="cl">${c.l}</span></div>`).join('')}</div></div>`;
