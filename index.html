@@ -2017,9 +2017,9 @@ const FICHES = [
    "Organisé à deux niveaux : le <b>Conseil national (CNOEC)</b> et les <b>conseils régionaux (CROEC)</b>.",
    "Le CNOEC est <b>composé de 40 membres élus au suffrage universel direct</b>, auxquels s'ajoutent les <b>présidents des conseils régionaux</b> de l'ordre.",
    "Mandat des membres : <b>4 ans, renouvelable une fois</b>.",
+   "Le <b>Conseil national (CNOEC)</b> assure la <b>représentation</b>, la <b>promotion</b>, la <b>défense</b> et le <b>développement</b> de la profession.",
    "<b>Nul ne peut exercer ni porter le titre</b> d'expert-comptable sans être inscrit au tableau de l'Ordre."],
   missions:[
-   "Assurer la <b>représentation</b>, la <b>promotion</b>, la <b>défense</b> et le <b>développement</b> de la profession.",
    "Défendre l'<b>honneur</b> et l'<b>indépendance</b> de la profession.",
    "<b>Encadrer</b> les professionnels et <b>veiller au respect de la déontologie</b>.",
    "<b>Établir des normes</b> et <b>publier des recommandations</b>.",
@@ -2203,7 +2203,7 @@ function buildFiches(cat){
       html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.missions && f.missions.length){
-      html += `<div class="fbox fbox-miss"><div class="fbox-lbl">Ses missions</div><ul class="fiche-list">${f.missions.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+      html += `<div class="fbox fbox-miss"><div class="fbox-lbl">Les missions de l'Ordre</div><ul class="fiche-list">${f.missions.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.regions){
       const ri = f.regions.intro ? `<p class="fbox-intro">${f.regions.intro}</p>` : '';
