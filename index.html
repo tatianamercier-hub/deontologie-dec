@@ -347,6 +347,8 @@
   .fbox-code .fbox-lbl{color:var(--ox)}
   .fbox-act{background:var(--paper-2)}
   .fbox-act .fbox-lbl{color:var(--gold)}
+  .fbox-doc{background:var(--paper-2)}
+  .fbox-doc .fbox-lbl{color:var(--ox)}
   .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fbox-schema{background:var(--paper)}
   .fbox-schema .fbox-lbl{color:var(--gold)}
@@ -2182,6 +2184,12 @@ const FICHES = [
     "Champ d'application : les <b>structures d'exercice professionnel</b> (dont les AGC), les <b>experts-comptables</b> et les <b>salariés</b> visés aux articles <b>83 ter et 83 quater</b> de l'ordonnance de 1945.",
     "<b>Activité commerciale</b> = commercialisation de biens ou de services.",
     "<b>Acte d'intermédiaire</b> = présenter, proposer ou aider à conclure des contrats."]},
+  doctrine:{lbl:"La doctrine professionnelle",
+   intro:"Le <b>CNOEC</b> publie régulièrement des textes qui constituent les <b>éléments de doctrine</b> ; ils contribuent à améliorer l'<b>information</b> et les <b>pratiques</b> des professionnels.",
+   items:[
+    "Les <b>guides d'application</b>.",
+    "Les <b>pratiques professionnelles</b>.",
+    "Les <b>supports documentaires</b>."]},
   piege:"La <b>présentation (NP 2300)</b> porte sur la <b>cohérence et la vraisemblance</b>, pas sur l'image fidèle. Les NP sont <b>agréées par le ministre de l'Économie</b> (≠ NEP du CAC, homologuées par le Garde des Sceaux).",
   memo:"Conclusion <b>POSITIVE → audit</b> (raisonnable) · <b>NÉGATIVE → examen limité / présentation</b> (modérée) · <b>CONSTATS → procédures convenues / compilation</b> (aucune). Réflexe : <b>famille 44xx = aucune assurance</b>."},
 
@@ -2338,6 +2346,10 @@ function buildFiches(cat){
     if(f.activites){
       const ai = f.activites.intro ? `<p class="fbox-intro">${f.activites.intro}</p>` : '';
       html += `<div class="fbox fbox-act"><div class="fbox-lbl">${f.activites.lbl}</div>${ai}<ul class="fiche-list">${(f.activites.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+    }
+    if(f.doctrine){
+      const di = f.doctrine.intro ? `<p class="fbox-intro">${f.doctrine.intro}</p>` : '';
+      html += `<div class="fbox fbox-doc"><div class="fbox-lbl">${f.doctrine.lbl}</div>${di}<ul class="fiche-list">${(f.doctrine.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.piege){
       const body = Array.isArray(f.piege) ? `<ul class="fiche-list">${f.piege.map(p=>`<li>${p}</li>`).join('')}</ul>` : `<p>${f.piege}</p>`;
