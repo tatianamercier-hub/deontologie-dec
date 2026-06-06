@@ -1305,6 +1305,250 @@ const BANK = [
   {t:"Indépendance du CAC", q:"Détenir une participation, même indirecte, dans le capital de l'entité que l'on contrôle est, pour le commissaire aux comptes :",
    o:["Autorisé si elle reste minoritaire","Strictement incompatible avec l'exercice du mandat","Autorisé avec l'accord de l'assemblée générale","Autorisé uniquement hors EIP"], a:1,
    e:"Tout <b>intérêt financier</b> (participation, même indirecte) dans l'entité contrôlée est une <b>incompatibilité</b> qui ruine l'indépendance. Sont aussi visés certains <b>liens familiaux</b> et <b>emplois antérieurs récents</b>."}
+,
+
+  /* ——————————— Lot Expert-comptable ——————————— */
+  {t:"Le DEC", q:"L'épreuve n°2 du DEC porte sur :",
+   o:["La réglementation et la déontologie","La révision légale et contractuelle des comptes","La soutenance d'un mémoire","La comptabilité approfondie"], a:1,
+   e:"Épreuve n°2 = <b>révision légale et contractuelle des comptes</b> (écrit). La n°1 = déontologie ; la n°3 = soutenance du mémoire."},
+
+  {t:"Le DEC", q:"Pour se présenter au DEC, le candidat doit notamment justifier :",
+   o:["Du seul DCG","Du DSCG (ou équivalent) et de l'accomplissement du stage de 3 ans","D'un master de droit","De 10 ans d'expérience"], a:1,
+   e:"Il faut être titulaire du <b>DSCG</b> (ou diplôme reconnu équivalent) et avoir accompli le <b>stage de 3 ans</b>."},
+
+  {t:"Le stage", q:"Le stage d'expertise comptable peut, en principe, débuter :",
+   o:["Seulement après le DEC","Après l'obtention du DSCG (un début anticipé restant possible sous conditions)","Avant tout diplôme","Après 30 ans"], a:1,
+   e:"Le stage s'effectue après le <b>DSCG</b> ; un démarrage anticipé est possible sous conditions en fin de cursus."},
+
+  {t:"Le stage", q:"Le stagiaire expert-comptable est encadré par :",
+   o:["Son seul employeur","Un maître de stage agréé et un contrôleur de stage, sous l'égide du conseil régional","Le tribunal de commerce","Aucun encadrant"], a:1,
+   e:"Le stagiaire est suivi par un <b>maître de stage</b> agréé et un <b>contrôleur de stage</b>, sous le contrôle du <b>conseil régional</b> de l'Ordre."},
+
+  {t:"Formation continue", q:"Le non-respect de l'obligation de formation continue par l'expert-comptable :",
+   o:["Est sans conséquence","Peut donner lieu à des poursuites disciplinaires","Entraîne une amende fiscale","Suspend automatiquement le diplôme"], a:1,
+   e:"La <b>formation continue</b> est une obligation déontologique ; son manquement peut être sanctionné <b>disciplinairement</b>."},
+
+  {t:"Communication / publicité", q:"Dans sa communication, l'expert-comptable a notamment l'interdiction :",
+   o:["De mentionner ses domaines de compétence","De recourir au dénigrement, aux comparaisons trompeuses ou à des affirmations mensongères","D'avoir un site internet","De publier ses coordonnées"], a:1,
+   e:"La publicité est autorisée mais encadrée : sont proscrits le <b>dénigrement</b>, les <b>comparaisons trompeuses</b> et les informations <b>mensongères</b> ou contraires à la dignité de la profession."},
+
+  {t:"Communication / publicité", q:"L'expert-comptable peut faire connaître son activité :",
+   o:["Par aucun moyen","Par un site internet et des supports d'information, dans le respect de la déontologie","Uniquement par bouche-à-oreille","Par démarchage agressif"], a:1,
+   e:"Les <b>supports d'information</b> (site web, plaquettes, réseaux) sont admis s'ils restent <b>sincères, loyaux</b> et conformes à la dignité de la profession."},
+
+  {t:"Démarchage", q:"Le démarchage par l'expert-comptable d'une entreprise déjà cliente d'un confrère :",
+   o:["Est libre","Doit respecter la confraternité et ne pas constituer un détournement déloyal","Est totalement interdit","Suppose l'accord du confrère"], a:1,
+   e:"Le démarchage est admis mais doit respecter la <b>confraternité</b> : pas de <b>détournement déloyal</b> de la clientèle d'un confrère."},
+
+  {t:"Maniement de fonds", q:"Lorsqu'il est exceptionnellement autorisé à manier des fonds d'un client, l'expert-comptable doit :",
+   o:["Les mêler à sa trésorerie","Les déposer sur un compte distinct et tenir une comptabilité spécifique","Les conserver en espèces","Les placer en bourse"], a:1,
+   e:"Le maniement de fonds (dérogatoire, sur mandat écrit) impose des <b>fonds isolés</b> sur un compte distinct et une <b>comptabilité spécifique</b>."},
+
+  {t:"Maniement de fonds", q:"Le maniement de fonds par l'expert-comptable suppose notamment :",
+   o:["Aucune garantie","Une garantie financière spécifique couvrant les fonds détenus","Un dépôt en espèces","L'accord du fisc"], a:1,
+   e:"Outre le mandat écrit et les fonds isolés, le maniement requiert une <b>garantie financière</b> couvrant les sommes détenues pour le compte des clients."},
+
+  {t:"Niveaux d'assurance", q:"L'examen limité procure une assurance modérée parce qu'il repose surtout sur :",
+   o:["Des contrôles exhaustifs","Des entretiens et des procédures analytiques (diligences allégées)","Une certification complète","Aucune diligence"], a:1,
+   e:"L'<b>examen limité</b> s'appuie surtout sur des <b>entretiens</b> et des <b>procédures analytiques</b> (diligences plus légères que l'audit), d'où une assurance <b>modérée</b>."},
+
+  {t:"Responsabilité", q:"Une clause de la lettre de mission excluant toute responsabilité de l'expert-comptable est :",
+   o:["Pleinement valable","Très encadrée et inopposable s'agissant notamment du devoir de conseil","Obligatoire","Valable en cas de faute lourde uniquement"], a:1,
+   e:"Les <b>clauses limitatives de responsabilité</b> sont strictement encadrées ; le <b>devoir de conseil</b> ne peut être écarté par contrat."},
+
+  {t:"Sanctions disciplinaires", q:"La suspension disciplinaire de l'expert-comptable :",
+   o:["Est définitive","Interdit temporairement l'exercice de la profession","N'empêche pas d'exercer","Est prononcée par le juge pénal"], a:1,
+   e:"La <b>suspension</b> est une interdiction <b>temporaire</b> d'exercer, située entre le blâme et la radiation, prononcée par les chambres de discipline."},
+
+  {t:"Discipline", q:"La chambre régionale de discipline d'un expert-comptable peut être saisie notamment par :",
+   o:["Le seul client mécontent","Le président du conseil régional, le commissaire du Gouvernement ou le procureur","N'importe qui sans condition","Le CNOEC exclusivement"], a:1,
+   e:"La saisine émane notamment du <b>président du conseil régional</b>, du <b>commissaire du Gouvernement</b>, du <b>procureur</b> ou de toute personne ayant intérêt."},
+
+  {t:"Inscription au tableau", q:"L'expert-comptable salarié inscrit au tableau :",
+   o:["N'a aucune obligation déontologique","Est soumis aux mêmes règles déontologiques que l'EC libéral et prête serment","Ne prête pas serment","N'est pas assuré"], a:1,
+   e:"Qu'il soit libéral, associé ou <b>salarié</b>, tout EC inscrit est soumis aux <b>mêmes obligations déontologiques</b> et prête serment."},
+
+  {t:"Activités accessoires", q:"L'expert-comptable peut, à titre accessoire :",
+   o:["Exercer une activité de négoce","Réaliser des missions de conseil en gestion, en organisation et en systèmes d'information","Devenir agent immobilier à titre principal","Tenir un commerce"], a:1,
+   e:"Le <b>conseil en gestion, organisation, systèmes d'information</b>… est admis dès lors qu'il se rattache aux missions de l'EC. L'activité commerciale habituelle reste incompatible."},
+
+  {t:"Incompatibilités", q:"L'exercice d'un emploi salarié extérieur à la profession par un expert-comptable est :",
+   o:["Toujours permis","Incompatible s'il porte atteinte à son indépendance, au secret ou à la dignité de la profession","Toujours interdit","Permis seulement le week-end"], a:1,
+   e:"Un emploi extérieur est <b>incompatible</b> s'il compromet l'<b>indépendance</b>, le <b>secret</b> ou la <b>dignité</b> de la profession (ex. subordination vis-à-vis d'un client)."},
+
+  {t:"Lettre de mission", q:"L'absence de lettre de mission écrite :",
+   o:["Exonère l'EC de toute responsabilité","Constitue un manquement déontologique, sans exonérer l'EC de sa responsabilité","Empêche d'être payé","Annule la mission de plein droit"], a:1,
+   e:"L'absence de <b>lettre de mission</b> est un manquement déontologique et complique la preuve de l'étendue de la mission, sans <b>exonérer</b> l'EC de sa responsabilité."},
+
+  {t:"Missions de l'EC", q:"La mission de présentation des comptes (NP 2300) se conclut par :",
+   o:["Une opinion d'audit","Une attestation","Un refus de certifier","Un simple relevé"], a:1,
+   e:"La présentation (NP 2300) délivre une <b>attestation</b> d'assurance modérée portant sur la cohérence et la vraisemblance des comptes."},
+
+  {t:"Missions sans assurance", q:"Dans une mission de compilation (NP 4410), l'expert-comptable :",
+   o:["Exprime une assurance modérée","Établit ou met en forme les comptes sans exprimer d'assurance","Certifie les comptes","Donne une opinion négative"], a:1,
+   e:"La <b>compilation</b> consiste à établir / mettre en forme les comptes à partir des informations du client, <b>sans aucune assurance</b>."},
+
+  {t:"Niveaux d'assurance", q:"Une conclusion exprimée sous forme positive (« les comptes sont réguliers et sincères… ») correspond à :",
+   o:["L'examen limité","La présentation","L'audit (assurance raisonnable)","La compilation"], a:2,
+   e:"La <b>forme positive</b> est propre à l'<b>audit</b> (assurance raisonnable). L'examen limité et la présentation s'expriment sous forme négative."},
+
+  {t:"Lettre de mission", q:"Que doit contenir la lettre de mission de l'expert-comptable ?",
+   o:["Le seul montant des honoraires","La nature et l'étendue de la mission, les obligations réciproques et les modalités d'honoraires","Uniquement la durée","Les coordonnées de l'administration fiscale"], a:1,
+   e:"La lettre de mission définit la <b>nature et l'étendue</b> de la mission, les <b>obligations réciproques</b> des parties et les <b>modalités d'honoraires</b>."},
+
+  {t:"Obligations de l'EC", q:"Les dossiers de travail de l'expert-comptable :",
+   o:["Appartiennent au client","Lui restent acquis et sont conservés le temps nécessaire pour justifier de ses diligences","Doivent être détruits à la fin de la mission","Sont publics"], a:1,
+   e:"Les <b>dossiers de travail</b> appartiennent à l'EC et sont conservés afin de <b>justifier de ses diligences</b> en cas de mise en cause."},
+
+  {t:"Organisation de la mission", q:"L'expert-comptable qui confie des travaux à un collaborateur :",
+   o:["Se décharge de sa responsabilité","Demeure responsable et doit superviser la qualité des travaux (NPMQ)","Doit en informer l'Ordre","N'a plus de secret à respecter"], a:1,
+   e:"L'EC reste <b>responsable</b> : il <b>supervise</b> et contrôle les travaux délégués, dans le respect de la <b>NPMQ</b> (maîtrise de la qualité)."},
+
+  {t:"Le cadre de référence des missions", q:"La NP 3400 régit :",
+   o:["La compilation","L'examen d'informations financières prévisionnelles","La présentation des comptes","Les procédures convenues"], a:1,
+   e:"La <b>NP 3400</b> encadre l'<b>examen d'informations financières prévisionnelles</b> (budgets, comptes prévisionnels)."},
+
+  {t:"Le cadre de référence des missions", q:"La NP 3100 régit :",
+   o:["Les attestations particulières","La compilation","L'audit","L'examen limité"], a:0,
+   e:"La <b>NP 3100</b> encadre les <b>attestations particulières</b> : assurance sur une information précise, autre que des comptes complets."},
+
+  {t:"Honoraires", q:"En cours de mission, l'expert-comptable peut demander au client :",
+   o:["Rien avant la fin","Des provisions ou acomptes sur honoraires","Le double s'il le souhaite","Un paiement uniquement au résultat"], a:1,
+   e:"L'EC peut demander des <b>provisions / acomptes</b> ; les honoraires correspondent au travail réalisé et restent équitables (honoraires de résultat interdits)."},
+
+  {t:"Communication / publicité", q:"L'usage du titre d'« expert-comptable » par une personne non inscrite au tableau :",
+   o:["Est libre","Constitue une usurpation de titre et un exercice illégal, sanctionnés","Est permis si elle a le DEC sans inscription","Relève de la seule déontologie"], a:1,
+   e:"Porter le titre sans être inscrit est une <b>usurpation de titre</b> et un <b>exercice illégal</b> de la profession, sanctionnés pénalement."},
+
+  {t:"Tableau de l'Ordre", q:"La radiation du tableau de l'Ordre emporte :",
+   o:["Une simple suspension","L'interdiction d'exercer et de porter le titre","Aucune conséquence sur le titre","Un simple changement de région"], a:1,
+   e:"La <b>radiation</b> (sanction la plus grave) entraîne l'<b>interdiction d'exercer</b> et de porter le titre ; la réinscription n'est possible que sous conditions."},
+
+  {t:"Confraternité", q:"Sollicité pour donner un avis sur le travail d'un confrère, l'expert-comptable doit :",
+   o:["Le critiquer librement","Faire preuve de mesure et, en principe, en informer le confrère concerné","Refuser systématiquement","Le dénoncer à l'Ordre"], a:1,
+   e:"La <b>confraternité</b> impose mesure et courtoisie : l'avis sur le travail d'un confrère se donne avec retenue et, en principe, en l'<b>informant</b>."}
+,
+
+  /* ——————————— Lot Commissaire aux comptes ——————————— */
+  {t:"Mandat du CAC", q:"À l'expiration de son mandat de 6 exercices, le commissaire aux comptes :",
+   o:["Est renouvelé automatiquement à vie","Peut être renouvelé par décision de l'assemblée générale","Ne peut jamais être renouvelé","Voit son mandat devenir illimité"], a:1,
+   e:"Le mandat de <b>6 exercices</b> est <b>renouvelable</b> par l'assemblée générale (avec, pour les EIP, des règles de rotation du cabinet et de l'associé signataire)."},
+
+  {t:"Nomination du CAC", q:"Lors de la constitution d'une société tenue d'avoir un CAC, celui-ci est désigné :",
+   o:["Par le greffe","Dans les statuts ou par l'assemblée générale","Par la H2A","Par le CAC sortant"], a:1,
+   e:"À la constitution, le CAC est désigné par les <b>statuts</b> ou par l'<b>assemblée générale</b> ; en cours de vie sociale, c'est l'AG."},
+
+  {t:"Mission du CAC", q:"Le commissaire aux comptes formule son opinion sur les comptes :",
+   o:["De trésorerie uniquement","Annuels et, le cas échéant, consolidés","Prévisionnels uniquement","De l'administration fiscale"], a:1,
+   e:"Le CAC certifie les <b>comptes annuels</b> et, lorsqu'ils existent, les <b>comptes consolidés</b>."},
+
+  {t:"Vérifications du CAC", q:"Le commissaire aux comptes vérifie la sincérité et la concordance avec les comptes :",
+   o:["Du seul bilan","Des informations données dans le rapport de gestion","De la publicité de l'entité","Des contrats commerciaux"], a:1,
+   e:"Le CAC vérifie la <b>concordance</b> du <b>rapport de gestion</b> avec les comptes et la <b>sincérité</b> des informations qu'il contient."},
+
+  {t:"Obligations du CAC", q:"Le défaut de révélation de faits délictueux par le commissaire aux comptes :",
+   o:["Est sans conséquence","Engage sa responsabilité pénale","Est une simple faute civile","Relève du fisc"], a:1,
+   e:"Le CAC qui <b>s'abstient de révéler</b> des faits délictueux dont il a connaissance commet lui-même un <b>délit</b> (responsabilité pénale)."},
+
+  {t:"Obligations du CAC", q:"La procédure d'alerte déclenchée par le commissaire aux comptes a une finalité :",
+   o:["Répressive","Préventive, au titre de la continuité d'exploitation","Fiscale","Commerciale"], a:1,
+   e:"La <b>procédure d'alerte</b> est <b>préventive</b> et graduée : elle vise des faits compromettant la <b>continuité d'exploitation</b>."},
+
+  {t:"Interventions du CAC", q:"La mission de commissaire à la fusion consiste à :",
+   o:["Tenir la comptabilité de la fusion","Apprécier la valeur des apports et le caractère équitable du rapport d'échange","Certifier les comptes annuels","Gérer l'opération"], a:1,
+   e:"Le <b>commissaire à la fusion</b> apprécie la <b>valeur des apports</b> et le caractère <b>équitable du rapport d'échange</b> ; mission distincte du contrôle légal."},
+
+  {t:"Interventions du CAC", q:"La mission de commissaire à la transformation vise à :",
+   o:["Tenir la comptabilité","Apprécier la situation de la société, notamment la valeur de ses capitaux propres","Certifier les comptes consolidés","Gérer la transformation"], a:1,
+   e:"Le <b>commissaire à la transformation</b> se prononce sur la <b>situation</b> de la société (notamment ses capitaux propres) avant son changement de forme."},
+
+  {t:"Cessation des fonctions du CAC", q:"En cas de cessation des fonctions du CAC avant le terme (décès, démission, empêchement) :",
+   o:["Le contrôle légal cesse","Il est pourvu à son remplacement, au besoin par désignation judiciaire","Le mandat passe à l'expert-comptable","La société est dissoute"], a:1,
+   e:"Il est <b>pourvu au remplacement</b> du CAC pour assurer la continuité du contrôle ; à défaut, une <b>désignation judiciaire</b> peut intervenir."},
+
+  {t:"Seuils CAC", q:"Les seuils déclenchant la nomination obligatoire d'un CAC (décret 2024) s'expriment en :",
+   o:["Bénéfice, dividendes, effectif","Total de bilan, chiffre d'affaires HT et nombre de salariés","Capital, réserves, dettes","Trésorerie, stocks, créances"], a:1,
+   e:"Les trois critères sont le <b>total de bilan</b> (5 M€), le <b>CA HT</b> (10 M€) et le <b>nombre de salariés</b> (50) ; deux dépassés sur trois ⇒ nomination obligatoire."},
+
+  {t:"Mission du CAC", q:"La certification des comptes par le commissaire aux comptes procure :",
+   o:["Une assurance modérée","Une assurance raisonnable (élevée), jamais absolue","Aucune assurance","Une garantie absolue d'absence d'erreur"], a:1,
+   e:"La <b>certification</b> procure une <b>assurance raisonnable</b> (élevée) mais <b>jamais absolue</b> : un audit ne garantit pas l'absence totale d'anomalie."},
+
+  {t:"Contrôle qualité", q:"Le contrôle qualité d'un commissaire aux comptes intervenant auprès d'EIP a lieu :",
+   o:["Tous les 6 ans","Au moins tous les 3 ans","Une seule fois","Jamais"], a:1,
+   e:"Le cycle de contrôle est de <b>3 ans</b> pour les CAC d'<b>EIP</b> (contre 6 ans en règle générale)."},
+
+  {t:"Contrôle qualité", q:"À l'issue d'un contrôle qualité révélant des manquements, peut être décidé :",
+   o:["Une amende fiscale","Un suivi, un recontrôle, voire l'ouverture d'une procédure de sanction","Rien","La radiation de l'expert-comptable"], a:1,
+   e:"Selon la gravité, le contrôle peut déboucher sur un <b>recontrôle</b>, des recommandations, voire une <b>procédure de sanction</b> devant la commission des sanctions de la H2A."},
+
+  {t:"Régulation (H2A)", q:"La Haute Autorité de l'audit (H2A) a été instituée par :",
+   o:["La loi PACTE","L'ordonnance du 6 décembre 2023 transposant la directive CSRD","La loi Sapin II","Le décret de 2024 sur les seuils"], a:1,
+   e:"La <b>H2A</b> succède au H3C par l'<b>ordonnance n°2023-1142 du 6 décembre 2023</b> (directive CSRD), avec effet au 1ᵉʳ janvier 2024."},
+
+  {t:"Entités d'intérêt public", q:"Une entreprise d'assurance est-elle une entité d'intérêt public (EIP) ?",
+   o:["Non","Oui","Seulement si elle est cotée","Seulement au-delà de 500 salariés"], a:1,
+   e:"Les <b>entreprises d'assurance</b> sont des <b>EIP</b>, comme les sociétés cotées et les établissements de crédit, indépendamment de leur effectif."},
+
+  {t:"Gouvernance EIP", q:"Le comité d'audit d'une EIP rend compte de ses travaux :",
+   o:["Au commissaire aux comptes","À l'organe d'administration ou de surveillance","À la H2A","Au procureur"], a:1,
+   e:"Le <b>comité d'audit</b> émane de l'<b>organe d'administration ou de surveillance</b> et lui rend compte de ses travaux."},
+
+  {t:"Gouvernance EIP", q:"Le comité d'audit assure notamment le suivi :",
+   o:["De la politique commerciale","De l'efficacité du contrôle interne, de l'audit interne et de la gestion des risques","Du recrutement","De la publicité"], a:1,
+   e:"Le <b>comité d'audit</b> suit l'élaboration de l'information financière, l'efficacité du <b>contrôle interne</b>, de l'<b>audit interne</b> et de la <b>gestion des risques</b>, et l'indépendance du CAC."},
+
+  {t:"Honoraires du CAC", q:"Les honoraires du commissaire aux comptes :",
+   o:["Sont fixés par la H2A","Dépendent des diligences nécessaires et ne peuvent être conditionnels","Sont fixés selon le résultat de l'audit","Sont libres et sans règle"], a:1,
+   e:"Les honoraires dépendent des <b>diligences nécessaires</b> (temps, complexité) ; ils ne peuvent être <b>conditionnels</b>, pour préserver l'indépendance."},
+
+  {t:"Incompatibilité du CAC", q:"Le commissaire aux comptes peut-il être salarié de l'entité qu'il contrôle ?",
+   o:["Oui","Non : tout lien de subordination est une incompatibilité","Oui à temps partiel","Oui s'il le déclare"], a:1,
+   e:"Tout <b>lien de subordination</b> (salariat) ou d'intérêt avec l'entité contrôlée est une <b>incompatibilité</b> qui détruit l'indépendance."},
+
+  {t:"Incompatibilités du CAC", q:"Fournir à l'entité contrôlée une prestation de conseil en gestion est, pour le CAC :",
+   o:["Autorisé sans limite","Interdit lorsque cela le conduirait à s'auto-réviser ou à participer à la gestion","Autorisé pour les PME","Autorisé s'il facture séparément"], a:1,
+   e:"Les prestations conduisant le CAC à <b>s'auditer lui-même</b> ou à <b>gérer</b> l'entité sont <b>interdites</b> ; pour les EIP, une liste de services est expressément prohibée."},
+
+  {t:"Confraternité (CAC)", q:"Le commissaire aux comptes pressenti pour succéder à un confrère doit :",
+   o:["Accepter sans formalité","Prendre contact avec le CAC sortant pour s'enquérir des motifs de la cessation","Dénigrer son prédécesseur","Refuser par principe"], a:1,
+   e:"Par <b>confraternité</b>, le CAC pressenti s'informe auprès du <b>prédécesseur</b> des raisons de la cessation, pour s'assurer qu'elle ne vise pas à éluder ses obligations."},
+
+  {t:"Opinion du CAC", q:"En cas de désaccord profond et généralisé avec la direction sur les comptes, le CAC :",
+   o:["Certifie avec une simple observation","Refuse de certifier (opinion défavorable)","Démissionne aussitôt","Certifie sans réserve"], a:1,
+   e:"Un <b>désaccord</b> significatif et généralisé conduit au <b>refus de certifier</b> (opinion défavorable), distinct de l'impossibilité de certifier (limitation)."},
+
+  {t:"Mission du CAC", q:"Le rapport du commissaire aux comptes sur les comptes annuels comporte notamment :",
+   o:["Un avis sur l'opportunité de la gestion","L'opinion sur les comptes et, le cas échéant, la justification des appréciations","Un bilan prévisionnel","Une note fiscale"], a:1,
+   e:"Le rapport contient l'<b>opinion</b> (NEP 700) et, le cas échéant, la <b>justification des appréciations</b> (NEP 705), ainsi que les vérifications spécifiques."},
+
+  {t:"Normes du CAC", q:"Les normes d'exercice professionnel (NEP) sont homologuées par :",
+   o:["Le ministre de l'Économie","Arrêté du Garde des Sceaux (ministre de la Justice)","La CNCC seule","La H2A seule"], a:1,
+   e:"Les <b>NEP</b> sont <b>homologuées par arrêté du Garde des Sceaux</b> ; elles s'inspirent largement des normes internationales d'audit (ISA)."},
+
+  {t:"Normes du CAC", q:"La NEP 240 traite :",
+   o:["De la continuité d'exploitation","De la prise en compte du risque de fraude","Du rapport sur les comptes","De la planification"], a:1,
+   e:"La <b>NEP 240</b> porte sur la prise en compte du <b>risque de fraude</b> lors de l'audit des comptes."},
+
+  {t:"Normes du CAC", q:"La NEP 570 traite :",
+   o:["Des éléments probants","De la continuité d'exploitation","De la justification des appréciations","Du caractère significatif"], a:1,
+   e:"La <b>NEP 570</b> porte sur l'appréciation de la <b>continuité d'exploitation</b> de l'entité."},
+
+  {t:"Responsabilité du CAC", q:"La responsabilité civile du commissaire aux comptes :",
+   o:["N'existe pas","Peut être engagée pour les fautes commises dans l'exercice de ses fonctions","Est prise en charge par l'État","Est limitée aux EIP"], a:1,
+   e:"Le CAC répond civilement des <b>fautes</b> commises dans ses fonctions ; il n'est pas responsable des fautes des dirigeants qu'il ne pouvait déceler malgré des diligences normales."},
+
+  {t:"Régulation (H2A)", q:"Parmi les missions de la H2A figure :",
+   o:["La tenue de la comptabilité des CAC","L'inscription des CAC, l'organisation des contrôles et l'adoption des normes","La fixation des honoraires d'audit","La nomination des CAC dans les sociétés"], a:1,
+   e:"La H2A assure l'<b>inscription</b> des CAC, l'<b>organisation des contrôles</b>, l'<b>adoption des normes</b> et la <b>discipline</b> (via sa commission des sanctions)."},
+
+  {t:"Durabilité (CSRD)", q:"Les informations de durabilité sont établies selon les normes :",
+   o:["IFRS","ESRS (European Sustainability Reporting Standards)","NEP","ISA"], a:1,
+   e:"Les informations de durabilité suivent les <b>ESRS</b>, normes européennes d'information de durabilité."},
+
+  {t:"Seuils de nomination", q:"Le franchissement des seuils imposant un CAC s'apprécie :",
+   o:["Sur dix exercices","À la clôture, le dépassement de deux des trois seuils déclenchant l'obligation","Selon le secteur d'activité","Au choix du dirigeant"], a:1,
+   e:"La nomination devient obligatoire dès que la société dépasse <b>deux des trois seuils</b> (5 M€ / 10 M€ / 50 salariés), dans les conditions fixées par les textes."}
 ];
 
 /* ===================== BANQUE QRC ===================== */
