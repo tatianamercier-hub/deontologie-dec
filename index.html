@@ -343,6 +343,8 @@
   .fbox-reg .fbox-lbl{color:var(--gold)}
   .fbox-role{background:rgba(124,43,43,.07)}
   .fbox-role .fbox-lbl{color:var(--ox)}
+  .fbox-code{background:var(--paper-2)}
+  .fbox-code .fbox-lbl{color:var(--ox)}
   .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fbox-schema{background:var(--paper)}
   .fbox-schema .fbox-lbl{color:var(--gold)}
@@ -2145,6 +2147,17 @@ const FICHES = [
  {cat:"ec", title:"Le cadre de référence & les normes (NP)", sub:"Le référentiel de l'OEC : à chaque mission sa norme et son niveau d'assurance",
   schema:"<div class='cref'><div class='cref-cap'><div class='cref-bar'>Code de déontologie des professionnels de l'expertise comptable</div><div class='cref-bar'>Norme professionnelle de maîtrise de la qualité (NPMQ)</div><div class='cref-bar'>Norme professionnelle relative aux obligations de la profession d'expertise comptable en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme (NPLAB)</div></div><div class='cref-h'>Cadre des missions</div><div class='cref-grp'><div class='cref-grp-t'>Missions d'assurance sur des comptes historiques</div><div class='cref-row'><div class='cref-card'><b>Audit</b> (et Audit PE)<span class='cref-np'>NP 2910</span></div><div class='cref-card'><b>Examen limité</b><span class='cref-np'>NP 2400</span></div><div class='cref-card'><b>Présentation</b><span class='cref-np'>NP 2300</span></div></div></div><div class='cref-grp'><div class='cref-grp-t'>Autres missions d'assurance</div><div class='cref-row'><div class='cref-card'><b>Attestations particulières</b> informations autres que des comptes complets<span class='cref-np'>NP 3100</span></div><div class='cref-card'><b>Informations financières prévisionnelles</b><span class='cref-np'>NP 3400</span></div></div></div><div class='cref-grp'><div class='cref-grp-t'>Missions sans assurance</div><div class='cref-row'><div class='cref-card'><b>Procédures convenues</b><span class='cref-np'>NP 4400</span></div><div class='cref-card'><b>Compilation</b><span class='cref-np'>NP 4410</span></div><div class='cref-card'><b>Autres prestations</b> prévues par la loi ou le règlement</div><div class='cref-card'><b>Autres prestations</b> fournies à l'entité</div></div></div><div class='cref-h'>Cadre des activités</div><div class='cref-grp'><div class='cref-row'><div class='cref-card'><b>Activités commerciales et actes d'intermédiaire</b></div></div></div><div class='cref-base'>Glossaire des termes et expressions utilisés</div></div>",
   def:"Le <b>cadre de référence</b> organise l'ensemble des missions de l'expert-comptable : au-dessus, des textes-socles (déontologie, maîtrise de la qualité, anti-blanchiment) ; en dessous, chaque mission relève d'une <b>norme professionnelle (NP)</b> numérotée, classée selon son niveau d'assurance.",
+  code:{
+   def:"Le <b>Code de déontologie</b>, adopté par le <b>décret du 27 septembre 2007</b>, rassemble de manière ordonnée, éclairée et rigoureuse les <b>règles et les valeurs constitutives de l'identité</b> des experts-comptables.",
+   lbl:"La composition du Code de déontologie",
+   items:[
+    {n:"Art. 141 — Personnes concernées",d:"experts-comptables, experts-comptables stagiaires et salariés, dirigeants des AGC."},
+    {n:"Art. 142-143 — Devoirs généraux",d:"ils prêtent serment devant le conseil régional de l'Ordre et respectent les règles édictées par le CNOEC."},
+    {n:"Art. 144 à 154 — Devoirs généraux",d:"exercer leur activité avec compétence, conscience professionnelle et indépendance d'esprit ; établir une lettre de mission écrite ; le démarchage est permis dans le respect du Code."},
+    {n:"Art. 155 à 160 — Devoirs envers les clients",d:"devoir d'information et de conseil ; s'efforcer de régler les litiges par la conciliation ou l'arbitrage du président du conseil régional."},
+    {n:"Art. 161 à 166 — Devoirs de confraternité",d:"en cas de remplacement, s'assurer auprès du confrère prédécesseur que le remplacement n'est pas motivé par le désir du client d'éluder l'application des règles légales, et obtenir la justification du paiement des honoraires dus au confrère remplacé."},
+    {n:"Art. 167 à 169 — Devoirs envers l'Ordre",d:"informer le président du conseil régional de l'Ordre des poursuites judiciaires dont ils font l'objet et des litiges contractuels."}
+   ]},
   essentiel:[
    "Référentiel élaboré par le <b>CNOEC</b>, <b>agréé par arrêté du ministre de l'Économie</b>.",
    "Textes-socles : <b>cadre de référence + glossaire + NPMQ</b> (maîtrise de la qualité) + <b>norme anti-blanchiment</b>.",
@@ -2284,6 +2297,10 @@ function buildFiches(cat){
     let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
     if(f.schema){ html += `<div class="fbox fbox-schema"><div class="fbox-lbl">Schéma général du cadre de référence</div>${f.schema}</div>`; }
     if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
+    if(f.code){
+      html += `<p class="fiche-def">${f.code.def}</p>`;
+      html += `<div class="fbox fbox-code"><div class="fbox-lbl">${f.code.lbl}</div><ul class="fiche-list fdef-list">${f.code.items.map(x=>`<li><b>${x.n}</b> — ${x.d}</li>`).join('')}</ul></div>`;
+    }
     if(f.essentiel && f.essentiel.length){
       html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
