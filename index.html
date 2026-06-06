@@ -345,6 +345,8 @@
   .fbox-role .fbox-lbl{color:var(--ox)}
   .fbox-code{background:var(--paper-2)}
   .fbox-code .fbox-lbl{color:var(--ox)}
+  .fbox-act{background:var(--paper-2)}
+  .fbox-act .fbox-lbl{color:var(--gold)}
   .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fbox-schema{background:var(--paper)}
   .fbox-schema .fbox-lbl{color:var(--gold)}
@@ -2174,6 +2176,12 @@ const FICHES = [
    ["NP 3400<br><span class='nname'>Informations financières prévisionnelles</span>","Porte sur des données prévisionnelles (budgets, comptes prévisionnels).","Modérée","Négative"],
    ["NP 4400<br><span class='nname'>Procédures convenues</span>","Travaux définis à l'avance, restitués en constats factuels.","Aucune","Constats"],
    ["NP 4410<br><span class='nname'>Compilation</span>","Établir ou mettre en forme les comptes, sans exprimer d'assurance.","Aucune","—"]]},
+  activites:{lbl:"NP — Activités commerciales & actes d'intermédiaire",
+   intro:"Effectuées <b>à titre accessoire</b> = présenter un caractère <b>connexe ou complémentaire</b> aux activités autorisées aux EC, sans pouvoir constituer l'<b>objet principal</b> de l'activité. Cela s'apprécie selon un <b>faisceau d'indices</b> (chiffre d'affaires, moyens consacrés à cette activité).",
+   items:[
+    "Champ d'application : les <b>structures d'exercice professionnel</b> (dont les AGC), les <b>experts-comptables</b> et les <b>salariés</b> visés aux articles <b>83 ter et 83 quater</b> de l'ordonnance de 1945.",
+    "<b>Activité commerciale</b> = commercialisation de biens ou de services.",
+    "<b>Acte d'intermédiaire</b> = présenter, proposer ou aider à conclure des contrats."]},
   piege:"La <b>présentation (NP 2300)</b> porte sur la <b>cohérence et la vraisemblance</b>, pas sur l'image fidèle. Les NP sont <b>agréées par le ministre de l'Économie</b> (≠ NEP du CAC, homologuées par le Garde des Sceaux).",
   memo:"Conclusion <b>POSITIVE → audit</b> (raisonnable) · <b>NÉGATIVE → examen limité / présentation</b> (modérée) · <b>CONSTATS → procédures convenues / compilation</b> (aucune). Réflexe : <b>famille 44xx = aucune assurance</b>."},
 
@@ -2326,6 +2334,10 @@ function buildFiches(cat){
     }
     if(f.defs && f.defs.length){
       html += `<div class="fbox fbox-defs"><div class="fbox-lbl">Chaque norme en bref</div><ul class="fiche-list fdef-list">${f.defs.map(x=>`<li><b>${x.n}</b> — ${x.d}</li>`).join('')}</ul></div>`;
+    }
+    if(f.activites){
+      const ai = f.activites.intro ? `<p class="fbox-intro">${f.activites.intro}</p>` : '';
+      html += `<div class="fbox fbox-act"><div class="fbox-lbl">${f.activites.lbl}</div>${ai}<ul class="fiche-list">${(f.activites.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.piege){
       const body = Array.isArray(f.piege) ? `<ul class="fiche-list">${f.piege.map(p=>`<li>${p}</li>`).join('')}</ul>` : `<p>${f.piege}</p>`;
