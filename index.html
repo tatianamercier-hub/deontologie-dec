@@ -1223,6 +1223,88 @@ const BANK = [
   {t:"Opinion du CAC", q:"Quelles sont des issues possibles du rapport de certification du commissaire aux comptes ?",
    o:["La certification avec réserve","Le refus de certifier","L'impossibilité de certifier","La certification conditionnelle"], a:[0,1,2],
    e:"Les issues sont : certification (avec ou sans réserve), <b>refus de certifier</b> (désaccord) et <b>impossibilité de certifier</b> (limitation). La « certification conditionnelle » n'existe pas."}
+,
+
+  /* ——————————— Questions plus difficiles ——————————— */
+  {t:"Cessation des fonctions du CAC", q:"La demande de récusation du commissaire aux comptes doit, en principe, être formée :",
+   o:["À tout moment du mandat","Dans les 30 jours suivant sa désignation","Seulement à la clôture de l'exercice","Dans les 6 mois suivant sa désignation"], a:1,
+   e:"La <b>récusation</b> se demande en justice dans un délai de <b>30 jours</b> à compter de la désignation du CAC, pour <b>juste motif</b>."},
+
+  {t:"Honoraires CAC (EIP)", q:"Le plafond de 70 % applicable aux services autres que la certification (SACC) d'une EIP se calcule sur :",
+   o:["Les honoraires d'audit du dernier exercice","La moyenne des honoraires de contrôle légal des trois derniers exercices","Le chiffre d'affaires de l'EIP","Les honoraires SACC des trois derniers exercices"], a:1,
+   e:"Le plafond de <b>70 %</b> se calcule sur la <b>moyenne des honoraires de contrôle légal</b> des <b>trois derniers exercices</b> (règlement UE 537/2014)."},
+
+  {t:"Rotation (EIP)", q:"Au-delà des 10 ans de mandat d'un cabinet dans une EIP, la durée totale peut être portée, sous conditions, jusqu'à :",
+   o:["10 ans, sans prolongation","20 ans après appel d'offres (24 ans en cas de co-commissariat)","14 ans maximum","Une durée illimitée"], a:1,
+   e:"La durée peut être prolongée jusqu'à <b>20 ans</b> après un <b>appel d'offres</b>, et jusqu'à <b>24 ans</b> en cas de <b>co-commissariat</b> (audit conjoint) — règlement UE 537/2014."},
+
+  {t:"Responsabilité du CAC", q:"L'action en responsabilité civile contre le commissaire aux comptes se prescrit par :",
+   o:["1 an","3 ans à compter du fait dommageable ou de sa révélation","5 ans","10 ans"], a:1,
+   e:"L'action se prescrit par <b>3 ans</b> à compter du <b>fait dommageable</b> ou, s'il a été dissimulé, de sa <b>révélation</b>."},
+
+  {t:"Comité d'audit", q:"Au sein du comité d'audit d'une EIP, au moins un membre doit :",
+   o:["Être le dirigeant de l'entité","Présenter des compétences en matière financière ou comptable et être indépendant","Être désigné par le commissaire aux comptes","Être un salarié de l'entité"], a:1,
+   e:"Au moins un membre doit présenter des <b>compétences particulières</b> en matière financière, comptable ou de contrôle légal, et être <b>indépendant</b>."},
+
+  {t:"Services interdits (EIP)", q:"Pour une EIP, lesquels de ces services sont interdits au commissaire aux comptes ?",
+   o:["La tenue de la comptabilité et l'établissement des états financiers","La conception et la mise en œuvre de systèmes d'information financière","Les services d'évaluation","La certification des comptes"], a:[0,1,2],
+   e:"Le règlement UE 537/2014 interdit notamment la <b>tenue de la comptabilité</b>, la <b>conception de systèmes d'information financière</b> et les <b>services d'évaluation</b>. La certification est sa mission."},
+
+  {t:"LCB-FT — PPE", q:"Une personne ayant cessé d'occuper une fonction de PPE reste soumise à une vigilance renforcée pendant au moins :",
+   o:["6 mois","12 mois","24 mois","5 ans"], a:1,
+   e:"Le statut de PPE et la vigilance renforcée se maintiennent au moins <b>12 mois</b> après la cessation des fonctions."},
+
+  {t:"LCB-FT", q:"La déclaration de soupçon à TRACFIN doit, en principe, être effectuée :",
+   o:["Après réalisation de l'opération uniquement","Avant l'exécution de l'opération lorsque c'est possible","Dans les 30 jours suivant l'opération","Seulement à la demande de TRACFIN"], a:1,
+   e:"La déclaration est faite <b>avant l'exécution</b> de l'opération quand c'est possible, pour permettre à TRACFIN d'exercer son éventuel <b>droit d'opposition</b>."},
+
+  {t:"Seuils de nomination", q:"Une société ne dépassant pas les seuils peut néanmoins devoir nommer un CAC :",
+   o:["Jamais","Si elle contrôle ou est contrôlée dans un groupe dépassant les seuils, ou à la demande d'associés en justice","Si son dirigeant le souhaite","Si elle exporte"], a:1,
+   e:"La nomination peut s'imposer aux sociétés <b>contrôlant / contrôlées</b> dans un groupe dépassant les seuils, ou être demandée en justice par des <b>associés</b> représentant une fraction du capital (ou le CSE)."},
+
+  {t:"Honoraires", q:"Parmi ces modes de rémunération de l'expert-comptable, lequel est interdit ?",
+   o:["Un forfait annuel","Une rémunération au temps passé","Un honoraire fixé selon un résultat financier ou un avantage fiscal obtenu","Une révision en cas de surcroît de travail"], a:2,
+   e:"Les <b>honoraires de résultat</b> (liés à un gain financier, fiscal, l'obtention d'un prêt…) sont <b>prohibés</b>. Forfait, temps passé et révision pour surcroît sont admis."},
+
+  {t:"Secret professionnel", q:"Le secret professionnel de l'expert-comptable peut être légalement levé dans lesquels de ces cas ?",
+   o:["Déclaration de soupçon à TRACFIN","Demande spontanée d'un concurrent","Réquisition judiciaire dans les cas prévus par la loi","Exercice des droits de la défense de l'EC mis en cause"], a:[0,2,3],
+   e:"Le secret cède devant des <b>dérogations légales</b> : déclaration TRACFIN, <b>réquisitions judiciaires</b> prévues par la loi, et l'exercice des <b>droits de la défense</b>. Jamais au profit d'un concurrent."},
+
+  {t:"Opinion du CAC", q:"Une observation formulée par le commissaire aux comptes dans son rapport :",
+   o:["Constitue une réserve","Attire l'attention du lecteur sur un point sans modifier l'opinion","Vaut refus de certifier","Est interdite"], a:1,
+   e:"L'<b>observation</b> attire l'attention sur un point (souvent une note de l'annexe) <b>sans</b> remettre en cause l'opinion. À distinguer de la <b>réserve</b> (désaccord ou limitation)."},
+
+  {t:"Le stage", q:"Pendant les trois ans de stage, le futur expert-comptable doit réaliser une part de ses travaux :",
+   o:["Exclusivement en cabinet d'expertise comptable","Dans le domaine de la révision / du commissariat aux comptes","Uniquement en entreprise","Sans aucune exigence de contenu"], a:1,
+   e:"Le stage doit comporter une part de travaux de <b>révision / d'audit</b> (commissariat aux comptes), en plus de l'expertise comptable, pour couvrir le champ du DEC."},
+
+  {t:"Conditions d'exercice", q:"La condition de nationalité pour l'inscription au tableau de l'Ordre admet les ressortissants :",
+   o:["Français uniquement","D'un État de l'UE ou de l'EEE (ou sous condition de réciprocité)","De tout pays sans condition","Français et suisses uniquement"], a:1,
+   e:"Il faut être <b>français</b> ou ressortissant d'un <b>État de l'UE / EEE</b> (ou d'un État accordant la <b>réciprocité</b> aux Français)."},
+
+  {t:"Co-commissariat", q:"En présence de deux co-commissaires aux comptes, en cas de désaccord sur l'opinion :",
+   o:["Le plus ancien l'emporte","Chacun exprime sa propre opinion dans le rapport","On procède à un tirage au sort","Le mandat est annulé"], a:1,
+   e:"Les co-commissaires signent un <b>rapport commun</b> ; en cas de <b>désaccord</b>, chacun exprime sa <b>propre opinion</b>, et le rapport fait état des positions divergentes."},
+
+  {t:"Régulation (H2A)", q:"À la H2A, les sanctions disciplinaires contre les commissaires aux comptes sont prononcées par :",
+   o:["Le collège de la H2A","Une commission des sanctions indépendante du collège","Le ministre de la Justice","La CNCC"], a:1,
+   e:"La séparation des fonctions impose que les sanctions soient prononcées par une <b>commission des sanctions</b> distincte et <b>indépendante</b> du collège qui poursuit."},
+
+  {t:"Niveaux d'assurance", q:"Classez ces missions par niveau d'assurance décroissant :",
+   o:["Examen limité > Présentation > Audit","Audit > Examen limité > Présentation","Présentation > Examen limité > Audit","Audit > Présentation > Examen limité"], a:1,
+   e:"Décroissant : <b>Audit</b> (raisonnable) &gt; <b>Examen limité</b> (modérée) &gt; <b>Présentation</b> (modérée, mais d'un niveau inférieur, sur cohérence/vraisemblance)."},
+
+  {t:"Structures d'exercice", q:"Dans une société pluri-professionnelle d'exercice (SPE), le capital peut être détenu :",
+   o:["Uniquement par des experts-comptables","Par les professionnels exerçant l'une des professions du droit ou du chiffre réunies dans la SPE","Par n'importe quel investisseur","À 100 % par des avocats"], a:1,
+   e:"La <b>SPE</b> réunit des professions du droit et du chiffre ; son capital est détenu par les <b>professionnels exerçant</b> ces professions, chacun restant soumis à sa déontologie."},
+
+  {t:"Durabilité (CSRD)", q:"L'organisme tiers indépendant (OTI) qui certifie les informations de durabilité est accrédité par :",
+   o:["La H2A","Le COFRAC (Comité français d'accréditation)","L'AMF","Le ministère de l'Économie"], a:1,
+   e:"Les <b>OTI</b> sont accrédités par le <b>COFRAC</b> ; la <b>H2A</b> supervise l'ensemble de la mission de certification de durabilité."},
+
+  {t:"Indépendance du CAC", q:"Recevoir d'un client audité des honoraires représentant une part trop importante de l'ensemble de ses honoraires expose le CAC à :",
+   o:["Aucun risque s'il les déclare","Une menace liée à la dépendance financière (intérêt personnel)","Un délit d'entrave","Une obligation de co-commissariat"], a:1,
+   e:"Une <b>concentration excessive</b> des honoraires sur un même client crée une <b>menace d'intérêt personnel</b> (dépendance financière) ; des plafonds et sauvegardes encadrent cette situation, renforcés pour les EIP."}
 ];
 
 /* ===================== BANQUE QRC ===================== */
@@ -1448,6 +1530,56 @@ const QRC = [
  {t:"Formation continue", q:"En quoi consiste l'obligation de formation continue de l'expert-comptable ?",
   a:"L'expert-comptable doit suivre une formation continue de 40 heures par an, appréciée sur une base de 120 heures sur trois années glissantes. Elle garantit le maintien et l'actualisation de ses compétences, en lien direct avec le principe de compétence. Son respect peut être contrôlé par l'Ordre.",
   k:["40 heures par an","120 heures sur 3 ans glissants","Maintien et actualisation des compétences","Lien avec le principe de compétence","Contrôle par l'Ordre"]}
+,
+
+ /* ——————————— QRC plus difficiles ——————————— */
+ {t:"Cessation des fonctions du CAC", q:"Dans quel délai et par qui la récusation d'un commissaire aux comptes peut-elle être demandée ?",
+  a:"La récusation doit être demandée en justice dans les 30 jours suivant la désignation du CAC, pour juste motif. Elle peut émaner d'un ou plusieurs actionnaires représentant une fraction du capital (au moins 5 %), du comité social et économique, du ministère public et, pour les EIP, de l'AMF.",
+  k:["Délai : 30 jours après la désignation","Pour juste motif","Demandeurs : actionnaires (≥ 5 %), CSE, ministère public","AMF pour les EIP"]},
+
+ {t:"Rotation (EIP)", q:"Quelles sont les durées maximales de mandat d'un cabinet de CAC dans une EIP, prolongations comprises ?",
+  a:"Le mandat du cabinet est en principe limité à 10 ans. Après un appel d'offres, il peut être prolongé jusqu'à 20 ans ; en cas de co-commissariat (audit conjoint), jusqu'à 24 ans. En parallèle, l'associé signataire doit être renouvelé tous les 6 ans, avec un délai de viduité avant de pouvoir reprendre le même mandat.",
+  k:["Cabinet : 10 ans en principe","20 ans après appel d'offres","24 ans en co-commissariat","Associé signataire : rotation tous les 6 ans"]},
+
+ {t:"Honoraires CAC (EIP)", q:"Comment se calcule le plafond des SACC pour une EIP et que recouvre-t-il ?",
+  a:"Les services autres que la certification (SACC) autorisés sont plafonnés à 70 % de la moyenne des honoraires de contrôle légal facturés au cours des trois derniers exercices. Ce plafond ne concerne que les services non interdits : certains services restent totalement prohibés (tenue de comptabilité, évaluation, etc.).",
+  k:["Plafond de 70 %","Base : moyenne des honoraires d'audit sur 3 ans","Ne vise que les services autorisés","Services interdits exclus (liste 537/2014)"]},
+
+ {t:"Opinion du CAC", q:"Distinguez une réserve, une observation et un refus de certifier.",
+  a:"La réserve exprime un désaccord ou une limitation d'étendue significatif mais circonscrit, qui n'empêche pas de certifier. L'observation attire l'attention du lecteur sur un point particulier (souvent une mention de l'annexe) sans modifier l'opinion. Le refus de certifier traduit un désaccord profond rendant les comptes non fiables (opinion défavorable).",
+  k:["Réserve : anomalie/limitation significative mais circonscrite","Observation : attire l'attention, ne modifie pas l'opinion","Refus de certifier : désaccord profond","À distinguer de l'impossibilité de certifier (limitation)"]},
+
+ {t:"LCB-FT", q:"Qu'est-ce que le droit d'opposition de TRACFIN et quel en est l'intérêt ?",
+  a:"Lorsqu'une déclaration de soupçon est faite avant l'exécution d'une opération, TRACFIN peut s'opposer à sa réalisation : l'opération est bloquée pendant un délai (10 jours ouvrables), durant lequel TRACFIN ou l'autorité judiciaire peut décider de la suite. C'est pourquoi la déclaration doit, si possible, précéder l'opération.",
+  k:["Déclaration avant exécution si possible","TRACFIN peut s'opposer (blocage)","Délai d'opposition (10 jours ouvrables)","Permet l'intervention de l'autorité judiciaire"]},
+
+ {t:"Comité d'audit", q:"Quels sont la composition du comité d'audit et son rôle dans la désignation du CAC d'une EIP ?",
+  a:"Le comité d'audit est composé de membres de l'organe de surveillance n'exerçant pas de fonctions de direction, dont au moins un membre indépendant et compétent en matière financière ou comptable. Pour la désignation du CAC, il conduit la procédure d'appel d'offres, formule une recommandation motivée comportant au moins deux choix et justifie sa préférence.",
+  k:["Membres non exécutifs, dont un indépendant compétent","Conduit l'appel d'offres","Recommandation avec au moins 2 candidats","Justifie sa préférence"]},
+
+ {t:"Secret professionnel", q:"Citez plusieurs dérogations légales au secret professionnel de l'expert-comptable.",
+  a:"Le secret cède devant : la déclaration de soupçon à TRACFIN, certaines réquisitions ou demandes des autorités judiciaires, le droit de communication de l'administration dans les cas prévus par la loi, l'exercice des droits de la défense de l'EC mis en cause, et le secret partagé entre professionnels d'une même mission. Le seul accord du client ne suffit pas.",
+  k:["Déclaration TRACFIN","Réquisitions / autorité judiciaire","Droit de communication prévu par la loi","Droits de la défense de l'EC","Secret partagé","Accord du client insuffisant"]},
+
+ {t:"Régulation (H2A)", q:"Comment la séparation des fonctions de poursuite et de sanction est-elle organisée à la H2A ?",
+  a:"La H2A comprend un collège, qui définit les orientations, supervise les contrôles et engage les poursuites, et une commission des sanctions indépendante du collège, qui prononce les sanctions disciplinaires contre les commissaires aux comptes. Cette séparation garantit l'impartialité de la procédure.",
+  k:["Collège : orientations, contrôles, poursuites","Commission des sanctions : indépendante, prononce les sanctions","Séparation poursuite / jugement","Garantit l'impartialité"]},
+
+ {t:"Durabilité (CSRD)", q:"Qui peut certifier les informations de durabilité et comment ces acteurs sont-ils encadrés ?",
+  a:"La certification peut être confiée au commissaire aux comptes ou à un organisme tiers indépendant (OTI). Les OTI sont accrédités par le COFRAC. Dans tous les cas, la mission est supervisée par la H2A. Le niveau d'assurance est d'abord modéré (limité), avec une évolution prévue vers une assurance raisonnable.",
+  k:["CAC ou OTI","OTI accrédités par le COFRAC","Supervision par la H2A","Assurance d'abord modérée, puis raisonnable"]},
+
+ {t:"Indépendance du CAC", q:"Qu'est-ce que le délai de viduité (cooling-off) et qui concerne-t-il ?",
+  a:"Le délai de viduité interdit à l'ancien commissaire aux comptes (ou à l'associé signataire) d'occuper une fonction de direction clé, de devenir membre du comité d'audit ou d'acquérir un intérêt significatif dans l'entité contrôlée, pendant une certaine durée après la fin de la mission. Il vise à prévenir les conflits d'intérêts et à préserver l'apparence d'indépendance.",
+  k:["Interdiction après la fin du mandat","Fonctions de direction clé / comité d'audit","Pendant une durée déterminée","Préserve l'indépendance et son apparence"]},
+
+ {t:"Honoraires", q:"Quelles modalités de fixation des honoraires de l'EC sont admises et lesquelles sont prohibées ?",
+  a:"Sont admis les honoraires au temps passé, au forfait, ou selon la difficulté et l'importance de la mission, révisables en cas de surcroît de travail. Sont prohibés les honoraires de résultat (success fees) liés à un résultat financier, un avantage fiscal ou l'obtention d'un financement, ainsi que toute rémunération portant atteinte à l'indépendance.",
+  k:["Admis : temps passé, forfait, selon difficulté / importance","Révision possible (surcroît de travail)","Interdits : honoraires de résultat","Pas de rémunération portant atteinte à l'indépendance"]},
+
+ {t:"Co-commissariat", q:"Comment s'organise le travail de deux co-commissaires aux comptes et que se passe-t-il en cas de désaccord ?",
+  a:"Issus de structures distinctes, les co-commissaires se répartissent les travaux d'audit, procèdent à une revue croisée de leurs travaux respectifs et établissent un rapport commun signé conjointement. En cas de désaccord sur l'opinion, chacun exprime sa propre opinion et le rapport fait état des positions divergentes.",
+  k:["Structures distinctes","Répartition des travaux + revue croisée","Rapport commun, signé conjointement","Désaccord : opinions exprimées séparément"]}
 ];
 
 /* ===================== CARTES MENTALES ===================== */
@@ -1827,7 +1959,7 @@ const shuffle = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.random()*(
 let qcmCat='all', qrcCat='all', unseenCat={};
 const normTh = t => String(t).normalize('NFC').replace(/’/g,"'");
 const CAT_EC = new Set(["Accès à la profession","Activités accessoires","Communication / publicité","Communication","Conditions d'exercice","Confraternité","Devoir de conseil","Démarchage","Discipline","Exercice de la profession","Fin de mission","Formation continue","Honoraires","Inscription au tableau","Le DEC","Le stage","Le cadre de référence des missions","Lettre de mission","Maniement de fonds","Missions de l'EC","Missions gratuites","Missions sans assurance","Niveaux d'assurance","Obligations de l'EC","Organisation de la mission","Responsabilité","Sanctions disciplinaires","Structures d'exercice","Tableau de l'Ordre","Incompatibilités"].map(normTh));
-const CAT_CAC = new Set(["Cessation des fonctions du CAC","Co-commissariat","Comité d'audit","Contrôle qualité","Délit d'entrave","Démission du CAC","Désignation du CAC (EIP)","Durabilité (CSRD)","Entités d'intérêt public","Gouvernance EIP","Honoraires CAC (EIP)","Honoraires du CAC","Honoraires du CAC (EIP)","Incompatibilité du CAC","Incompatibilités du CAC","Indépendance du CAC","Indépendance du CAC (EIP)","Interventions du CAC","Mandat du CAC","Mission du CAC","Nomination du CAC","Non-immixtion","Normes du CAC","Obligations du CAC","Opinion du CAC","Régulation (H2A)","Rotation (EIP)","Services interdits (EIP)","Seuils CAC","Seuils de nomination","Vérifications du CAC","Confraternité (CAC)"].map(normTh));
+const CAT_CAC = new Set(["Cessation des fonctions du CAC","Co-commissariat","Comité d'audit","Contrôle qualité","Délit d'entrave","Démission du CAC","Désignation du CAC (EIP)","Durabilité (CSRD)","Entités d'intérêt public","Gouvernance EIP","Honoraires CAC (EIP)","Honoraires du CAC","Honoraires du CAC (EIP)","Incompatibilité du CAC","Incompatibilités du CAC","Indépendance du CAC","Indépendance du CAC (EIP)","Interventions du CAC","Mandat du CAC","Mission du CAC","Nomination du CAC","Non-immixtion","Normes du CAC","Obligations du CAC","Opinion du CAC","Régulation (H2A)","Rotation (EIP)","Services interdits (EIP)","Seuils CAC","Seuils de nomination","Vérifications du CAC","Confraternité (CAC)","Responsabilité du CAC"].map(normTh));
 function catOf(t){ t=normTh(t); return CAT_EC.has(t) ? 'ec' : (CAT_CAC.has(t) ? 'cac' : 'commun'); }
 function poolIndices(arr,cat){ const all=arr.map((_,i)=>i); if(cat==='all') return all; return all.filter(i=> catOf(arr[i].t)===cat); }
 function drawFrom(arr,n,key,pool){
