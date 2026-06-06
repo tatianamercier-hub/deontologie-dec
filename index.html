@@ -436,17 +436,17 @@
     <p class="sub">Un outil d'auto-évaluation : <b>20 questions tirées au sort</b> avec correction immédiate, et des <b>cartes mentales</b> pour fixer l'essentiel.</p>
 
     <div class="tabs">
-      <button class="tab active" data-panel="qcm">QCM aléatoire</button>
-      <button class="tab" data-panel="qrc">QRC (entraînement)</button>
-      <button class="tab" data-panel="exam">Mode examen</button>
-      <button class="tab" data-panel="fiches">Fiches</button>
+      <button class="tab active" data-panel="fiches">Fiches</button>
       <button class="tab" data-panel="mm">Cartes mentales</button>
+      <button class="tab" data-panel="qcm">QCM</button>
+      <button class="tab" data-panel="qrc">QRC</button>
+      <button class="tab" data-panel="exam">Mode examen</button>
       <button class="tab" data-panel="hist">Historique</button>
     </div>
   </header>
 
   <!-- ============ QCM ============ -->
-  <section class="panel active" id="panel-qcm">
+  <section class="panel" id="panel-qcm">
 
     <!-- start screen -->
     <div class="card start" id="start">
@@ -460,7 +460,7 @@
           <button class="cat-btn" data-cat="ec">Expert-comptable</button>
           <button class="cat-btn" data-cat="cac">Commissaire aux comptes</button>
         </div>
-        <span class="ec-hint" id="qcmCatHint">Toutes les questions (déontologie commune incluse).</span>
+        <span class="ec-hint" id="qcmCatHint">Toutes les questions (EC, CAC et déontologie commune).</span>
       </div>
       <button class="btn" id="begin">Commencer le QCM</button>
     </div>
@@ -475,7 +475,6 @@
 
       <span class="theme-tag" id="theme"></span>
       <div class="question" id="qtext"></div>
-      <div class="qcm-hint" id="qcmHint">Une ou plusieurs réponses possibles — cochez puis validez.</div>
       <div class="options" id="opts"></div>
 
       <div class="nav-next show" id="validateRow">
@@ -507,7 +506,7 @@
       <p id="res-line"></p>
       <div class="res-actions">
         <button class="btn" id="again">Nouveau tirage de 20 questions</button>
-        <button class="btn ghost" id="toMaps">Voir les cartes mentales</button>
+        <button class="btn ghost" id="toStart">Retour à l'accueil</button>
       </div>
     </div>
   </section>
@@ -533,7 +532,7 @@
           <button class="cat-btn" data-cat="ec">Expert-comptable</button>
           <button class="cat-btn" data-cat="cac">Commissaire aux comptes</button>
         </div>
-        <span class="ec-hint" id="qrcCatHint">Toutes les questions (déontologie commune incluse).</span>
+        <span class="ec-hint" id="qrcCatHint">Toutes les questions (EC, CAC et déontologie commune).</span>
       </div>
       <button class="btn alt" id="qrcBegin">Commencer l'entraînement</button>
     </div>
@@ -587,8 +586,8 @@
       <div id="qrc-res-msg"></div>
       <p id="qrc-res-line"></p>
       <div class="res-actions">
-        <button class="btn alt" id="qrcAgain">Nouvelle série de 20 QRC</button>
-        <button class="btn ghost" id="qrcToMaps">Voir les cartes mentales</button>
+        <button class="btn alt" id="qrcAgain">Nouvelle série de 10 QRC</button>
+        <button class="btn ghost" id="qrcToStart">Retour à l'accueil</button>
       </div>
     </div>
   </section>
@@ -669,7 +668,7 @@
   </section>
 
   <!-- ============ FICHES DE RÉVISION ============ -->
-  <section class="panel" id="panel-fiches">
+  <section class="panel active" id="panel-fiches">
     <p class="mm-intro">
       Des fiches synthétiques pour apprendre l'essentiel&nbsp;: les points-clés, les chiffres à connaître par cœur, les pièges classiques et des tableaux de comparaison.
       <span class="tip">💡 Lis la fiche, puis essaie de la restituer de mémoire</span>
@@ -1051,43 +1050,43 @@ const BANK = [
    o:["Oui, librement","Non : le mandat est personnel et incessible (il ne se « délègue » pas par simple accord)","Oui, avec l'accord du client","Oui, contre rémunération"], a:1,
    e:"Le mandat de CAC est <b>personnel</b> : on ne « transfère » pas ses mandats à un confrère. Un changement de titulaire suppose une nouvelle désignation régulière par l'entité."},
 
-  {t:"Principes déontologiques", q:"Parmi les propositions suivantes, lesquelles constituent des principes fondamentaux de comportement du professionnel ? (plusieurs réponses)",
+  {t:"Principes déontologiques", q:"Parmi les propositions suivantes, lesquelles constituent des principes fondamentaux de comportement du professionnel ?",
    o:["L'intégrité","La recherche du profit maximal","La compétence","La confidentialité"], a:[0,2,3],
    e:"L'<b>intégrité</b>, la <b>compétence</b> et la <b>confidentialité</b> figurent parmi les principes fondamentaux, aux côtés de l'objectivité/indépendance et du comportement professionnel. La recherche du profit maximal n'en fait pas partie."},
 
-  {t:"Indépendance", q:"Quelles situations constituent des menaces à l'indépendance ? (plusieurs réponses)",
+  {t:"Indépendance", q:"Quelles situations constituent des menaces à l'indépendance ?",
    o:["L'auto-révision","La familiarité","La formation continue","L'intimidation"], a:[0,1,3],
    e:"Les menaces sont l'intérêt personnel, l'<b>auto-révision</b>, la <b>familiarité</b>, l'<b>intimidation</b> et le plaidoyer. La formation continue est au contraire une obligation déontologique, pas une menace."},
 
-  {t:"Seuils CAC", q:"Quels sont les trois seuils dont le dépassement de deux d'entre eux rend obligatoire la nomination d'un CAC (décret de 2024) ? (plusieurs réponses)",
+  {t:"Seuils CAC", q:"Quels sont les trois seuils dont le dépassement de deux d'entre eux rend obligatoire la nomination d'un CAC (décret de 2024) ?",
    o:["5 M€ de total de bilan","10 M€ de chiffre d'affaires HT","50 salariés","2 M€ de résultat net"], a:[0,1,2],
    e:"Les trois seuils sont <b>5 M€ de bilan</b>, <b>10 M€ de CA HT</b> et <b>50 salariés</b> ; la nomination est obligatoire dès que deux d'entre eux sont dépassés. Le résultat net n'est pas un critère."},
 
-  {t:"Missions de l'EC", q:"Quelles missions procurent une assurance (raisonnable ou modérée) ? (plusieurs réponses)",
+  {t:"Missions de l'EC", q:"Quelles missions procurent une assurance (raisonnable ou modérée) ?",
    o:["La présentation des comptes (NP 2300)","La compilation (NP 4410)","L'examen limité (NP 2400)","L'audit d'états financiers"], a:[0,2,3],
    e:"La <b>présentation</b> (modérée), l'<b>examen limité</b> (modérée) et l'<b>audit</b> (raisonnable) procurent une assurance. La <b>compilation</b> n'en procure aucune."},
 
-  {t:"Obligations du CAC", q:"Quelles obligations spécifiques pèsent sur le commissaire aux comptes ? (plusieurs réponses)",
+  {t:"Obligations du CAC", q:"Quelles obligations spécifiques pèsent sur le commissaire aux comptes ?",
    o:["La révélation des faits délictueux au procureur","La tenue de la comptabilité de l'entité","La procédure d'alerte sur la continuité d'exploitation","Les obligations anti-blanchiment (LCB-FT)"], a:[0,2,3],
    e:"Le CAC doit <b>révéler les faits délictueux</b>, déclencher la <b>procédure d'alerte</b> et respecter la <b>LCB-FT</b>. Tenir la comptabilité de l'entité contrôlée lui est au contraire interdit (auto-révision)."},
 
-  {t:"Discipline", q:"Quelles sanctions disciplinaires peuvent être prononcées contre un expert-comptable ? (plusieurs réponses)",
+  {t:"Discipline", q:"Quelles sanctions disciplinaires peuvent être prononcées contre un expert-comptable ?",
    o:["La réprimande","L'amende pénale","Le blâme","La radiation du tableau"], a:[0,2,3],
    e:"Les sanctions disciplinaires sont la <b>réprimande</b>, le <b>blâme</b>, la suspension et la <b>radiation</b>. L'amende pénale relève du juge pénal, pas de la discipline ordinale."},
 
-  {t:"Régulation (H2A)", q:"Quelles missions relèvent de la Haute Autorité de l'audit (H2A) ? (plusieurs réponses)",
+  {t:"Régulation (H2A)", q:"Quelles missions relèvent de la Haute Autorité de l'audit (H2A) ?",
    o:["L'adoption des normes applicables aux CAC","La supervision de l'audit financier","La supervision de la certification de durabilité","La tenue du tableau de l'Ordre des experts-comptables"], a:[0,1,2],
    e:"La H2A <b>adopte les normes</b>, supervise l'<b>audit financier</b> et la <b>certification de durabilité</b>. Le tableau de l'Ordre des experts-comptables relève du CNOEC et des conseils régionaux, pas de la H2A."},
 
-  {t:"Lettre de mission", q:"Quelles affirmations sur la lettre de mission de l'expert-comptable sont exactes ? (plusieurs réponses)",
+  {t:"Lettre de mission", q:"Quelles affirmations sur la lettre de mission de l'expert-comptable sont exactes ?",
    o:["Elle est obligatoire","Elle peut être seulement verbale","Elle est établie avant le début des travaux","Elle définit les obligations réciproques des parties"], a:[0,2,3],
    e:"La lettre de mission est <b>obligatoire</b>, <b>écrite</b>, établie <b>avant</b> la mission et définit les <b>obligations réciproques</b>. Une simple forme verbale ne suffit pas."},
 
-  {t:"LCB-FT", q:"Quelles affirmations relatives à la déclaration de soupçon sont exactes ? (plusieurs réponses)",
+  {t:"LCB-FT", q:"Quelles affirmations relatives à la déclaration de soupçon sont exactes ?",
    o:["Elle est adressée à TRACFIN","Le client doit en être informé","Elle constitue une dérogation légale au secret professionnel","Faite de bonne foi, elle exonère le professionnel de responsabilité"], a:[0,2,3],
    e:"La déclaration va à <b>TRACFIN</b>, constitue une <b>dérogation légale</b> au secret et <b>exonère</b> le professionnel de bonne foi. Il est en revanche <b>interdit</b> d'informer le client."},
 
-  {t:"Incompatibilités", q:"Quelles activités sont compatibles, à titre accessoire, avec la profession d'expert-comptable ? (plusieurs réponses)",
+  {t:"Incompatibilités", q:"Quelles activités sont compatibles, à titre accessoire, avec la profession d'expert-comptable ?",
    o:["Les consultations fiscales","Une activité commerciale habituelle","Les consultations juridiques liées aux missions","Les consultations sociales"], a:[0,2,3],
    e:"Le conseil <b>fiscal</b>, <b>juridique</b> et <b>social</b> est autorisé à titre accessoire des missions comptables. L'activité commerciale habituelle reste incompatible."}
 ,
@@ -1209,19 +1208,19 @@ const BANK = [
    o:["Doit toujours tout communiquer spontanément","Reste en principe tenu au secret, sauf disposition légale l'obligeant à communiquer","N'est jamais tenu au secret","Doit demander l'accord de l'Ordre"], a:1,
    e:"Le secret demeure le <b>principe</b> ; il ne cède que devant un <b>texte légal</b> prévoyant un droit de communication ou une obligation déclarative."},
 
-  {t:"Entités d'intérêt public", q:"Quelles entités constituent des EIP ? (plusieurs réponses)",
+  {t:"Entités d'intérêt public", q:"Quelles entités constituent des EIP ?",
    o:["Les sociétés cotées sur un marché réglementé","Les établissements de crédit","Les entreprises d'assurance","Toutes les SAS"], a:[0,1,2],
    e:"Sont des <b>EIP</b> les sociétés <b>cotées</b>, les <b>établissements de crédit</b> et les <b>entreprises d'assurance</b>. La seule forme SAS ne fait pas d'une société une EIP."},
 
-  {t:"Comité d'audit", q:"Quelles missions incombent au comité d'audit d'une EIP ? (plusieurs réponses)",
+  {t:"Comité d'audit", q:"Quelles missions incombent au comité d'audit d'une EIP ?",
    o:["Suivre le processus d'élaboration de l'information financière","Suivre l'efficacité du contrôle interne et de la gestion des risques","Émettre une recommandation sur le ou les CAC proposés à la désignation","Certifier lui-même les comptes"], a:[0,1,2],
    e:"Le comité d'audit suit l'<b>information financière</b>, le <b>contrôle interne</b> et les <b>risques</b>, l'<b>indépendance du CAC</b> et <b>recommande</b> les CAC. Il ne certifie pas les comptes."},
 
-  {t:"Vérifications du CAC", q:"Parmi les diligences suivantes, lesquelles relèvent des obligations du commissaire aux comptes ? (plusieurs réponses)",
+  {t:"Vérifications du CAC", q:"Parmi les diligences suivantes, lesquelles relèvent des obligations du commissaire aux comptes ?",
    o:["Le rapport spécial sur les conventions réglementées","La vérification de la concordance du rapport de gestion avec les comptes","La tenue de la comptabilité de l'entité","La révélation des faits délictueux au procureur"], a:[0,1,3],
    e:"Relèvent de ses obligations : le <b>rapport spécial</b> sur les conventions réglementées, la vérification du <b>rapport de gestion</b> et la <b>révélation des faits délictueux</b>. Tenir la comptabilité de l'entité contrôlée lui est interdit."},
 
-  {t:"Opinion du CAC", q:"Quelles sont des issues possibles du rapport de certification du commissaire aux comptes ? (plusieurs réponses)",
+  {t:"Opinion du CAC", q:"Quelles sont des issues possibles du rapport de certification du commissaire aux comptes ?",
    o:["La certification avec réserve","Le refus de certifier","L'impossibilité de certifier","La certification conditionnelle"], a:[0,1,2],
    e:"Les issues sont : certification (avec ou sans réserve), <b>refus de certifier</b> (désaccord) et <b>impossibilité de certifier</b> (limitation). La « certification conditionnelle » n'existe pas."}
 ];
@@ -1830,7 +1829,7 @@ const normTh = t => String(t).normalize('NFC').replace(/’/g,"'");
 const CAT_EC = new Set(["Accès à la profession","Activités accessoires","Communication / publicité","Communication","Conditions d'exercice","Confraternité","Devoir de conseil","Démarchage","Discipline","Exercice de la profession","Fin de mission","Formation continue","Honoraires","Inscription au tableau","Le DEC","Le stage","Le cadre de référence des missions","Lettre de mission","Maniement de fonds","Missions de l'EC","Missions gratuites","Missions sans assurance","Niveaux d'assurance","Obligations de l'EC","Organisation de la mission","Responsabilité","Sanctions disciplinaires","Structures d'exercice","Tableau de l'Ordre","Incompatibilités"].map(normTh));
 const CAT_CAC = new Set(["Cessation des fonctions du CAC","Co-commissariat","Comité d'audit","Contrôle qualité","Délit d'entrave","Démission du CAC","Désignation du CAC (EIP)","Durabilité (CSRD)","Entités d'intérêt public","Gouvernance EIP","Honoraires CAC (EIP)","Honoraires du CAC","Honoraires du CAC (EIP)","Incompatibilité du CAC","Incompatibilités du CAC","Indépendance du CAC","Indépendance du CAC (EIP)","Interventions du CAC","Mandat du CAC","Mission du CAC","Nomination du CAC","Non-immixtion","Normes du CAC","Obligations du CAC","Opinion du CAC","Régulation (H2A)","Rotation (EIP)","Services interdits (EIP)","Seuils CAC","Seuils de nomination","Vérifications du CAC","Confraternité (CAC)"].map(normTh));
 function catOf(t){ t=normTh(t); return CAT_EC.has(t) ? 'ec' : (CAT_CAC.has(t) ? 'cac' : 'commun'); }
-function poolIndices(arr,cat){ const all=arr.map((_,i)=>i); if(cat==='all') return all; return all.filter(i=>{ const c=catOf(arr[i].t); return c===cat || c==='commun'; }); }
+function poolIndices(arr,cat){ const all=arr.map((_,i)=>i); if(cat==='all') return all; return all.filter(i=> catOf(arr[i].t)===cat); }
 function drawFrom(arr,n,key,pool){
   if(!unseenCat[key] || unseenCat[key].length===0) unseenCat[key]=shuffle(pool.slice());
   const batch=[];
@@ -2790,7 +2789,7 @@ function setPanel(name){
 document.querySelectorAll('.tab').forEach(t=> t.onclick=()=>setPanel(t.dataset.panel));
 el('begin').onclick=startQuiz;
 el('again').onclick=startQuiz;
-const _catHints={all:"Toutes les questions (déontologie commune incluse).",ec:"Uniquement Expert-comptable (+ déontologie commune).",cac:"Uniquement Commissaire aux comptes (+ déontologie commune)."};
+const _catHints={all:"Toutes les questions (EC, CAC et déontologie commune).",ec:"Uniquement les questions Expert-comptable.",cac:"Uniquement les questions Commissaire aux comptes."};
 document.querySelectorAll('#start .cat-btn').forEach(b=> b.onclick=()=>{
   document.querySelectorAll('#start .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
   qcmCat=b.dataset.cat; el('qcmCatHint').textContent=_catHints[qcmCat];
@@ -2801,13 +2800,13 @@ document.querySelectorAll('#qrcStart .cat-btn').forEach(b=> b.onclick=()=>{
 });
 el('validate').onclick=validateQuestion;
 el('next').onclick=nextQuestion;
-el('toMaps').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
+el('toStart').onclick=()=>{ el('results').style.display='none'; el('start').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
 
 el('qrcBegin').onclick=startQRC;
 el('qrcAgain').onclick=startQRC;
 el('qrcReveal').onclick=revealQRC;
 el('qrcNext').onclick=nextQRC;
-el('qrcToMaps').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:'smooth'}); };
+el('qrcToStart').onclick=()=>{ el('qrcResults').style.display='none'; el('qrcStart').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
 document.querySelectorAll('#qrcModel .se').forEach(b=> b.onclick=()=>{ gradeQRC(parseFloat(b.dataset.v), b); recomputeQRC(); });
 
 el('examBegin').onclick=startExam;
