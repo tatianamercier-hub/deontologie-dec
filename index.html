@@ -1934,6 +1934,7 @@ function validateQuestion(){
   el('exp').innerHTML = `<span style="display:block;margin-bottom:6px;font-size:.85rem;color:var(--ink-soft)">Cette question comptait <b>${nbCorrect}</b> bonne(s) réponse(s).</span>` + item.e;
   el('validateRow').className='nav-next';
   el('navNext').className='nav-next show';
+  el('navNext').scrollIntoView({behavior:'smooth',block:'center'});
 }
 
 function nextQuestion(){
