@@ -2648,6 +2648,14 @@ const FICHES = [
     "N'a pas payé sa <b>cotisation professionnelle annuelle</b> ou les cotisations dues au titre des <b>régimes de sécurité sociale</b>",
     "Ou ne justifie pas d'une <b>couverture continue d'assurance RCP</b>",
     "→ <b>Radiation</b> après <b>2 appels infructueux</b>, notifiée à tous les conseils régionaux"]},
+  boxes:[
+   {color:4, lbl:"L'assurance responsabilité civile professionnelle (RCP)",
+    intro:"Obligatoire, elle doit couvrir l'<b>ensemble des travaux et activités</b>. L'EC peut adhérer au <b>contrat-cadre</b> souscrit par l'Ordre, dont les avantages :",
+    items:[
+     "<b>Tarifs maîtrisés</b>",
+     "<b>Comité de conciliation</b> si l'assureur refuse d'accorder la garantie ou émet des réserves",
+     "<b>Assistance</b> par des EC spécialisés dans l'instruction du dossier sinistre",
+     "<b>Couverture adaptée</b> à l'évolution des missions"]}],
   memo:"<b>Procédure d'inscription</b> (au conseil régional de l'Ordre) : demande d'inscription → vérification de la demande → décision du conseil régional → notification de la décision."},
 
  {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
@@ -2805,6 +2813,15 @@ function buildFiches(cat){
     if(f.doctrine){
       const di = f.doctrine.intro ? `<p class="fbox-intro">${f.doctrine.intro}</p>` : '';
       html += `<div class="fbox fbox-doc"><div class="fbox-lbl">${f.doctrine.lbl}</div>${di}<ul class="fiche-list">${(f.doctrine.items||[]).map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+    }
+    if(f.boxes){
+      f.boxes.forEach((bx)=>{
+        const cls = 'fsec-'+(bx.color||5);
+        const bi = bx.intro ? `<p class="fbox-intro">${bx.intro}</p>` : '';
+        const bl = (bx.items&&bx.items.length) ? `<ul class="fiche-list">${bx.items.map(p=>`<li>${p}</li>`).join('')}</ul>` : '';
+        const bn = bx.note ? bx.note : '';
+        html += `<div class="fbox ${cls}"><div class="fbox-lbl">${bx.lbl}</div>${bi}${bl}${bn}</div>`;
+      });
     }
     if(f.piege){
       const body = Array.isArray(f.piege) ? `<ul class="fiche-list">${f.piege.map(p=>`<li>${p}</li>`).join('')}</ul>` : `<p>${f.piege}</p>`;
