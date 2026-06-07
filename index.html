@@ -2585,7 +2585,8 @@ const FICHES = [
      "Les opérations de <b>concentration</b>",
      "L'exercice du <b>droit d'alerte économique</b>",
      "Les <b>licenciements collectifs</b> pour motif économique",
-     "Les <b>offres publiques d'acquisition (OPA)</b>"]},
+     "Les <b>offres publiques d'acquisition (OPA)</b>"],
+    note:"<div class='fbox-intro' style='margin-top:12px;font-weight:700'>Qui finance l'expertise ?</div><ul class='fiche-list'><li><b>100 % par l'employeur</b> : situation économique et financière, contrôle de la RSP, consultation sur la politique sociale.</li><li><b>20 % à la charge du CSE</b> (80 % employeur) : projet important modifiant les conditions de travail, OPA, droit d'alerte économique, orientations stratégiques.</li></ul>"},
    {lbl:"Interventions sur les comptes de campagne des candidats aux élections politiques"},
    {lbl:"La délivrance du visa fiscal"},
    {lbl:"La mission de tiers de confiance"},
@@ -2722,8 +2723,9 @@ function buildFiches(cat){
         const cls='fsec-'+((si%5)+1);
         const ai = sec.intro ? `<p class="fbox-intro">${sec.intro}</p>` : '';
         const li = (sec.items&&sec.items.length) ? `<ul class="fiche-list">${sec.items.map(p=>`<li>${p}</li>`).join('')}</ul>` : '';
-        const empty = (!ai && !li) ? `<p class="fbox-intro" style="font-style:italic;color:var(--ink-soft)">(contenu à compléter)</p>` : '';
-        html += `<div class="fbox ${cls}"><div class="fbox-lbl">${sec.lbl}</div>${ai}${li}${empty}</div>`;
+        const nt = sec.note ? sec.note : '';
+        const empty = (!ai && !li && !sec.note) ? `<p class="fbox-intro" style="font-style:italic;color:var(--ink-soft)">(contenu à compléter)</p>` : '';
+        html += `<div class="fbox ${cls}"><div class="fbox-lbl">${sec.lbl}</div>${ai}${li}${nt}${empty}</div>`;
       });
     }
     if(f.essentiel && f.essentiel.length){
