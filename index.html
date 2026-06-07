@@ -349,6 +349,11 @@
   .fbox-act .fbox-lbl{color:var(--gold)}
   .fbox-doc{background:var(--paper-2)}
   .fbox-doc .fbox-lbl{color:var(--ox)}
+  .fsec-1{background:rgba(124,43,43,.07)} .fsec-1 .fbox-lbl{color:var(--ox)}
+  .fsec-2{background:rgba(176,125,47,.12)} .fsec-2 .fbox-lbl{color:var(--gold)}
+  .fsec-3{background:var(--green-bg)} .fsec-3 .fbox-lbl{color:var(--green)}
+  .fsec-4{background:#eef3fa} .fsec-4 .fbox-lbl{color:#3a5a8c}
+  .fsec-5{background:var(--paper-2)} .fsec-5 .fbox-lbl{color:var(--ink)}
   .fbox-intro{font-size:.93rem;color:var(--ink);margin-bottom:10px;line-height:1.5}
   .fbox-schema{background:var(--paper)}
   .fbox-schema .fbox-lbl{color:var(--gold)}
@@ -2567,6 +2572,16 @@ const FICHES = [
   piege:"La <b>présentation (NP 2300)</b> porte sur la <b>cohérence et la vraisemblance</b>, pas sur l'image fidèle. Les NP sont <b>agréées par le ministre de l'Économie</b> (≠ NEP du CAC, homologuées par le Garde des Sceaux).",
   memo:"Conclusion <b>POSITIVE → audit</b> (raisonnable) · <b>NÉGATIVE → examen limité / présentation</b> (modérée) · <b>CONSTATS → procédures convenues / compilation</b> (aucune). Réflexe : <b>famille 44xx = aucune assurance</b>."},
 
+ {cat:"ec", title:"Les missions légales de l'expert-comptable", sub:"Des missions spécifiques confiées par la loi, au-delà des missions comptables",
+  def:"Au-delà de ses missions comptables et de conseil, l'expert-comptable s'est vu confier par la loi plusieurs <b>missions spécifiques</b>. Les principales :",
+  sections:[
+   {lbl:"Missions pour les comités sociaux et économiques (CSE)"},
+   {lbl:"Interventions sur les comptes de campagne des candidats aux élections politiques"},
+   {lbl:"La délivrance du visa fiscal"},
+   {lbl:"La mission de tiers de confiance"},
+   {lbl:"L'examen de conformité fiscale (ECF)"}
+  ]},
+
  {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
   essentiel:[
    "<b>Acceptation</b> : vérifier indépendance, compétence, moyens, intégrité du client, diligences LCB-FT.",
@@ -2691,6 +2706,15 @@ function buildFiches(cat){
     if(f.code){
       html += `<p class="fiche-def">${f.code.def}</p>`;
       html += `<div class="fbox fbox-code"><div class="fbox-lbl">${f.code.lbl}</div><ul class="fiche-list fdef-list">${f.code.items.map(x=>`<li><b>${x.n}</b> — ${x.d}</li>`).join('')}</ul></div>`;
+    }
+    if(f.sections){
+      f.sections.forEach((sec,si)=>{
+        const cls='fsec-'+((si%5)+1);
+        const ai = sec.intro ? `<p class="fbox-intro">${sec.intro}</p>` : '';
+        const li = (sec.items&&sec.items.length) ? `<ul class="fiche-list">${sec.items.map(p=>`<li>${p}</li>`).join('')}</ul>` : '';
+        const empty = (!ai && !li) ? `<p class="fbox-intro" style="font-style:italic;color:var(--ink-soft)">(contenu à compléter)</p>` : '';
+        html += `<div class="fbox ${cls}"><div class="fbox-lbl">${sec.lbl}</div>${ai}${li}${empty}</div>`;
+      });
     }
     if(f.essentiel && f.essentiel.length){
       html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
