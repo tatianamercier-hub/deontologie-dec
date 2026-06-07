@@ -2617,6 +2617,7 @@ const FICHES = [
 
  {cat:"ec", title:"Accès à la profession", sub:"Conditions d'accès et formation continue",
   def:"L'accès à la profession suppose de réunir des <b>conditions de droit commun</b> et d'être inscrit au tableau de l'Ordre. Le diplômé d'expertise comptable peut être inscrit s'il est <b>indépendant</b>, <b>salarié d'un membre de l'Ordre</b> et/ou <b>futur dirigeant d'une société d'expertise comptable</b>.",
+  essentielLbl:"Conditions de droit commun",
   essentiel:[
    "Jouir de ses <b>droits civiques</b>",
    "N'avoir subi <b>aucune condamnation criminelle ou correctionnelle</b>",
@@ -2781,7 +2782,7 @@ function buildFiches(cat){
       });
     }
     if(f.essentiel && f.essentiel.length){
-      html += `<div class="fbox fbox-ess"><div class="fbox-lbl">L'essentiel</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
+      html += `<div class="fbox fbox-ess"><div class="fbox-lbl">${f.essentielLbl||"L'essentiel"}</div><ul class="fiche-list">${f.essentiel.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
     }
     if(f.missions && f.missions.length){
       html += `<div class="fbox fbox-miss"><div class="fbox-lbl">Les missions de l'Ordre</div><ul class="fiche-list">${f.missions.map(p=>`<li>${p}</li>`).join('')}</ul></div>`;
