@@ -3231,6 +3231,11 @@ document.querySelectorAll('#panel-fiches .subtab').forEach(t=> t.onclick=()=>set
 buildFiches('commun');
 buildMaps('commun');
 
+/* Au rechargement : revenir en haut de la page (et non à la position précédente) */
+if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
+window.scrollTo(0,0);
+window.addEventListener('load', ()=>window.scrollTo(0,0));
+
 /* Historique : chargement et contrôles */
 loadHistory();
 el('histClear').onclick=()=>{
