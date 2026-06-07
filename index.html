@@ -382,7 +382,7 @@
   .fiche-table th,.fiche-table td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);vertical-align:top}
   .fiche-table .nname{display:block;font-weight:400;color:var(--ink-soft);font-size:.82em;margin-top:3px}
   .fiche-table thead th{background:var(--ink);color:var(--paper);font-weight:600;font-size:.8rem}
-  .fiche-table tbody th{background:var(--paper-2);font-weight:600;color:var(--ink);width:32%}
+  .fiche-table tbody th{background:var(--paper-2);font-weight:600;color:var(--ink);width:26%}
   .fiche-table tr:last-child td,.fiche-table tr:last-child th{border-bottom:none}
   .fiche-table th:last-child,.fiche-table td:last-child{border-right:none}
   .fbox-warn{background:var(--red-bg);border-color:var(--ox-soft)}
@@ -2542,16 +2542,16 @@ const FICHES = [
    "Textes-socles : <b>cadre de référence + glossaire + NPMQ</b> (maîtrise de la qualité) + <b>norme anti-blanchiment</b>.",
    "Il distingue le <b>cadre des missions</b> (avec ou sans assurance) et le <b>cadre des activités</b>.",
    "Plus l'assurance visée est élevée, plus les <b>diligences</b> à mettre en œuvre sont étendues."],
-  table:{title:"Les normes de l'EC : définition, assurance et conclusion", head:["Norme","Définition","Assurance","Conclusion"], rows:[
-   ["NPMQ<br><span class='nname'>Norme de maîtrise de la qualité</span>","Mettre en place et assurer le suivi d'un <b>système de contrôle qualité</b> visant à fournir l'assurance raisonnable que la structure et son personnel se conforment aux NP et aux obligations légales ; les cabinets doivent mettre en place un <b>manuel de procédures</b>.","—","—"],
-   ["NPLAB<br><span class='nname'>Norme professionnelle relative aux obligations de la profession d'expertise comptable en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme</span>","Reprend la plupart des dispositions du <b>Code monétaire et financier</b>. Plusieurs sections : définir une <b>organisation et des procédures internes écrites</b> et désigner un <b>correspondant TRACFIN</b> ; <b>identification et évaluation des risques</b> ; <b>obligations de vigilance</b> à l'entrée de la relation d'affaires (identifier les personnes, connaître l'objet et la nature de la relation) et vigilance <b>tout au long</b> de la relation d'affaires.","—","—"],
-   ["NP 2300<br><span class='nname'>Présentation des comptes</span>","À partir des éléments fournis par l'entreprise ; atteste de leur cohérence et de leur vraisemblance.","Modérée","Attestation"],
-   ["NP 2400<br><span class='nname'>Examen limité</span>","Revue allégée : entretiens et procédures analytiques.","Modérée","Négative"],
-   ["Audit (ISA) / NP 2910<br><span class='nname'>Audit des états financiers (NP 2910 = petites entités)</span>","Le plus haut niveau d'assurance ; la NP 2910 adapte les diligences aux petites entités.","Raisonnable","Positive"],
-   ["NP 3100<br><span class='nname'>Attestations particulières</span>","Assurance sur une information précise, autre que des comptes complets.","Variable","Variable"],
-   ["NP 3400<br><span class='nname'>Informations financières prévisionnelles</span>","Porte sur des données prévisionnelles (budgets, comptes prévisionnels).","Modérée","Négative"],
-   ["NP 4400<br><span class='nname'>Procédures convenues</span>","Travaux définis à l'avance, restitués en constats factuels.","Aucune","Constats"],
-   ["NP 4410<br><span class='nname'>Compilation</span>","Établir ou mettre en forme les comptes, sans exprimer d'assurance.","Aucune","—"]]},
+  table:{title:"Les normes de l'EC : définition, assurance et conclusion", head:["Norme","Définition","Assurance & conclusion"], rows:[
+   ["NPMQ<br><span class='nname'>Norme de maîtrise de la qualité</span>","Mettre en place et assurer le suivi d'un <b>système de contrôle qualité</b> visant à fournir l'assurance raisonnable que la structure et son personnel se conforment aux NP et aux obligations légales ; les cabinets doivent mettre en place un <b>manuel de procédures</b>.","—"],
+   ["NPLAB<br><span class='nname'>Norme professionnelle relative aux obligations de la profession d'expertise comptable en matière de lutte contre le blanchiment des capitaux et le financement du terrorisme</span>","Reprend la plupart des dispositions du <b>Code monétaire et financier</b>. Plusieurs sections : définir une <b>organisation et des procédures internes écrites</b> et désigner un <b>correspondant TRACFIN</b> ; <b>identification et évaluation des risques</b> ; <b>obligations de vigilance</b> à l'entrée de la relation d'affaires (identifier les personnes, connaître l'objet et la nature de la relation) et vigilance <b>tout au long</b> de la relation d'affaires.","—"],
+   ["NP 2300<br><span class='nname'>Présentation des comptes</span>","À partir des éléments fournis par l'entreprise ; atteste de leur cohérence et de leur vraisemblance.","Modérée<br><span class='nname'>Conclusion : attestation</span>"],
+   ["NP 2400<br><span class='nname'>Examen limité</span>","Revue allégée : entretiens et procédures analytiques.","Modérée<br><span class='nname'>Conclusion négative</span>"],
+   ["Audit (ISA) / NP 2910<br><span class='nname'>Audit des états financiers (NP 2910 = petites entités)</span>","Le plus haut niveau d'assurance ; la NP 2910 adapte les diligences aux petites entités.","Raisonnable<br><span class='nname'>Opinion positive</span>"],
+   ["NP 3100<br><span class='nname'>Attestations particulières</span>","Assurance sur une information précise, autre que des comptes complets.","Variable"],
+   ["NP 3400<br><span class='nname'>Informations financières prévisionnelles</span>","Porte sur des données prévisionnelles (budgets, comptes prévisionnels).","Modérée<br><span class='nname'>Conclusion négative</span>"],
+   ["NP 4400<br><span class='nname'>Procédures convenues</span>","Travaux définis à l'avance, restitués en constats factuels.","Aucune<br><span class='nname'>Constatations</span>"],
+   ["NP 4410<br><span class='nname'>Compilation</span>","Établir ou mettre en forme les comptes, sans exprimer d'assurance.","Aucune"]]},
   activites:{lbl:"NP — Activités commerciales & actes d'intermédiaire",
    intro:"Effectuées <b>à titre accessoire</b> = présenter un caractère <b>connexe ou complémentaire</b> aux activités autorisées aux EC, sans pouvoir constituer l'<b>objet principal</b> de l'activité. Cela s'apprécie selon un <b>faisceau d'indices</b> (chiffre d'affaires, moyens consacrés à cette activité).",
    items:[
