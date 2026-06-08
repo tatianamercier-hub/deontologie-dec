@@ -899,9 +899,9 @@ const BANK = [
    o:["À tout moment et sans aucun motif","Pour des motifs légitimes, sans intention de se soustraire à ses obligations","Jamais","Uniquement avec l'accord de la H2A"], a:1,
    e:"La démission est encadrée : elle ne doit pas viser à se <b>soustraire</b> aux obligations légales (alerte, révélation…)."},
 
-  {t:"Structures d'exercice", q:"Dans une société d'expertise comptable, le capital doit être détenu majoritairement par :",
-   o:["Des investisseurs financiers","Des experts-comptables (au moins les deux tiers du capital et des droits de vote)","L'État","N'importe quels associés"], a:1,
-   e:"Au moins les <b>deux tiers</b> du capital et des droits de vote doivent être détenus par des experts-comptables inscrits."},
+  {t:"Structures d'exercice", q:"Dans une société d'expertise comptable, le contrôle est assuré par la détention, par des experts-comptables, de :",
+   o:["Au moins deux tiers du capital social","Plus des deux tiers des droits de vote","La totalité du capital","La moitié du capital et des droits de vote"], a:1,
+   e:"Les experts-comptables inscrits doivent détenir <b>plus des deux tiers des droits de vote</b>. Le <b>quota relatif au capital social a été supprimé</b> : la condition ne porte désormais plus que sur les <b>droits de vote</b>."},
 
   {t:"Structures d'exercice", q:"Une association de gestion et de comptabilité (AGC) :",
    o:["Est une structure interdite","Est habilitée à exercer l'expertise comptable et inscrite à l'Ordre","Ne peut pas tenir de comptabilité","Est réservée aux commissaires aux comptes"], a:1,
@@ -1305,7 +1305,7 @@ const BANK = [
 
   {t:"Structures d'exercice", q:"Dans une société d'expertise comptable, les fonctions de direction et d'administration doivent être exercées :",
    o:["Par n'importe quel associé","Majoritairement par des experts-comptables membres de l'Ordre","Par un avocat","Par le commissaire aux comptes de la société"], a:1,
-   e:"La <b>direction</b> et l'<b>administration</b> d'une société d'EC reviennent <b>majoritairement à des experts-comptables</b> inscrits, en cohérence avec la détention d'au moins 2/3 du capital par des EC."},
+   e:"La <b>direction</b> et l'<b>administration</b> d'une société d'EC reviennent <b>majoritairement à des experts-comptables</b> inscrits, en cohérence avec la détention de <b>plus des 2/3 des droits de vote</b> par des EC."},
 
   {t:"Durabilité (CSRD)", q:"L'organisme tiers indépendant (OTI) qui certifie les informations de durabilité est accrédité par :",
    o:["La H2A","Le COFRAC (Comité français d'accréditation)","L'AMF","Le ministère de l'Économie"], a:1,
@@ -1686,9 +1686,9 @@ const QRC = [
   a:"Il doit identifier le conflit, l'évaluer, puis mettre en place des sauvegardes pour le neutraliser. Si le conflit ne peut pas être ramené à un niveau acceptable malgré ces mesures, il doit refuser la mission ou s'en retirer.",
   k:["Identifier et évaluer le conflit","Mettre en place des sauvegardes","Si non réductible : refuser ou se retirer"]},
 
- {t:"Structures d'exercice", q:"Quelle est la règle de détention du capital dans une société d'expertise comptable ?",
-  a:"Au moins les deux tiers du capital social et des droits de vote doivent être détenus par des experts-comptables inscrits au tableau de l'Ordre (ou des structures elles-mêmes inscrites). Cette règle garantit le contrôle de la structure par des professionnels soumis à la déontologie.",
-  k:["Au moins 2/3 du capital et des droits de vote","Détenus par des experts-comptables inscrits","Objectif : contrôle par des professionnels soumis à la déontologie"]},
+ {t:"Structures d'exercice", q:"Quelle est la règle de contrôle d'une société d'expertise comptable ?",
+  a:"Des experts-comptables inscrits au tableau de l'Ordre (ou des structures elles-mêmes inscrites) doivent détenir plus des deux tiers des droits de vote. Le quota relatif au capital social a été supprimé : la condition ne porte plus que sur les droits de vote. Cette règle garantit le contrôle de la structure par des professionnels soumis à la déontologie.",
+  k:["Plus des 2/3 des droits de vote détenus par des EC","Quota de capital social supprimé","Objectif : contrôle par des professionnels soumis à la déontologie"]},
 
  {t:"Cadre international", q:"Que sont l'IFAC et l'IESBA ?",
   a:"L'IFAC (International Federation of Accountants) est la fédération internationale qui regroupe les organisations professionnelles comptables du monde entier. L'IESBA, qui agit sous son égide, élabore le code international d'éthique des professionnels comptables, lequel inspire le Code de déontologie français.",
@@ -1745,8 +1745,8 @@ const QRC = [
   k:["Exercice individuel (libéral)","Associé d'une société d'EC","Salarié d'un confrère / société inscrite","AGC possible","Inscription au tableau obligatoire dans tous les cas"]},
 
  {t:"Structures d'exercice", q:"Quelles sont les principales structures d'exercice de l'expertise comptable ?",
-  a:"On distingue notamment : la société d'expertise comptable (au moins deux tiers du capital et des droits de vote détenus par des experts-comptables), l'association de gestion et de comptabilité (AGC), la société pluri-professionnelle d'exercice (SPE) réunissant professions du droit et du chiffre, et la société de participations financières de professions libérales (SPFPL), simple holding détenant des participations sans exercer elle-même la mission.",
-  k:["Société d'EC : 2/3 du capital aux experts-comptables","AGC : structure associative inscrite","SPE : professions du droit et du chiffre réunies","SPFPL : holding de participations, n'exerce pas la mission"]},
+  a:"On distingue notamment : la société d'expertise comptable (plus des deux tiers des droits de vote détenus par des experts-comptables, le quota de capital ayant été supprimé), l'association de gestion et de comptabilité (AGC), la société pluri-professionnelle d'exercice (SPE) réunissant professions du droit et du chiffre, et la société de participations financières de professions libérales (SPFPL), simple holding détenant des participations sans exercer elle-même la mission.",
+  k:["Société d'EC : + de 2/3 des droits de vote aux experts-comptables","AGC : structure associative inscrite","SPE : professions du droit et du chiffre réunies","SPFPL : holding de participations, n'exerce pas la mission"]},
 
  {t:"Fin de mission", q:"Quelles sont les obligations de l'expert-comptable en fin de mission, notamment quant aux documents ?",
   a:"L'expert-comptable doit restituer au client les documents qui lui appartiennent, y compris en cas de litige sur les honoraires : il ne peut pas les retenir comme moyen de pression. En revanche, ses propres dossiers de travail lui restent acquis et doivent être conservés. En cas de succession, il assure la continuité confraternelle avec le confrère qui lui succède.",
@@ -2485,9 +2485,9 @@ const FICHES = [
   essentiel:[
    "L'EC peut exercer en <b>libéral</b>, comme <b>associé</b> ou comme <b>salarié</b> d'un confrère / d'une société inscrite.",
    "Dans tous les cas, l'<b>inscription au tableau</b> est obligatoire."],
-  chiffres:[{v:"≥ 2/3",l:"du capital et des droits de vote d'une société d'EC détenus par des EC"}],
+  chiffres:[{v:"> 2/3",l:"des droits de vote d'une société d'EC détenus par des EC (le quota de capital a été supprimé)"}],
   table:{title:"Les principales structures", head:["Structure","Caractéristique clé"], rows:[
-   ["Société d'expertise comptable","≥ 2/3 du capital et des droits de vote détenus par des EC"],
+   ["Société d'expertise comptable","> 2/3 des droits de vote détenus par des EC (quota de capital supprimé)"],
    ["AGC","Association de gestion et de comptabilité, inscrite au tableau"],
    ["SPE","Société pluri-professionnelle d'exercice (professions du droit + du chiffre)"],
    ["SPFPL","Holding de participations : <b>n'exerce pas</b> elle-même la mission"]]},
