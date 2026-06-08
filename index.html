@@ -531,12 +531,6 @@
       <div class="seal">?</div>
       <h2>Entraînement aux QRC</h2>
       <p>Les questions à réponses courtes sont le format le <b>plus fréquent</b> de l'épreuve (tombé 13 fois sur 18 depuis 2010). Vous rédigez votre réponse, puis vous affichez le corrigé et vous vous auto-évaluez. Mode entraînement libre, sans chrono.</p>
-      <div class="meta-row">
-        <span class="chip" id="qrcCountChip"><b>10</b> questions</span>
-        <span class="chip">Sans <b>chrono</b></span>
-        <span class="chip">Corrigé <b>après chaque</b> réponse</span>
-      </div>
-      <div class="docnote-1">📝 Astuce : répondez d'abord de mémoire, de façon précise et synthétique, avant d'afficher le corrigé. Pour vous chronométrer en conditions réelles, utilisez le <b>Mode examen</b>.</div>
       <div class="exam-choice">
         <span class="ec-label">Combien de questions ?</span>
         <div class="ec-btns">
@@ -3601,7 +3595,6 @@ document.querySelectorAll('#qrcStart .cat-btn').forEach(b=> b.onclick=()=>{
 document.querySelectorAll('#qrcStart .num-btn').forEach(b=> b.onclick=()=>{
   document.querySelectorAll('#qrcStart .num-btn').forEach(x=>x.classList.toggle('sel', x===b));
   qrcN = parseInt(b.dataset.n,10) || 10;
-  el('qrcCountChip').innerHTML = `<b>${qrcN}</b> questions`;
   el('qrcAgain').textContent = `Nouvelle série de ${qrcN} QRC`;
 });
 el('validate').onclick=validateQuestion;
