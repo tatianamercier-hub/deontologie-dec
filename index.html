@@ -3377,9 +3377,12 @@ buildFiches('commun');
 buildMaps('commun');
 
 /* Au rechargement : revenir en haut de la page (et non à la position précédente) */
+function scrollHaut(){ try{ window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0; }catch(e){} }
 if('scrollRestoration' in history){ history.scrollRestoration='manual'; }
-window.scrollTo(0,0);
-window.addEventListener('load', ()=>window.scrollTo(0,0));
+scrollHaut();
+window.addEventListener('DOMContentLoaded', scrollHaut);
+window.addEventListener('load', ()=>{ scrollHaut(); setTimeout(scrollHaut,0); setTimeout(scrollHaut,120); setTimeout(scrollHaut,400); });
+window.addEventListener('pageshow', scrollHaut);
 
 /* Historique : chargement et contrôles */
 loadHistory();
