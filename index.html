@@ -918,8 +918,8 @@ const BANK = [
    e:"Les <b>AGC</b> sont inscrites au tableau et soumises aux mêmes règles déontologiques que les autres structures."},
 
   {t:"Formation continue", q:"L'obligation de formation continue de l'expert-comptable est de :",
-   o:["Aucune obligation","40 heures par an (soit 120 heures sur 3 ans)","10 heures par an","200 heures par an"], a:1,
-   e:"<b>40 h/an</b>, appréciées sur une base de <b>120 h sur 3 ans</b> glissants."},
+   o:["Aucune obligation","120 heures sur 3 ans, dont au moins 20 heures par an","40 heures par an minimum","200 heures par an"], a:1,
+   e:"L'obligation est de <b>120 heures sur 3 ans</b> (années glissantes), dont un <b>minimum de 20 heures par an</b> — soit environ 40 h/an en moyenne."},
 
   {t:"Acceptation de mission", q:"Avant d'accepter une mission, l'expert-comptable doit principalement :",
    o:["Vérifier la seule solvabilité du client","Apprécier sa capacité à exécuter la mission dans le respect de l'indépendance et de la compétence","Demander l'accord de l'Ordre","Fixer ses honoraires au résultat"], a:1,
@@ -1657,8 +1657,8 @@ const QRC = [
   k:["Stage de 3 ans","Inscription au tableau de l'Ordre","Prestation de serment"]},
 
  {t:"Principes déontologiques", q:"Définissez le principe de compétence et indiquez l'obligation de formation qui en découle.",
-  a:"La compétence impose à l'expert-comptable de n'accepter que les missions qu'il est en mesure de mener à bien, et de maintenir ses connaissances à jour. Elle se traduit par une obligation de formation continue de 40 heures par an, soit 120 heures sur 3 ans.",
-  k:["N'accepter que les missions réalisables","Maintien des connaissances à jour","Formation continue : 40 h/an (120 h sur 3 ans)"]},
+  a:"La compétence impose à l'expert-comptable de n'accepter que les missions qu'il est en mesure de mener à bien, et de maintenir ses connaissances à jour. Elle se traduit par une obligation de formation continue de 120 heures sur 3 ans, dont au moins 20 heures par an (soit environ 40 h/an en moyenne).",
+  k:["N'accepter que les missions réalisables","Maintien des connaissances à jour","Formation continue : 120 h sur 3 ans, dont 20 h/an minimum"]},
 
  {t:"Secret professionnel", q:"Le client peut-il, à lui seul, délier l'expert-comptable de son secret professionnel ? Justifiez.",
   a:"Non. Le secret professionnel a une portée générale et d'ordre public ; sa violation est sanctionnée pénalement (art. 226-13 du Code pénal). Il ne peut être levé que par une dérogation prévue par la loi (par exemple la déclaration de soupçon à TRACFIN). Le simple accord du client ne suffit donc pas à délier le professionnel dans toutes les situations.",
@@ -1863,8 +1863,8 @@ const QRC = [
   k:["Honoraires = travail réalisé, équitables","Tiennent compte de la difficulté et de l'importance","Honoraires de résultat interdits","Conciliation ordinale en cas de litige"]},
 
  {t:"Formation continue", q:"En quoi consiste l'obligation de formation continue de l'expert-comptable ?",
-  a:"L'expert-comptable doit suivre une formation continue de 40 heures par an, appréciée sur une base de 120 heures sur trois années glissantes. Elle garantit le maintien et l'actualisation de ses compétences, en lien direct avec le principe de compétence. Son respect peut être contrôlé par l'Ordre.",
-  k:["40 heures par an","120 heures sur 3 ans glissants","Maintien et actualisation des compétences","Lien avec le principe de compétence","Contrôle par l'Ordre"]}
+  a:"L'expert-comptable doit suivre une formation continue de 120 heures sur trois années glissantes, dont au moins 20 heures par an (soit environ 40 h/an en moyenne). Elle garantit le maintien et l'actualisation de ses compétences, en lien direct avec le principe de compétence. Son respect peut être contrôlé par l'Ordre.",
+  k:["120 heures sur 3 ans glissants","Minimum 20 heures par an","Maintien et actualisation des compétences","Lien avec le principe de compétence","Contrôle par l'Ordre"]}
 ,
 
  /* ——————————— QRC plus difficiles ——————————— */
@@ -2017,7 +2017,7 @@ const MAPS = [
      "Exécuter chaque mission avec conscience, diligence et esprit critique."]},
    {l:"Compétence", p:[
      "N'accepter que les missions que l'on est réellement capable de mener à bien.",
-     "Entretenir ses connaissances par la formation continue : 40 heures par an, soit 120 heures sur 3 ans.",
+     "Entretenir ses connaissances par la formation continue : 120 heures sur 3 ans, dont au moins 20 heures par an.",
      "Refuser la mission ou s'entourer d'un spécialiste lorsqu'elle dépasse son domaine."]},
    {l:"Indépendance", p:[
      "Être indépendant en esprit (un jugement libre de toute influence) et en apparence (vis-à-vis des tiers).",
@@ -2136,7 +2136,7 @@ const MAPS = [
      "Une commission nationale statue spécifiquement sur l'inscription des AGC."]},
    {l:"La formation continue", p:[
      "Obligatoire tout au long de la carrière.",
-     "40 heures par an, soit 120 heures sur 3 ans.",
+     "120 heures sur 3 ans, dont au moins 20 heures par an.",
      "Son non-respect peut entraîner des sanctions disciplinaires."]},
    {l:"La révision du tableau", p:[
      "Tous les 2 mois, la commission du tableau de chaque conseil régional révise le tableau.",
@@ -2877,7 +2877,7 @@ const FICHES = [
     "Statue sur l'<b>inscription des AGC au tableau</b> et tient la <b>liste</b> de ces associations",
     "Surveille l'exercice de l'activité sous <b>forme associative</b> et la mise en œuvre des <b>contrôles de qualité</b>",
     "Peut être <b>consultée pour avis</b> par le ministre de l'Économie sur les projets de textes relatifs à l'<b>exercice associatif</b> de la profession"]},
-  chiffres:[{v:"40 h/an",l:"Formation continue obligatoire, tout au long de la carrière (120 h sur 3 ans)"}],
+  chiffres:[{v:"120 h / 3 ans",l:"Formation continue obligatoire, tout au long de la carrière (dont au moins 20 h par an)"}],
   activites:{lbl:"Sanctions de l'exercice illégal de la profession",
    intro:"L'exercice illégal (sans inscription au tableau) est sanctionné pénalement :",
    items:[
