@@ -229,6 +229,9 @@
   .cat-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:9px 16px;transition:.16s}
   .cat-btn:hover{border-color:var(--ink)}
   .cat-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .num-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:9px 16px;transition:.16s}
+  .num-btn:hover{border-color:var(--ink)}
+  .num-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .ec-hint{display:block;margin-top:11px;font-size:.8rem;color:var(--ink-soft);min-height:1.1em}
   .exam-timer{font-family:'Fraunces',serif;font-weight:600;font-size:1.15rem;color:var(--ink);font-variant-numeric:tabular-nums;background:var(--paper-2);border:1px solid var(--line);border-radius:9px;padding:3px 11px}
   .exam-timer.warn{color:var(--gold);border-color:var(--gold)}
@@ -529,11 +532,18 @@
       <h2>Entraînement aux QRC</h2>
       <p>Les questions à réponses courtes sont le format le <b>plus fréquent</b> de l'épreuve (tombé 13 fois sur 18 depuis 2010). Vous rédigez votre réponse, puis vous affichez le corrigé et vous vous auto-évaluez. Mode entraînement libre, sans chrono.</p>
       <div class="meta-row">
-        <span class="chip"><b>10</b> questions</span>
+        <span class="chip" id="qrcCountChip"><b>10</b> questions</span>
         <span class="chip">Sans <b>chrono</b></span>
         <span class="chip">Corrigé <b>après chaque</b> réponse</span>
       </div>
       <div class="docnote-1">📝 Astuce : répondez d'abord de mémoire, de façon précise et synthétique, avant d'afficher le corrigé. Pour vous chronométrer en conditions réelles, utilisez le <b>Mode examen</b>.</div>
+      <div class="exam-choice">
+        <span class="ec-label">Combien de questions ?</span>
+        <div class="ec-btns">
+          <button class="num-btn" data-n="5">5 questions</button>
+          <button class="num-btn sel" data-n="10">10 questions</button>
+        </div>
+      </div>
       <div class="exam-choice">
         <span class="ec-label">Sur quel champ veux-tu t'entraîner ?</span>
         <div class="ec-btns">
@@ -2441,6 +2451,7 @@ const shuffle = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.random()*(
 
 /* ---- Filtre par champ : Expert-comptable / Commissaire aux comptes / Tout ---- */
 let qcmCat='all', qrcCat='all', unseenCat={};
+let qrcN = 10;
 const normTh = t => String(t).normalize('NFC').replace(/’/g,"'");
 const CAT_EC = new Set(["Accès à la profession","Activités accessoires","Communication / publicité","Communication","Conditions d'exercice","Confraternité","Devoir de conseil","Démarchage","Discipline","Exercice de la profession","Fin de mission","Formation continue","Honoraires","Inscription au tableau","Le DEC","Le stage","Le cadre de référence des missions","Lettre de mission","Maniement de fonds","Missions de l'EC","Missions gratuites","Missions sans assurance","Niveaux d'assurance","Obligations de l'EC","Organisation de la mission","Responsabilité","Sanctions disciplinaires","Structures d'exercice","Tableau de l'Ordre","Incompatibilités"].map(normTh));
 const CAT_CAC = new Set(["Cessation des fonctions du CAC","Co-commissariat","Comité d'audit","Contrôle qualité","Délit d'entrave","Démission du CAC","Désignation du CAC (EIP)","Durabilité (CSRD)","Entités d'intérêt public","Gouvernance EIP","Honoraires CAC (EIP)","Honoraires du CAC","Honoraires du CAC (EIP)","Incompatibilité du CAC","Incompatibilités du CAC","Indépendance du CAC","Indépendance du CAC (EIP)","Interventions du CAC","Mandat du CAC","Mission du CAC","Nomination du CAC","Non-immixtion","Normes du CAC","Obligations du CAC","Opinion du CAC","Régulation (H2A)","Rotation (EIP)","Services interdits (EIP)","Seuils CAC","Seuils de nomination","Vérifications du CAC","Confraternité (CAC)","Responsabilité du CAC"].map(normTh));
@@ -3182,7 +3193,7 @@ function keysHTML(keys){
 
 function startQRC(){
   const pool = poolIndices(QRC, qrcCat);
-  qrcList = drawFrom(QRC, Math.min(10, pool.length), 'qrc:'+qrcCat, pool).map(i=>QRC[i]);
+  qrcList = drawFrom(QRC, Math.min(qrcN, pool.length), 'qrc:'+qrcCat, pool).map(i=>QRC[i]);
   qrcIdx=0; qrcScore=0;
   el('qrcStart').style.display='none';
   el('qrcResults').style.display='none';
@@ -3586,6 +3597,12 @@ document.querySelectorAll('#start .cat-btn').forEach(b=> b.onclick=()=>{
 document.querySelectorAll('#qrcStart .cat-btn').forEach(b=> b.onclick=()=>{
   document.querySelectorAll('#qrcStart .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
   qrcCat=b.dataset.cat; el('qrcCatHint').textContent=_catHints[qrcCat];
+});
+document.querySelectorAll('#qrcStart .num-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#qrcStart .num-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  qrcN = parseInt(b.dataset.n,10) || 10;
+  el('qrcCountChip').innerHTML = `<b>${qrcN}</b> questions`;
+  el('qrcAgain').textContent = `Nouvelle série de ${qrcN} QRC`;
 });
 el('validate').onclick=validateQuestion;
 el('next').onclick=nextQuestion;
