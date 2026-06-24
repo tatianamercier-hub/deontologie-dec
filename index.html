@@ -371,6 +371,18 @@
   .cref-card b{display:block;font-weight:700;color:var(--ink);margin-bottom:2px}
   .cref-np{display:inline-block;margin-top:5px;font-size:.72rem;font-weight:700;color:var(--gold);background:rgba(176,125,47,.14);border-radius:6px;padding:2px 7px}
   .cref-base{text-align:center;font-size:.76rem;font-weight:600;color:var(--ink-soft);border:1px dashed var(--line);border-radius:8px;padding:8px;margin-top:6px}
+  .msch{display:flex;flex-direction:column;gap:6px}
+  .msch-root{align-self:center;background:var(--ink);color:var(--paper);font-family:'Fraunces',serif;font-weight:600;font-size:1rem;border-radius:10px;padding:9px 20px;text-align:center}
+  .msch-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px;align-items:start}
+  .msch-branch{border:1.5px solid var(--line);border-radius:12px;padding:11px;background:var(--paper-2);display:flex;flex-direction:column;gap:9px}
+  .msch-l1{background:var(--ox);color:#fff;font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.03em;border-radius:8px;padding:8px 11px;text-align:center;line-height:1.3}
+  .msch-sub{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px}
+  .msch-l2{font-weight:700;font-size:.82rem;color:var(--ox);margin-bottom:7px;line-height:1.3}
+  .msch-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+  .msch-list li{position:relative;padding-left:14px;font-size:.82rem;color:var(--ink-soft);line-height:1.4}
+  .msch-list li::before{content:"–";position:absolute;left:0;color:var(--gold);font-weight:700}
+  .msch-list li b{color:var(--ink)}
+  @media(max-width:560px){ .msch-cols{grid-template-columns:1fr} }
   .fiche-list{list-style:none;display:flex;flex-direction:column;gap:8px}
   .fiche-list li{position:relative;padding-left:22px;font-size:.95rem;color:var(--ink);line-height:1.5}
   .fiche-list li::before{content:"";position:absolute;left:5px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
@@ -3295,9 +3307,10 @@ const FICHES = [
      "<b>Fonds de retraite professionnelle supplémentaire</b>"]}
   ]},
 
- {cat:"cac", title:"Missions du CAC", sub:"(sous-titre et onglets à compléter)",
-  sections:[
-  ]},
+ {cat:"cac", title:"Missions du CAC", sub:"Présentation des missions du commissaire aux comptes",
+  schemaLbl:"Présentation des missions du CAC",
+  schema:"<div class='msch'><div class='msch-root'>Commissaire aux comptes</div><div class='msch-cols'><div class='msch-branch'><div class='msch-l1'>Mission permanente de certification des comptes</div><div class='msch-sub'><div class='msch-l2'>Mission générale</div><ul class='msch-list'><li><b>Audit légal</b></li><li><b>Vérifications et informations spécifiques</b></li></ul></div><div class='msch-sub'><div class='msch-l2'>Interventions définies par la loi ou le règlement</div><ul class='msch-list'><li>Suite à des <b>opérations particulières</b> décidées par la société (réduction de capital, etc.)</li><li>Suite à des <b>événements survenant dans l'entité</b> (alerte, etc.)</li><li>Suite à des <b>attestations à établir</b> en application de la loi ou du règlement</li><li>Suite à des <b>demandes de l'entité</b> (services autres que la certification des comptes – <b>SACC</b>)</li></ul></div></div><div class='msch-branch'><div class='msch-l1'>Missions particulières</div><div class='msch-sub'><ul class='msch-list'><li><b>Possibilité</b> de désigner un CAC pour réaliser des missions particulières (commissariat aux apports, à la fusion, missions autres que le contrôle légal, etc.)</li><li><b>Obligation</b> de désigner un CAC pour certaines opérations sur le capital en l'absence de CAC dans la société</li><li><b>Possibilité</b> de désigner un CAC pour la certification des <b>informations de durabilité</b></li></ul></div></div></div></div>",
+  def:"Le <b>schéma général</b> ci-dessous présente de manière succincte l'ensemble des <b>missions que le législateur a attribué au commissaire aux comptes</b>."},
 
  {cat:"cac", title:"La mission du CAC & la certification", sub:"Certifier les comptes dans l'intérêt général",
   essentiel:[
@@ -3395,7 +3408,7 @@ function buildFiches(cat){
   }
   FICHES.filter(f=>f.cat===cat).forEach((f,i)=>{
     let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
-    if(f.schema){ html += `<div class="fbox fbox-schema"><div class="fbox-lbl">Schéma général du cadre de référence</div>${f.schema}</div>`; }
+    if(f.schema){ html += `<div class="fbox fbox-schema"><div class="fbox-lbl">${f.schemaLbl||"Schéma général du cadre de référence"}</div>${f.schema}</div>`; }
     if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
     if(f.code){
       html += `<p class="fiche-def">${f.code.def}</p>`;
