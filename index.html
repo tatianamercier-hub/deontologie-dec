@@ -330,7 +330,14 @@
   .mini:hover{border-color:var(--ink);color:var(--ink)}
 
   /* ---------- Fiches de révision ---------- */
-  .fiche{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:24px 26px;margin-bottom:22px}
+  .fiche{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:24px 26px;margin-bottom:22px;scroll-margin-top:16px}
+  .fiche-toc{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px 24px;margin-bottom:22px}
+  .fiche-toc-lbl{font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:12px}
+  .fiche-toc-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2px 14px;counter-reset:toc}
+  .fiche-toc-list li{counter-increment:toc}
+  .fiche-toc-list a{display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink);font-size:.9rem;padding:6px 9px;border-radius:9px;line-height:1.35;transition:.15s}
+  .fiche-toc-list a::before{content:counter(toc);font-family:'Fraunces',serif;font-weight:600;color:var(--gold);font-size:.85rem;min-width:1.5em;text-align:right}
+  .fiche-toc-list a:hover{background:var(--paper-2);color:var(--ox)}
   .fiche-head{display:flex;align-items:flex-start;gap:15px;margin-bottom:6px}
   .fiche-idx{flex:0 0 38px;height:38px;border-radius:11px;background:var(--ink);color:var(--gold-soft);font-family:'Fraunces',serif;font-weight:600;font-size:1.1rem;display:grid;place-items:center}
   .fiche-title{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;line-height:1.2}
@@ -3706,7 +3713,13 @@ function buildFiches(cat){
     sd.innerHTML=`<div class="serment-lbl">✋ Le serment de l'expert-comptable</div><p class="serment-txt">« Je jure d'exercer ma profession avec conscience et probité, de respecter et faire respecter les lois dans mes travaux. »</p><p class="serment-note">À prononcer lors de l'inscription au tableau de l'Ordre, juste avant de pouvoir exercer.</p>`;
     host.appendChild(sd);
   }
-  FICHES.filter(f=>f.cat===cat).forEach((f,i)=>{
+  const flist = FICHES.filter(f=>f.cat===cat);
+  if(flist.length){
+    const toc = document.createElement('nav'); toc.className='fiche-toc';
+    toc.innerHTML = `<div class="fiche-toc-lbl">Sommaire · ${flist.length} fiches</div><ol class="fiche-toc-list">${flist.map((f,i)=>`<li><a href="#fiche-${cat}-${i}">${f.title}</a></li>`).join('')}</ol>`;
+    host.appendChild(toc);
+  }
+  flist.forEach((f,i)=>{
     let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
     if(f.schema){ html += `<div class="fbox fbox-schema"><div class="fbox-lbl">${f.schemaLbl||"Schéma général du cadre de référence"}</div>${f.schema}</div>`; }
     if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
@@ -3773,7 +3786,7 @@ function buildFiches(cat){
     if(f.memo){
       html += `<div class="fiche-memo">💡 <b>Mémo</b> — ${f.memo}</div>`;
     }
-    const art = document.createElement('article'); art.className='fiche'; art.innerHTML=html;
+    const art = document.createElement('article'); art.className='fiche'; art.id=`fiche-${cat}-${i}`; art.innerHTML=html;
     host.appendChild(art);
   });
 }
