@@ -2881,7 +2881,7 @@ const FICHES = [
      "<b>Secret professionnel absolu</b> : l'EC ne doit <b>pas révéler</b> les informations couvertes par le SP, <b>même avec l'accord de son client</b>",
      "L'EC peut <b>opposer le SP</b> dans le cadre de <b>toute procédure judiciaire, pénale ou civile</b>, pour refuser de révéler des informations ou de produire des documents"]},
    {lbl:"Non opposition du SP",
-    intro:"<b style='color:#c0392b'>Opérations en rapport avec le blanchiment des capitaux</b> :",
+    intro:"<b style='color:var(--ox)'>Opérations en rapport avec le blanchiment des capitaux</b> :",
     items:[
      "Faire des <b>déclarations de soupçons</b> de blanchiment d'argent — <b>exception au SP</b>",
      "L'EC, le CAC et les professionnels du droit peuvent, pour un <b>même client</b> et une <b>même transaction / opération</b>, s'<b>informer mutuellement</b>, par tout <b>moyen sécurisé</b>, de l'existence et du contenu de la <b>déclaration de soupçon</b> (en dehors de ce cadre, <b>pas de levée du SP</b>)",
@@ -3764,7 +3764,7 @@ function buildFiches(cat){
     host.appendChild(toc);
   }
   flist.forEach((f,i)=>{
-    let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div><div class="fiche-sub">${f.sub}</div></div></div>`;
+    let html = `<div class="fiche-head"><span class="fiche-idx">${i+1}</span><div><div class="fiche-title">${f.title}</div></div></div>`;
     if(f.schema){ html += `<div class="fbox fbox-schema"><div class="fbox-lbl">${f.schemaLbl||"Schéma général du cadre de référence"}</div>${f.schema}</div>`; }
     if(f.def){ html += `<p class="fiche-def">${f.def}</p>`; }
     if(f.code){
