@@ -719,13 +719,12 @@
   <!-- ============ MIND MAPS ============ -->
   <section class="panel" id="panel-mm">
     <p class="mm-intro">
-      Quatorze fiches, classées par profession. Chaque branche est masquée par défaut&nbsp;:
+      Une carte mentale par fiche, classée par profession. Chaque branche est masquée par défaut&nbsp;:
       essayez de la restituer de mémoire, puis cliquez pour vérifier.
       <span class="tip">💡 Méthode de l'<b>auto-restitution</b> : se tester avant de lire</span>
     </p>
     <div class="subtabs">
-      <button class="subtab active" data-cat="commun">Tronc commun</button>
-      <button class="subtab" data-cat="ec">Expert-comptable</button>
+      <button class="subtab active" data-cat="ec">Expert-comptable</button>
       <button class="subtab" data-cat="cac">Commissaire aux comptes</button>
     </div>
     <div id="maps"></div>
@@ -1975,484 +1974,880 @@ const QRC = [
 
 /* ===================== CARTES MENTALES ===================== */
 const MAPS = [
- {cat:"ec", title:"L'Ordre des experts-comptables", sub:"De l'ordonnance de 1945 au Conseil national et aux conseils régionaux",
-  center:"L'Ordre : l'institution de la profession, créée par l'ordonnance du 19 septembre 1945",
+ {cat:"ec", title:"L'Ordre des experts-comptables", sub:"L'institution qui organise, encadre et contrôle la profession",
+  center:"L'<b>Ordre des experts-comptables</b> (ordonnance de <b>1945</b>) : institution à <b>personnalité morale</b> qui regroupe tous les EC, garantit la <b>déontologie</b> et défend la profession, sous <b>tutelle du ministre de l'Économie</b>.",
   branches:[
-   {l:"Création & cadre", p:[
-     "Créé par l'<b>ordonnance du 19 septembre 1945</b> (n° 45-2138).",
-     "Elle institue l'Ordre et réglemente le <b>titre</b> et la <b>profession</b> d'expert-comptable.",
-     "Placé sous la <b>tutelle du ministre de l'Économie</b> ; doté de la personnalité morale.",
-     "<b>Inscription au tableau obligatoire</b> pour exercer et porter le titre."]},
-   {l:"Une organisation à deux niveaux", p:[
-     "Le <b>Conseil national (CNOEC)</b> au niveau national.",
-     "Les <b>conseils régionaux (CROEC)</b> au niveau local.",
-     "<b>16 conseils régionaux</b> + <b>2 comités départementaux</b> : la Guyane et Mayotte."]},
-   {l:"Le Conseil national (CNOEC)", p:[
-     "Composé de <b>40 membres élus au suffrage universel direct</b>, + les <b>16 présidents de CROEC</b>.",
-     "Mandat de <b>4 ans, renouvelable une fois</b>.",
-     "Son rôle : assurer la <b>représentation</b>, la <b>promotion</b>, la <b>défense</b> et le <b>développement</b> de la profession."]},
-   {l:"Les missions de l'Ordre", p:[
-     "Défendre l'<b>honneur</b> et l'<b>indépendance</b> de la profession.",
-     "<b>Encadrer</b> les professionnels et <b>veiller au respect de la déontologie</b>.",
-     "<b>Établir des normes</b> et <b>publier des recommandations</b>.",
-     "<b>Élaborer et diffuser la doctrine comptable</b>."]},
-   {l:"Les conseils régionaux (CROEC)", p:[
-     "Surveiller la profession et <b>contrôler les stages</b> dans leur circonscription.",
-     "Statuer sur les <b>demandes d'inscription au tableau</b>.",
-     "<b>Fixer et recouvrer</b> les cotisations ; défendre les intérêts matériels de l'Ordre.",
-     "<b>Prévenir et concilier</b> les conflits.",
-     "Saisir le <b>Conseil national</b> (requêtes / suggestions) et la <b>chambre régionale de discipline</b> (fautes professionnelles)."]}
+   {l:"Origine & tutelle", p:[
+     "Créé par l'<b>ordonnance du 19 septembre 1945</b> (n° 45-2138)",
+     "Institue l'Ordre et <b>réglemente le titre et la profession</b> d'EC",
+     "Sous <b>tutelle du ministre chargé de l'Économie</b>",
+     "<b>Nul ne peut exercer ni porter le titre</b> sans inscription au tableau"]},
+   {l:"Organisation à 2 niveaux", p:[
+     "<b>Conseil national (CNOEC)</b> + <b>conseils régionaux (CROEC)</b>",
+     "CNOEC : <b>40 membres élus</b> au suffrage universel direct + <b>16 présidents de CROEC</b>",
+     "<b>16 conseils régionaux</b> et <b>2 comités départementaux</b> (Guyane, Mayotte)",
+     "Mandat : <b>4 ans, renouvelable une fois</b>"]},
+   {l:"Missions de l'Ordre", p:[
+     "Défendre l'<b>honneur</b> et l'<b>indépendance</b> de la profession",
+     "<b>Encadrer</b> et <b>veiller au respect de la déontologie</b>",
+     "<b>Établir des normes</b> et publier des recommandations",
+     "<b>Élaborer et diffuser la doctrine comptable</b>"]},
+   {l:"Rôle du CNOEC", p:[
+     "<b>Représentation</b> (national + pouvoirs publics)",
+     "<b>Promotion</b> de la profession",
+     "<b>Défense</b> des intérêts de la profession",
+     "<b>Développement</b> de la profession"]},
+   {l:"Missions des CROEC", p:[
+     "<b>Surveiller</b> et <b>représenter</b> l'Ordre dans la circonscription",
+     "<b>Statuer sur les inscriptions au tableau</b> et contrôler les stages",
+     "<b>Fixer et recouvrer les cotisations</b>",
+     "<b>Prévenir/concilier les conflits</b> et <b>saisir la chambre régionale de discipline</b>"]},
+   {l:"Piège à éviter", p:[
+     "Dire <b>Conseil national (CNOEC)</b>, plus « Conseil supérieur »",
+     "Ne pas confondre avec la <b>CNCC</b> (commissaires aux comptes)",
+     "L'OEC dépend de l'<b>Économie</b> ≠ CAC du <b>ministère de la Justice</b>"]}
   ]},
 
- {cat:"commun", title:"Organisation de la profession", sub:"Qui fait quoi : l'Ordre (expert-comptable) face au commissariat aux comptes",
-  center:"Deux professions distinctes, deux tutelles, deux régulateurs",
+ {cat:"ec", title:"Le cadre de référence & les normes (NP)", sub:"Référentiel de l'OEC : à chaque mission sa norme et son niveau d'assurance",
+  center:"Le <b>cadre de référence</b> organise les missions de l'EC : des <b>textes-socles</b> au-dessus, puis chaque mission relève d'une <b>NP numérotée</b> classée selon son <b>niveau d'assurance</b>.",
   branches:[
-   {l:"L'expert-comptable et son Ordre", p:[
-     "L'Ordre des experts-comptables est placé sous la tutelle du ministère de l'Économie.",
-     "Son instance nationale est le Conseil national de l'ordre (CNOEC), relayé par des conseils régionaux.",
-     "Nul ne peut exercer ni porter le titre d'expert-comptable sans être inscrit au tableau de l'Ordre.",
-     "Sa mission (tenir, présenter, réviser les comptes) est contractuelle : c'est le client qui le choisit."]},
-   {l:"Le commissaire aux comptes et ses instances", p:[
-     "Le commissaire aux comptes (CAC) est placé sous la tutelle du ministère de la Justice (Garde des Sceaux).",
-     "Sa profession est représentée par la Compagnie nationale (CNCC) et les compagnies régionales (CRCC).",
-     "Sa mission est légale : il certifie les comptes dans l'intérêt général, pas seulement pour le client.",
-     "Il est nommé par l'assemblée générale, et non librement engagé comme un prestataire."]},
-   {l:"Le régulateur de l'audit : la H2A", p:[
-     "Depuis le 1er janvier 2024, la Haute Autorité de l'audit (H2A) a remplacé le H3C.",
-     "Ce changement résulte de l'ordonnance du 6 décembre 2023 transposant la directive européenne CSRD.",
-     "La H2A adopte les normes, organise les contrôles et dispose d'une commission des sanctions indépendante.",
-     "Elle régule désormais aussi l'audit de durabilité et les organismes tiers indépendants (OTI)."]}
+   {l:"Socle & structure", p:[
+     "Référentiel élaboré par le <b>CNOEC</b>, <b>agréé par arrêté du ministre de l'Économie</b> (≠ NEP homologuées par le Garde des Sceaux).",
+     "Les <b>NP</b> fixent <b>principes fondamentaux</b> et <b>travaux essentiels</b> à respecter.",
+     "Textes-socles : <b>cadre de référence + glossaire + NPMQ + NPLAB</b> (anti-blanchiment).",
+     "Distingue <b>cadre des missions</b> (avec/sans assurance) et <b>cadre des activités</b>.",
+     "Plus l'<b>assurance</b> visée est élevée, plus les <b>diligences</b> sont étendues."]},
+   {l:"NPMQ & NPLAB (transverses)", p:[
+     "<b>NPMQ</b> : système de <b>contrôle qualité</b> (assurance raisonnable de conformité) + <b>manuel de procédures</b>.",
+     "<b>NPLAB</b> : reprend le <b>Code monétaire et financier</b>, <b>correspondant TRACFIN</b>.",
+     "NPLAB : <b>identification/évaluation des risques</b> et <b>obligations de vigilance</b> (entrée + toute la relation d'affaires)."]},
+   {l:"Assurance raisonnable → opinion", p:[
+     "<b>Audit / NP 2910</b> : <b>régularité, sincérité, image fidèle</b> ; rapport = pas d'<b>anomalies significatives</b>.",
+     "Plus haut niveau d'assurance ; <b>NP 2910</b> adapte les diligences aux <b>petites entités</b>.",
+     "Conclusion = <b>opinion positive</b>."]},
+   {l:"Assurance modérée → concl. négative", p:[
+     "<b>NP 2400 Examen limité</b> : régularité/sincérité/image fidèle, revue allégée, <b>conclusion négative</b>.",
+     "<b>NP 2300 Présentation</b> : <b>cohérence et vraisemblance</b> (pas l'image fidèle), attestation.",
+     "<b>NP 3400 Prévisionnel</b> : <b>caractère raisonnable des hypothèses</b> et traduction chiffrée.",
+     "<b>NP 3100 Attestations particulières</b> : information précise, origine <b>légale ou contractuelle</b> (assurance variable)."]},
+   {l:"Sans assurance (famille 44xx)", p:[
+     "<b>NP 4400 Procédures convenues</b> : procédures définies en commun, <b>rapport de constats</b>, aucune assurance.",
+     "<b>NP 4410 Compilation</b> : établir/mettre en forme les comptes, <b>sans contrôle</b> des déclarations.",
+     "Réflexe : <b>44xx = aucune assurance → constats</b>."]},
+   {l:"Activités & doctrine", p:[
+     "<b>Activités commerciales / actes d'intermédiaire</b> : autorisés <b>à titre accessoire</b>, jamais l'objet principal (<b>faisceau d'indices</b>).",
+     "Concerne structures d'exercice (dont <b>AGC</b>), EC et salariés (<b>art. 83 ter/quater</b> de 1945).",
+     "<b>Doctrine du CNOEC</b> : <b>guides d'application</b>, <b>pratiques professionnelles</b>, <b>supports documentaires</b>."]}
   ]},
 
- {cat:"commun", title:"Les principes déontologiques", sub:"Le socle de comportement commun à toute la profession",
-  center:"Cinq grands principes guident chaque mission et chaque décision",
+ {cat:"ec", title:"Le Code de déontologie", sub:"Décret du 27 sept. 2007 : règles et valeurs des experts-comptables",
+  center:"Le <b>décret du 27 septembre 2007</b> rassemble de façon <b>ordonnée et rigoureuse</b> les <b>règles et valeurs</b> constitutives de l'<b>identité des experts-comptables</b>.",
   branches:[
-   {l:"Intégrité et conscience", p:[
-     "Agir avec honnêteté, loyauté et probité, dans l'exercice de la profession comme en dehors.",
-     "Ne rien faire qui puisse jeter le discrédit sur la profession.",
-     "Exécuter chaque mission avec conscience, diligence et esprit critique."]},
-   {l:"Compétence", p:[
-     "N'accepter que les missions que l'on est réellement capable de mener à bien.",
-     "Entretenir ses connaissances par la formation continue : 120 heures sur 3 ans, dont au moins 20 heures par an.",
-     "Refuser la mission ou s'entourer d'un spécialiste lorsqu'elle dépasse son domaine."]},
-   {l:"Indépendance", p:[
-     "Être indépendant en esprit (un jugement libre de toute influence) et en apparence (vis-à-vis des tiers).",
-     "Identifier les menaces, mettre en place des sauvegardes, et à défaut refuser ou se retirer.",
-     "Ne jamais se retrouver à juger son propre travail ni à défendre les intérêts d'un client."]},
-   {l:"Confraternité", p:[
-     "Entretenir des rapports de courtoisie et de loyauté avec les autres professionnels.",
-     "Aviser un confrère lorsqu'on lui succède et s'assurer du règlement de ses honoraires.",
-     "S'interdire tout détournement déloyal de la clientèle d'un confrère."]},
-   {l:"Secret professionnel et discrétion", p:[
-     "Le secret professionnel a une portée générale et sa violation est sanctionnée pénalement.",
-     "Il peut être partagé entre professionnels qui concourent à une même mission (secret partagé).",
-     "Il ne cède que devant des dérogations expressément prévues par la loi (par ex. la déclaration à TRACFIN)."]}
+   {l:"Art. 141 — Personnes concernées", p:[
+     "Les <b>experts-comptables</b>",
+     "Les <b>EC stagiaires et salariés</b>",
+     "Les <b>dirigeants des AGC</b>"]},
+   {l:"Art. 142-154 — Devoirs généraux", p:[
+     "<b>Serment</b> dans les <b>6 mois</b> de l'inscription au tableau (conseil régional)",
+     "Respect des règles du <b>CNOEC</b> ; <b>lettre de mission écrite</b>",
+     "Exercer avec <b>compétence, conscience et indépendance d'esprit</b>",
+     "<b>Démarchage permis</b> dans le respect du Code",
+     "Veiller aux <b>mêmes qualités chez les collaborateurs</b> ; <b>protection de l'intérêt public</b>"]},
+   {l:"Art. 155-160 — Devoirs envers les clients", p:[
+     "<b>Devoir d'information et de conseil</b>",
+     "Régler les litiges par <b>conciliation</b> ou <b>arbitrage du président du conseil régional</b>"]},
+   {l:"Art. 161-166 — Confraternité", p:[
+     "Accepter la mission <b>après avoir informé l'EC précédent</b> et vérifié le <b>paiement des honoraires</b> dus",
+     "<b>Remplacement</b> : s'assurer qu'il ne vise pas à <b>éluder les règles légales</b>",
+     "Prédécesseur : <b>favorise la transmission du dossier</b> ; <b>pas de droit de rétention</b> du successeur pour honoraires du prédécesseur",
+     "<b>Remplacement temporaire</b> (décès/incapacité) désigné par le <b>président du CROEC</b> = <b>mission gratuite</b> (indemnité possible avec agrément)",
+     "Info <b>non applicable</b> aux missions à <b>durée légale limitée</b> et <b>ponctuelles</b>"]},
+   {l:"Art. 167-169 — Devoirs envers l'Ordre", p:[
+     "<b>Informer le président du conseil régional</b> des <b>poursuites judiciaires</b>",
+     "Informer aussi des <b>litiges contractuels</b>",
+     "Les <b>membres élus</b> s'abstiennent d'<b>entraver le fonctionnement</b> des organismes et de toute <b>négligence non justifiée</b>"]}
   ]},
 
- {cat:"commun", title:"Le secret professionnel", sub:"Une obligation forte, mais avec des limites précises",
-  center:"Tout ce qui est confié au professionnel est, en principe, couvert par le secret",
+ {cat:"ec", title:"Le secret professionnel", sub:"Portée, exceptions et levée selon l'interlocuteur",
+  center:"Le <b>secret professionnel</b> de l'EC est <b>absolu</b>, mais il connaît des <b>exceptions</b> et une <b>levée variable selon l'interlocuteur</b>.",
   branches:[
-   {l:"Le principe", p:[
-     "Le secret a une portée générale : il couvre l'ensemble des informations recueillies en mission.",
-     "Sa violation constitue un délit (article 226-13 du Code pénal).",
-     "Il s'impose même après la fin de la mission et, en principe, face à l'administration sauf texte contraire."]},
-   {l:"Le secret partagé", p:[
-     "Entre co-commissaires, ou entre l'expert-comptable et le commissaire aux comptes d'une même entité, le secret n'est pas opposable.",
-     "Les professionnels peuvent s'échanger les informations nécessaires à leur mission commune.",
-     "Ce partage reste strictement limité aux besoins de la mission, et pas au-delà."]},
-   {l:"Les dérogations légales", p:[
-     "Seule la loi peut lever le secret : le professionnel ne décide pas seul d'y déroger.",
-     "Exemples : déclaration de soupçon à TRACFIN, réquisitions judiciaires, droit de communication encadré.",
-     "Le client ne peut pas, à lui seul, délier le professionnel dans toutes les situations."]}
+   {l:"Principes du secret professionnel", p:[
+     "<b>Personnes concernées</b> : EC, EC stagiaires, salariés, membres des commissions d'inscription et de discipline",
+     "<b>Sanction</b> : <b>1 an</b> d'emprisonnement + <b>15 000 €</b> (art. <b>226-13 Code pénal</b>)",
+     "Couvre seulement les <b>informations à caractère secret</b> : <b>non connues</b> ou <b>confiées à titre de confidence</b>",
+     "<b>Non couvertes</b> : infos générales (comptes, factures, pièces) — mais <b>devoir de discrétion</b> + <b>accord écrit</b> pour divulguer",
+     "<b>SP absolu</b> : pas de révélation <b>même avec l'accord du client</b> ; opposable en <b>toute procédure judiciaire</b>"]},
+   {l:"Non opposition du SP (exceptions)", p:[
+     "<b>Blanchiment</b> : <b>déclaration de soupçon</b> = exception au SP ; information mutuelle EC/CAC/juristes pour <b>même client et opération</b>",
+     "Seul cas où un <b>CAC peut communiquer</b> des infos à un EC ; pas d'opposition à <b>TRACFIN</b>",
+     "<b>Mise en cause de l'EC</b> (pénale, fiscale, disciplinaire) : levée pour <b>prouver ses diligences</b>",
+     "<b>Envers le CAC</b> : pas d'opposition quand il a la <b>charge de la certification</b> des comptes"]},
+   {l:"Levée selon l'interlocuteur : SP levé", p:[
+     "<b>Agents concurrence/consommation</b> et <b>AMF</b> : levée en <b>communication ET saisie</b>",
+     "<b>Admin. fiscale</b>, <b>Sécurité sociale</b>, <b>collectivités</b>, <b>Cour des comptes</b> : levée pour les <b>documents listés</b>",
+     "<b>Juge-commissaire</b> et <b>réquisitions pénales</b> (flagrance, préliminaire, instruction) : levée",
+     "<b>Administrateur judiciaire</b> : levée <b>uniquement</b> pour les documents et livres comptables de l'entité"]},
+   {l:"Levée selon l'interlocuteur : SP maintenu", p:[
+     "<b>Autorité de la concurrence</b>, <b>Douanes</b>, <b>AFA</b> : pas de levée",
+     "<b>Mandataire</b> et <b>liquidateur judiciaire</b> : pas de levée (sauf mandataire si aucun administrateur nommé)",
+     "<b>Audition pénale</b> (témoin/suspect) et <b>expert judiciaire</b> : pas de levée",
+     "Demande sur <b>art. 145 CPC</b> et <b>perquisitions/saisies pénales</b> : pas de levée (EC non protégé)"]},
+   {l:"Mémo — visite domiciliaire et saisie", p:[
+     "Un document <b>non couvert par le SP</b> doit être <b>transmis</b>",
+     "Cette transmission s'impose <b>malgré</b> l'obligation de confidentialité et le <b>devoir de discrétion</b>",
+     "Distinction clé de la fiche : <b>droit de communication</b> ≠ <b>visite domiciliaire et saisie</b>"]}
   ]},
 
- {cat:"commun", title:"Indépendance & incompatibilités", sub:"Préserver l'objectivité du jugement professionnel",
-  center:"Tout ce qui peut compromettre l'objectivité est identifié, encadré ou interdit",
+ {cat:"ec", title:"Droits et devoirs de l'expert-comptable", sub:"Ce que l'EC peut faire et ce à quoi il est tenu",
+  center:"L'EC est tenu à un <b>devoir de conseil</b> et à des règles strictes de <b>communication</b>, <b>rémunération</b> et <b>rétention</b> des travaux.",
   branches:[
-   {l:"Les cinq menaces à l'indépendance", p:[
-     "Intérêt personnel : un avantage, financier ou autre, risque d'influencer le jugement.",
-     "Auto-révision : contrôler un travail que l'on a soi-même réalisé.",
-     "Familiarité : des relations trop proches avec le client. Intimidation : des pressions subies.",
-     "Plaidoyer (advocacy) : prendre fait et cause pour la position du client."]},
-   {l:"Les sauvegardes", p:[
-     "Pour chaque menace : on l'identifie, on l'évalue, puis on la réduit par des mesures de sauvegarde.",
-     "Si la menace ne peut pas être ramenée à un niveau acceptable, on refuse la mission ou on s'en retire.",
-     "Toute la démarche et ses conclusions doivent être documentées."]},
-   {l:"Incompatibilités de l'expert-comptable", p:[
-     "Pas d'activité commerciale exercée à titre habituel.",
-     "Conseil juridique, fiscal ou social autorisé seulement à titre accessoire des missions comptables.",
-     "Maniement des fonds du client interdit, sauf mandat écrit et fonds isolés."]},
-   {l:"Incompatibilités du commissaire aux comptes", p:[
-     "Il ne peut pas tenir la comptabilité de l'entité qu'il contrôle (risque d'auto-révision).",
-     "On ne peut pas être à la fois expert-comptable et commissaire aux comptes de la même entité.",
-     "Pour les entités d'intérêt public (EIP), certains services lui sont formellement interdits."]}
-  ]},
-
- {cat:"ec", title:"La mission de l'expert-comptable", sub:"Du premier contact jusqu'à la responsabilité",
-  center:"Une mission contractuelle, encadrée à chaque étape",
-  branches:[
-   {l:"L'acceptation de la mission", p:[
-     "Vérifier que l'on dispose de l'indépendance, de la compétence et des moyens nécessaires.",
-     "Apprécier l'intégrité du client et accomplir les diligences anti-blanchiment.",
-     "C'est une étape formalisée, préalable à tout engagement."]},
-   {l:"La lettre de mission", p:[
-     "Document écrit obligatoire, établi avant le début des travaux.",
-     "Elle définit l'étendue de la mission et les obligations réciproques des deux parties.",
-     "Elle doit être mise à jour en cas d'évolution significative de la mission ou du contexte."]},
-   {l:"Les honoraires", p:[
-     "Ils correspondent au travail réellement effectué et doivent rester équitables.",
-     "Les honoraires de résultat (fixés selon le succès obtenu) sont interdits.",
-     "Des provisions ou acomptes peuvent être demandés au client."]},
    {l:"Le devoir de conseil", p:[
-     "L'expert-comptable doit informer et alerter son client sur les conséquences de ses choix.",
-     "Ce devoir va bien au-delà de la simple saisie comptable.",
-     "Son manquement est l'une des premières causes de mise en cause de la responsabilité."]},
-   {l:"Les responsabilités", p:[
-     "Civile : réparer les dommages causés ; elle est couverte par une assurance RCP obligatoire.",
-     "Pénale : pour les infractions personnellement commises.",
-     "Disciplinaire : jugée par les chambres de discipline de l'Ordre."]}
+     "<b>Informer</b> (comptable, juridique, fiscal, social) = conseil <b>passif</b>",
+     "<b>Mettre en garde / alerter</b> sur préjudice ou danger = conseil <b>actif</b>, voire incitation",
+     "<b>Exiger</b> les documents et user de son autorité pour sauvegarder les intérêts",
+     "<b>Refuser toute complaisance</b> : désapprobation claire, même si non répréhensible",
+     "<b>Obligation de moyens</b> : c'est à l'EC de <b>prouver</b> qu'il a conseillé"]},
+   {l:"La communication", p:[
+     "Vers <b>clients ou prospects</b>, avec <b>discrétion</b> (indépendance, dignité, honneur, image)",
+     "Expression <b>décente et empreinte de retenue</b>",
+     "<b>Aucune inexactitude</b>, aucun <b>comparatif</b>, ne pas induire en erreur",
+     "Spécialisation justifiée : <b>120h/5 ans</b>, ou <b>40h</b> animées/5 ans, ou <b>10 % de l'activité</b>"]},
+   {l:"La rémunération", p:[
+     "Honoraires <b>équitables</b>, convenus <b>par écrit, librement et préalablement</b>",
+     "Fixés selon <b>diligences</b>, <b>difficulté</b> et <b>notoriété</b> de l'EC",
+     "<b>Honoraires de succès</b> possibles, sauf <b>tenue/révision</b> et assiette fiscale/sociale",
+     "Indexation <b>interdite</b> sur <b>SMIC</b> ou niveau général des prix",
+     "Litige : <b>conciliation/arbitrage du président du CROEC</b> avant toute action"]},
+   {l:"Le droit de rétention", p:[
+     "<b>Retenir les travaux</b> faute de juste rémunération, après relances/conciliation infructueuses",
+     "Créance <b>certaine, liquide et exigible</b> ; honoraires légitimement dus",
+     "Seulement les <b>documents créés par l'EC</b>, pas ceux fournis par la société",
+     "Formalisme : info du <b>président du CROEC</b> + <b>LRAR</b> au client",
+     "<b>Aucun droit de rétention</b> en procédure collective (administrateur/mandataire)"]}
   ]},
 
- {cat:"ec", title:"Les missions légales de l'expert-comptable", sub:"Des missions confiées par la loi, au-delà du comptable et du conseil",
-  center:"Au-delà du comptable et du conseil, des missions spécifiques confiées par la loi",
+ {cat:"ec", title:"Les missions légales de l'expert-comptable", sub:"5 missions confiées par la loi, au-delà du comptable et du conseil",
+  center:"Des missions <b>spécifiques confiées par la loi</b> : assistance au <b>CSE</b>, <b>comptes de campagne</b>, <b>visa fiscal</b>, <b>tiers de confiance</b> et <b>ECF</b>.",
   branches:[
-   {l:"Assistance du CSE", p:[
-     "L'EC assiste le comité social et économique dans ses consultations (situation économique, orientations stratégiques, politique sociale…).",
-     "Financement : 100 % par l'employeur pour certaines (situation éco/financière, RSP), 20 % à la charge du CSE pour d'autres (orientations stratégiques, OPA, droit d'alerte).",
-     "L'employeur peut saisir le juge dans les 10 jours pour contester la nécessité, le choix de l'expert, le coût ou l'étendue."]},
-   {l:"Comptes de campagne", p:[
-     "L'EC présente le compte de campagne et assure sa concordance avec les pièces justificatives.",
-     "Le candidat reste responsable de la sincérité de son compte (lettre déclarative annexée).",
-     "S'y ajoutent des missions de conseil et d'accompagnement (déclaration de patrimoine)."]},
+   {l:"Missions pour le CSE", p:[
+     "<b>Pas d'expression d'assurance</b> (sauf contrôle de la participation) : l'EC analyse sans vérifier",
+     "Assiste le CSE : <b>orientations stratégiques</b>, situation économique et financière, contrôle de la <b>RSP</b>, politique sociale, concentration, <b>droit d'alerte</b>, licenciements collectifs, OPA",
+     "Financement : <b>100 % employeur</b> (éco-financière, RSP, politique sociale) ou <b>20 % CSE / 80 % employeur</b> (OPA, alerte, orientations…)",
+     "Employeur peut <b>saisir le juge sous 10 jours</b> (nécessité, choix, coût, étendue, durée)",
+     "Comptes du CSE : EC obligatoire au-delà de <b>153 000 €</b> ; <b>CAC</b> obligatoire si 2 des 3 seuils (3,1 M€ / 1,55 M€ / 50 salariés)"]},
+   {l:"Comptes de campagne (élections politiques)", p:[
+     "L'EC <b>présente</b> le compte : mise en forme et <b>concordance avec les pièces justificatives</b>",
+     "Le <b>candidat reste responsable de la sincérité</b> (lettre déclarative annexée à la lettre de mission)",
+     "3 missions : <b>présentation légale</b>, <b>conseil</b> budgétaire/comptable, <b>accompagnement</b> pour la déclaration de patrimoine"]},
    {l:"Visa fiscal", p:[
-     "Réservé aux contribuables BIC, BNC ou BA soumis à un régime réel.",
-     "Suppose une autorisation du commissaire du Gouvernement auprès du CROEC et une convention avec l'administration.",
-     "L'EC procède à un examen de cohérence et de vraisemblance, télétransmet les documents et fournit un dossier de gestion."]},
+     "Clients : titulaires de <b>BIC, BNC ou BA</b> au <b>régime réel</b> (impôt sur le revenu)",
+     "EC doit être <b>autorisé</b> par le commissaire du Gouvernement (CROEC) et signer une <b>convention</b> avec le fisc",
+     "Engagements : viser les documents, <b>examen de cohérence et de vraisemblance</b>, <b>télétransmission</b>, dossiers de gestion et d'analyse économique, <b>contrôle spécifique</b>"]},
    {l:"Tiers de confiance", p:[
-     "L'EC transmet à l'administration les déclarations de revenus de ses clients et leur communique, sur demande, les pièces justificatives.",
-     "Convention triennale avec l'administration fiscale.",
-     "Lettre de mission conclue avec le client."]},
+     "L'EC transmet au fisc les <b>déclarations de revenus</b> du client et communique les <b>pièces justificatives</b> sur demande",
+     "<b>Convention triennale</b> avec l'administration fiscale",
+     "<b>Lettre de mission</b> conclue avec le client"]},
    {l:"Examen de conformité fiscale (ECF)", p:[
-     "Prestation contractuelle portant sur la conformité aux règles fiscales des 10 points du chemin d'audit.",
-     "Compte rendu de mission transmis à la DGFiP, au plus tard le 31 octobre de l'année du dépôt de la liasse.",
-     "Si un rappel d'impôt vise un point validé : remboursement des honoraires correspondants et pas de pénalités ni d'intérêts de retard."]}
+     "Prestation contractuelle : <b>bonne application des règles fiscales</b> et <b>sécurisation</b> sur les <b>10 points du chemin d'audit</b> (FEC, amortissements, provisions, TVA…)",
+     "Compte rendu à la <b>DGFiP</b> : au plus tard le <b>31 octobre</b>, ou <b>dans les 6 mois</b> du dépôt de la liasse",
+     "Réalisable par <b>EC seul</b> (LDM), avec un <b>OGA</b> (contrat-cadre + avenants) ou <b>OGA seul</b>",
+     "En cas de rappel sur point audité/validé : <b>remboursement des honoraires</b> et <b>pas de pénalités ni intérêts de retard</b>"]}
   ]},
 
- {cat:"ec", title:"L'accès à la profession", sub:"Conditions de droit commun, inscription au tableau et formation continue",
-  center:"Réunir les conditions de droit commun et être inscrit au tableau de l'Ordre",
+ {cat:"ec", title:"Accès à la profession", sub:"Conditions d'accès, inscription au tableau et obligations",
+  center:"Accéder à la profession exige des <b>conditions de droit commun</b> et une <b>inscription au tableau de l'Ordre</b>, avec des <b>obligations</b> (RCP, formation continue) sous peine de <b>radiation</b> ou de <b>sanctions pénales</b>.",
   branches:[
    {l:"Conditions de droit commun", p:[
-     "Jouir de ses droits civiques.",
-     "N'avoir subi aucune condamnation criminelle ou correctionnelle.",
-     "Être titulaire du diplôme français d'expertise comptable.",
-     "Présenter les garanties de moralité."]},
-   {l:"L'inscription au tableau", p:[
-     "Le diplômé peut être inscrit s'il est indépendant, salarié d'un membre de l'Ordre et/ou futur dirigeant d'une société d'expertise comptable.",
-     "La demande d'inscription est adressée au conseil régional (CROEC), qui vérifie et statue.",
-     "Une commission nationale statue spécifiquement sur l'inscription des AGC."]},
-   {l:"La formation continue", p:[
-     "Obligatoire tout au long de la carrière.",
-     "120 heures sur 3 ans, dont au moins 20 heures par an.",
-     "Son non-respect peut entraîner des sanctions disciplinaires."]},
-   {l:"La révision du tableau", p:[
-     "Tous les 2 mois, la commission du tableau de chaque conseil régional révise le tableau.",
-     "Examen des demandes d'inscription et des transferts de circonscription.",
-     "Suppression des noms des EC décédés, démissionnaires ou suspendus."]},
-   {l:"Sanctions de l'exercice illégal", p:[
-     "Personne physique : 1 an d'emprisonnement et 15 000 € d'amende.",
-     "Personne morale : 75 000 € d'amende.",
-     "Peines complémentaires : fermeture de l'établissement, interdiction d'exercer pendant 5 ans, etc."]}
+     "Jouir de ses <b>droits civiques</b>",
+     "<b>Aucune condamnation</b> criminelle ou correctionnelle",
+     "Titulaire du <b>diplôme français d'expertise comptable</b>",
+     "Présenter les <b>garanties de moralité</b>",
+     "Statuts possibles : <b>indépendant</b>, <b>salarié d'un membre</b> ou <b>futur dirigeant</b>"]},
+   {l:"Révision du tableau", p:[
+     "<b>Commission du tableau</b> régionale : révision tous les <b>2 mois</b>",
+     "Examine les <b>demandes d'inscription</b> et <b>transferts de circonscription</b>",
+     "<b>Supprime</b> les EC décédés, démissionnaires ou suspendus",
+     "<b>Commission nationale</b> : inscription et contrôle des <b>AGC</b> (exercice associatif)"]},
+   {l:"Formation continue & RCP", p:[
+     "Formation continue : <b>120 h / 3 ans</b> (dont <b>20 h/an</b> minimum)",
+     "<b>RCP obligatoire</b> couvrant l'ensemble des travaux",
+     "Possibilité d'adhérer au <b>contrat-cadre</b> de l'Ordre",
+     "Avantages : <b>tarifs maîtrisés</b>, <b>comité de conciliation</b>, assistance sinistres"]},
+   {l:"Radiation du tableau", p:[
+     "Membre défaillant <b>sans motif valable</b>, <b>2 ans sur 10</b>",
+     "Non-paiement de la <b>cotisation</b> ou des cotisations <b>sécurité sociale</b>",
+     "Absence de <b>couverture continue RCP</b>",
+     "Radiation après <b>2 appels infructueux</b>, notifiée à tous les conseils régionaux"]},
+   {l:"Exercice illégal (sanctions)", p:[
+     "Exercice <b>sans inscription au tableau</b> = sanction pénale",
+     "<b>Personne physique</b> : 1 an prison + <b>15 000 €</b>",
+     "<b>Personne morale</b> : <b>75 000 €</b> d'amende",
+     "Peines complémentaires : fermeture, interdiction d'exercer <b>5 ans</b>"]},
+   {l:"Procédure d'inscription", p:[
+     "Se fait au <b>conseil régional de l'Ordre</b>",
+     "<b>Demande d'inscription</b> → <b>vérification</b>",
+     "<b>Décision</b> du conseil régional",
+     "<b>Notification</b> de la décision"]}
   ]},
 
  {cat:"ec", title:"Les modes d'exercice", sub:"Les formes juridiques sous lesquelles exercer la profession",
-  center:"Du nom propre à la société : sous quelles formes juridiques exercer",
+  center:"Du <b>nom propre</b> à la <b>société</b> : sous quelles <b>formes juridiques</b> exercer l'expertise comptable",
   branches:[
    {l:"En nom propre", p:[
-     "Destiné aux EC ayant une clientèle limitée, exerçant seuls ou avec peu de salariés.",
-     "Exercice sous son propre nom, à l'exclusion de tout pseudonyme ou titre impersonnel."]},
+     "Pour les EC ayant un <b>nombre limité de clients</b>, exerçant <b>seuls</b> ou avec peu de salariés.",
+     "Exercice sous son <b>propre nom</b>, à l'exclusion de tout <b>pseudonyme</b> ou <b>titre impersonnel</b>."]},
    {l:"En société", p:[
-     "Interdiction des formes conférant aux associés la qualité de commerçant (SNC, SCS…).",
-     "Les EC doivent détenir plus des 2/3 des droits de vote (le quota de capital a été supprimé).",
-     "La direction et l'administration reviennent majoritairement à des EC inscrits."]},
-   {l:"Sociétés de participation (SPFPL)", p:[
-     "Holding détenant des participations dans des sociétés d'exercice : elle n'exerce pas elle-même la mission.",
-     "SPFPL mono-professionnelle : ne détient que des parts de sociétés d'exercice libéral d'expertise comptable.",
-     "SPFPL pluri-professionnelle : plus de la moitié du capital et des droits de vote aux professionnels exerçant."]},
-   {l:"SPE et succursale", p:[
-     "SPE : association de professions du droit et du chiffre ; totalité du capital ou des droits de vote aux professionnels exerçant.",
-     "Succursale : pas de personnalité juridique, non membre de l'Ordre, mais inscrite au tableau.",
-     "Succursale placée sous la responsabilité d'un EC y exerçant."]},
-   {l:"Structure associative & organisation", p:[
-     "AGC : association de gestion et de comptabilité, non membre de l'Ordre (conseil et assistance en gestion).",
-     "Local : installation matérielle adaptée ; SCM possible ou bureau à domicile sous conditions.",
-     "15 comptables salariés maximum par membre de l'Ordre (hors stagiaires)."]}
+     "<b>Interdiction</b> des formes conférant la qualité de <b>commerçant</b> (SNC, SCS…).",
+     "Détention de <b>plus des 2/3 des droits de vote</b> (le quota de capital a été supprimé).",
+     "<b>SARL/SELARL</b> : 1 part = 1 voix ; <b>autres sociétés</b> : dissociation possible via <b>actions de préférence</b>.",
+     "Non-conformité : régularisation dans un délai <b>max. 2 ans</b>, sinon <b>radiation</b>.",
+     "<b>Liste des associés</b> communiquée annuellement au Conseil de l'Ordre."]},
+   {l:"Sociétés de participation & SPFPL", p:[
+     "<b>Société de participation d'EC</b> : détient des titres de sociétés d'EC, <b>inscrite au tableau</b>.",
+     "<b>SPFPL mono-professionnelle</b> : ne détient que des parts de <b>SEL d'expertise comptable</b>.",
+     "<b>SPFPL pluri-professionnelle</b> : regroupe plusieurs <b>professions libérales</b> (avocat, notaire, CAC…).",
+     "SPFPL pluri : <b>+ de la moitié du capital et des droits de vote</b> aux professionnels exerçant."]},
+   {l:"SPE & succursale", p:[
+     "<b>SPE</b> : association avec des <b>professions du droit réglementées</b> (avocat, notaire, huissier…).",
+     "SPE : <b>totalité du capital ou des droits de vote</b> aux professionnels exerçant ; retrait sous <b>6 mois</b>, régularisation <b>1 an</b>.",
+     "<b>Succursale</b> : <b>pas de personnalité juridique</b>, <b>non membre</b> de l'Ordre, mais <b>inscrite au tableau</b>.",
+     "Succursale placée sous la <b>responsabilité d'un EC</b> y exerçant."]},
+   {l:"Associatif & organisation du cabinet", p:[
+     "<b>AGC</b> : association de gestion et de comptabilité, <b>non membre</b> de l'Ordre (conseil et assistance en gestion).",
+     "<b>Local</b> : installation matérielle adaptée ; <b>SCM</b> possible ou bureau à domicile (sans salariés ni clientèle reçue).",
+     "<b>15 comptables salariés maximum</b> par membre de l'Ordre (hors <b>stagiaires</b>).",
+     "Déclaration au <b>conseil régional</b> des noms, qualifications et durée d'emploi des collaborateurs."]}
   ]},
 
- {cat:"ec", title:"Les incompatibilités", sub:"Les activités et fonctions interdites pour préserver l'indépendance",
-  center:"Éviter les conflits d'intérêts susceptibles de porter atteinte à l'indépendance",
+ {cat:"ec", title:"Les incompatibilités", sub:"Ce qui est interdit à l'expert-comptable pour préserver son indépendance",
+  center:"Certaines fonctions créent des <b>conflits d'intérêts</b> qui portent atteinte à l'<b>indépendance</b> : elles sont <b>incompatibles</b> avec la profession",
   branches:[
    {l:"Le principe", p:[
-     "Certaines fonctions ou activités créent des conflits d'intérêts portant atteinte à l'indépendance.",
-     "Elles sont, à ce titre, incompatibles avec l'exercice de la profession."]},
-   {l:"Statut et activités d'affaires", p:[
-     "Micro-entrepreneur : interdit pour l'exercice de la profession.",
-     "Agent d'affaires : agent sportif, recouvrement de créances, syndic professionnel, agent immobilier.",
-     "Caution pour un client : atteinte à l'indépendance."]},
-   {l:"Conflits et justice", p:[
-     "Mission comptable pour une entreprise où l'EC détient des intérêts substantiels.",
-     "Représentation devant les tribunaux : interdite (mais l'assistance est autorisée).",
-     "Représentant fiscal (assimilé à de l'agence d'affaires) ou répondant fiscal d'un client."]},
+     "Des fonctions/activités créent des <b>conflits d'intérêts</b>.",
+     "Elles portent atteinte à l'<b>indépendance</b> du professionnel.",
+     "À ce titre, elles sont <b>incompatibles</b> avec l'exercice de la profession."]},
+   {l:"Activités interdites", p:[
+     "<b>Micro-entrepreneur</b> : interdit pour exercer la profession d'EC.",
+     "<b>Agent d'affaires</b> : agent sportif, recouvrement de créances, syndic, agent immobilier.",
+     "<b>Caution</b> pour un client (atteinte à l'indépendance).",
+     "Mission comptable si <b>intérêts substantiels</b> dans l'entreprise.",
+     "<b>Représentant</b> ou <b>répondant fiscal</b> d'un client."]},
+   {l:"Justice : représenter vs assister", p:[
+     "<b>Représentation</b> devant les tribunaux (judiciaire/administratif) : <b>interdite</b>.",
+     "L'<b>assistance</b> du client, elle, reste <b>autorisée</b>.",
+     "Le <b>représentant fiscal</b> est assimilé à de l'agence d'affaires."]},
    {l:"Ce qui reste possible", p:[
-     "Travaux administratifs ou techniques (fiscal/social) sans contenu juridique ni rédaction d'actes.",
-     "Consultations juridiques, fiscales ou sociales pour les entreprises suivies de façon permanente.",
-     "Mission sociale réalisable même pour un client sans autre mission."]}
+     "Travaux <b>administratifs/techniques</b> (fiscal, social...) <b>sans contenu juridique ni rédaction d'actes</b>.",
+     "Consultations et avis <b>juridiques/fiscaux/sociaux</b> seulement pour les <b>clients suivis de façon permanente</b>.",
+     "Avis possible devant toute <b>autorité ou organisme</b> public ou privé."]},
+   {l:"Mémo", p:[
+     "La <b>mission sociale</b> peut être réalisée pour un client...",
+     "...même si <b>aucune autre mission</b> n'est réalisée pour lui."]}
   ]},
 
- {cat:"ec", title:"La cessation des fonctions", sub:"Causes et modalités de fin de la mission de l'expert-comptable",
-  center:"Comment et pour quels motifs la mission de l'expert-comptable prend fin",
+ {cat:"ec", title:"Cessation des fonctions de l'expert-comptable", sub:"Les causes et les modalités de fin de fonctions",
+  center:"La mission d'assurance porte sur des <b>comptes historiques complets</b> pour une <b>durée d'1 an</b> (exercice comptable) ; sa fin obéit à des <b>causes</b> et <b>modalités</b> encadrées.",
   branches:[
-   {l:"Durée et renouvellement", p:[
-     "Pour les comptes complets, la mission est conclue pour une durée d'un an (l'exercice comptable).",
-     "La lettre de mission est renouvelable par tacite reconduction.",
-     "Dénonciation par LRAR, 3 mois avant la date de clôture de l'exercice."]},
-   {l:"La rupture du contrat", p:[
-     "À défaut de préavis prévu dans la LDM, la rupture ne doit être ni brutale ni abusive.",
-     "L'information sur la possibilité de rompre ne vaut qu'avec un client particulier.",
-     "Elle ne s'applique pas au client professionnel, qui agit dans le cadre de son activité."]},
-   {l:"Cessation provisoire & retraite", p:[
-     "Cessation provisoire : demande motivée, précisant la nouvelle activité, adressée au CROEC.",
-     "Retraite : radiation lorsqu'il fait valoir ses droits auprès de la CAVEC.",
-     "Possibilité de liquider sa retraite CAVEC tout en restant inscrit au tableau."]},
-   {l:"Incapacité ou incompatibilité", p:[
-     "L'EC doit démissionner et dénoncer le contrat dès la survenance d'un événement le plaçant en conflit d'intérêts.",
-     "Objectif : préserver son indépendance."]},
-   {l:"Sanctions et démission", p:[
-     "Sanctions disciplinaires : réprimande, blâme, suspension (sursis ou ferme), radiation.",
-     "Démission : la mission est en principe menée jusqu'à son terme normal.",
-     "Interruption possible pour motifs justes et raisonnables (perte de confiance, manquement à une clause substantielle)."]}
+   {l:"Renouvellement et rupture du contrat", p:[
+     "<b>LDM</b> renouvelable chaque année par <b>tacite reconduction</b>",
+     "Dénonciation par <b>LRAR 3 mois avant la clôture</b> de l'exercice",
+     "Sans délai prévu : <b>ni forme ni préavis</b>, mais rupture <b>ni brutale ni abusive</b>",
+     "Information sur la possibilité de rompre : <b>particulier oui</b>, <b>client professionnel non</b>"]},
+   {l:"Cessation provisoire", p:[
+     "Cesser <b>provisoirement</b> de faire partie de l'Ordre",
+     "<b>Demande motivée</b> précisant la <b>nouvelle activité</b>",
+     "Adressée au <b>conseil régional</b>"]},
+   {l:"Retraite et incapacité/incompatibilité", p:[
+     "<b>Radiation</b> si liquidation des droits à la retraite auprès de la <b>CAVEC</b>",
+     "Possible de <b>liquider la retraite CAVEC</b> et <b>rester inscrit</b> au tableau",
+     "Incapacité/incompatibilité : obligation de <b>démissionner</b> et <b>dénoncer le contrat</b>",
+     "Dès un événement menaçant l'<b>indépendance</b> ou créant un <b>conflit d'intérêts</b>"]},
+   {l:"Sanction disciplinaire", p:[
+     "Cause de cessation des fonctions",
+     "Renvoi à la fiche <b>« Responsabilité de l'EC »</b>, onglet <b>Responsabilité disciplinaire</b>"]},
+   {l:"Démission de l'expert-comptable", p:[
+     "Principe : exercer la mission <b>jusqu'à son terme normal</b>",
+     "Interruption possible sans <b>préjudice au client</b>, pour <b>motifs justes et raisonnables</b>",
+     "<b>Perte de confiance</b> manifestée par le client",
+     "<b>Méconnaissance</b> d'une <b>clause substantielle</b> du contrat par le client"]}
   ]},
 
- {cat:"cac", title:"Le commissariat aux comptes", sub:"La mission légale d'audit : les repères essentiels",
-  center:"Certifier les comptes dans l'intérêt général, selon un cadre strict",
+ {cat:"ec", title:"L'acceptation de la mission et la lettre de mission", sub:"Du premier contact à l'engagement contractuel",
+  center:"Avant d'accepter : vérifier qu'on <b>peut</b> et qu'on <b>doit</b> (indépendance, compétence, intégrité client, vigilance <b>LAB</b>) — puis formaliser par une <b>lettre de mission écrite obligatoire</b>.",
   branches:[
-   {l:"La mission de certification", p:[
-     "Le CAC certifie que les comptes sont réguliers, sincères et donnent une image fidèle.",
-     "Il exerce selon les normes d'exercice professionnel (NEP).",
-     "Il ne tient pas la comptabilité et ne s'immisce pas dans la gestion (principe de non-immixtion)."]},
-   {l:"Nomination et durée", p:[
-     "Le CAC est nommé par l'assemblée générale, pour un mandat de 6 exercices.",
-     "La nomination devient obligatoire au-delà de 2 des 3 seuils : 5 M€ de bilan, 10 M€ de CA HT, 50 salariés.",
-     "Le co-commissariat (deux CAC) s'impose pour les entités établissant des comptes consolidés."]},
-   {l:"Indépendance renforcée (EIP)", p:[
-     "L'associé signataire doit être renouvelé (rotation) au moins tous les 6 ans pour une EIP.",
-     "La durée du mandat du cabinet, pour une EIP, est plafonnée à 10 ans (prolongations encadrées).",
-     "L'audit et le conseil sont strictement séparés."]},
-   {l:"Les obligations spécifiques", p:[
-     "Révéler au procureur de la République les faits délictueux constatés.",
-     "Déclencher la procédure d'alerte si la continuité d'exploitation est menacée.",
-     "Ne démissionner que pour un motif légitime, sans chercher à se soustraire à ses obligations."]}
+   {l:"Acceptation & maintien de la mission", p:[
+     "Apprécier la <b>possibilité d'effectuer</b> la mission ; <b>examiner périodiquement</b> le maintien",
+     "La société doit définir <b>politiques et procédures</b> d'acceptation/maintien et une <b>assurance raisonnable</b> de compétence du personnel",
+     "Conditions : <b>indépendance</b>, <b>compétence/aptitudes</b> (temps, ressources), <b>déontologie</b>, <b>intégrité du client</b>, <b>identification client / bénéficiaire effectif</b>",
+     "Difficultés puis acceptation/maintien : <b>documenter</b> leur résolution"]},
+   {l:"Obligation de vigilance (LAB)", p:[
+     "Avant signature LDM (ou avant les travaux) : vigilance envers <b>client + bénéficiaire effectif</b> selon les <b>risques de LAB</b>",
+     "<b>Bénéficiaire effectif</b> = contrôle en dernier lieu ou <b>+25 %</b> capital/droits de vote, ou pouvoir de contrôle",
+     "<b>Conservation 5 ans</b> (identité : dès clôture ; objet/nature : dès exécution) ; PM = registre <b>< 3 mois</b>",
+     "<b>3 phases</b> : placement → empilement → intégration (<b>P-E-I</b>) ; vigilance <b>allégée/normale/renforcée</b>",
+     "<b>PPE</b> = vigilance renforcée (un <b>maire n'est PAS une PPE</b>) ; <b>interdiction d'informer</b> le client (TRACFIN)"]},
+   {l:"La lettre de mission", p:[
+     "<b>Contrat écrit obligatoire</b> par mission, <b>actualisé par avenant</b> (périodique ou à chaque modification)",
+     "Contenu : <b>mandat fiscal</b>, nature/étendue/limites, obligations réciproques, honoraires, <b>clause RGPD</b> (absence = <b>sanction disciplinaire</b>)",
+     "Objectif : <b>aucun malentendu</b> entre cocontractants ; facilite la <b>planification des travaux</b>",
+     "En cas de <b>litige</b> : prouve les <b>engagements réciproques</b> et l'<b>obligation de conseil</b>"]}
   ]},
 
- {cat:"commun", title:"Régulation, contrôle & discipline", sub:"Qui surveille les professionnels et comment ils sont sanctionnés",
-  center:"Un système de contrôle et de sanctions propre à chaque profession",
+ {cat:"ec", title:"La responsabilité de l'expert-comptable", sub:"Les trois ordres de responsabilité",
+  center:"L'expert-comptable engage <b>trois responsabilités</b> distinctes : <b>civile</b>, <b>pénale</b> et <b>disciplinaire</b>.",
   branches:[
-   {l:"La H2A, régulateur de l'audit", p:[
-     "Depuis 2024, elle a succédé au H3C et régule l'ensemble des auditeurs.",
-     "Elle adopte les normes, organise les contrôles et supervise l'audit financier et de durabilité.",
-     "Sa commission des sanctions, indépendante, prononce les sanctions disciplinaires des CAC."]},
-   {l:"Le contrôle qualité", p:[
-     "Chaque commissaire aux comptes fait l'objet d'un contrôle périodique de son activité.",
-     "Le rythme est d'au moins une fois tous les 6 ans (et tous les 3 ans pour les CAC d'EIP).",
-     "Il se conclut par une lettre conclusive : sans observation, avec observations, ou avec une décision de recontrôle."]},
-   {l:"La discipline de l'expert-comptable", p:[
-     "Les manquements sont jugés en première instance par la chambre régionale de discipline.",
-     "L'appel est porté devant la chambre nationale de discipline.",
-     "Les sanctions, par gravité croissante : réprimande, blâme, suspension, puis radiation du tableau."]},
-   {l:"Les sources de règles", p:[
-     "L'expert-comptable suit le Code de déontologie et le référentiel normatif de l'Ordre.",
-     "Le commissaire aux comptes applique les NEP, homologuées par le Garde des Sceaux.",
-     "Le tout s'articule avec le droit européen (réforme de l'audit, directive CSRD)."]}
+   {l:"Responsabilité civile", p:[
+     "<b>Obligation de moyens</b> (diligences normales et avisées) ; <b>de résultat</b> seulement si <b>aléa exclu</b> (ex. délais fiscaux)",
+     "<b>3 éléments</b> : faute, dommage, lien de causalité — préjudice <b>direct, certain, licite, prévisible</b>",
+     "<b>Contractuelle</b> avec le client (client prouve la faute, défaut de conseil = 1re source de litiges) ; <b>délictuelle</b> envers les tiers",
+     "<b>Prescription : 5 ans</b> ; réductible par la LDM mais <b>jamais &lt; 1 an</b> (client pro uniquement)",
+     "<b>Clauses limitatives non opposables aux tiers</b> (banques, fournisseurs, acquéreur)"]},
+   {l:"Responsabilité pénale", p:[
+     "<b>3 éléments</b> : légal (texte), matériel (commencement d'exécution), moral (faute intentionnelle ou d'imprudence)",
+     "<b>Tentative</b> : toujours punissable pour un <b>crime</b>, pour un <b>délit</b> seulement si un texte le prévoit",
+     "Infractions phares : usage illégal du titre, exercice malgré suspension/radiation, violation du secret → <b>1 an et 15 000 €</b>",
+     "<b>Prescription</b> : <b>20 ans</b> (crimes), <b>6 ans</b> (délits), <b>1 an</b> (contraventions)",
+     "<b>Complicité</b> = acte positif + volonté <b>sciemment</b> → il faut <b>prouver la volonté</b>"]},
+   {l:"Responsabilité disciplinaire", p:[
+     "<b>1re instance</b> : chambre régionale de discipline ; <b>appel</b> : chambre nationale ; recours <b>non suspensif</b> au <b>Conseil d'État</b>",
+     "Sanctions : réprimande, <b>blâme</b>, suspension (avec ou sans sursis), <b>radiation</b> (interdiction définitive)",
+     "Peines complémentaires : exclusion des conseils (<b>≤ 10 ans</b>), amende LAB <b>jusqu'à 1 M€</b>, publicité",
+     "<b>Aucune prescription</b> ; l'EC mis en cause est <b>délié du secret professionnel</b> pour sa défense"]}
   ]},
 
- {cat:"ec", title:"Les normes de l'expert-comptable (OEC)", sub:"Fiche de définitions : à quoi sert chaque norme",
-  center:"Un référentiel élaboré par le CNOEC et agréé par arrêté du ministre de l'Économie",
+ {cat:"ec", title:"Le contrôle qualité", sub:"Vérification périodique de l'activité de l'EC",
+  center:"Vérification périodique visant à maintenir un <b>niveau élevé de qualité</b> et le <b>respect des règles déontologiques</b> de l'expert-comptable",
   branches:[
-   {l:"Les normes structurantes (cadre du cabinet)", p:[
-     "Cadre de référence : il pose les principes généraux et le vocabulaire communs à toutes les missions.",
-     "NPMQ (maîtrise de la qualité) : organise la qualité dans le cabinet (acceptation des missions, ressources, supervision, revue).",
-     "Norme anti-blanchiment : décline les obligations de vigilance et de déclaration en matière de LCB-FT."]},
-   {l:"NP 2300 — Mission de présentation des comptes", p:[
-     "Définition : l'expert-comptable présente les comptes à partir des éléments fournis par l'entreprise.",
-     "Elle aboutit à une attestation donnant une assurance modérée sur la cohérence et la vraisemblance des comptes.",
-     "C'est la mission la plus courante de l'expert-comptable auprès des TPE et PME."]},
-   {l:"NP 2400 — Mission d'examen limité", p:[
-     "Définition : une revue fondée surtout sur des entretiens et des procédures analytiques (moins poussée qu'un audit).",
-     "Elle conduit à une conclusion sous forme négative (« nous n'avons pas relevé… ») : assurance modérée.",
-     "Elle répond à un besoin d'assurance supérieur à celui d'une simple présentation."]},
-   {l:"Audit d'états financiers (ISA ; NP 2910 pour les petites entités)", p:[
-     "Définition : un audit contractuel offrant le niveau le plus élevé, soit une assurance raisonnable.",
-     "Il s'appuie sur les normes internationales d'audit (ISA) et débouche sur une opinion exprimée positivement.",
-     "La NP 2910 adapte ces diligences aux petites entités."]},
-   {l:"Missions sans assurance et attestations", p:[
-     "NP 4410 — Compilation : l'expert-comptable établit ou met en forme les comptes, sans exprimer d'assurance.",
-     "NP 4400 — Procédures convenues : il réalise des travaux définis à l'avance et rend de simples constatations.",
-     "NP 3100 — Attestations particulières : une assurance portant sur une information précise, autre que des comptes complets."]}
+   {l:"Finalité et objectifs", p:[
+     "But : <b>qualité élevée</b> du travail + <b>respect de la déontologie</b>",
+     "<b>Harmoniser</b> les comportements, <b>perfectionner</b> les méthodes",
+     "<b>Apprécier l'application</b> des règles et normes professionnelles",
+     "Favoriser la <b>solidarité</b> ; <b>relever les faiblesses</b> et corriger"]},
+   {l:"Volets du contrôle", p:[
+     "<b>2 volets indépendants</b>",
+     "<b>Contrôle général</b> de l'activité du professionnel",
+     "<b>Contrôle LAB</b> (blanchiment / financement du terrorisme)",
+     "Contrôlé fournit <b>documents</b> et explications ; contrôleur <b>tenu au secret</b>"]},
+   {l:"Statut du contrôleur", p:[
+     "Choisi par <b>conseils régionaux</b> et <b>commission régionale d'inscription</b> ; <b>3 ans renouvelable</b>",
+     "Inscrit au tableau <b>≥ 5 ans</b>, <b>aucune sanction</b> disciplinaire",
+     "Contrôle qualité <b>sans nouveau contrôle sur place</b> (1 an) + <b>stage de formation</b>",
+     "<b>Aucun intérêt</b> dans la structure contrôlée ; mission <b>personnelle, non déléguée</b>"]},
+   {l:"Organisation du contrôle", p:[
+     "Contrôle général = <b>2 phases</b> : <b>structurel</b> (organisation) + <b>technique</b> (dossiers par <b>sondages</b>)",
+     "Contrôle LAB : respect des <b>obligations de prévention</b> ; <b>délégué par le comité anti-blanchiment</b>",
+     "Documents LAB (identité, opérations) à conserver <b>5 ans</b>",
+     "<b>CNOEC</b> coordonne avec la <b>CNCC</b> si aussi concerné par le <b>CAC</b>"]},
+   {l:"Conclusions du contrôle", p:[
+     "<b>Note de synthèse</b> au contrôlé et au dirigeant ; observations écrites sous <b>30 jours max</b>",
+     "<b>Rapport définitif</b> (synthèse + observations) transmis au <b>président du conseil régional</b>",
+     "3 lettres : <b>sans observation</b> / <b>simples observations</b> / <b>avec nouveau contrôle sur place à 1 an</b>",
+     "Manquements graves/répétés : saisine possible de la <b>chambre de discipline</b>"]},
+   {l:"Points de contrôle (ex.)", p:[
+     "<b>Lettre de mission</b> conforme aux <b>NP</b> et pour <b>tous les clients</b>",
+     "Procédures de <b>contrôle interne LAB</b> et d'<b>acceptation/maintien</b> des missions (<b>NPMQ</b>)",
+     "<b>Supervision</b> matérialisée et <b>programme de travail</b> renseigné dans les dossiers",
+     "<b>Plan de formation</b> du cabinet et suivi"]}
   ]},
 
- {cat:"ec", title:"Le cadre de référence des missions", sub:"La cartographie des missions de l'EC, avec le numéro de chaque norme",
-  center:"Le référentiel normatif de l'OEC classe les missions selon le niveau d'assurance",
-  branches:[
-   {l:"Les textes-socles du référentiel", p:[
-     "<b>Cadre de référence</b> : il fixe les principes communs à toutes les missions (en vigueur depuis le 14 décembre 2020, aligné sur les normes de l'IAASB/IFAC).",
-     "<b>Glossaire</b> : il définit le vocabulaire normalisé employé dans toutes les normes.",
-     "<b>NPMQ</b> : la norme de maîtrise de la qualité, qui organise la qualité au sein du cabinet.",
-     "<b>Norme anti-blanchiment</b> : elle décline les obligations LCB-FT (vigilance, déclaration de soupçon)."]},
-   {l:"Missions d'assurance sur les comptes", p:[
-     "<b>NP 2300 — Présentation des comptes</b> : assurance modérée sur la cohérence et la vraisemblance.",
-     "<b>NP 2400 — Examen limité</b> : assurance modérée (supérieure à la présentation), conclusion négative.",
-     "<b>Audit d'états financiers (normes ISA)</b> : assurance raisonnable, opinion positive.",
-     "<b>NP 2910 — Audit des petites entités</b> : les diligences d'audit adaptées aux petites structures."]},
-   {l:"Missions d'assurance sur d'autres informations", p:[
-     "<b>NP 3100 — Attestations particulières</b> : assurance sur une information autre que des comptes complets.",
-     "<b>NP 3400 — Examen d'informations financières prévisionnelles</b> : porte sur des données prévisionnelles.",
-     "Le niveau d'assurance dépend de la nature de l'information et des diligences mises en œuvre."]},
-   {l:"Missions sans assurance", p:[
-     "<b>NP 4410 — Compilation</b> : établir ou mettre en forme les comptes, sans exprimer d'assurance.",
-     "<b>NP 4400 — Procédures convenues</b> : rendre de simples constats issus de travaux définis à l'avance.",
-     "S'y ajoutent les missions sans assurance prévues par un texte légal ou réglementaire (ex. comptes de campagne)."]},
-   {l:"La logique à retenir", p:[
-     "Plus le niveau d'assurance visé est élevé, plus les diligences à mettre en œuvre sont étendues.",
-     "Chaque mission correspond à une norme professionnelle (NP) précise, identifiée par son numéro.",
-     "Le cadre de référence chapeaute l'ensemble : il donne les principes, chaque NP détaille une mission."]}
-  ]},
-
- {cat:"cac", title:"Les normes du commissaire aux comptes (NEP)", sub:"Fiche de définitions : ce que sont les NEP et ce qu'elles couvrent",
-  center:"Normes d'exercice professionnel, homologuées par arrêté du Garde des Sceaux",
-  branches:[
-   {l:"Ce que sont les NEP", p:[
-     "Définition : les NEP encadrent la façon dont le commissaire aux comptes conduit sa mission de contrôle légal.",
-     "Elles sont largement inspirées des normes internationales d'audit (ISA).",
-     "Elles ont une valeur réglementaire, car homologuées par arrêté du ministre de la Justice."]},
-   {l:"Connaître l'entité et planifier", p:[
-     "<b>NEP 200 — Principes applicables à l'audit des comptes mis en œuvre dans le cadre de la certification des comptes</b> : objectif de l'audit, assurance raisonnable, esprit critique.",
-     "<b>NEP 300 — Planification de l'audit</b> : élaboration du plan de mission et du programme de travail.",
-     "<b>NEP 315 — Connaissance de l'entité et de son environnement et évaluation du risque d'anomalies significatives dans les comptes</b>."]},
-   {l:"Identifier et mesurer les risques", p:[
-     "<b>NEP 240 — Prise en considération de la possibilité de fraudes lors de l'audit des comptes</b>.",
-     "<b>NEP 250 — Prise en compte du risque d'anomalies résultant du non-respect de textes légaux et réglementaires</b>.",
-     "<b>NEP 320 — Application de la notion de caractère significatif lors de la planification et de la réalisation d'un audit</b> : les seuils de signification."]},
-   {l:"Réunir les éléments probants", p:[
-     "<b>NEP 330 — Procédures d'audit mises en œuvre par le commissaire aux comptes à l'issue de son évaluation des risques</b>.",
-     "<b>NEP 500 — Caractère probant des éléments collectés</b> : réunir des éléments suffisants et appropriés.",
-     "<b>NEP 570 — Continuité d'exploitation</b> : apprécier la capacité de l'entité à poursuivre son activité."]},
-   {l:"Conclure et rapporter", p:[
-     "<b>NEP 700 — Rapport du commissaire aux comptes sur les comptes annuels et consolidés</b> : formulation de l'opinion.",
-     "<b>NEP 705 — Justification des appréciations</b> : motiver les appréciations portées sur les comptes.",
-     "Le rapport peut conclure à une certification (avec ou sans réserve), à un refus de certifier ou à une impossibilité de certifier."]},
-   {l:"Les petites entreprises", p:[
-     "<b>NEP 910 — Certification des comptes annuels des petites entreprises</b> : des diligences allégées et proportionnées.",
-     "L'objectif d'assurance raisonnable reste identique à celui d'un audit classique.",
-     "Cette norme accompagne le relèvement des seuils issu de la loi PACTE puis du décret de 2024."]}
-  ]},
-
- {cat:"ec", title:"Les niveaux d'assurance", sub:"Le réflexe à automatiser : à chaque mission, son niveau et sa forme de conclusion",
-  center:"Plus la mission est approfondie, plus l'assurance donnée est élevée",
-  branches:[
-   {l:"① Assurance raisonnable (la plus élevée)", p:[
-     "C'est le niveau de l'audit (contractuel pour l'expert-comptable) et de la certification (pour le CAC).",
-     "L'opinion est exprimée sous forme positive : les comptes sont réguliers, sincères et donnent une image fidèle.",
-     "Élevée, mais jamais absolue : un audit ne garantit pas l'absence totale d'erreur."]},
-   {l:"② Assurance modérée — l'examen limité", p:[
-     "Des diligences plus légères que l'audit (surtout des entretiens et des procédures analytiques).",
-     "La conclusion est formulée de façon négative : « nous n'avons pas relevé d'élément… ».",
-     "Elle porte sur la conformité des comptes au référentiel comptable applicable."]},
-   {l:"③ Assurance modérée — la présentation (NP 2300)", p:[
-     "Son niveau d'assurance est inférieur à celui de l'examen limité.",
-     "Elle porte uniquement sur la cohérence et la vraisemblance des comptes.",
-     "Elle ne se prononce pas sur l'image fidèle, et elle est délivrée au moyen d'une attestation."]},
-   {l:"④ Missions sans aucune assurance", p:[
-     "Compilation : on établit les comptes, sans donner d'opinion ni d'assurance.",
-     "Procédures convenues : on rapporte de simples constats, à charge pour le lecteur d'en tirer ses conclusions.",
-     "Le rapport remis ne contient donc aucune assurance du professionnel."]},
-   {l:"Le mémo qui fait gagner des points", p:[
-     "Conclusion POSITIVE → audit → assurance raisonnable.",
-     "Conclusion NÉGATIVE → examen limité et présentation → assurance modérée.",
-     "Simples CONSTATS → procédures convenues → aucune assurance. Échelle : raisonnable › modérée › sans."]}
-  ]},
-
- {cat:"commun", title:"Cadre international & éthique", sub:"Les organisations et les normes au-dessus du cadre français",
-  center:"La profession est aussi organisée aux niveaux européen et mondial",
+ {cat:"ec", title:"IFAC et IESBA", sub:"Les organisations internationales de la profession comptable",
+  center:"L'<b>IFAC</b> fédère les organisations comptables du monde ; son instance <b>IESBA</b> édicte le <b>code international de déontologie</b>, structuré autour d'un <b>cadre conceptuel</b>, de <b>principes fondamentaux</b> et de la gestion des <b>menaces</b>.",
   branches:[
    {l:"L'IFAC", p:[
-     "L'IFAC (Fédération internationale des experts-comptables) fédère les organisations professionnelles du monde entier.",
-     "Elle promeut des normes et une éthique communes à l'échelle internationale.",
-     "La France y est représentée à travers ses instances professionnelles."]},
-   {l:"L'IESBA et le code d'éthique", p:[
-     "L'IESBA élabore le code international d'éthique des professionnels comptables, sous l'égide de l'IFAC.",
-     "Ce code inspire largement le Code de déontologie français.",
-     "À ne pas confondre avec l'IASB, qui produit les normes comptables internationales (IFRS)."]},
-   {l:"Les normes internationales", p:[
-     "ISA : les normes internationales d'audit, dont s'inspirent les NEP françaises.",
-     "ISRE 2400 : la norme internationale d'examen limité, transposée en NP 2400.",
-     "IFRS : le référentiel comptable international, utilisé notamment par les groupes cotés."]},
-   {l:"Au niveau européen", p:[
-     "Accountancy Europe représente et coordonne la profession comptable et d'audit en Europe.",
-     "La réforme européenne de l'audit (règlement 537/2014) a renforcé l'indépendance des CAC d'EIP.",
-     "La directive CSRD a créé l'obligation d'auditer les informations de durabilité."]},
-   {l:"Les principes éthiques fondamentaux", p:[
-     "Intégrité, objectivité, compétence et diligence.",
-     "Confidentialité et comportement professionnel.",
-     "Ils forment un socle commun, ensuite décliné dans le code propre à chaque profession."]}
+     "<b>International Federation of Accountants</b> : fédère les <b>organisations nationales</b> d'experts-comptables et auditeurs",
+     "Siège à <b>New York</b>",
+     "<b>Council</b> : 1 représentant par membre, réuni <b>1 fois/an</b>",
+     "<b>Board</b> : l'exécutif, réuni <b>3 fois/an</b>",
+     "Objectifs : <b>développement</b> de la profession et <b>harmonisation mondiale</b> des normes"]},
+   {l:"L'IESBA", p:[
+     "<b>International Ethics Standards Board for Accountants</b> : normalisateur <b>indépendant</b> au sein de l'IFAC",
+     "Publie le <b>code international de déontologie</b> (éthique et <b>indépendance</b>)",
+     "Missions : <b>élaborer</b> les normes, <b>encourager</b> leur adoption, <b>promouvoir</b> les bonnes pratiques",
+     "⚠️ Ne pas confondre : <b>IESBA</b> = éthique · <b>IASB</b> = normes comptables <b>IFRS</b> · <b>IFAC</b> = l'organisation"]},
+   {l:"Le plan du code IFAC", p:[
+     "<b>Partie 1</b> (100-199) : principes fondamentaux et cadre conceptuel — tous PC",
+     "<b>Partie 2</b> (200-299) : professionnels comptables en entreprise (<b>PCE</b>)",
+     "<b>Partie 3</b> (300-399) : professionnels comptables en cabinet (<b>PCC</b>)",
+     "<b>Parties 4a</b> (400-499, audits/examens) et <b>4b</b> (900-999, autres assurances) : normes d'<b>indépendance</b>",
+     "+ <b>Glossaire</b>"]},
+   {l:"Le cadre conceptuel", p:[
+     "Approche en <b>3 étapes</b> : <b>identifier</b>, <b>évaluer</b>, <b>traiter</b> les menaces",
+     "Traiter : <b>éliminer</b> les circonstances, appliquer des <b>mesures de sauvegarde</b> ou <b>refuser/mettre fin</b> à l'activité",
+     "<b>Mesures de sauvegarde</b> : réduire les menaces à un <b>niveau acceptable</b>",
+     "<b>Principes fondamentaux</b> : norme de conduite attendue du professionnel"]},
+   {l:"Les principes fondamentaux", p:[
+     "<b>Intégrité</b> : droit et honnête",
+     "<b>Objectivité</b> : ni parti pris ni conflit d'intérêts",
+     "<b>Compétence et diligence</b> professionnelles",
+     "<b>Confidentialité</b> des informations",
+     "<b>Comportement professionnel</b> : respect des lois, pas de discrédit"]},
+   {l:"Menaces et sauvegardes", p:[
+     "<b>5 menaces</b> : intérêt personnel, <b>auto-révision</b>, représentation, <b>familiarité</b>, intimidation",
+     "Menace = risque d'influence inappropriée sur le <b>jugement</b> ou l'<b>objectivité</b>",
+     "Sauvegardes — <b>catégorie 1</b> : profession, législation, réglementation",
+     "Sauvegardes — <b>catégorie 2</b> : environnement de travail"]}
   ]},
 
- {cat:"commun", title:"La lutte anti-blanchiment (LCB-FT)", sub:"Un chapitre qui tombe presque à chaque session",
-  center:"Détecter, encadrer et déclarer les opérations suspectes",
+ {cat:"cac", title:"L'organisation de la profession", sub:"Les instances qui régulent le commissariat aux comptes",
+  center:"La profession de <b>CAC</b> est régulée par <b>trois instances dotées de la personnalité morale</b> : la <b>H2A</b> (autorité publique), la <b>CNCC</b> (nationale) et les <b>CRCC</b> (régionales).",
   branches:[
-   {l:"Comprendre le blanchiment (3 phases)", p:[
-     "Placement : les fonds d'origine illicite sont introduits dans le système financier.",
-     "Empilement (ou dispersion) : on multiplie les opérations pour brouiller la traçabilité de l'argent.",
-     "Intégration : les fonds réapparaissent sous l'apparence de revenus légitimes."]},
-   {l:"L'obligation de vigilance", p:[
-     "Identifier et vérifier l'identité du client et de son bénéficiaire effectif (qui détient plus de 25 %).",
-     "Adapter l'intensité des contrôles au risque : vigilance allégée, normale ou renforcée.",
-     "Conserver les documents justificatifs pendant la durée prévue par la loi."]},
-   {l:"Les personnes politiquement exposées (PPE)", p:[
-     "Ce sont des personnes exposées à des risques accrus (corruption…) en raison de leurs fonctions.",
-     "La liste comprend notamment les membres d'une assemblée parlementaire nationale.",
-     "Elle exclut les élus locaux : un maire n'est donc pas une PPE."]},
-   {l:"La déclaration de soupçon", p:[
-     "Dès qu'il a un soupçon, le professionnel adresse une déclaration à TRACFIN.",
-     "Il lui est interdit d'informer le client de cette déclaration (interdiction de divulgation).",
-     "Faite de bonne foi, la déclaration exonère le professionnel de sa responsabilité."]},
-   {l:"À retenir pour l'examen", p:[
-     "La déclaration de soupçon est une dérogation légale au secret professionnel.",
-     "Le manquement aux obligations LCB-FT expose à des sanctions disciplinaires et pénales.",
-     "Ces obligations s'imposent à l'expert-comptable comme au commissaire aux comptes."]}
+   {l:"H2A — Haute autorité de l'audit", p:[
+     "Instituée auprès du <b>garde des Sceaux</b> ; dotée de la <b>personnalité morale</b>",
+     "Missions : <b>inscription des CAC</b>, <b>adoption des normes</b>, contrôles, <b>enquêtes</b> et <b>sanctions</b>",
+     "<b>Délègue à la CNCC</b> le suivi de la formation continue et le <b>contrôle d'activité</b>",
+     "Composition : <b>collège</b> (exerce les missions) + <b>commission des sanctions</b>",
+     "Président et membres nommés par <b>décret pour 6 ans, renouvelable une fois</b> ; décisions à la <b>majorité</b>"]},
+   {l:"CNCC — Compagnie nationale", p:[
+     "Personnalité morale ; <b>représente la profession</b> et défend l'<b>honneur et l'indépendance</b> des membres",
+     "Structures : <b>DMF</b> (sociétés cotées), <b>DIPAC</b> (international), <b>2 comités + 19 commissions</b> (doctrine)",
+     "<b>Conseil national</b> : organe décisionnaire, <b>60 membres</b>, mandat <b>4 ans</b>, <b>parité EIP/non EIP</b>",
+     "<b>Bureau</b> : président + vice-président + 6 membres, mandat <b>4 ans</b>",
+     "Président <b>non renouvelable</b> ; <b>représente la CNCC</b> et peut ester en justice"]},
+   {l:"CRCC — Compagnies régionales", p:[
+     "Personnalité morale — <b>17 CRCC</b> ; représentent <b>localement</b> la profession",
+     "Missions : bon exercice, <b>surveillance</b>, <b>formation et perfectionnement</b> des membres",
+     "<b>Conseil régional</b> : élus <b>4 ans, renouvelable une fois</b> ; éligibles à jour de cotisations",
+     "<b>Bureau</b> : mandat <b>4 ans renouvelable</b>, sauf président (<b>non renouvelable</b>) ; mêmes attributions que le président CNCC",
+     "<b>Assemblée générale 1 fois/an</b> : statue sur le <b>rapport moral et financier</b>"]}
   ]},
 
- {cat:"cac", title:"Le commissaire aux comptes en détail", sub:"Mandat, régime renforcé des EIP et issues possibles de la mission",
-  center:"Les spécificités à bien distinguer de l'expertise comptable",
+ {cat:"cac", title:"Le code de déontologie", sub:"Les règles déontologiques du CAC",
+  center:"Un code à <b>valeur réglementaire</b>, <b>opposable aux tiers</b>, encadrant l'<b>éthique</b> du commissaire aux comptes dans <b>toutes ses missions et prestations</b>.",
   branches:[
-   {l:"Statut et principes propres", p:[
-     "Le mandat de CAC est personnel et dure 6 exercices : il ne se « délègue » pas à un confrère.",
-     "Principe de non-immixtion : le CAC contrôle, mais ne prend aucune décision de gestion.",
-     "Faire obstacle à ses contrôles constitue un délit d'entrave, sanctionné pénalement."]},
-   {l:"Le régime des entités d'intérêt public (EIP)", p:[
-     "Toute EIP doit être dotée d'un comité d'audit, composé de membres non exécutifs.",
-     "Le CAC y est désigné sur recommandation du comité d'audit, à l'issue d'un appel d'offres.",
-     "Rotation : l'associé signataire change tous les 6 ans et le mandat du cabinet est limité à 10 ans."]},
-   {l:"Services et honoraires (EIP)", p:[
-     "Une liste de services est interdite au CAC pour préserver son indépendance (tenue de comptabilité, évaluation, etc.).",
-     "Les autres services autorisés (SACC) sont plafonnés à 70 % de la moyenne des honoraires d'audit des 3 derniers exercices.",
-     "Les honoraires de résultat sont, comme pour l'expert-comptable, prohibés."]},
-   {l:"Les quatre issues possibles", p:[
-     "Certification sans réserve : les comptes sont réguliers, sincères et fidèles.",
-     "Certification avec réserve(s) : une anomalie significative, mais circonscrite.",
-     "Refus de certifier (désaccord profond) ou impossibilité de certifier (on n'a pas pu obtenir les éléments nécessaires)."]},
-   {l:"Les interventions connexes", p:[
-     "La procédure d'alerte, lorsque la continuité d'exploitation est menacée.",
-     "La révélation des faits délictueux au procureur de la République.",
-     "Des missions ponctuelles : commissaire aux apports, à la fusion, à la transformation."]}
+   {l:"L'essentiel", p:[
+     "Partie <b>législative</b> (<b>Livre VIII, titre II du Code de commerce</b>) + partie <b>réglementaire</b>",
+     "<b>Valeur réglementaire</b> : dispositions <b>opposables aux tiers</b>",
+     "<b>2 parties</b> : règles applicables <b>quelle que soit la mission/prestation</b>, et règles spécifiques à la <b>certification des comptes</b> d'une entité",
+     "<b>Missions</b> = contrôle légal et missions confiées par la loi ; <b>Prestations</b> = services/attestations hors ou dans le cadre légal"]},
+   {l:"Intégrité", p:[
+     "Exercer avec <b>honnêteté et droiture</b>",
+     "Ne pas commettre de <b>faits sanctionnés pénalement</b>",
+     "Ne pas exploiter des <b>informations confidentielles</b> dans son <b>intérêt personnel</b>",
+     "Maintenir son jugement <b>quelles que soient les pressions</b> ; pas d'<b>informations fausses ou trompeuses</b>"]},
+   {l:"Impartialité", p:[
+     "Préserver conclusions et jugements de toute <b>croyance, animosité, sympathie</b>",
+     "Écarter l'influence de tout <b>engagement politique ou associatif</b>",
+     "Tenir compte des <b>liens personnels, financiers ou professionnels</b>, directs ou indirects"]},
+   {l:"Indépendance & conflits d'intérêts", p:[
+     "Éviter toute situation où un <b>tiers estimerait</b> le CAC ou son cabinet <b>non indépendant</b>",
+     "<b>Refus de mission</b> si situation <b>interdite ou incompatible</b>",
+     "<b>Refus</b> si l'indépendance est compromise après la démarche « <b>risques et sauvegardes</b> »"]},
+   {l:"Esprit critique & compétence", p:[
+     "<b>Esprit critique</b> : apprécier la <b>source</b>, la <b>pertinence</b> et le caractère <b>suffisant et approprié</b> des informations",
+     "Garder un <b>esprit ouvert et réceptif</b>",
+     "<b>Compétence</b> : compléter ses connaissances si <b>secteur à réglementation spécifique</b> ou <b>évolution de l'entité</b>",
+     "Se remettre à niveau lors de la <b>reprise d'activité</b> après cessation de fonctions"]},
+   {l:"Confraternité & secret professionnel", p:[
+     "<b>Confraternité</b> : <b>respect mutuel</b>, aucun <b>propos déloyal</b> ni acte visant à <b>nuire à un confrère</b>",
+     "<b>Secret professionnel</b> : couvre <b>tous faits, actes et renseignements</b> connus du CAC",
+     "Quel que soit le <b>moyen</b>, la <b>forme (écrite/orale)</b> et le <b>moment</b> (mission <b>en cours ou terminée</b>)",
+     "<b>Collaborateurs et experts</b> également <b>soumis au secret</b>"]}
+  ]},
+
+ {cat:"cac", title:"Textes réglementaires", sub:"Les sources qui encadrent l'exercice du CAC",
+  center:"Au-delà du <b>Code de commerce</b> et du <b>code de déontologie</b>, l'activité du CAC repose sur <b>normes, doctrine et avis</b> largement pilotés par la <b>H2A</b>.",
+  branches:[
+   {l:"Normes d'exercice professionnel (NEP)", p:[
+     "Définissent les <b>diligences</b> du CAC dans sa <b>mission</b> et ses <b>interventions</b>",
+     "<b>Homologuées par arrêté du garde des Sceaux</b> → <b>opposables aux tiers</b>",
+     "<b>Élaboration</b> : commission de normalisation près la H2A → <b>adoption</b> H2A en plénière après <b>avis CNCC</b> → <b>homologation</b> au JO",
+     "Mission <b>ALPE</b> (Audit Légal Petites Entreprises) : <b>NEP 911</b> et <b>NEP 912</b>"]},
+   {l:"Bonnes pratiques professionnelles", p:[
+     "La <b>nouvelle rédaction</b> ne les mentionne <b>plus</b>",
+     "Elles <b>constituent désormais la doctrine</b>"]},
+   {l:"Avis rendus par la H2A", p:[
+     "H2A <b>saisie de questions de principe</b> dans son <b>domaine de compétence</b>",
+     "L'avis <b>facilite l'application des textes</b> relatifs au CAC",
+     "Avis de <b>portée générale</b>, <b>destinés à être suivis</b> par les CAC"]},
+   {l:"Doctrine professionnelle (CNCC)", p:[
+     "Publications <b>estampillées de l'autorité de la CNCC</b>",
+     "<b>Notes d'information</b> (mise en œuvre des NEP) ; <b>avis techniques</b> (diligences)",
+     "<b>Études techniques et juridiques</b> ; <b>bulletin d'information</b> (actualité des textes)",
+     "<b>Réponses écrites</b> aux <b>saisines officielles</b> des commissions"]},
+   {l:"Textes applicables aux EIP", p:[
+     "<b>Cabinet EIP</b> : au moins <b>une mission de certification légale</b> auprès d'une EIP",
+     "<b>Titres cotés</b> sur un marché réglementé UE (<b>Euronext Growth/Access exclus</b>)",
+     "<b>Établissements de crédit</b> et <b>entreprises d'assurance</b>",
+     "Holdings/groupes d'assurance si <b>bilan consolidé > 5 Mds €</b> sur <b>2 exercices consécutifs</b>",
+     "<b>Fonds de retraite professionnelle supplémentaire</b>"]}
+  ]},
+
+ {cat:"cac", title:"Missions du CAC", sub:"Panorama des missions du commissaire aux comptes",
+  center:"Le CAC exerce une <b>mission permanente de certification</b> des comptes, des <b>interventions définies par la loi</b> et des <b>missions particulières</b> (apports, fusion, durabilité).",
+  branches:[
+   {l:"Mission générale (audit légal)", p:[
+     "<b>Certifient</b> que les comptes sont <b>réguliers, sincères</b> et donnent une <b>image fidèle</b> (rapport sur comptes annuels / consolidés)",
+     "<b>4 issues</b> : sans réserve, avec réserves, refus, impossibilité — la <b>certification conditionnelle n'existe pas</b>",
+     "<b>Rapport complémentaire</b> au <b>comité d'audit</b> (EIP), qui suit l'info financière et émet une recommandation",
+     "<b>Vérifications spécifiques</b> : concordance rapport de gestion, égalité des actionnaires, conventions réglementées"]},
+   {l:"Interventions définies par la loi", p:[
+     "<b>Opérations sur capital</b> : suppression DPS, compensation de créances, réduction, transformation, acomptes sur dividendes",
+     "<b>Événements</b> : révélation de <b>faits délictueux</b> au procureur, <b>LCB-FT</b>, <b>alerte</b> continuité, convocation AG",
+     "<b>Attestations</b> légales : le CAC exprime une conclusion sur des infos produites par l'entité",
+     "<b>SACC</b> : interdits en EIP (<b>règlement UE 537/2014</b>, art. 18), plafond <b>70 %</b> de la moyenne 3 ans"]},
+   {l:"Commissariat aux apports (CAA)", p:[
+     "Assure <b>réalité, exhaustivité</b> et valeur des apports (<b>ni sur- ni sous-évaluée</b>)",
+     "Champ : constitution, augmentation de capital, fusion/scission des sociétés par actions et SARL",
+     "<b>Dispense SARL</b> : unanimité + aucun apport <b>&gt; 30 000 €</b> + apports en nature <b>&lt; moitié du capital</b>",
+     "<b>Incompatible</b> avec la certification légale ; désigné à l'unanimité ou par décision de justice"]},
+   {l:"Commissariat à la fusion (CAF)", p:[
+     "<b>Obligatoire</b> pour fusions/scissions de sociétés par actions et SARL",
+     "Vérifie que les <b>valeurs relatives sont pertinentes</b> et le <b>rapport d'échange équitable</b>",
+     "<b>Désigné par décision de justice</b> ; un seul CAF possible par requête conjointe",
+     "Dispensé si <b>unanimité</b> des associés ou <b>filiale à 90 %</b>"]},
+   {l:"Missions particulières & ponctuelles", p:[
+     "<b>Missions hors contrôle légal</b> : attestations, diagnostics (RGPD, cybersécurité), consultations, formations",
+     "<b>CAC ponctuel</b> (absence de CAC) : rapport prix d'émission, certificat de libération, attribution gratuite d'actions",
+     "Interventions liées à des <b>opérations sur le capital</b> avec suppression du DPS"]},
+   {l:"Certification de durabilité (CSRD)", p:[
+     "<b>Ordonnance du 6 déc. 2023</b> transpose la <b>CSRD</b> ; rapport selon normes <b>ESRS</b> dès l'exercice 2024",
+     "Contrôle par le <b>CAC</b> ou un <b>OTI</b> accrédité COFRAC, inscrits sur liste <b>H2A</b>",
+     "Seuils : dépasser <b>2 des 3</b> (bilan &gt; 20 M€, CA &gt; 40 M€, &gt; 500 salariés)",
+     "Assurance d'abord <b>modérée</b> puis raisonnable — <b>raison du passage H3C → H2A</b>"]}
+  ]},
+
+ {cat:"cac", title:"Accès à la profession", sub:"Inscription et exercice du CAC",
+  center:"Le <b>CAC</b> (personne physique ou société) est inscrit sur une <b>liste établie par la H2A</b>, sous conditions, avec <b>formation continue</b>, <b>procédure d'inscription</b> et <b>assurance RC</b> obligatoires.",
+  branches:[
+   {l:"L'essentiel", p:[
+     "Exercé par <b>personnes physiques</b> ou <b>sociétés</b> inscrites sur la <b>liste de la H2A</b>",
+     "Liste <b>publiée sur le site de la H2A</b>, <b>mise à jour mensuellement</b>",
+     "Suppressions : <b>décès, démissions, suspensions, radiations</b>",
+     "Rattachement à une <b>CRCC</b> : selon <b>domicile/établissement</b> (physiques) ou <b>siège social</b> (sociétés)"]},
+   {l:"Conditions d'inscription", p:[
+     "<b>Français</b>, ressortissant <b>UE</b> ou <b>EEE</b>",
+     "<b>Aucune condamnation pénale</b> ni <b>radiation disciplinaire</b> ni <b>faillite personnelle</b>",
+     "<b>Stage professionnel</b> jugé satisfaisant",
+     "Détenir le <b>CAFCAC</b> ou le <b>diplôme d'expertise comptable</b>"]},
+   {l:"Formation continue", p:[
+     "Requise si <b>non-exercice pendant 3 ans</b>, avant d'accepter une mission",
+     "<b>40 heures</b> dans les <b>18 mois précédant l'acceptation</b>",
+     "<b>20 h obligatoires</b> : programme <b>CNCC / CRCC</b>",
+     "<b>20 h minimum volontaires</b> : séminaires, <b>autoformation encadrée ou à distance</b>"]},
+   {l:"Procédure d'inscription", p:[
+     "<b>Demande par LRAR à la H2A</b>, qui délivre un <b>récépissé</b>",
+     "<b>Silence de 4 mois</b> = <b>décision d'inscription</b>",
+     "Décisions <b>susceptibles de recours devant la juridiction administrative</b>",
+     "<b>Serment</b> devant la <b>cour d'appel</b> : <b>honneur, probité, indépendance</b>",
+     "<b>Exercice illégal</b> : <b>1 an</b> de prison et <b>15 000 €</b> d'amende"]},
+   {l:"Assurance RC professionnelle", p:[
+     "<b>Adhésion automatique</b> au <b>contrat groupe souscrit par la CNCC</b>",
+     "Prime <b>comprise dans la cotisation annuelle</b>",
+     "Couvre <b>RC professionnelle</b>, <b>RC d'exploitation</b>, <b>défenses diverses</b>, <b>archives</b>",
+     "<b>Garanties optionnelles</b> possibles (ex. <b>relever le plafond</b> de la RC pro)"]}
+  ]},
+
+ {cat:"cac", title:"Conditions d'exercice", sub:"En nom propre, en société ou en réseau",
+  center:"Les <b>conditions d'exercice</b> du CAC sont fixées par le <b>Code de commerce</b> et le <b>code de déontologie</b> : en <b>nom propre</b>, <b>en société</b> ou via l'<b>appartenance à un réseau</b>.",
+  branches:[
+   {l:"Exercice en nom propre", p:[
+     "Réservé aux CAC ayant un <b>nombre limité de mandats</b>",
+     "Le CAC est <b>détenteur du mandat</b>",
+     "Il est donc <b>juridiquement responsable</b>"]},
+   {l:"Exercice en société", p:[
+     "Fonctions exercées <b>au nom de la société</b> par les <b>CAC personnes physiques associés/dirigeants</b> qui <b>signent le rapport</b>",
+     "<b>Libre choix de la forme juridique</b>, mais <b>pas de SNC ni de SCS</b> (le CAC n'a pas la <b>qualité de commerçant</b>)",
+     "<b>Actionnariat</b> : <b>majorité des droits de vote</b> aux CAC ; nouvel associé sous <b>agrément</b> ; décès → <b>2 ans</b> pour céder",
+     "<b>Direction</b> assurée par des CAC + <b>majorité des organes de gestion</b> = CAC",
+     "<b>Signature du rapport</b> = <b>reconnaissance de responsabilité</b> (connaissance suffisante, assume l'opinion)"]},
+   {l:"Appartenance à un réseau", p:[
+     "Réseau = <b>intérêt économique commun</b>, sans <b>liens capitalistiques</b> obligatoires",
+     "<b>Indices</b> : direction/coordination commune, <b>partage des revenus</b>, signes distinctifs, clientèle et outils communs",
+     "<b>Association technique ≠ réseau</b> : outils/connaissances partagés mais <b>indépendance totale</b> conservée",
+     "L'<b>indépendance s'apprécie au niveau du réseau</b> : prestations des autres membres = <b>menaces (auto-révision)</b> → <b>sauvegardes, refus ou retrait</b>"]}
+  ]},
+
+ {cat:"cac", title:"Les incompatibilités et interdictions", sub:"Indépendance du CAC : ce qui est interdit ou incompatible",
+  center:"Le CAC doit préserver son <b>indépendance</b> et son <b>impartialité</b> : incompatibilités <b>générales</b> (la profession) et <b>spéciales</b> (une entité), avec une <b>approche par les risques et mesures de sauvegarde</b>.",
+  branches:[
+   {l:"Incompatibilités générales", p:[
+     "Toute activité portant atteinte à son <b>indépendance</b> (réalité <b>et</b> apparence)",
+     "Tout <b>emploi salarié</b> — sauf chez un <b>CAC ou expert-comptable</b>",
+     "Toute <b>activité commerciale</b> : le CAC ne peut être <b>commerçant</b> (même par personne interposée)"]},
+   {l:"Incompatibilités spéciales", p:[
+     "Pas d'<b>intérêt</b> auprès de l'entité certifiée, de qui la contrôle ou est contrôlée",
+     "<b>Liens personnels</b> : ascendants/descendants et collatéraux au <b>1er degré</b>, conjoints, concubins",
+     "<b>Liens financiers</b> : détention d'<b>actions/instruments financiers</b> (OK via <b>OPC diversifiés</b>)",
+     "<b>Liens professionnels</b> : ex-dirigeants/salariés → nommés CAC <b>5 ans</b> après cessation"]},
+   {l:"Conseil et prestations (EIP)", p:[
+     "<b>Services interdits en EIP</b> : fiscalité, comptabilité, paie, juridique, audit interne, RH, contrôle interne",
+     "Hors ces cas : possible si <b>approuvé par le comité d'audit</b>",
+     "Interdit dès qu'il y a <b>auto-révision</b> ou indépendance compromise sans sauvegarde",
+     "<b>Non-EIP</b> : pas de liste ; en cas de doute, saisine de la <b>H2A</b>"]},
+   {l:"Approche risques / sauvegarde", p:[
+     "<b>3 étapes</b> : prise de connaissance → analyse du risque → traitement",
+     "Situation interdite/incompatible → <b>refus</b> de la mission",
+     "<b>Mesure de sauvegarde</b> suffisante, par risque, préservant indépendance et impartialité",
+     "<b>Documentation conservée</b> au dossier ; analyse actualisée en cours de mission"]},
+   {l:"Cadeaux, fusions", p:[
+     "<b>Interdit d'accepter cadeaux</b> (pécuniaires ou non) et faveurs de l'entité",
+     "Sauf sous un <b>plafond</b> fixé par arrêté (non encore paru)",
+     "<b>Fusion/acquisition</b> : appréciation des intérêts à la <b>date de prise d'effet</b>"]},
+   {l:"Sanctions", p:[
+     "Délibérations prises sur le rapport d'un CAC incompatible → <b>nulles</b>",
+     "CAC restant en fonction malgré incompatibilité : <b>6 mois d'emprisonnement</b>",
+     "Et <b>7 500 € d'amende</b>"]}
+  ]},
+
+ {cat:"cac", title:"Cessation des fonctions du CAC", sub:"Causes de fin du mandat et sort du CAC / suppléant",
+  center:"Le mandat du CAC (<b>6 exercices</b>) peut cesser <b>avant terme</b> pour de multiples causes ; en principe le <b>suppléant remplace</b> le titulaire pour la <b>durée restant à courir</b>.",
+  branches:[
+   {l:"Récusation", p:[
+     "Demandée par <b>actionnaires ≥ 5 %</b>, <b>CSE</b>, <b>ministère public</b>, <b>AMF</b>",
+     "Exige un <b>juste motif</b> (soupçon d'intégrité/indépendance) ; une simple <b>divergence d'appréciation n'est pas un motif</b>",
+     "Devant le <b>tribunal de commerce</b>, dans les <b>30 jours</b> de la nomination ; <b>appel 15 jours, suspensif</b>",
+     "Le tribunal <b>désigne un nouveau CAC</b> — <b>exception</b> au remplacement par le suppléant"]},
+   {l:"Relèvement judiciaire", p:[
+     "Possible <b>pendant toute la durée</b> du mandat, pour <b>faute</b> ou <b>empêchement</b>",
+     "Demandé par <b>actionnaires ≥ 5 %</b>, organe de direction, <b>CSE</b>, <b>ministère public</b>, <b>AMF</b>",
+     "Devant le <b>tribunal de commerce</b> ; <b>appel 15 jours, suspensif</b>",
+     "CAC <b>remplacé par son suppléant</b> pour la <b>durée restant à courir</b>"]},
+   {l:"Terme, démission & incapacité", p:[
+     "<b>Arrivée du terme</b> : fin après l'AG statuant sur le <b>6ᵉ exercice</b> ; <b>EIP = rotation obligatoire</b>",
+     "<b>Démission</b> pour <b>motif légitime</b> (cessation d'activité, santé, indépendance) ; <b>jamais rétroactive</b>",
+     "Motifs <b>non légitimes</b> : devenir l'<b>EC de l'entité</b> ou fuir ses obligations (<b>alerte, TRACFIN, révélation</b>)",
+     "<b>Incapacité/incompatibilité</b> : cesser <b>dès connaissance</b>, sinon <b>relèvement judiciaire</b>",
+     "Démission : info <b>H2A</b> (+ <b>AMF/ACPR</b>), remplacement par le <b>suppléant</b>"]},
+   {l:"Disparition / restructuration de l'entité", p:[
+     "<b>Liquidation amiable</b> : CAC en fonction <b>jusqu'à la clôture</b> sauf statuts ; <b>pas de rapport</b> sur les comptes définitifs",
+     "<b>Sauvegarde/redressement</b> : <b>ne met pas fin</b> au mandat",
+     "<b>TUP</b> : fin à l'issue du <b>délai d'opposition de 30 jours</b> des créanciers",
+     "<b>Fusion/scission</b> : fin à la <b>date de l'AG</b> approuvant l'opération",
+     "<b>Transfert à l'étranger</b> : mission maintenue tant que la société <b>n'est pas radiée</b>"]},
+   {l:"Transformation & seuils", p:[
+     "Vers un <b>mandat obligatoire</b> : l'ancien mandat <b>continue</b> (durée restant à courir)",
+     "Vers un <b>mandat non obligatoire</b> : l'ancien mandat <b>s'arrête</b>, sauf décision des associés (<b>nouveau mandat de 6 exercices</b>)",
+     "Réf. <b>bulletin CNCC n°159</b> (sept. 2010)",
+     "<b>Franchissement à la baisse des seuils</b> : <b>n'affecte pas</b> la durée du mandat de <b>6 exercices</b>"]},
+   {l:"Sanctions, décès & société de CAC", p:[
+     "<b>Suspension temporaire</b> : suppléant, puis le <b>titulaire reprend</b> après approbation des comptes",
+     "<b>Radiation</b> ou <b>décès</b> : <b>remplacé par le suppléant</b> (durée restant à courir)",
+     "<b>Dissolution de la société de CAC</b> : mandats prennent fin à l'issue de la <b>liquidation</b>",
+     "<b>Absorption</b> d'une société de CAC : l'<b>absorbante poursuit le mandat</b>, sauf refus de l'AG contrôlée",
+     "<b>Apport de mandats d'un CAC PP</b> = <b>démission</b> → remplacement de plein droit par le suppléant"]}
+  ]},
+
+ {cat:"cac", title:"Nomination du CAC", sub:"Qui, quand et comment désigner le commissaire aux comptes",
+  center:"Les CAC sont désignés par l'<b>AGO</b> ; l'obligation dépend du <b>type d'entité</b> et du dépassement de <b>seuils</b>.",
+  branches:[
+   {l:"Sociétés commerciales", p:[
+     "Obligatoire si dépassement de <b>2 des 3 seuils</b> : <b>5 M€</b> bilan · <b>10 M€</b> CA HT · <b>50 salariés</b> (décret 28 fév. 2024)",
+     "Anciens seuils <b>loi PACTE</b> : <b>4 M€ / 8 M€ / 50</b> — les <b>EIP</b> nomment un CAC quelle que soit leur taille",
+     "Petits groupes : société contrôlée si <b>2 des 3</b> : <b>2,5 M€ / 5 M€ / 25 salariés</b> — même CAC possible contrôlante/contrôlée",
+     "Sur demande d'associés : <b>1/3 du capital</b> (demande motivée) ou <b>1/10</b> (en justice) — mandat de <b>3 exercices</b>",
+     "Nomination <b>volontaire</b> : <b>6 exercices</b> (réductible à 3)"]},
+   {l:"Autres entités", p:[
+     "<b>GIE</b> : si émet des <b>obligations</b> ou emploie <b>≥ 100 salariés</b>",
+     "<b>Sociétés civiles</b> : <b>SCPI</b>, ou activité éco + 2 des 3 seuils <b>1,55 / 3,1 M€ / 50</b>",
+     "<b>Associations/fondations</b> : titulaire + suppléant si seuils <b>1,55 / 3,1 M€ / 50</b>, ou <b>subventions/dons &gt; 153 000 €/an</b>",
+     "<b>Partis politiques</b> : <b>2 CAC</b> si ressources &gt; <b>230 000 €</b>, sinon 1 — <b>syndicats</b> : idem &gt; 230 000 €",
+     "<b>CSE</b> : titulaire + suppléant si 2 des 3 (<b>3,1 / 1,55 M€ / 50</b>), CAC <b>distincts</b> de l'entreprise"]},
+   {l:"Défaut de nomination", p:[
+     "Sans CAC régulier, les <b>décisions des AG</b> sont <b>frappées de nullité</b>",
+     "<b>Régularisation</b> par une AG sur rapport de CAC régulièrement désignés (audit des exercices antérieurs)",
+     "Mission de régularisation <b>non refusable</b> (rémunération complémentaire) ; mandat démarre au <b>1er exercice en cours</b>",
+     "Portée : <b>3 exercices</b> max (sociétés commerciales) · <b>5 exercices</b> max (autres entités)",
+     "<b>Défaut de suppléant</b> : pas de nullité ; faits délictueux → <b>révélation au procureur</b>"]},
+   {l:"Publicité et information", p:[
+     "<b>Notification</b> de sa nomination sous <b>8 jours</b> au <b>conseil régional</b> (LRAR ou voie électronique)",
+     "<b>Déclaration d'activité</b> annuelle : mandat, entité contrôlée, déroulement et conclusions de la mission",
+     "Nomination titulaire + suppléant : <b>journal d'annonces légales</b> + inscription au <b>RCS</b>",
+     "<b>Pas de publicité</b> lors du <b>renouvellement</b> du mandat"]},
+   {l:"Point de vigilance", p:[
+     "<b>Impossible</b> de désigner un CAC sous <b>condition suspensive</b> d'un événement particulier",
+     "Perte de contrôle <b>avant la clôture</b> → n'oblige pas à désigner un CAC",
+     "AG qui omet de nommer : tout membre peut <b>demander en justice</b> la désignation"]}
+  ]},
+
+ {cat:"cac", title:"Conditions préalables à l'acceptation de la mission", sub:"Les diligences du CAC avant d'accepter la mission",
+  center:"Avant d'accepter, le CAC <b>recueille les informations</b> sur l'entité, <b>vérifie son indépendance</b>, remplit ses obligations <b>LCB-FT</b> et formalise la mission par une <b>lettre de mission</b>.",
+  branches:[
+   {l:"Informations & vérifications (toutes entités)", p:[
+     "Recueillir : <b>structure</b>, <b>actionnariat</b>, <b>activité</b>, <b>mode de direction</b> et politique de <b>contrôle interne</b> → capacité à faire la mission + zones de risque",
+     "Vérifier et consigner le <b>respect de l'indépendance</b> (pas de liens <b>personnels, financiers, professionnels</b>) et les <b>ressources humaines/matérielles</b>",
+     "Analyser les missions du <b>CAC ou de son réseau</b> → risque d'<b>auto-révision</b>",
+     "<b>Comptes consolidés</b> : obtenir infos sur les CAC du <b>périmètre de consolidation</b>",
+     "<b>Informer par écrit</b> l'entité de son <b>affiliation à un réseau</b> (infos mises à dispo des actionnaires avant l'AG)"]},
+   {l:"Succession d'un confrère", p:[
+     "S'assurer que le <b>non-renouvellement</b> du prédécesseur n'a pas pour but de <b>contourner les obligations légales</b> (souvent par <b>courrier</b>)",
+     "Même obligation pour le <b>CAC suppléant</b> appelé à succéder au titulaire",
+     "Prendre connaissance du <b>dossier de travail du prédécesseur</b> → contrôle du <b>bilan d'ouverture</b> du 1er exercice"]},
+   {l:"LCB-FT (NEP 9605)", p:[
+     "<b>Identifier et vérifier</b> le client et, le cas échéant, le <b>bénéficiaire effectif</b> (PP > <b>25 %</b> du capital ou des droits de vote)",
+     "Recueillir/analyser tout élément sur l'<b>objet et la nature de la mission</b>",
+     "Vigilance déclenchée par le <b>soupçon</b> ; sinon <b>pas d'obligation de vigilance</b>",
+     "<b>3 phases</b> : <b>placement → empilement → intégration</b> (mémo <b>P-E-I</b>) ; vigilance <b>allégée / normale / renforcée</b>",
+     "<b>PPE</b> → vigilance renforcée (un <b>maire n'est PAS une PPE</b>) ; <b>interdiction d'informer le client</b> de la déclaration TRACFIN"]},
+   {l:"EIP uniquement — sélection", p:[
+     "Le <b>comité d'audit</b> soumet une <b>recommandation au CA/CS</b> pour la désignation : justifiée, <b>≥ 2 choix</b>, préférence motivée, non influencée par un tiers",
+     "<b>Dossier d'appel d'offres</b> : comprendre l'activité + mission, critères de sélection et normes de qualité",
+     "<b>Rapport de sélection</b> validé par le comité d'audit, puis <b>proposition à l'AG</b>",
+     "Si la proposition <b>diffère de la préférence</b> du comité d'audit → <b>exposer les raisons</b>"]},
+   {l:"Lettre de mission (NEP 210)", p:[
+     "But : <b>prévenir tout malentendu ou litige</b> sur les termes de la mission",
+     "Établie au <b>1er exercice</b>, avant les travaux ; révisée en cours de mandat (<b>LDM révisée ou avenant</b>)",
+     "Plusieurs CAC : <b>LDM commune ou individuelles</b> après échange",
+     "Contenu : <b>objectif/étendue</b>, <b>calendrier</b>, <b>signataires</b>, <b>budget d'honoraires</b>, recours à des <b>experts</b>, répartition en <b>co-CAC</b>",
+     "L'entité doit <b>accuser réception et confirmer son accord</b> (signature de la LDM)"]}
+  ]},
+
+ {cat:"cac", title:"Mandat du CAC", sub:"Durée, déroulement et cadre du mandat du commissaire aux comptes",
+  center:"Le CAC est nommé pour <b>6 exercices</b>, avec des règles précises de <b>durée</b>, de <b>suppléance</b>, de <b>co-commissariat</b>, de <b>pouvoir d'investigation</b> et de <b>rémunération</b>.",
+  branches:[
+   {l:"Durée du mandat", p:[
+     "Nommé pour <b>6 exercices</b> ; expire après l'<b>AGO statuant sur les comptes du 6ᵉ exercice</b>",
+     "<b>Renouvelable indéfiniment</b> mais <b>jamais tacitement</b> : seule l'<b>AG</b> décide, résolution à l'ordre du jour, <b>pas par anticipation</b>",
+     "<b>Suppléant</b> promu : reste la <b>durée du mandat restant à courir</b> ; désigné par justice : jusqu'à <b>désignation régulière par l'AG</b>",
+     "<b>EIP</b> : max <b>10 ans</b> (1 CAC, extension 6 ex.) ou <b>24 ans</b> (co-CAC) ; nouveau mandat après <b>4 ans</b>",
+     "<b>Rotation des signataires EIP</b> : max <b>6 exercices consécutifs</b> (limite 7 ans), retour après <b>3 ans</b>"]},
+   {l:"CAC suppléant", p:[
+     "<b>Obligatoire</b> si titulaire = <b>personne physique</b> ou <b>société unipersonnelle</b>, ou si loi/statuts le prévoient",
+     "<b>2 titulaires → 2 suppléants</b> ; désigné comme les titulaires, doit pouvoir exercer <b>à tout moment</b>",
+     "<b>Secret professionnel levé</b> entre CAC lors de la <b>période de succession</b>",
+     "Entre en fonction <b>dès qu'informé de la cessation</b> du titulaire (par l'entité ou le titulaire)",
+     "Nouveau titulaire : mêmes obligations (<b>notification CRCC, JAL, RCS, LCB-FT, lettre de mission</b>)"]},
+   {l:"Co-commissariat aux comptes", p:[
+     "<b>Au moins 2 CAC de cabinets distincts</b>, obligatoire pour entités publiant des <b>comptes consolidés</b>, établissements de crédit, partis (>230 000 €), mutuelles combinées, CSE consolidé",
+     "<b>Dispense de consolidation</b> : ≤ 2 des 3 seuils sur 2 exercices (<b>24 M€ bilan · 48 M€ CA · 250 salariés</b>) ou déjà consolidé par une mère",
+     "<b>NEP 100</b> : répartition <b>concertée et équilibrée</b> des travaux d'audit",
+     "Rapports <b>signés par chaque CAC</b> ; <b>opinions divergentes</b> mentionnées ; <b>revue mutuelle</b> des travaux",
+     "Différends : <b>conciliation du président de la CRCC</b>"]},
+   {l:"Pouvoir d'investigation", p:[
+     "À <b>toute époque de l'année</b> : toutes vérifications et communication <b>sur place de toutes pièces</b> (contrats, documents comptables, PV)",
+     "S'étend à l'<b>entité, ses mères, ses filiales</b> et au <b>périmètre de consolidation</b>",
+     "Droit d'information direct auprès des <b>tiers ayant opéré pour l'entité</b> (banques, notaires, sociétés de bourse, EC)",
+     "<b>NEP 505</b> : tiers n'ayant pas opéré (clients, fournisseurs) interrogés <b>via la société</b>, non tenus de répondre",
+     "Obstacle = <b>délit d'entrave</b> : <b>5 ans</b> et <b>75 000 €</b>"]},
+   {l:"Rémunération", p:[
+     "Honoraires = <b>nb d'heures</b> (programme de travail) × <b>taux de vacation</b> ; principe d'<b>honoraires suffisants</b>",
+     "<b>Interdiction</b> de toute rémunération <b>proportionnelle ou conditionnelle</b>",
+     "Ajustement des heures : <b>+1/3</b> en cas d'alerte ; dérogation via <b>président CRCC</b> ; litige : conciliation <b>3 mois</b> puis <b>H2A sous 1 mois</b>",
+     "<b>Publicité</b> : honoraires de certification et <b>SACC</b>, affiliation à un <b>réseau</b>, mention en <b>annexe</b>",
+     "<b>Dépendance financière</b> à éviter ; EIP : <b>seuil de 15 %</b> sur 3 exercices → information du comité d'audit"]}
+  ]},
+
+ {cat:"cac", title:"Comportement professionnel", sub:"Compétence, secret, non-immixtion, publicité et confraternité",
+  center:"Le CAC agit avec <b>compétence</b>, respecte le <b>secret professionnel</b>, s'abstient de toute <b>immixtion dans la gestion</b> et se conforme aux règles de <b>publicité</b> et de <b>confraternité</b>.",
+  branches:[
+   {l:"Compétence professionnelle", p:[
+     "Maintien d'un <b>niveau élevé</b> + collaborateurs compétents",
+     "Formation : <b>120 h sur 3 ans</b>, dont <b>≥ 20 h/an</b>",
+     "Limites : <b>conférences 45 h/3 ans</b>, <b>animation 20 h/an</b>",
+     "<b>Experts indépendants</b> : nommés à l'entité, précisés en <b>LDM (NEP 210)</b>, sous responsabilité du CAC",
+     "<b>Interdit</b> de déléguer la totalité (prise de connaissance, risque, seuils)"]},
+   {l:"Secret professionnel", p:[
+     "Vise <b>CAC, collaborateurs, experts</b> ; pas de violation entre associés, co-CAC, succession",
+     "<b>Levé</b> : comités d'audit (EIP), consolidé, CSE, TRACFIN, procédure d'alerte",
+     "<b>Maintenu</b> face à l'associé pris individuellement et aux tiers (CAA, CAF, CAT)",
+     "Juridictions : levé pour irrégularités révélées / faits délictueux au procureur",
+     "Sanction pénale (<b>art. 226-13 CP</b>) : <b>1 an</b> + <b>15 000 €</b>, prescription <b>3 ans</b>"]},
+   {l:"Non-immixtion dans la gestion", p:[
+     "Sépare <b>direction</b> (actes de gestion) et <b>contrôle</b> (régularité, sincérité)",
+     "Le CAC ne peut accomplir <b>aucun acte de gestion</b>, direct ou indirect",
+     "Il ne peut <b>émettre d'opinion sur la gestion</b> ni la conduite des affaires",
+     "<b>Exception</b> : jugement sur les mesures des dirigeants en <b>procédure d'alerte</b> (continuité)"]},
+   {l:"Publicité", p:[
+     "Doit <b>informer</b>, respecter indépendance/dignité/honneur, secret et loyauté",
+     "<b>Exempte de tout comparatif</b>",
+     "Sollicitation perso : <b>seulement</b> par <b>courrier postal ou e-mail</b> à une PP/PM déterminée",
+     "<b>Interdits</b> : démarchage physique/téléphonique, <b>SMS</b>",
+     "Sites internet : <b>aucun encart/bannière</b> hors profession autorisée"]},
+   {l:"Confraternité", p:[
+     "<b>Article 8</b> du code de déontologie",
+     "Rapports de <b>confraternité</b> entre CAC ; pas d'acte ou propos déloyal",
+     "Différends réglés <b>à l'amiable</b>",
+     "Si besoin : <b>conciliation du président de la compagnie régionale</b>"]}
+  ]},
+
+ {cat:"cac", title:"Responsabilité du CAC", sub:"Civile, pénale, disciplinaire",
+  center:"La responsabilité du CAC se décline sur <b>3 terrains</b> : <b>civile</b> (réparer un préjudice), <b>pénale</b> (sanctionner une infraction) et <b>disciplinaire</b> (sanctionner un manquement professionnel).",
+  branches:[
+   {l:"Responsabilité civile", p:[
+     "Suppose une <b>faute/négligence</b>, un <b>préjudice</b> et un <b>lien de causalité</b>",
+     "Mission = <b>obligation de moyens</b> ; pas de limitation de responsabilité pour les <b>interventions légales</b>",
+     "<b>Non engagée</b> si alerte, révélation de faits délictueux ou <b>déclaration TRACFIN</b>",
+     "Prescription : <b>3 ans</b> à compter du fait dommageable (ou de sa révélation si dissimulé)",
+     "Juridiction : <b>tribunal judiciaire</b> (physique/SCP/SEL) ou <b>tribunal de commerce</b> (société commerciale par la forme)"]},
+   {l:"Responsabilité pénale", p:[
+     "Infraction = <b>3 éléments</b> : <b>légal</b>, <b>matériel</b>, <b>moral</b>",
+     "<b>Informations mensongères</b> et <b>non-révélation des faits délictueux</b> : <b>5 ans</b> + <b>75 000 €</b>",
+     "<b>Violation du secret pro.</b> : <b>1 an</b> + <b>15 000 €</b> ; <b>incompatibilité</b> : 6 mois + 7 500 €",
+     "Prescription des délits : <b>6 ans</b> à compter de la commission",
+     "<b>Complicité</b> : acte positif + volonté de contribuer <b>sciemment</b>"]},
+   {l:"Responsabilité disciplinaire — faute", p:[
+     "Faute = <b>manquement aux conditions légales d'exercice</b>",
+     "Ou <b>négligence grave</b> / fait contraire à la <b>probité ou l'honneur</b>",
+     "Enquêtes de la <b>H2A</b> : service dédié, <b>rapporteur général</b> + enquêteurs habilités",
+     "Prescription : <b>6 ans</b> ; appel devant le <b>Conseil d'État</b>"]},
+   {l:"Procédure & sanctions disciplinaires", p:[
+     "Rapport d'enquête → griefs arrêtés par la <b>H2A</b> → <b>commission des sanctions</b> décide",
+     "Sanctions : <b>avertissement, blâme, interdiction ≤ 3 ans, radiation</b>",
+     "Pécuniaire : <b>250 000 €</b> (physique) ; <b>1 M€</b> ou moyenne des honoraires (morale)",
+     "Complémentaire : <b>inéligibilité 10 ans</b> aux instances professionnelles",
+     "<b>Levée du secret pro.</b> possible si CAC mis en cause (éléments à décharge)"]}
+  ]},
+
+ {cat:"cac", title:"Contrôle de l'activité", sub:"Finalité, acteurs et déroulement du contrôle de qualité du CAC",
+  center:"Le contrôle de qualité vise à <b>maintenir un haut niveau de qualité</b> et à garantir le respect des <b>règles d'éthique et d'indépendance</b>.",
+  branches:[
+   {l:"Risques et acteurs", p:[
+     "<b>2 catégories de risques</b> : risque cabinet et risque entité",
+     "<b>Risque cabinet</b> : faiblesses antérieures, poids de l'activité CAC, changements de structure",
+     "<b>Risque entité</b> : lié aux entités auditées",
+     "Mandats <b>EIP</b> → contrôleurs de la <b>H2A</b>",
+     "Sans mandat EIP → H2A ou <b>délégué à la CNCC</b> (convention homologuée)"]},
+   {l:"Objet des contrôles", p:[
+     "Vérifier l'<b>adéquation de l'opinion</b> aux diligences réalisées",
+     "Vérifier la <b>conformité des diligences</b> à la réglementation",
+     "Apprécier le <b>système de contrôle qualité interne</b>",
+     "Portent sur les <b>missions de certification</b> (indépendance, normes, ressources, honoraires) et les <b>autres missions</b>"]},
+   {l:"Déroulement", p:[
+     "<b>Proportionnés</b> à l'ampleur et complexité, <b>sur pièces ou sur place</b>",
+     "Types : contrôle <b>complet</b>, des <b>procédures</b>, suivi des constats, de <b>mandats</b>, <b>spot</b>, par <b>entretiens</b>",
+     "Périodicité : au moins <b>tous les 6 ans</b>",
+     "<b>Tous les 3 ans</b> si mandats <b>EIP</b>"]},
+   {l:"Contrôleurs", p:[
+     "Formation <b>comptable ou financière</b> requise",
+     "Expérience d'<b>au moins 3 ans</b> en certification des comptes",
+     "Formation spécifique au <b>contrôle de la qualité</b>",
+     "Déclaration d'<b>absence de conflit d'intérêts</b>",
+     "Exclus s'ils ont été <b>associés/salariés/collaborateurs</b> du CAC dans les <b>3 années</b> précédentes"]},
+   {l:"Contrôle qualité interne", p:[
+     "Procédures d'<b>exécution des missions</b> (indépendance, ressources)",
+     "Bonne organisation du <b>dossier de travail</b>",
+     "<b>Délégation</b> encadrée + compétence suffisante des collaborateurs",
+     "<b>Revue des travaux</b> par un collaborateur qualifié et le <b>CAC signataire</b>",
+     "Dispositif <b>évalué annuellement</b>"]}
+  ]},
+
+ {cat:"cac", title:"Les normes d'exercice professionnel (NEP)", sub:"Les normes d'audit du CAC, étape par étape",
+  center:"Les <b>NEP</b> encadrent la mission de <b>contrôle légal</b> du CAC et déclinent la démarche d'audit : <b>planifier → risques → collecter → conclure</b>.",
+  branches:[
+   {l:"Nature & valeur", p:[
+     "Normes d'<b>audit</b> de la mission de <b>certification</b>.",
+     "Largement inspirées des normes internationales (<b>ISA</b>).",
+     "<b>Homologuées par arrêté du Garde des Sceaux</b>.",
+     "Valeur <b>réglementaire</b>."]},
+   {l:"Principes & planification", p:[
+     "<b>NEP 200</b> : objectif = <b>assurance raisonnable</b> + esprit critique.",
+     "<b>NEP 300</b> : plan de mission et programme de travail.",
+     "<b>NEP 315</b> : connaître l'entité pour évaluer le risque d'anomalies."]},
+   {l:"Évaluation des risques", p:[
+     "<b>NEP 240</b> : risque de <b>fraudes</b>.",
+     "<b>NEP 250</b> : non-respect des <b>textes légaux</b>.",
+     "<b>NEP 320</b> : seuils de <b>signification</b>."]},
+   {l:"Éléments probants", p:[
+     "<b>NEP 330</b> : procédures en <b>réponse aux risques</b>.",
+     "<b>NEP 500</b> : éléments <b>suffisants et appropriés</b>.",
+     "<b>NEP 570</b> : <b>continuité</b> d'exploitation."]},
+   {l:"Conclusion & rapport", p:[
+     "<b>NEP 700</b> : <b>opinion</b> et rapport sur les comptes.",
+     "<b>NEP 705</b> : <b>justification des appréciations</b>.",
+     "<b>NEP 910</b> : petites entreprises, <b>diligences allégées</b>."]},
+   {l:"Piège & mémo", p:[
+     "NEP (CAC) = <b>Garde des Sceaux</b> ≠ NP (EC) = <b>ministre de l'Économie</b>.",
+     "Repère par centaine : <b>2xx</b> principes/risques · <b>3xx</b> planif/procédures.",
+     "<b>5xx</b> éléments probants · <b>7xx</b> rapport."]}
   ]}
 ];
 
@@ -2611,7 +3006,7 @@ function showResults(){
 
 /* ===================== RENDU CARTES MENTALES ===================== */
 function buildMaps(cat){
-  cat = cat || 'commun';
+  cat = cat || 'ec';
   const host=el('maps');
   host.innerHTML='';
   const list = MAPS.filter(m=>m.cat===cat);
@@ -3591,7 +3986,7 @@ const FICHES = [
 ];
 
 function buildFiches(cat){
-  cat = cat || 'commun';
+  cat = cat || 'ec';
   const host = el('fiches'); host.innerHTML='';
   if(cat==='ec'){
     const sd=document.createElement('div'); sd.className='serment';
@@ -4137,7 +4532,7 @@ el('examToCards').onclick=()=>{ setPanel('mm'); window.scrollTo({top:0,behavior:
 document.querySelectorAll('#panel-mm .subtab').forEach(t=> t.onclick=()=>setMapCat(t.dataset.cat));
 document.querySelectorAll('#panel-fiches .subtab').forEach(t=> t.onclick=()=>setFicheCat(t.dataset.cat));
 buildFiches('ec');
-buildMaps('commun');
+buildMaps('ec');
 
 /* Au rechargement : revenir en haut de la page (et non à la position précédente) */
 function scrollHaut(){ try{ window.scrollTo(0,0); document.documentElement.scrollTop=0; document.body.scrollTop=0; }catch(e){} }
