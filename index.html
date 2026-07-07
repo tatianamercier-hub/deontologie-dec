@@ -325,6 +325,10 @@
   .branch li:last-child{border-bottom:none}
   .branch li::before{content:"";position:absolute;left:15px;top:15px;width:5px;height:5px;border-radius:50%;background:var(--ox-soft)}
   .branch li b{color:var(--ink);font-weight:600}
+  .branch li.pt-masked{cursor:pointer}
+  .branch li.pt-masked .pt-txt{filter:blur(5px);transition:filter .18s;user-select:none;-webkit-user-select:none}
+  .branch li.pt-masked.pt-shown .pt-txt{filter:none;user-select:auto;-webkit-user-select:auto}
+  .branch li.pt-masked:not(.pt-shown)::after{content:"cliquer";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:.6rem;font-weight:700;color:var(--ox);letter-spacing:.06em;text-transform:uppercase;opacity:.65}
   .map-tools{display:flex;justify-content:flex-end;margin:0 0 8px}
   .mini{font-size:.78rem;font-weight:600;color:var(--ink-soft);background:none;border:1px solid var(--line);border-radius:999px;padding:5px 13px;cursor:pointer}
   .mini:hover{border-color:var(--ink);color:var(--ink)}
@@ -2293,7 +2297,7 @@ const MAPS = [
      "En cas de <b>litige</b> : prouve les <b>engagements réciproques</b> et l'<b>obligation de conseil</b>"]}
   ]},
 
- {cat:"ec", title:"La responsabilité de l'expert-comptable", sub:"Les trois ordres de responsabilité",
+ {cat:"ec", title:"La responsabilité de l'expert-comptable", sub:"Les trois ordres de responsabilité", step:true,
   center:"L'expert-comptable engage <b>trois responsabilités</b> distinctes : <b>civile</b>, <b>pénale</b> et <b>disciplinaire</b>.",
   branches:[
    {l:"Responsabilité civile", p:[
@@ -3014,7 +3018,7 @@ function buildMaps(cat){
     const branches = m.branches.map(b=>`
       <div class="branch">
         <div class="b-head"><span class="dot"></span>${b.l}<span class="reveal">révéler</span></div>
-        <ul>${b.p.map(p=>`<li>${p}</li>`).join('')}</ul>
+        <ul>${b.p.map(p=> m.step ? `<li class="pt-masked"><span class="pt-txt">${p}</span></li>` : `<li>${p}</li>`).join('')}</ul>
       </div>`).join('');
 
     const wrap=document.createElement('div');
@@ -3041,11 +3045,15 @@ function buildMaps(cat){
     wrap.querySelectorAll('.branch .b-head').forEach(h=>{
       h.onclick=()=>h.parentElement.classList.toggle('open');
     });
+    wrap.querySelectorAll('.branch li.pt-masked').forEach(li=>{
+      li.onclick=(e)=>{ e.stopPropagation(); li.classList.toggle('pt-shown'); };
+    });
     const tool=wrap.querySelector('.mini');
     tool.onclick=()=>{
       const branchesEls=[...wrap.querySelectorAll('.branch')];
       const allOpen=branchesEls.every(b=>b.classList.contains('open'));
       branchesEls.forEach(b=>b.classList.toggle('open', !allOpen));
+      wrap.querySelectorAll('.branch li.pt-masked').forEach(li=>li.classList.toggle('pt-shown', !allOpen));
       tool.textContent = allOpen ? 'Tout révéler' : 'Tout masquer';
     };
   });
