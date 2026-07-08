@@ -3019,7 +3019,7 @@ function buildMaps(cat){
     const branches = m.branches.map(b=>`
       <div class="branch">
         <div class="b-head"><span class="dot"></span>${b.l}<span class="reveal">révéler</span></div>
-        <ul>${b.p.map(p=> m.step ? `<li class="pt-masked"><span class="pt-txt">${p}</span></li>` : `<li>${p}</li>`).join('')}</ul>
+        <ul>${b.p.map(p=>`<li class="pt-masked"><span class="pt-txt">${p}</span></li>`).join('')}</ul>
       </div>`).join('');
 
     const wrap=document.createElement('div');
