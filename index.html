@@ -2867,6 +2867,12 @@ const shuffle = arr => { for(let i=arr.length-1;i>0;i--){const j=Math.random()*(
 
 /* ---- Filtre par champ : Expert-comptable / Commissaire aux comptes / Tout ---- */
 let qcmCat='all', qrcCat='all', unseenCat={};
+/* Rotation persistante : la file des questions non encore tirées survit au rechargement,
+   pour ne pas retomber sur les mêmes questions d'une session à l'autre. */
+const UKEY='dec-unseen-v1';
+const bankSig = () => BANK.length+'-'+QRC.length;
+(function(){ try{ const r=JSON.parse(localStorage.getItem(UKEY)||'null'); if(r && r.sig===bankSig() && r.q) unseenCat=r.q; }catch(e){ unseenCat={}; } })();
+function saveUnseen(){ try{ localStorage.setItem(UKEY, JSON.stringify({sig:bankSig(), q:unseenCat})); }catch(e){} }
 let qrcN = 10;
 const normTh = t => String(t).normalize('NFC').replace(/’/g,"'");
 const CAT_EC = new Set(["Accès à la profession","Activités accessoires","Communication / publicité","Communication","Conditions d'exercice","Confraternité","Devoir de conseil","Démarchage","Discipline","Exercice de la profession","Fin de mission","Formation continue","Honoraires","Inscription au tableau","Le DEC","Le stage","Le cadre de référence des missions","Lettre de mission","Maniement de fonds","Missions de l'EC","Missions gratuites","Missions sans assurance","Niveaux d'assurance","Obligations de l'EC","Organisation de la mission","Responsabilité","Sanctions disciplinaires","Structures d'exercice","Tableau de l'Ordre","Incompatibilités"].map(normTh));
@@ -2880,6 +2886,7 @@ function drawFrom(arr,n,key,pool){
     if(unseenCat[key].length===0){ const rest=shuffle(pool.filter(i=>!batch.includes(i))); unseenCat[key]=rest.concat(shuffle(batch.slice())); }
     batch.push(unseenCat[key].shift());
   }
+  saveUnseen();
   return batch;
 }
 
