@@ -32,8 +32,23 @@ Les **onglets colorés** d'une fiche = `sections:[{lbl, intro?, items?[], note?}
 
 ## Workflow imposé après CHAQUE modification
 
-1. **Valider le JS** : vérifier l'équilibre des accolades/crochets/parenthèses et des guillemets
-   (en ignorant commentaires et chaînes), puis afficher **`ANALYSE JS : OK`**.
+1. **Valider le JS — en exécutant réellement la page** (obligatoire) :
+
+   ```bash
+   "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" --headless=new --disable-gpu \
+     --virtual-time-budget=8000 --dump-dom "file:///C:/Users/tatia/deontologie-dec-site/index.html" \
+     | grep -c '<article class="fiche"'
+   ```
+   Le compte doit être **> 0** (14 fiches EC par défaut). Si c'est **0**, le script est cassé :
+   réinjecter un `window.onerror` en tête de page et relancer pour obtenir le message et la ligne exacte.
+
+   Ensuite seulement, afficher **`ANALYSE JS : OK`**.
+
+   ⚠️ Un simple contrôle d'équilibrage (accolades / guillemets) **ne suffit pas** : il ne détecte pas
+   une **virgule manquante entre deux objets** — erreur qui casse tout le script sans déséquilibrer quoi que ce soit.
+   Après tout ajout dans `BANK`, `QRC`, `FICHES` ou `MAPS`, vérifier que l'élément précédant l'insertion
+   se termine bien par `},` (et non `}`).
+
    Vérifier aussi l'équilibre des balises HTML (`div`/`ul`/`li`/`p`/`table`) dans les `note`.
 2. **Commit + push** avec la ligne :
    `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
