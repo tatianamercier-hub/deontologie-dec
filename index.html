@@ -220,6 +220,20 @@
   #examCard,#examResults{display:none}
   #examResults{text-align:center}
   #panel-exam .seal{background:var(--ink);color:var(--gold-soft)}
+
+  /* ---- Épreuve 2 · cas pratiques ---- */
+  #panel-cas .seal{background:#5a3a8c;color:#e9e0f7}
+  #casCard,#casResults{display:none}
+  #casResults{text-align:center}
+  .cas-lbl{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ox);margin:18px 0 7px}
+  .cas-sit{background:var(--paper-2);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:12px 15px;font-size:.97rem;line-height:1.55;color:var(--ink)}
+  .cas-q{font-weight:600;font-size:1.02rem;line-height:1.5;color:var(--ink);margin-bottom:14px}
+  .cas-corr{font-size:.95rem;line-height:1.55;color:var(--ink)}
+  .cas-corr p{margin:0 0 8px}
+  .cas-corr ul{list-style:none;padding:0;margin:4px 0 10px}
+  .cas-corr li{position:relative;padding-left:18px;margin:4px 0}
+  .cas-corr li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;border-radius:50%;background:#3a5a8c}
+  .cas-refs{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
   .exam-choice{margin:8px 0 6px}
   .ec-label{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
   .ec-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
@@ -488,6 +502,7 @@
       <button class="tab" data-panel="qcm">QCM</button>
       <button class="tab" data-panel="qrc">QRC</button>
       <button class="tab" data-panel="exam">Mode examen</button>
+      <button class="tab" data-panel="cas">Épreuve 2</button>
       <button class="tab" data-panel="hist">Historique</button>
     </div>
   </header>
@@ -712,6 +727,92 @@
         <button class="btn ghost" id="examToCards">Réviser les cartes mentales</button>
       </div>
       <div class="exam-review" id="examReview"></div>
+    </div>
+  </section>
+
+  <!-- ============ ÉPREUVE 2 · CAS PRATIQUES ============ -->
+  <section class="panel" id="panel-cas">
+
+    <!-- start screen -->
+    <div class="card start" id="casStart">
+      <div class="seal">§</div>
+      <h2>Épreuve 2 · Cas pratiques</h2>
+      <p>Un <b>cas</b> et une <b>question</b>, comme à l'épreuve. Cherchez la réponse dans <b>votre documentation</b> (Code de commerce, NEP, code de déontologie, doctrine), rédigez-la, puis affichez la <b>proposition de corrigé</b> et auto-évaluez-vous. Sans chrono.</p>
+      <div class="exam-choice">
+        <span class="ec-label">Combien de cas ?</span>
+        <div class="ec-btns">
+          <button class="num-btn" data-n="3">3 cas</button>
+          <button class="num-btn sel" data-n="5">5 cas</button>
+          <button class="num-btn" data-n="10">10 cas</button>
+        </div>
+      </div>
+      <div class="exam-choice">
+        <span class="ec-label">Sur quel champ ?</span>
+        <div class="ec-btns">
+          <button class="cat-btn sel" data-cat="all">Tout</button>
+          <button class="cat-btn" data-cat="ec">Expert-comptable</button>
+          <button class="cat-btn" data-cat="cac">Commissaire aux comptes</button>
+        </div>
+        <span class="ec-hint" id="casCatHint">Tous les cas disponibles.</span>
+      </div>
+      <button class="btn alt" id="casBegin">Commencer</button>
+    </div>
+
+    <!-- practice screen -->
+    <div class="card" id="casCard">
+      <div class="qbar">
+        <span class="qnum2" id="casNum">Cas 1 / 5</span>
+        <span class="score">Maîtrisés : <b id="casSc">0</b> / <span id="casTotal">0</span></span>
+      </div>
+      <div class="progress"><i id="casBar"></i></div>
+
+      <span class="theme-tag" id="casTheme"></span>
+      <div class="cas-lbl">Situation</div>
+      <div class="cas-sit" id="casSit"></div>
+      <div class="cas-lbl">Question</div>
+      <div class="cas-q" id="casQ"></div>
+
+      <textarea id="casInput" class="qrc-input" placeholder="Cherchez dans votre documentation, puis rédigez ici votre réponse : règle applicable, texte de référence, application au cas…"></textarea>
+
+      <div class="nav-next show" id="casRevealRow">
+        <button class="btn alt" id="casReveal">Afficher le corrigé →</button>
+      </div>
+
+      <div class="model" id="casModel">
+        <div class="model-h">Proposition de corrigé</div>
+        <div class="cas-corr" id="casCorr"></div>
+        <div class="cas-refs" id="casRefs"></div>
+        <div class="selfeval">
+          <span class="se-q">Votre auto-évaluation :</span>
+          <div class="se-btns">
+            <button class="se ok" data-v="1">✓ Maîtrisé</button>
+            <button class="se mid" data-v="0.5">~ À revoir</button>
+            <button class="se no" data-v="0">✗ Raté</button>
+          </div>
+        </div>
+        <div class="nav-next show">
+          <button class="btn alt" id="casNext">Cas suivant →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- results screen -->
+    <div class="card" id="casResults">
+      <div class="donut">
+        <svg width="170" height="170" viewBox="0 0 170 170">
+          <circle cx="85" cy="85" r="72" fill="none" stroke="var(--paper-2)" stroke-width="14"/>
+          <circle id="casRing" cx="85" cy="85" r="72" fill="none" stroke="var(--ox)" stroke-width="14"
+                  stroke-linecap="round" stroke-dasharray="452" stroke-dashoffset="452"
+                  style="transition:stroke-dashoffset 1s ease .2s"/>
+        </svg>
+        <div class="num"><span class="big" id="casFinal">0</span><span class="pct" id="casPct">0 %</span></div>
+      </div>
+      <div id="cas-res-msg"></div>
+      <p id="cas-res-line"></p>
+      <div class="res-actions">
+        <button class="btn alt" id="casAgain">Nouvelle série de 5 cas</button>
+        <button class="btn ghost" id="casToStart">Retour à l'accueil</button>
+      </div>
     </div>
   </section>
 
@@ -3238,6 +3339,47 @@ const MAPS = [
   ]}
 ];
 
+/* ===================== ÉPREUVE 2 · CAS PRATIQUES =====================
+   Format : {cat, t (thème), s (situation, HTML), q (question, HTML), c (corrigé, HTML), r:[références à retrouver]}
+   Contenu tiré des fiches : ne rien inventer. */
+const CAS = [
+ {cat:"cac", t:"Nomination du CAC",
+  s:"La <b>SAS Lumen</b>, société non membre d'un groupe et non EIP, clôture son exercice au 31 décembre N avec les données suivantes : total de bilan <b>6,2 M€</b>, chiffre d'affaires HT <b>9,4 M€</b>, effectif moyen <b>58 salariés</b>. Son président vous interroge.",
+  q:"La société est-elle tenue de désigner un commissaire aux comptes ? Justifiez en identifiant les critères, le texte applicable et la durée du mandat.",
+  c:"<p><b>Règle</b> : une société commerciale doit désigner un CAC si elle dépasse, à la <b>date de clôture d'un exercice</b>, <b>2 des 3 seuils</b> issus du <b>décret du 28 février 2024</b> : <b>5 M€</b> de total de bilan, <b>10 M€</b> de chiffre d'affaires HT, <b>50 salariés</b> (effectif moyen).</p><p><b>Application</b> :</p><ul><li>Bilan 6,2 M€ &gt; 5 M€ → <b>seuil dépassé</b></li><li>CA 9,4 M€ &lt; 10 M€ → seuil non dépassé</li><li>Effectif 58 &gt; 50 → <b>seuil dépassé</b></li></ul><p>Deux seuils sur trois sont franchis : la <b>désignation est obligatoire</b>. Le CAC est nommé pour <b>6 exercices</b> ; le mandat expire après la réunion de l'AGO qui statue sur les comptes du 6ᵉ exercice.</p><p><b>Piège</b> : ne pas raisonner avec les anciens seuils de la loi PACTE (4 M€ / 8 M€ / 50), relevés par le décret de 2024.</p>",
+  r:["Code de commerce — désignation obligatoire du CAC dans les sociétés commerciales (seuils fixés par le décret n° 2024-152 du 28 février 2024)","Fiche « Nomination du CAC » → Sociétés commerciales ; fiche « Mandat du CAC » → Durée du mandat"]},
+
+ {cat:"cac", t:"Normes du CAC",
+  s:"La <b>SARL Verdier</b> ne dépasse pas les seuils de désignation obligatoire. Ses associés souhaitent néanmoins nommer un commissaire aux comptes. Ils hésitent entre une nomination pour <b>3 exercices</b> et une nomination pour <b>6 exercices</b>.",
+  q:"Quelle est la durée de droit commun d'une nomination volontaire ? Dans chaque hypothèse, quelle mission est confiée au CAC et quelle NEP s'applique ?",
+  c:"<p><b>Nomination volontaire</b> : l'assemblée peut nommer un CAC même si la société ne dépasse pas les seuils. La durée est de <b>6 exercices</b>, sauf décision des associés de la <b>limiter à 3 exercices</b>.</p><ul><li><b>Nomination pour 3 exercices</b> → mission d'<b>audit légal des petites entreprises (ALPE)</b>, régie par la <b>NEP 911</b> « mission du commissaire aux comptes nommé pour trois exercices ».</li><li><b>Nomination pour 6 exercices</b> dans une petite entreprise → <b>NEP 912</b> « mission du commissaire aux comptes nommé pour six exercices dans des petites entreprises ».</li></ul><p><b>Piège</b> : la NEP 911 vise bien <b>3</b> exercices et la NEP 912, <b>6</b>.</p>",
+  r:["NEP 911 et NEP 912 (normes homologuées)","Code de commerce — nomination volontaire d'un CAC et mission ALPE","Fiche « Textes réglementaires » → NEP (ALPE) ; fiche « Nomination du CAC » → Autres cas"]},
+
+ {cat:"cac", t:"Opinion du CAC",
+  s:"Le CAC de la <b>SA Brio</b> constate un <b>désaccord</b> avec la direction sur une provision significative qu'elle refuse de comptabiliser. Dans un autre dossier, la <b>SA Cléo</b>, il n'a <b>pas pu obtenir</b>, malgré ses demandes, les éléments lui permettant de se prononcer sur un poste significatif. Le dirigeant de Brio lui propose « une certification conditionnelle, sous réserve d'une régularisation l'an prochain ».",
+  q:"Quelles sont les issues possibles de la mission de certification ? Laquelle est envisageable pour chaque société ? La proposition du dirigeant est-elle recevable ?",
+  c:"<p>Le CAC certifie, en <b>justifiant ses appréciations</b>, que les comptes sont <b>réguliers et sincères</b> et donnent une <b>image fidèle</b>. <b>Quatre issues</b> sont possibles, chacune devant <b>préciser ses motifs</b> :</p><ul><li><b>Certification sans réserve</b></li><li><b>Certification avec réserve(s)</b></li><li><b>Refus de certification</b> — fondé sur un <b>désaccord</b></li><li><b>Impossibilité de certifier</b> — fondée sur une <b>limitation</b> des travaux</li></ul><p><b>SA Brio</b> : le désaccord conduit, selon son importance, à une <b>réserve</b> ou à un <b>refus de certification</b>. <b>SA Cléo</b> : l'impossibilité d'obtenir les éléments constitue une <b>limitation</b> → <b>réserve</b> ou <b>impossibilité de certifier</b>.</p><p><b>Proposition du dirigeant</b> : irrecevable. La « <b>certification conditionnelle</b> » <b>n'existe pas</b> : il n'y a que ces quatre issues.</p>",
+  r:["NEP 700 — rapport du commissaire aux comptes sur les comptes annuels et consolidés","Fiche « Missions du CAC » → Mission générale (4 possibilités de certification)"]},
+
+ {cat:"cac", t:"Secret professionnel",
+  s:"Le CAC de la <b>SA Nova</b> est sollicité trois fois. Un <b>associé minoritaire</b> (5 % du capital) lui demande, en dehors de toute assemblée, des précisions sur des irrégularités qu'il aurait relevées. Le <b>comité social et économique</b> le convoque pour obtenir des explications sur la situation financière de l'entreprise. Enfin, cité comme <b>témoin devant le tribunal correctionnel</b>, il s'interroge sur ce qu'il peut dire.",
+  q:"Dans chacune de ces trois situations, le CAC est-il tenu au secret professionnel ? Quelle sanction pénale encourt-il en cas de violation ?",
+  c:"<ul><li><b>Associé pris individuellement</b> : le secret est <b>maintenu</b> — l'associé est assimilé à un <b>simple tiers</b>. La levée du secret à l'égard des associés n'est possible que <b>lors de l'assemblée générale</b>.</li><li><b>CSE</b> : <b>levée du secret</b> lorsque le CSE <b>convoque les CAC</b> pour recevoir leurs explications sur les postes des documents communiqués et la <b>situation financière</b> de l'entreprise.</li><li><b>Juridiction pénale</b> : appelé à témoigner devant une juridiction répressive, le CAC <b>prête serment et oppose le secret</b> (sous peine de sanction). Le secret est levé uniquement pour les <b>faits délictueux révélés au procureur de la République</b>.</li></ul><p><b>Sanction pénale</b> (art. <b>226-13</b> du Code pénal) : <b>1 an d'emprisonnement</b> et <b>15 000 € d'amende</b> ; prescription <b>6 ans</b>. S'y ajoutent, le cas échéant, les responsabilités <b>civile</b> et <b>disciplinaire</b>.</p>",
+  r:["Code pénal, art. 226-13","Code de commerce — secret professionnel du commissaire aux comptes et cas de levée (CSE, assemblée, procureur)","Fiche « Comportement professionnel » → Secret professionnel"]},
+
+ {cat:"cac", t:"Entités d'intérêt public",
+  s:"Le cabinet <b>Axis</b> est commissaire aux comptes de la société cotée <b>Helios</b> (EIP). L'<b>associée signataire</b> vient de certifier son <b>6ᵉ exercice consécutif</b>. Helios demande en outre au cabinet une mission de <b>conseil hors audit</b>, dont les honoraires représenteraient <b>80 %</b> de la moyenne des honoraires facturés pour le contrôle légal des comptes consolidés au cours des 3 derniers exercices.",
+  q:"L'associée peut-elle signer le rapport du 7ᵉ exercice ? La mission de conseil peut-elle être acceptée, et à quelles conditions ?",
+  c:"<p><b>Rotation de l'associée signataire (EIP)</b> : les signataires <b>ne peuvent certifier durant plus de 6 exercices consécutifs</b>, dans la limite de <b>7 années</b>. Elle ne peut donc <b>pas signer</b> le 7ᵉ exercice. Elle pourra à nouveau participer à la mission à l'expiration d'un <b>délai de 3 ans</b> à compter de la clôture du 6ᵉ exercice certifié.</p><p><b>Services autres que la certification des comptes (SACC)</b> :</p><ul><li>Vérifier d'abord que le service ne figure pas dans la <b>liste des services interdits</b> (règlement UE 537/2014, reprise à l'<b>article 18</b> du code de déontologie).</li><li>Les honoraires de SACC sont <b>plafonnés à 70 %</b> de la moyenne des honoraires facturés au cours des <b>3 derniers exercices</b> pour le contrôle légal des comptes consolidés (les SACC requis par la loi sont exclus du calcul). À <b>80 %</b>, le plafond est <b>dépassé</b>.</li><li>La <b>H2A</b> peut autoriser, à titre exceptionnel et à la demande du CAC, un dépassement pour <b>2 exercices maximum</b>.</li><li>Le <b>comité d'audit</b> doit approuver le service après analyse des <b>risques pesant sur l'indépendance</b> et des <b>mesures de sauvegarde</b>.</li></ul>",
+  r:["Règlement (UE) n° 537/2014 — rotation, plafond des honoraires hors audit, services interdits","Code de commerce et code de déontologie (art. 18) — EIP","Fiche « Mandat du CAC » → Durée du mandat (EIP) ; fiche « Missions du CAC » → SACC"]},
+
+ {cat:"ec", t:"Secret professionnel",
+  s:"L'<b>administration fiscale</b> exerce son <b>droit de communication</b> auprès d'un expert-comptable au sujet de l'un de ses clients. Quelques semaines plus tard, elle procède à une <b>visite domiciliaire avec saisie</b> dans les locaux du cabinet. Le même mois, les <b>douanes</b> adressent au cabinet une demande de communication de documents concernant un autre client.",
+  q:"Dans chacune de ces situations, le secret professionnel de l'expert-comptable est-il levé ? Quelle sanction encourt-il s'il le viole ?",
+  c:"<ul><li><b>Administration fiscale — droit de communication</b> : <b>levée du secret</b>, pour la <b>nature des documents listés</b>.</li><li><b>Administration fiscale — visite domiciliaire et saisie</b> : <b>pas de levée</b> du secret.</li><li><b>Douanes</b> : <b>pas de levée</b> du secret, ni pour le droit de communication ni pour la visite domiciliaire et saisie.</li></ul><p><b>Rappel</b> : lors d'une visite domiciliaire, un document <b>non couvert</b> par le secret doit être transmis, malgré l'obligation de confidentialité et le devoir de discrétion.</p><p><b>Sanction</b> : <b>1 an d'emprisonnement</b> et <b>15 000 € d'amende</b> (art. <b>226-13</b> du Code pénal). Le secret est <b>absolu</b> : l'EC ne peut révéler les informations couvertes, <b>même avec l'accord de son client</b>.</p>",
+  r:["Code pénal, art. 226-13","Ordonnance du 19 septembre 1945 et Livre des procédures fiscales — droit de communication, visites domiciliaires","Fiche « Le secret professionnel » (EC) → tableau « Levée du secret selon l'interlocuteur »"]}
+];
+
 /* ===================== LOGIQUE QCM ===================== */
 const PICK = 20;
 const LETTERS = ["A","B","C","D"];
@@ -3252,7 +3394,7 @@ let qcmCat='all', qrcCat='all', unseenCat={};
 /* Rotation persistante : la file des questions non encore tirées survit au rechargement,
    pour ne pas retomber sur les mêmes questions d'une session à l'autre. */
 const UKEY='dec-unseen-v1';
-const bankSig = () => BANK.length+'-'+QRC.length;
+const bankSig = () => BANK.length+'-'+QRC.length+'-'+CAS.length;
 (function(){ try{ const r=JSON.parse(localStorage.getItem(UKEY)||'null'); if(r && r.sig===bankSig() && r.q) unseenCat=r.q; }catch(e){ unseenCat={}; } })();
 function saveUnseen(){ try{ localStorage.setItem(UKEY, JSON.stringify({sig:bankSig(), q:unseenCat})); }catch(e){} }
 let qrcN = 10;
@@ -4587,6 +4729,95 @@ function showQRCResults(){
   el('qrcResults').scrollIntoView({behavior:'smooth',block:'start'});
 }
 
+/* ===================== LOGIQUE ÉPREUVE 2 · CAS PRATIQUES ===================== */
+let casCat='all', casN=5, casList=[], casIdx=0, casScore=0;
+const stripTags = h => String(h||'').replace(/<[^>]*>/g,'');
+
+function refsHTML(refs){
+  if(!refs||!refs.length) return '';
+  return '<div class="kp-title">Références à retrouver dans la documentation</div><ul class="kp-list">'+
+    refs.map(r=>`<li>${r}</li>`).join('')+'</ul>';
+}
+
+function startCas(){
+  const pool = CAS.map((_,i)=>i).filter(i=> casCat==='all' || CAS[i].cat===casCat);
+  if(!pool.length){ alert('Aucun cas disponible pour ce champ.'); return; }
+  casList = drawFrom(CAS, Math.min(casN, pool.length), 'cas:'+casCat, pool).map(i=>CAS[i]);
+  casIdx=0; casScore=0;
+  el('casStart').style.display='none';
+  el('casResults').style.display='none';
+  el('casCard').style.display='block';
+  el('casTotal').textContent = casList.length;
+  el('casSc').textContent = 0;
+  renderCas();
+  el('casCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function renderCas(){
+  const item=casList[casIdx];
+  el('casNum').textContent = `Cas ${casIdx+1} / ${casList.length}`;
+  el('casTheme').textContent = item.t;
+  el('casSit').innerHTML = item.s;
+  el('casQ').innerHTML = item.q;
+  el('casBar').style.width = `${(casIdx/casList.length)*100}%`;
+  el('casInput').value='';
+  el('casCorr').innerHTML = item.c;
+  el('casRefs').innerHTML = refsHTML(item.r);
+  el('casModel').className='model';
+  el('casRevealRow').style.display='block';
+  el('casNext').textContent = casIdx===casList.length-1 ? 'Voir le bilan →' : 'Cas suivant →';
+  document.querySelectorAll('#casModel .se').forEach(b=>b.classList.remove('sel'));
+}
+
+function revealCas(){
+  el('casModel').className='model show';
+  el('casRevealRow').style.display='none';
+  el('casModel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function gradeCas(v, btn){
+  document.querySelectorAll('#casModel .se').forEach(b=>b.classList.remove('sel'));
+  btn.classList.add('sel');
+  casList[casIdx]._g = v;
+}
+
+function recomputeCas(){
+  casScore = casList.reduce((s,q)=> s + (typeof q._g==='number'? q._g : 0), 0);
+  const disp = Math.round(casScore*10)/10;
+  el('casSc').textContent = Number.isInteger(disp) ? disp : disp.toFixed(1);
+}
+
+function nextCas(){
+  const item=casList[casIdx];
+  if(item._g===undefined){ item._g = 0; }
+  pushHistory({ mode:'cas', ts:nowTs(), t:'Épreuve 2 · '+item.t, q:stripTags(item.q), a:stripTags(item.c), k:item.r||[],
+                resp:el('casInput').value||'', grade:item._g });
+  recomputeCas();
+  if(casIdx < casList.length-1){ casIdx++; renderCas(); el('casCard').scrollIntoView({behavior:'smooth',block:'start'}); }
+  else showCasResults();
+}
+
+function showCasResults(){
+  el('casCard').style.display='none';
+  el('casResults').style.display='block';
+  const pct = Math.round(casScore/casList.length*100);
+  el('casFinal').textContent = `${Math.round(casScore*10)/10}/${casList.length}`;
+  el('casPct').textContent = `${pct} %`;
+  const ring=el('casRing'), circ=2*Math.PI*72;
+  ring.style.strokeDasharray=circ; ring.style.strokeDashoffset=circ;
+  ring.setAttribute('stroke', pct>=75?'var(--green)':pct>=50?'var(--gold)':'var(--ox)');
+  requestAnimationFrame(()=>{ ring.style.strokeDashoffset = circ*(1-pct/100); });
+  let msg,line;
+  if(pct>=85){ msg="Vous trouvez vite et juste 🎓"; line="La recherche documentaire est efficace. Enchaînez une nouvelle série pour couvrir d'autres thèmes."; }
+  else if(pct>=70){ msg="Très bien"; line="Bonne méthode. Reprenez les cas notés « à revoir » en relisant la référence indiquée."; }
+  else if(pct>=50){ msg="En progression"; line="Repérez, pour chaque cas raté, l'endroit exact de la documentation où se trouvait la réponse."; }
+  else { msg="À consolider"; line="Travaillez le repérage dans la documentation : sommaire, index, numéros de NEP et d'articles."; }
+  el('cas-res-msg').textContent=msg;
+  el('cas-res-line').textContent=line;
+  casList.forEach(q=>delete q._g);
+  el('casResults').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
 /* ===================== LOGIQUE MODE EXAMEN ===================== */
 const EXAM_N = 20;
 let examFmt='random', examActiveFmt='qcm';
@@ -4899,6 +5130,7 @@ function setPanel(name){
   el('panel-qcm').classList.toggle('active', name==='qcm');
   el('panel-qrc').classList.toggle('active', name==='qrc');
   el('panel-exam').classList.toggle('active', name==='exam');
+  el('panel-cas').classList.toggle('active', name==='cas');
   el('panel-fiches').classList.toggle('active', name==='fiches');
   el('panel-mm').classList.toggle('active', name==='mm');
   el('panel-hist').classList.toggle('active', name==='hist');
@@ -4931,6 +5163,24 @@ el('qrcReveal').onclick=revealQRC;
 el('qrcNext').onclick=nextQRC;
 el('qrcToStart').onclick=()=>{ el('qrcResults').style.display='none'; el('qrcStart').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
 document.querySelectorAll('#qrcModel .se').forEach(b=> b.onclick=()=>{ gradeQRC(parseFloat(b.dataset.v), b); recomputeQRC(); });
+
+/* Épreuve 2 · cas pratiques */
+const _casHints={all:"Tous les cas disponibles.",ec:"Uniquement les cas Expert-comptable.",cac:"Uniquement les cas Commissaire aux comptes."};
+document.querySelectorAll('#casStart .cat-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#casStart .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  casCat=b.dataset.cat; el('casCatHint').textContent=_casHints[casCat];
+});
+document.querySelectorAll('#casStart .num-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#casStart .num-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  casN = parseInt(b.dataset.n,10) || 5;
+  el('casAgain').textContent = `Nouvelle série de ${casN} cas`;
+});
+el('casBegin').onclick=startCas;
+el('casAgain').onclick=startCas;
+el('casReveal').onclick=revealCas;
+el('casNext').onclick=nextCas;
+el('casToStart').onclick=()=>{ el('casResults').style.display='none'; el('casStart').style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); };
+document.querySelectorAll('#casModel .se').forEach(b=> b.onclick=()=>{ gradeCas(parseFloat(b.dataset.v), b); recomputeCas(); });
 
 el('examBegin').onclick=startExam;
 el('examAgain').onclick=()=>{ el('examResults').style.display='none'; el('examStart').style.display='block'; el('examStart').scrollIntoView({behavior:'smooth',block:'start'}); };
