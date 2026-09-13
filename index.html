@@ -234,6 +234,13 @@
   .cas-corr li{position:relative;padding-left:18px;margin:4px 0}
   .cas-corr li::before{content:"";position:absolute;left:4px;top:9px;width:6px;height:6px;border-radius:50%;background:#3a5a8c}
   .cas-refs{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line)}
+  .cas-src{display:none;font-size:.78rem;color:var(--ink-soft);margin-top:6px}
+  .cas-src.show{display:block}
+  .cas-src b{color:var(--ox);font-weight:600}
+  .cas-evol{margin-top:10px;padding:8px 12px;border-radius:8px;background:var(--red-bg);color:var(--ox);font-size:.9rem;line-height:1.5}
+  .src-btn{font-family:'Hanken Grotesk';font-weight:600;font-size:.9rem;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:11px;padding:9px 16px;transition:.16s}
+  .src-btn:hover{border-color:var(--ink)}
+  .src-btn.sel{background:var(--ink);color:var(--paper);border-color:var(--ink)}
   .exam-choice{margin:8px 0 6px}
   .ec-label{display:block;font-size:.85rem;font-weight:600;color:var(--ink-soft);margin-bottom:10px}
   .ec-btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
@@ -747,6 +754,15 @@
         </div>
       </div>
       <div class="exam-choice">
+        <span class="ec-label">Quelle source ?</span>
+        <div class="ec-btns">
+          <button class="src-btn sel" data-src="all">Tout</button>
+          <button class="src-btn" data-src="annales">Annales (sujets officiels)</button>
+          <button class="src-btn" data-src="fiches">Cas issus des fiches</button>
+        </div>
+        <span class="ec-hint" id="casSrcHint">Annales officielles du DEC et cas construits sur les fiches.</span>
+      </div>
+      <div class="exam-choice">
         <span class="ec-label">Sur quel champ ?</span>
         <div class="ec-btns">
           <button class="cat-btn sel" data-cat="all">Tout</button>
@@ -767,6 +783,7 @@
       <div class="progress"><i id="casBar"></i></div>
 
       <span class="theme-tag" id="casTheme"></span>
+      <div class="cas-src" id="casSrc"></div>
       <div class="cas-lbl">Situation</div>
       <div class="cas-sit" id="casSit"></div>
       <div class="cas-lbl">Question</div>
@@ -4730,8 +4747,9 @@ function showQRCResults(){
 }
 
 /* ===================== LOGIQUE ÉPREUVE 2 · CAS PRATIQUES ===================== */
-let casCat='all', casN=5, casList=[], casIdx=0, casScore=0;
+let casCat='all', casSrc='all', casN=5, casList=[], casIdx=0, casScore=0;
 const stripTags = h => String(h||'').replace(/<[^>]*>/g,'');
+const casMatchSrc = c => casSrc==='all' || (casSrc==='annales' ? !!c.src : !c.src);
 
 function refsHTML(refs){
   if(!refs||!refs.length) return '';
@@ -4740,9 +4758,9 @@ function refsHTML(refs){
 }
 
 function startCas(){
-  const pool = CAS.map((_,i)=>i).filter(i=> casCat==='all' || CAS[i].cat===casCat);
-  if(!pool.length){ alert('Aucun cas disponible pour ce champ.'); return; }
-  casList = drawFrom(CAS, Math.min(casN, pool.length), 'cas:'+casCat, pool).map(i=>CAS[i]);
+  const pool = CAS.map((_,i)=>i).filter(i=> (casCat==='all' || CAS[i].cat===casCat) && casMatchSrc(CAS[i]));
+  if(!pool.length){ alert('Aucun cas disponible pour cette sélection.'); return; }
+  casList = drawFrom(CAS, Math.min(casN, pool.length), 'cas:'+casCat+':'+casSrc, pool).map(i=>CAS[i]);
   casIdx=0; casScore=0;
   el('casStart').style.display='none';
   el('casResults').style.display='none';
@@ -4756,12 +4774,15 @@ function startCas(){
 function renderCas(){
   const item=casList[casIdx];
   el('casNum').textContent = `Cas ${casIdx+1} / ${casList.length}`;
-  el('casTheme').textContent = item.t;
+  el('casTheme').textContent = item.dom ? `${item.dom} · ${item.t}` : item.t;
+  const srcEl = el('casSrc');
+  if(item.src){ srcEl.innerHTML = `<b>Annale</b> · ${item.src}`; srcEl.className='cas-src show'; }
+  else { srcEl.innerHTML=''; srcEl.className='cas-src'; }
   el('casSit').innerHTML = item.s;
   el('casQ').innerHTML = item.q;
   el('casBar').style.width = `${(casIdx/casList.length)*100}%`;
   el('casInput').value='';
-  el('casCorr').innerHTML = item.c;
+  el('casCorr').innerHTML = item.c + (item.evol ? `<p class="cas-evol">⚠️ ${item.evol}</p>` : '');
   el('casRefs').innerHTML = refsHTML(item.r);
   el('casModel').className='model';
   el('casRevealRow').style.display='block';
@@ -4790,7 +4811,7 @@ function recomputeCas(){
 function nextCas(){
   const item=casList[casIdx];
   if(item._g===undefined){ item._g = 0; }
-  pushHistory({ mode:'cas', ts:nowTs(), t:'Épreuve 2 · '+item.t, q:stripTags(item.q), a:stripTags(item.c), k:item.r||[],
+  pushHistory({ mode:'cas', ts:nowTs(), t:'Épreuve 2 · '+(item.src ? item.src : item.t), q:stripTags(item.q), a:stripTags(item.c), k:item.r||[],
                 resp:el('casInput').value||'', grade:item._g });
   recomputeCas();
   if(casIdx < casList.length-1){ casIdx++; renderCas(); el('casCard').scrollIntoView({behavior:'smooth',block:'start'}); }
@@ -5169,6 +5190,11 @@ const _casHints={all:"Tous les cas disponibles.",ec:"Uniquement les cas Expert-c
 document.querySelectorAll('#casStart .cat-btn').forEach(b=> b.onclick=()=>{
   document.querySelectorAll('#casStart .cat-btn').forEach(x=>x.classList.toggle('sel', x===b));
   casCat=b.dataset.cat; el('casCatHint').textContent=_casHints[casCat];
+});
+const _casSrcHints={all:"Annales officielles du DEC et cas construits sur les fiches.",annales:"Uniquement les questions tombées aux sessions précédentes (sujets officiels).",fiches:"Uniquement les cas construits à partir de vos fiches."};
+document.querySelectorAll('#casStart .src-btn').forEach(b=> b.onclick=()=>{
+  document.querySelectorAll('#casStart .src-btn').forEach(x=>x.classList.toggle('sel', x===b));
+  casSrc=b.dataset.src; el('casSrcHint').textContent=_casSrcHints[casSrc];
 });
 document.querySelectorAll('#casStart .num-btn').forEach(b=> b.onclick=()=>{
   document.querySelectorAll('#casStart .num-btn').forEach(x=>x.classList.toggle('sel', x===b));
