@@ -11,6 +11,10 @@ https://tatianamercier-hub.github.io/deontologie-dec/
 | `MAPS` | Les cartes mentales (1 par fiche, même ordre) |
 | `BANK` | Les questions du QCM |
 | `QRC` | Les questions à réponse courte |
+| `CAS` | Les cas pratiques de l'onglet **Épreuve 2** |
+
+**Format d'un cas pratique** : `{cat:"ec"|"cac", t (thème), s (situation, HTML), q (question), c (corrigé, HTML : <p>/<ul><li>/<b>), r:[références à retrouver dans la documentation + renvoi à la fiche]}`.
+Le corrigé doit être **justifiable par les fiches** (ne rien inventer). La rotation des tirages (`bankSig`) inclut `CAS.length`.
 
 **Format d'une fiche** :
 `{cat, title, sub, def?, schema?, schemaLbl?, sections?[], essentiel?[], table?, chiffres?, piege?, memo?}`
