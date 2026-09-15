@@ -55,7 +55,7 @@ Les **onglets colorés** d'une fiche = `sections:[{lbl, intro?, items?[], note?}
 
    Vérifier aussi l'équilibre des balises HTML (`div`/`ul`/`li`/`p`/`table`) dans les `note`.
 2. **Commit + push** avec la ligne :
-   `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
+   `Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>`
 
 Un commit par étape. Le fichier est en **LF** — préserver les fins de ligne (éviter les diffs globaux).
 
